@@ -9,6 +9,8 @@
 | `/viajes`         | Vista de todos viajes de usuario     | ✅        |
 | `/lista-deseos`   | Destinos apuntados                   | ✅        |
 | `/perfil`         | Perfil de usuario                    | ✅        |
+| `/perfil/editar`  | Editar perfil de usuario             | ✅        |
+| `*` | Error 404          |           |
 
 
 <h1>Trip Routes</h1>
