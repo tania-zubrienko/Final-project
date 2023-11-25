@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom"
+import SignupForm from "./components/Forms/SignupForm"
 
 const AppRoutes = () => {
 
@@ -7,7 +8,7 @@ const AppRoutes = () => {
         <Route path="/" element={<h1>HomePage</h1>} />
         <Route path="/inicio" element={<h1>Soy el inicio</h1>} />
         <Route path="/recomendados" element={<h1>Soy los Recomendados</h1>} />
-        <Route path="/registrarse" element={<h1>Soy el Sign Up</h1>} />
+        <Route path="/registrarse" element={ <SignupForm/> } />
         <Route path="/inicio-sesion" element={<h1>Soy el Login</h1>} />
         <Route path="/lista-deseos" element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
         <Route path="/perfil" element={<h1>Soy el perfil de usuario</h1>} />
