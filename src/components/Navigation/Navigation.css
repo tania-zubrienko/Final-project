@@ -1,0 +1,23 @@
+.navButtons {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+}
+
+.Navigation {
+    background-color: #001E3D;
+    align-items: baseline;
+}
+
+.Navigation img {
+    width: 30px;
+}
+
+.logo {
+    font-size: 2em;
+}
+
+.logoImg {
+    width: 80px !important;
+    margin-right: 10px;
+}
