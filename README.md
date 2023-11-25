@@ -2,7 +2,8 @@
 
 | Route             | Description                          | Protected |
 |-------------------|--------------------------------------|-----------|
-| `/`               | Home page                            |           |
+| `/`               | Sobre nosotros                       |           |
+| `/incio`          | Home page                            |           |
 | `/recomendados`   | (Destinos recomendados)              |           |
 | `/registrarse`    | Pagina de registro                   |           |
 | `/iniciar-sesion` | Pagina de inicio de sesión           |           |
@@ -20,7 +21,7 @@
 | `/viajes`                 | Vista de todos mis viajes                            | ✅         |
 | `/viajes/crear`           | Muestra el formulario para crear uno                 | ✅         |
 | `/viajes/realizados`      | Muestra los viajes ya hechos                         | ✅         |
-| `/viajes/detalles/:id`    | Detalles del viaje                                   | ✅         |
+| `/viajes/detalles/:id` (*)| Detalles del viaje                                   | ✅         |
 | `/viajes/reservas/:id`    | Vista de las reservas de hotel, vuelos, planes, etc. | ✅         |
 | `/viajes/planes/:id`      | Vista para visualizar (y reservar) los planes        | ✅         |
 | `/viajes/informacion/:id` | Visualización de la información del pais             | ✅         |
