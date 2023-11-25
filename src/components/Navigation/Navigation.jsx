@@ -28,6 +28,7 @@ const Navigation = () => {
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" >
                         <Link className='navButtons' to={'/perfil'}> Mi Perfil </Link>
+                        <Link className='navButtons' to={'/registrarse'}> Registrarse </Link>
                     </Navbar.Collapse>
                 </Navbar>
             </Container>
