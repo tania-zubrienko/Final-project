@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom"
 import SignupForm from "./components/Forms/SignupForm/SignupForm.jsx"
 import LoginForm from "./components/Forms/LoginForm/LoginForm.jsx"
 import HomePage from "./pages/HomePage/HomePage.jsx"
+import Profile from "./pages/Profile/Profile.jsx"
 
 const AppRoutes = () => {
 
@@ -12,7 +13,7 @@ const AppRoutes = () => {
         <Route path="/registrarse" element={<SignupForm />} />
         <Route path="/inicio-sesion" element={<LoginForm />} />
         <Route path="/lista-deseos" element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
-        <Route path="/perfil" element={<h1>Soy el perfil de usuario</h1>} />
+        <Route path="/perfil" element={<Profile />} />
         <Route path="/perfil/editar" element={<h1>Edito el usuario</h1>} />
 
         <Route path="/viajes" element={<h1>Soy los viajes</h1>} />

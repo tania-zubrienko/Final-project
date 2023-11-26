@@ -1,0 +1,8 @@
+.ProfileHeader {
+    background-color: #ceec97;
+    color: #001E3D;
+    font-size: 3em;
+    padding: 100px 0;
+    text-align: center;
+    z-index: -1;
+}
