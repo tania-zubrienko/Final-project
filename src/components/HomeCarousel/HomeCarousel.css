@@ -1,0 +1,12 @@
+.carouselImg {
+    height: 90vh;
+    object-fit: contain;
+    bottom: 0
+}
+
+.caption {
+    border-radius: 30px;
+    padding: 20px;
+    background-color: rgb(243, 239, 233, 0.55);
+    margin-bottom: 10vh
+}

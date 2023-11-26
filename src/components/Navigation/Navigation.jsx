@@ -20,7 +20,7 @@ const Navigation = () => {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: '#fff', borderBlockColor: '#fff' }} />
                     <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav>
-                            <Link className='navButtons' to={'/inicio'}><img src={homeIcon} alt="home" /> Inicio </Link>
+                            <Link className='navButtons' to={'/'}><img src={homeIcon} alt="home" /> Inicio </Link>
                             <Link className='navButtons' to={'/viajes'}><img src={tripIcon} alt="trips" /> Viajes </Link>
                             <Link className='navButtons' to={'/lista-deseos'}><img src={wishListIcon} alt="wishlist" /> WishList </Link>
 
