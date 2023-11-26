@@ -1,0 +1,23 @@
+.ProfileImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.ProfileImage h1 {
+    position: fixed;
+    top: 137px;
+    font-size: 3rem;
+    color: #001E3D;
+}
+
+.ProfileImage img {
+    border-radius: 50%;
+    object-fit: cover;
+    background-position: center;
+    width: 150px;
+    height: 150px;
+    position: fixed;
+    top: 210px;
+}
