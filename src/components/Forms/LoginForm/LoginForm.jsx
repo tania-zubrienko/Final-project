@@ -1,7 +1,8 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import authService from '../../../services/auth.services'
+import { AuthContext } from '../../../context/auth.context'
 
 const LoginForm = () => {
     const [loginInfo, setloginInfo] = useState({
@@ -10,6 +11,8 @@ const LoginForm = () => {
     })
 
     const navigate = useNavigate()
+
+    const { authUser } = useContext(AuthContext)
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
@@ -21,7 +24,11 @@ const LoginForm = () => {
 
         authService
             .login(loginInfo)
-            .then(() => navigate('/'))
+            .then(({ data }) => {
+                localStorage.setItem('authToken', data.authToken)
+                authUser()
+                navigate('/')
+            })
             .catch(err => console.log(err))
     }
 
