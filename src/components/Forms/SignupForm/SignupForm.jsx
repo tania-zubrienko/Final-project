@@ -1,7 +1,8 @@
-import axios from 'axios'
+import '../Forms.css'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import authService from '../../../services/auth.services'
+import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 
 const SignupForm = () => {
     const [signupInfo, setSignupInfo] = useState({
@@ -28,21 +29,39 @@ const SignupForm = () => {
     }
 
     return (
-        <form onSubmit={ handleSignupSubmit }>
-            <label>Nombre</label>
-            <input type="text" name="name" value={signupInfo.name} onChange={handleInputOnChange} />
+        <Container>
+            <Row className="justify-content-center mt-5">
+                <Col md={7}>
+                    <Form onSubmit={ handleSignupSubmit }>
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label className='trip-label'>Nombre</Form.Label>
+                            <Form.Control className='trip-input' type="text" placeholder="Introduce tu nombre" name="name" value={signupInfo.name} onChange={handleInputOnChange} />
+                        </Form.Group>
 
-            <label>E-mail</label>
-            <input type="email" name="email" value={signupInfo.email} onChange={handleInputOnChange} />
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label className='trip-label'>E-mail</Form.Label>
+                            <Form.Control className='trip-input' type="email" placeholder="Introduce tu e-mail" name="email" value={signupInfo.email} onChange={handleInputOnChange} />
+                        </Form.Group>
 
-            <label>Contraseña</label>
-            <input type="password" name="password" value={signupInfo.password} onChange={handleInputOnChange} />
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Control className='trip-input' type="password" placeholder="Introduce tu contraseña" name="password" value={signupInfo.password} onChange={handleInputOnChange} />
+                        </Form.Group>
 
-            <label>Foto de perfil</label>
-            <input type="file" name="avatar" value={signupInfo.avatar} onChange={handleInputOnChange} />
+                        <Form.Group className="mb-3" controlId="formBasicAvatar">
+                            <Form.Label className='trip-label'>Foto de perfil</Form.Label>
+                            <Form.Control className='trip-input' type="file" placeholder="Introduce tu foto de perfil" name="avatar" value={signupInfo.avatar} onChange={handleInputOnChange} />
+                        </Form.Group>
 
-            <button type="submit">Registrarse</button>
-        </form>
+                        <div className="d-grid gap-2 mt-4">
+                            <Button className='primary-button' type="submit">
+                                Registrarse
+                            </Button>
+                        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 

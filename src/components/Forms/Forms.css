@@ -1,0 +1,21 @@
+.trip-label {
+    color: #001e3d !important;
+}
+
+.trip-input {
+    border: 1px solid #001e3d !important;
+    color: #001e3d !important;
+    border-radius: 13px !important;
+}
+
+.trip-input::placeholder {
+    color: #001e3d !important;
+}
+
+.primary-button {
+    background-color: #ceec97 !important;
+    border-color: #ceec97 !important;
+    color: #001e3d !important;
+    font-weight: 300 !important;
+    border-radius: 30px !important;
+}
