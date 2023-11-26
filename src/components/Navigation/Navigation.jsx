@@ -16,7 +16,7 @@ const Navigation = () => {
         <div className="Navigation">
             <Container>
                 <Navbar expand="md">
-                    <Link className='navButtons logo' to={'/'}> <img className='logoImg' src={logo} alt="logo" />EasyTrip </Link>
+                    <Link className='navButtons logo' to={'/'}> <img className='logoImg' src={logo} alt="logo" /></Link>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ backgroundColor: '#fff', borderBlockColor: '#fff' }} />
                     <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav>
@@ -28,6 +28,7 @@ const Navigation = () => {
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" >
                         <Link className='navButtons' to={'/perfil'}> Mi Perfil </Link>
+                        <Link className='navButtons' to={'/inicio-sesion'}> Iniciar Sesion </Link>
                         <Link className='navButtons' to={'/registrarse'}> Registrarse </Link>
                     </Navbar.Collapse>
                 </Navbar>
