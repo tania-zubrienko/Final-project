@@ -1,16 +1,16 @@
 import { Routes, Route } from "react-router-dom"
 import SignupForm from "./components/Forms/SignupForm/SignupForm.jsx"
 import LoginForm from "./components/Forms/LoginForm/LoginForm.jsx"
+import HomePage from "./pages/HomePage/HomePage.jsx"
 
 const AppRoutes = () => {
 
     return (<Routes>
 
-        <Route path="/" element={<h1>HomePage</h1>} />
-        <Route path="/inicio" element={<h1>Soy el inicio</h1>} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/recomendados" element={<h1>Soy los Recomendados</h1>} />
-        <Route path="/registrarse" element={ <SignupForm/> } />
-        <Route path="/inicio-sesion" element={ <LoginForm/> } />
+        <Route path="/registrarse" element={<SignupForm />} />
+        <Route path="/inicio-sesion" element={<LoginForm />} />
         <Route path="/lista-deseos" element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
         <Route path="/perfil" element={<h1>Soy el perfil de usuario</h1>} />
         <Route path="/perfil/editar" element={<h1>Edito el usuario</h1>} />
