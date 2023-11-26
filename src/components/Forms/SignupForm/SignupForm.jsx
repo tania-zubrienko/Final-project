@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
+import authService from '../../../services/auth.services'
 
 const SignupForm = () => {
     const [signupInfo, setSignupInfo] = useState({
@@ -20,9 +21,10 @@ const SignupForm = () => {
     function handleSignupSubmit(event) {
         event.preventDefault()
 
-        axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/signup`, signupInfo)
-
-        navigate()
+        authService
+            .signup(signupInfo)
+            .then(() => navigate('/'))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -39,7 +41,7 @@ const SignupForm = () => {
             <label>Foto de perfil</label>
             <input type="file" name="avatar" value={signupInfo.avatar} onChange={handleInputOnChange} />
 
-            <button type="submit">Registrar</button>
+            <button type="submit">Registrarse</button>
         </form>
     )
 }
