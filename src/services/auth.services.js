@@ -6,6 +6,16 @@ class AuthService {
         this.api = axios.create({
             baseURL: `${import.meta.env.VITE_APP_API_URL}/auth`
         })
+
+        this.api.interceptors.request.use((config)=>{
+            const storedToken = localStorage.getItem("authToken")
+
+            if(storedToken){
+                config.headers = {Authorization: `Baerer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
     signup(user) {
