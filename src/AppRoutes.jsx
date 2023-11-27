@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage/HomePage.jsx"
 import Profile from "./pages/Profile/Profile.jsx"
 import Trips from "./pages/Trips/Trips.jsx"
 
+import NewTripForm from "./components/Forms/NewTripForm/NewTripForm.jsx"
+import NewBookingForm from "./components/Forms/NewBookingForm/NewBookingForm.jsx"
 
 const AppRoutes = () => {
 
@@ -18,10 +20,11 @@ const AppRoutes = () => {
         <Route path="/perfil" element={<Profile />} />
         <Route path="/perfil/editar" element={<h1>Edito el usuario</h1>} />
 
-        <Route path="/viajes" element={<Trips />} />
+        <Route path="/viajes" element={<h1>Soy los viajes</h1>} />
         <Route path="/viajes/crear" element={<h1>Nuevo viaje</h1>} />
         <Route path="/viajes/realizados" element={<h1>Soy los viajes realizados</h1>} />
         <Route path="/viajes/detalles/:id" element={<h1>Detalles de viaje</h1>} />
+        <Route path="/viajes/reservas/crear/" element={<NewBookingForm />} />
         <Route path="/viajes/reservas/:id" element={<h1>Detalles de reserva</h1>} />
         <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />
         <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
