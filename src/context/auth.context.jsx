@@ -7,7 +7,7 @@ const AuthContext = createContext()
 
 function AuthProviderWraper(props) {
 
-    const [loggedUser, setLoggedUser] = useState(null)
+    const [loggedUser, setLoggedUser] = useState({})
 
     const authUser = () => {
 

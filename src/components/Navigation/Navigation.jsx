@@ -10,8 +10,15 @@ import logo from './../../assets/logo.png'
 
 
 import './Navigation.css'
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth.context';
+
+
 
 const Navigation = () => {
+
+    const { loggedUser } = useContext(AuthContext)
+
     return (
         <div className="Navigation">
             <Container>
@@ -27,9 +34,17 @@ const Navigation = () => {
                         </Nav>
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" >
-                        <Link className='navButtons' to={'/perfil'}> Mi Perfil </Link>
-                        <Link className='navButtons' to={'/inicio-sesion'}> Iniciar Sesion </Link>
-                        <Link className='navButtons' to={'/registrarse'}> Registrarse </Link>
+                        {
+                            loggedUser.email ?
+                                <Link className='navButtons' to={'/perfil'}> Mi Perfil : {loggedUser.email}</Link>
+                                :
+                                <>
+                                    <Link className='navButtons' to={'/inicio-sesion'}> Iniciar Sesion </Link>
+                                    <Link className='navButtons' to={'/registrarse'}> Registrarse </Link>
+                                </>
+                        }
+
+
                     </Navbar.Collapse>
                 </Navbar>
             </Container>
