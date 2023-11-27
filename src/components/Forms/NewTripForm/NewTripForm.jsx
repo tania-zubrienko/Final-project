@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Col, Container, Row, Form, Button } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
+import tripServices from '../../../services/trips.services'
 
 const NewTripForm = () => {
     const todayDate = new Date()
@@ -18,7 +19,9 @@ const NewTripForm = () => {
 
     function handleNewTripSubmit(event) {
         event.preventDefault()
-        //TODO: implement services
+        
+        // tripServices
+            
     }
 
     return (
