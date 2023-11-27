@@ -21,3 +21,11 @@
     position: fixed;
     top: 210px;
 }
+
+.basicButton {
+    text-decoration: none;
+    border: 1px solid #001E3D;
+    border-radius: 10px;
+    color: #001E3D;
+    padding: 5px;
+}

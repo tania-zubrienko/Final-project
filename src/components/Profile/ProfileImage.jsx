@@ -1,22 +1,24 @@
 
-import imagen from './../../assets/profile.jpeg'
 import "./ProfileImage.css"
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
+import { Button, NavLink } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
 
 const ProfileImage = () => {
 
     const { loggedUser } = useContext(AuthContext)
-    console.log(loggedUser)
+    const display = () => { alert("hola") }
 
     return (
         <div className="ProfileImage">
-            <h1>Perfil</h1>
 
+            <h1>{loggedUser.name}</h1>
             <img src={loggedUser.avatar} alt="" />
+            <Button onClick={display}>Cambiar foto</Button>
 
-
-        </div>
+        </div >
     )
 
 }
