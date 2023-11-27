@@ -7,7 +7,7 @@ const ProfileLinks = () => {
     return (
         <div className="ProfileLinks">
             <Container>
-                <Row md={{ offset: 3, span: 6 }}>
+                <Row md={{ offset: 3, span: 4 }}>
                     <hr />
                     <Col md={{ span: 3 }}>
                         <h3>Mis Documentos</h3>
