@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import authService from '../../../services/auth.services'
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
+import uploadServices from '../../../services/upload.services'
 
 const SignupForm = () => {
     const [signupInfo, setSignupInfo] = useState({
@@ -28,11 +29,21 @@ const SignupForm = () => {
             .catch(err => console.log(err))
     }
 
+    function handleFileUpload(e) {
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(({ data }) => setSignupInfo({ ...signupInfo, avatar: data.cloudinary_url }))
+            .catch(err => console.log(err))
+    }
+
     return (
         <Container>
             <Row className="justify-content-center mt-5">
                 <Col md={7}>
-                    <Form onSubmit={ handleSignupSubmit }>
+                    <Form onSubmit={handleSignupSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicName">
                             <Form.Label className='trip-label'>Nombre</Form.Label>
                             <Form.Control className='trip-input' type="text" placeholder="Introduce tu nombre" name="name" value={signupInfo.name} onChange={handleInputOnChange} />
@@ -50,7 +61,7 @@ const SignupForm = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicAvatar">
                             <Form.Label className='trip-label'>Foto de perfil</Form.Label>
-                            <Form.Control className='trip-input' type="file" placeholder="Introduce tu foto de perfil" name="avatar" value={signupInfo.avatar} onChange={handleInputOnChange} />
+                            <Form.Control className='trip-input' type="file" placeholder="Introduce tu foto de perfil" name="avatar" onChange={handleFileUpload} />
                         </Form.Group>
 
                         <div className="d-grid gap-2 mt-4">
