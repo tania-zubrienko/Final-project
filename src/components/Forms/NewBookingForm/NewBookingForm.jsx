@@ -1,6 +1,9 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
 import { useState } from "react"
+import bookingService from "../../../services/booking.services"
+import { useNavigate } from "react-router-dom"
+
 
 const NewBookingForm = () => {
     const todayDate = new Date()
@@ -9,17 +12,28 @@ const NewBookingForm = () => {
         type: '',
         startDate: '',
         endDate: '',
-        document: ''
+        document: []
     })
 
+    const navigate = useNavigate()
+
     function handleInputOnChange(event) {
-        const { value, name } = event.target
-        setBookingInfo({ ...bookingInfo, [name]: value })
+        const { value, name, files } = event.target
+        console.log(name, ':', value, '->', [...files])
+        if (name === 'document') {
+            setBookingInfo({ ...bookingInfo, [name]: [...files] })
+        }
+        else {
+            setBookingInfo({ ...bookingInfo, [name]: value })
+        }
     }
 
     function handleNewBookingSubmit(event) {
         event.preventDefault()
-        //TODO: implement services
+        bookingService
+            .saveBookings(bookingInfo)
+            .then(() => navigate('/'))
+            .catch(err => console.log(err))
     }
 
     return (
@@ -46,6 +60,11 @@ const NewBookingForm = () => {
                         <Form.Group className="mb-3" controlId="formBasicEndDate">
                             <Form.Label className='trip-label'>Salida</Form.Label>
                             <Form.Control className='trip-input' type="date" min={ bookingInfo.startDate } placeholder="Introduce la fecha de vuelta" name="endDate" value={ bookingInfo.endDate } onChange={ handleInputOnChange } />
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicDocument">
+                            <Form.Label className='trip-label'>Documento</Form.Label>
+                            <Form.Control className='trip-input' type="file" multiple placeholder="Introduce los archivos de tu reserva" name="document" value={ bookingInfo.document } onChange={ handleInputOnChange } />
                         </Form.Group>
 
                         <div className="d-grid gap-2 mt-4">
