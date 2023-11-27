@@ -21,7 +21,16 @@ class TripServices {
     }
 
     getUserTrips() {
+        console.log("estoy en get all")
         return this.api.get('/')
+    }
+
+    createTrip() {
+        return this.api.post('/add')
+    }
+
+    deleteTrip(id) {
+        return this.api.post(`/${id}/delete`)
     }
 }
 

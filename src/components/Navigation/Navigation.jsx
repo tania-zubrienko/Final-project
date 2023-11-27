@@ -1,4 +1,4 @@
-import { Nav } from 'react-bootstrap';
+import { Button, Nav } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
@@ -12,6 +12,7 @@ import logo from './../../assets/logo.png'
 import './Navigation.css'
 import { useContext } from 'react';
 import { AuthContext } from '../../context/auth.context';
+import authService from '../../services/auth.services';
 
 
 
@@ -28,16 +29,24 @@ const Navigation = () => {
                     <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav>
                             <Link className='navButtons' to={'/'}><img src={homeIcon} alt="home" /> Inicio </Link>
-                            <Link className='navButtons' to={'/viajes'}><img src={tripIcon} alt="trips" /> Viajes </Link>
-                            <Link className='navButtons' to={'/lista-deseos'}><img src={wishListIcon} alt="wishlist" /> WishList </Link>
-                            <Link className='navButtons' to={'/viajes/reservas/crear'}> Crear Reserva </Link>
+                            {loggedUser && <>
+
+                                <Link className='navButtons' to={'/viajes'}><img src={tripIcon} alt="trips" /> Viajes </Link>
+                                <Link className='navButtons' to={'/lista-deseos'}><img src={wishListIcon} alt="wishlist" /> WishList </Link>
+                                <Link className='navButtons' to={'/viajes/reservas/crear'}> Crear Reserva </Link>
+
+                            </>}
 
                         </Nav>
                     </Navbar.Collapse>
                     <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav" >
                         {
-                            loggedUser.email ?
-                                <Link className='navButtons' to={'/perfil'}> Mi Perfil : {loggedUser.email}</Link>
+                            loggedUser ?
+                                <>
+                                    <Link className='navButtons' to={'/perfil'}> Mi Perfil : {loggedUser.email}</Link>
+                                    <Button className='navButtons'>Cerrar sessión</Button>
+                                </>
+
                                 :
                                 <>
                                     <Link className='navButtons' to={'/inicio-sesion'}> Iniciar Sesion </Link>
