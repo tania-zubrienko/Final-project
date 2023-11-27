@@ -13,15 +13,17 @@ class BookingService {
     }
 
     saveBookings(booking) {
-        return this.api.post('/add')
+        return this.api.post('/add', booking)
     }
 
     editBookings(id, booking) {
-        return this.api.post('edit/:id')
+        return this.api.post(`edit/${id}`, booking)
     }
 
     deleteBookings(id) {
-        return this.api.post('/delete/:id')
+        return this.api.post(`/delete/${id}`)
     }
 
 }
+
+export default BookingService
