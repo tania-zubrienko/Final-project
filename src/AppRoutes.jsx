@@ -3,6 +3,8 @@ import SignupForm from "./components/Forms/SignupForm/SignupForm.jsx"
 import LoginForm from "./components/Forms/LoginForm/LoginForm.jsx"
 import HomePage from "./pages/HomePage/HomePage.jsx"
 import Profile from "./pages/Profile/Profile.jsx"
+import Trips from "./pages/Trips/Trips.jsx"
+
 
 const AppRoutes = () => {
 
@@ -16,7 +18,7 @@ const AppRoutes = () => {
         <Route path="/perfil" element={<Profile />} />
         <Route path="/perfil/editar" element={<h1>Edito el usuario</h1>} />
 
-        <Route path="/viajes" element={<h1>Soy los viajes</h1>} />
+        <Route path="/viajes" element={<Trips />} />
         <Route path="/viajes/crear" element={<h1>Nuevo viaje</h1>} />
         <Route path="/viajes/realizados" element={<h1>Soy los viajes realizados</h1>} />
         <Route path="/viajes/detalles/:id" element={<h1>Detalles de viaje</h1>} />
