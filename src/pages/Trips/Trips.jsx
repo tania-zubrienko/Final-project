@@ -1,12 +1,15 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import authService from "../../services/auth.services"
 import tripServices from "../../services/trips.services"
 const Trips = () => {
 
+    const [userTrips, setUserTrips] = useState()
+
     useEffect(() => {
+        console.log("se renderizó, paso a servicios")
         tripServices
             .getUserTrips()
-            .then(() => console.log("success"))
+            .then(res => setUserTrips(res.data))
             .catch(err => console.log(err))
 
     }, [])
@@ -14,7 +17,7 @@ const Trips = () => {
 
     return (
         <div className="Trips">
-            Soy trips
+            {userTrips && userTrips.map(e => <h1 key={e._id}>{e.destination}</h1>)}
         </div>
     )
 }
