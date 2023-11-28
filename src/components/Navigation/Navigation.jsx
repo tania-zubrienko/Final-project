@@ -35,7 +35,7 @@ const Navigation = () => {
 
                                 <Link className='navButtons' to={'/viajes'}><img src={tripIcon} alt="trips" /> Viajes </Link>
                                 <Link className='navButtons' to={'/lista-deseos'}><img src={wishListIcon} alt="wishlist" /> WishList </Link>
-                                <Link className='navButtons' to={'/viajes/reservas/crear'}> Crear Reserva </Link>
+                                <Link className='navButtons' to={'/pruebas'}> Pruebas </Link>
 
                             </>}
 

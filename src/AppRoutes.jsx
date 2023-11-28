@@ -9,10 +9,14 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx"
 import NewTripForm from "./components/Forms/NewTripForm/NewTripForm.jsx"
 import NewBookingForm from "./components/Forms/NewBookingForm/NewBookingForm.jsx"
 import TripDetail from "./pages/TripDetail/TripDetail.jsx"
+import TripCard from "./components/Cards/TripCard/TripCard.jsx"
+import TripList from "./components/Lists/TripList/TripList.jsx"
 
 const AppRoutes = () => {
 
     return (<Routes>
+
+        <Route path="/pruebas" element={<TripList />}></Route>
 
         <Route path="/" element={<HomePage />} />
         <Route path="/recomendados" element={<h1>Soy los Recomendados</h1>} />
