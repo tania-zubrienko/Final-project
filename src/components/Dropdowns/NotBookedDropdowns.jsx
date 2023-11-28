@@ -1,5 +1,7 @@
 import { useState } from "react"
+
 import { Container, Row, Accordion } from "react-bootstrap"
+
 import './Dropdowns.css'
 import Booked from "../Booked/Booked"
 
@@ -14,6 +16,7 @@ const NotBookedDropdowns = () => {
                 <h1 style={{ color: '#011e3d' }}>To be Booked</h1>
                 <hr />
 
+
                 <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px", marginBottom: "3vh" }}>
                     <Accordion >
                         <Accordion.Item eventKey="0">
@@ -26,6 +29,7 @@ const NotBookedDropdowns = () => {
                 </Row>
 
             </Container>
+
         </div>
 
 

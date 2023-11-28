@@ -1,0 +1,8 @@
+.UserTrips {
+    display: flex;
+    align-items: center;
+}
+
+.UserTrips img {
+    width: 8%
+}

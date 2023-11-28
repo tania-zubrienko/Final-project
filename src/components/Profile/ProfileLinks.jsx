@@ -1,60 +1,40 @@
-import { Col, Container, Row } from "react-bootstrap"
-import { MdOutlineNavigateNext } from "react-icons/md"
+import { Col, Row } from "react-bootstrap"
+import Accordion from 'react-bootstrap/Accordion';
+
 import './ProfileLinks.css'
+import FriendList from "../FriendList/FriendList";
+import Trips from './../../pages/Trips/Trips'
 
 const ProfileLinks = () => {
 
     return (
         <div className="ProfileLinks">
-            <Container>
-                <Row md={{ offset: 3, span: 4 }}>
-                    <hr />
-                    <Col md={{ span: 3 }}>
-                        <h3>Mis Documentos</h3>
-                    </Col>
-                    <Col md={{ offset: 8, span: 1 }}>
-                        <h3><MdOutlineNavigateNext /></h3>
-                    </Col>
-                    <br />
-                </Row>
-                <Row md={{ offset: 3, span: 6 }}>
-                    <hr />
-                    <Col md={{ span: 3 }}>
-                        <h3>Mis Viajes</h3>
-                    </Col>
-                    <Col md={{ offset: 8, span: 1 }}>
-                        <h3><MdOutlineNavigateNext /></h3>
-                    </Col>
-                </Row>
-                <Row md={{ offset: 3, span: 6 }}>
-                    <hr />
-                    <Col md={{ span: 3 }}>
-                        <h3>Login y Seguridad</h3>
-                    </Col>
-                    <Col md={{ offset: 8, span: 1 }}>
-                        <h3><MdOutlineNavigateNext /></h3>
-                    </Col>
-                </Row>
-                <Row md={{ offset: 3, span: 6 }}>
-                    <hr />
-                    <Col md={{ span: 3 }}>
-                        <h3>Accesibilidad</h3>
-                    </Col>
-                    <Col md={{ offset: 8, span: 1 }}>
-                        <h3><MdOutlineNavigateNext /></h3>
-                    </Col>
-                </Row>
-                <Row md={{ offset: 3, span: 6 }}>
-                    <hr />
-                    <Col md={{ span: 3 }}>
-                        <h3>Notificaciones</h3>
-                    </Col>
-                    <Col md={{ offset: 8, span: 1 }}>
-                        <h3><MdOutlineNavigateNext style={{ backgroundColor: '' }} /></h3>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+            <Row>
+                <Col md={{ span: 8, offset: 2 }}>
+
+                    <Accordion defaultActiveKey="0" flush>
+                        <Accordion.Item eventKey="0">
+                            <Accordion.Header>Mis Documentos</Accordion.Header>
+                            <Accordion.Body>
+                                aqui los docs
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                            <Accordion.Header>Mis Viajes</Accordion.Header>
+                            <Accordion.Body>
+                                <Trips />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="2">
+                            <Accordion.Header>Mis Amigos</Accordion.Header>
+                            <Accordion.Body>
+                                <FriendList />
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    </Accordion>
+                </Col>
+            </Row>
+        </div >
     )
 
 }

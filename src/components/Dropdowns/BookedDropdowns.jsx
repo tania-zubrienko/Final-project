@@ -1,5 +1,7 @@
 import { useState } from "react"
-import { Container, Row, Accordion } from "react-bootstrap"
+
+import { Container, Row, Col, Accordion } from "react-bootstrap"
+import { MdOutlineNavigateNext } from "react-icons/md"
 import './Dropdowns.css'
 import Booked from "../Booked/Booked"
 
@@ -14,6 +16,7 @@ const BookedDropdowns = () => {
             <Container className="mt-5">
                 <h1 style={{ color: '#011e3d' }}>Booked</h1>
                 <hr />
+
 
                 <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
                     <Accordion >
