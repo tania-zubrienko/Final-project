@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import authService from "../../services/auth.services"
 import tripServices from "../../services/trips.services"
+import UserTrips from "../../components/UserTrips/UserTrips";
 const Trips = () => {
 
     const [userTrips, setUserTrips] = useState()
@@ -17,7 +18,7 @@ const Trips = () => {
 
     return (
         <div className="Trips">
-            {userTrips && userTrips.map(e => <h1 key={e._id}>{e.destination}</h1>)}
+            {userTrips && userTrips.map(e => <UserTrips key={e._id} destination={e.destination} date={{ end: e.endDate, start: e.startDate }} />)}
         </div>
     )
 }

@@ -1,0 +1,24 @@
+.FriendList {
+    display: flex;
+    align-items: center;
+}
+
+.FriendList img {
+    width: 8%
+}
+
+.main {
+    text-align: center;
+}
+
+.myButton {
+    background-color: #ceec97 !important;
+    border: #ceec97 1px !important;
+    color: #001E3D !important;
+}
+
+.myButton2 {
+    background-color: #001E3D !important;
+    border: #001E3D 1px !important;
+    color: white !important;
+}
