@@ -14,10 +14,11 @@
 
 .primary-button {
     background-color: #ceec97 !important;
-    border-color: #ceec97 !important;
+    border-color: #c1ec70 !important;
     color: #001e3d !important;
     font-weight: 300 !important;
-    border-radius: 30px !important;
+    border-radius: 20px !important;
+    width: 100%;
 }
 
 .navButtons {

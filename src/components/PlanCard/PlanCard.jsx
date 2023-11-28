@@ -1,6 +1,7 @@
 import { Container, Row, Col, Accordion } from "react-bootstrap"
 import './PlanCard.css'
 import image from './../../assets/cabeceraProvisional.jpeg'
+import SavedPlanRow from "../SavedPlanRow/SavedPlanRow"
 
 const PlanCard = () => {
 
@@ -14,7 +15,7 @@ const PlanCard = () => {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header style={{ backgroundColor: " #e5e9ec" }}><h3>Saved to the Plan</h3></Accordion.Header>
                             <Accordion.Body>
-                                <h3></h3>
+                                <SavedPlanRow/>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
