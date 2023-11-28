@@ -36,7 +36,7 @@ const NewTripForm = () => {
 
                         <Form.Group className="mb-3" controlId="formBasicStartDate">
                             <Form.Label className='trip-label'>Ida</Form.Label>
-                            <Form.Control className='trip-input' type="date" min={ minDate } placeholder="Introduce la fecha de ida" name="startDate" value={ tripInfo.startDate } onChange={ handleInputOnChange } />
+                            <Form.Control className='trip-input' type="date" min={minDate} placeholder="Introduce la fecha de ida" name="startDate" value={ tripInfo.startDate } onChange={ handleInputOnChange } />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicEndDate">
