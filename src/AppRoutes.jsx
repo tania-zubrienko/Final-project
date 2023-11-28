@@ -11,9 +11,7 @@ import NewBookingForm from "./components/Forms/NewBookingForm/NewBookingForm.jsx
 import TripDetail from "./pages/TripDetail/TripDetail.jsx"
 
 import NewExpenseForm from "./components/Forms/NewExpensesForm/NewExpensesForm.jsx"
-import TripCard from "./components/Cards/TripCard/TripCard.jsx"
 import TripList from "./components/Lists/TripList/TripList.jsx"
-
 
 const AppRoutes = () => {
 
