@@ -1,5 +1,5 @@
 import { Container, Row } from "react-bootstrap"
-import cabeceraProvisional from '../../../assets/cabeceraProvisional.jpeg'
+import cabeceraProvisional from '../../../assets/cabeceraProvisional.jpg'
 import TripCard from "../../Cards/TripCard/TripCard"
 import Loader from "../../Loader/Loader"
 
@@ -12,6 +12,7 @@ const TripList = ({ trips }) => {
             <Container>
                 <Row>
                     {
+
                         trips.map((trip, i) => {
                             return (
                                 <TripCard key={i} image={cabeceraProvisional} destination={trip.destination} startDate={trip.startDate} endDate={trip.endDate}></TripCard>

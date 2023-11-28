@@ -1,4 +1,6 @@
 import { Card, Col, Container, Row } from "react-bootstrap"
+
+import { Link } from "react-router-dom";
 import './TripCard.css'
 
 const TripCard = ({ image, destination, startDate, endDate }) => {

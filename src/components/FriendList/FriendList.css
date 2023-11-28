@@ -11,14 +11,16 @@
     text-align: center;
 }
 
-.myButton {
+.myButton2 {
     background-color: #ceec97 !important;
     border: #ceec97 1px !important;
     color: #001E3D !important;
+    border-radius: 30px !important;
 }
 
-.myButton2 {
+.myButton {
     background-color: #001E3D !important;
     border: #001E3D 1px !important;
     color: white !important;
+    border-radius: 30px !important;
 }

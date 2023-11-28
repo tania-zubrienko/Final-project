@@ -30,26 +30,20 @@ const AppRoutes = () => {
         <Route element={<PrivateRoute />}>
             <Route path="/lista-deseos" element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
             <Route path="/perfil" element={<Profile />} />
-            <Route path="/perfil/editar" element={<h1>Edito el usuario</h1>} />
+            {/* <Route path="/perfil/editar" element={<h1>Edito el usuario</h1>} /> no hay edicion como tal en cliente*/}
 
             <Route path="/viajes" element={<Trips />} />
             <Route path="/viajes/crear" element={<NewTripForm />} />
-            <Route path="/viajes/realizados" element={<h1>Soy los viajes realizados</h1>} />
+            {/* <Route path="/viajes/realizados" element={<Trips />} />   2 listas en la vista */}
             <Route path="/viajes/reservas/:id/crear" element={<NewBookingForm />} />
             <Route path="/viajes/detalles/:id" element={<TripDetail />} />
 
-            <Route path="/viajes/reservas/:id" element={<h1>Detalles de reserva</h1>} />
+            {/* <Route path="/viajes/reservas/:id" element={<h1>Detalles de reserva</h1>} /> de momento*/}
             <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />
             <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
             <Route path="/viajes/gastos/:id/añadir" element={<NewExpenseForm />} />
             <Route path="/viajes/gastos/:id" element={<p>vista de gastos</p>} />
 
-
-
-
-            <Route path="/perfil/documentos" element={<h1>Soy los documentos del usuario</h1>} />
-            <Route path="/perfil/amigos" element={<h1>Soy la lista de amigos del usuario</h1>} />
-            <Route path="/perfil/amigos/añadir" element={<h1>Lista de usuarios para añadir amigos</h1>} />
         </Route>
 
         <Route path="*" element={<h1>Error 404 (no soy una tetera pero ojalá)</h1>} />
