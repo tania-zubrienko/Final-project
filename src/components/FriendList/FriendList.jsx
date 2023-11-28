@@ -1,7 +1,8 @@
-import { Button, Modal } from 'react-bootstrap';
+import { Button, Modal, Form, InputGroup } from 'react-bootstrap';
 import profileImg from '../../assets/profileDefault.png'
 import { useState } from 'react';
 import './FriendList.css'
+import SearchBar from '../SearchBar/SearchBar';
 
 const FriendList = () => {
     const [show, setShow] = useState(false);
@@ -27,7 +28,12 @@ const FriendList = () => {
                 </Modal.Header>
                 <Modal.Body>
 
-                    aqui listado de amigos
+                    <InputGroup className="mb-3">
+                        <InputGroup.Text id="basic-addon1">email</InputGroup.Text>
+                        <Form.Control placeholder="Email de usuario" />
+                    </InputGroup>
+
+                    <SearchBar />
 
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>

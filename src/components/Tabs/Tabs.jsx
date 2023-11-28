@@ -1,5 +1,5 @@
 import Nav from 'react-bootstrap/Nav'
-import cabeceraProvisional from './../../assets/cabeceraProvisional.jpeg'
+import cabeceraProvisional from './../../assets/cabeceraProvisional.jpg'
 import './Tabs.css'
 
 const Tabs = () => {
