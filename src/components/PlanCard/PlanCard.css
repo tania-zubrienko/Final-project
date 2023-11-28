@@ -1,0 +1,21 @@
+.PlanCard h2,
+.PlanCard h3,
+.PlanCard h5 {
+    color: #011e3d;
+}
+
+.PlanCard img {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 2vh;
+}
+
+.PlanCard .button {
+    background-color: #c0ec6f;
+    color: #011e3d;
+    border-radius: 5vh;
+    padding: 3vh 0;
+    width: 100%;
+    text-align: center;
+
+}

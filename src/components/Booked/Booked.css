@@ -4,4 +4,9 @@
     margin: 3vh 0;
     padding: 2vh 0;
     border-radius: 3vh;
+    border: 0.3vh #011e3d solid
+}
+
+h5 {
+    font: bolder;
 }
