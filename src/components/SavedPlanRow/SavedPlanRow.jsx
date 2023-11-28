@@ -2,6 +2,7 @@ import { Col, Row } from "react-bootstrap"
 import { IoLocationOutline, IoHourglassOutline, IoEarthOutline, IoDocumentOutline } from "react-icons/io5"
 import cabeceraProvisional from '../../assets/cabeceraProvisional.jpeg'
 import './SavedPlanRow.css'
+import { Link } from "react-router-dom"
 
 const SavedPlanRow = () => {
     return(
