@@ -4,15 +4,15 @@ import { MdOutlineNavigateNext } from "react-icons/md"
 import './Dropdowns.css'
 import Booked from "../Booked/Booked"
 
-const Dropdowns = () => {
+const NotBookedDropdowns = () => {
 
-    const [booked, setBooked] = useState([])
+    const [notBooked, setNotBooked] = useState([])
 
     return (
-        <div className="Dropdown">
+        <div className="Dropdown mt-5">
 
             <Container className="mt-5">
-                <h1 style={{ color: '#011e3d' }}>Booked</h1>
+                <h1 style={{ color: '#011e3d' }}>To be Booked</h1>
                 <hr />
 
                 <Row className="row" style={{ backgroundColor: '#e6e6e6', color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
@@ -31,7 +31,6 @@ const Dropdowns = () => {
 
 
     )
-
 }
 
-export default Dropdowns
+export default NotBookedDropdowns

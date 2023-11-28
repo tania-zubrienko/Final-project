@@ -1,6 +1,7 @@
 import TabButtons from '../../components/TabButtons/TabButtons'
 import Tabs from './../../components/Tabs/Tabs'
-import Dropdowns from '../../components/Dropdowns/Dropdowns'
+import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
+import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 
 const TripDetail = () => {
 
@@ -8,7 +9,8 @@ const TripDetail = () => {
         <div className="TripDetail">
             <Tabs />
             <TabButtons />
-            <Dropdowns />
+            <BookedDropdowns />
+            <NotBookedDropdowns />
         </div>
     )
 
