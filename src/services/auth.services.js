@@ -30,6 +30,7 @@ class AuthService {
         return this.api.get('/verify',
             { headers: { Authorization: `Bearer ${authToken}` } })
     }
+
 }
 
 const authService = new AuthService()

@@ -17,6 +17,7 @@ const HomeCarousel = () => {
                         src={carousel4}
                         alt="Third slide"
                     />
+
                     <Carousel.Caption className='caption'>
                         <h1>Todo lo que necesitas para tu viaje</h1>
                     </Carousel.Caption>

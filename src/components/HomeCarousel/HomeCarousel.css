@@ -10,3 +10,14 @@
     background-color: rgb(243, 239, 233, 0.55);
     margin-bottom: 10vh
 }
+
+.title {
+    border-radius: 30px;
+    padding: 20px;
+    background-color: rgb(243, 239, 233, 0.55);
+    width: 70vw;
+    text-align: center;
+    margin-left: 15vw;
+    position: relative;
+    top: -95vh;
+}

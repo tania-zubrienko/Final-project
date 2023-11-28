@@ -8,6 +8,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx"
 
 import NewTripForm from "./components/Forms/NewTripForm/NewTripForm.jsx"
 import NewBookingForm from "./components/Forms/NewBookingForm/NewBookingForm.jsx"
+import TripDetail from "./pages/TripDetail/TripDetail.jsx"
 
 const AppRoutes = () => {
 

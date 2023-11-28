@@ -6,6 +6,16 @@ class BookingService {
         this.api = axios.create({
             baseURL: `${import.meta.env.VITE_APP_API_URL}/bookings`
         })
+
+        this.api.interceptors.request.use((config) => {
+            const storedToken = localStorage.getItem("authToken")
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
     getBookings() {
@@ -26,4 +36,5 @@ class BookingService {
 
 }
 
-export default BookingService
+const bookingService = new BookingService()
+export default bookingService
