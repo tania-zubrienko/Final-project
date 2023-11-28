@@ -10,14 +10,21 @@ import NewTripForm from './components/Forms/NewTripForm/NewTripForm.jsx'
 import NewBookingForm from './components/Forms/NewBookingForm/NewBookingForm.jsx'
 import TripDetail from './pages/TripDetail/TripDetail.jsx'
 
-import NewExpenseForm from './components/Forms/NewExpensesForm/NewExpensesForm.jsx'
-import TripList from './components/Lists/TripList/TripList.jsx'
+
+import NewExpenseForm from "./components/Forms/NewExpensesForm/NewExpensesForm.jsx"
+import TripList from "./components/Lists/TripList/TripList.jsx"
+import PlanCard from "./components/PlanCard/PlanCard.jsx"
+import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
+import SavedPlanRow from "./components/SavedPlanRow/SavedPlanRow.jsx"
+
 
 const AppRoutes = () => {
 
     return (<Routes>
 
+
         <Route path='/pruebas' element={<TripList />}></Route>
+
 
         <Route path='/' element={<HomePage />} />
         <Route path='/recomendados' element={<h1>Soy los Recomendados</h1>} />
