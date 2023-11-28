@@ -1,7 +1,7 @@
 import { Button, Nav } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import homeIcon from './../../assets/homeWhite.png'
 import tripIcon from './../../assets/tripWhite.png'
 import wishListIcon from './../../assets/wishlistWhite.png'
@@ -11,15 +11,17 @@ import logo from './../../assets/logo.png'
 
 import './Navigation.css'
 import { useContext } from 'react';
-import { AuthContext } from '../../context/auth.context';
-import authService from '../../services/auth.services';
+import { AuthContext } from '../../context/auth.context'
 
 
 
 const Navigation = () => {
-
-    const { loggedUser } = useContext(AuthContext)
-
+    const navigate = useNavigate()
+    const { loggedUser, logout } = useContext(AuthContext)
+    const closeSession = () => {
+        logout()
+        navigate('/')
+    }
     return (
         <div className="Navigation">
             <Container>
@@ -43,8 +45,8 @@ const Navigation = () => {
                         {
                             loggedUser ?
                                 <>
-                                    <Link className='navButtons' to={'/perfil'}> Mi Perfil : {loggedUser.email}</Link>
-                                    <Button className='navButtons'>Cerrar sessión</Button>
+                                    <Link className='navButtons' to={'/perfil'}> Mi Perfil</Link>
+                                    <Link className='navButtons' onClick={closeSession}>Cerrar sessión</Link>
                                 </>
 
                                 :
