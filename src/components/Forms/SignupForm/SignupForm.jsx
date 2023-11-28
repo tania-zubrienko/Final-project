@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom"
 import authService from '../../../services/auth.services'
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
 import uploadServices from '../../../services/upload.services'
+import profilepic from './../../../assets/profileDefault.png'
 
 const SignupForm = () => {
     const [signupInfo, setSignupInfo] = useState({
         name: '',
         email: '',
         password: '',
-        avatar: ''
+        avatar: profilepic
     })
 
     const navigate = useNavigate()
@@ -65,9 +66,7 @@ const SignupForm = () => {
                         </Form.Group>
 
                         <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit">
-                                Registrarse
-                            </Button>
+                            <Button className='navButtons' type="submit"> Registrarse </Button>
                         </div>
                     </Form>
                 </Col>
