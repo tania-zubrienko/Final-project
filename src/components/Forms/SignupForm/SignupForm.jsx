@@ -66,7 +66,7 @@ const SignupForm = () => {
                         </Form.Group>
 
                         <div className="d-grid gap-2 mt-4">
-                            <Button className='navButtons' type="submit"> Registrarse </Button>
+                            <Button className='primary-button' type="submit"> Registrarse </Button>
                         </div>
                     </Form>
                 </Col>

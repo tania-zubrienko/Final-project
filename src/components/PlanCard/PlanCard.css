@@ -4,12 +4,6 @@
     color: #011e3d;
 }
 
-.PlanCard img {
-    height: 300px;
-    object-fit: cover;
-    border-radius: 2vh;
-}
-
 .PlanCard .button {
     background-color: #c0ec6f;
     color: #011e3d;
