@@ -24,3 +24,7 @@
     color: white !important;
     border-radius: 30px !important;
 }
+
+.inputField {
+    width: inherit;
+}
