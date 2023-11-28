@@ -42,11 +42,13 @@ const AppRoutes = () => {
             <Route path='/viajes/reservas/:id/crear' element={<NewBookingForm />} />
             <Route path='/viajes/detalles/:id' element={<TripDetail />} />
 
-            {/* <Route path='/viajes/reservas/:id' element={<h1>Detalles de reserva</h1>} /> de momento*/}
-            <Route path='/viajes/planes/:id' element={<h1>Soy los planes del viaje</h1>} />
-            <Route path='/viajes/informacion/:id' element={<h1>Soy la información viajes</h1>} />
-            <Route path='/viajes/gastos/:id/añadir' element={<NewExpenseForm />} />
-            <Route path='/viajes/gastos/:id' element={<p>vista de gastos</p>} />
+            {/* <Route path="/viajes/reservas/:id" element={<h1>Detalles de reserva</h1>} /> de momento*/}
+            <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />
+            <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
+            <Route path="/viajes/gastos/:id/añadir" element={<NewExpenseForm />} />
+            <Route path="/viajes/gastos/:id" element={<p>vista de gastos</p>} />
+            <Route path="/viajes/:id/planes/:id/detalle" element={<PlanDetails />} />
+
 
         </Route>
 
