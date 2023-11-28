@@ -1,6 +1,6 @@
 import { Container, Row, Col, Accordion } from "react-bootstrap"
 import './PlanCard.css'
-import image from './../../assets/cabeceraProvisional.jpeg'
+import image from './../../assets/cabeceraProvisional.jpg'
 
 const PlanCard = () => {
 
