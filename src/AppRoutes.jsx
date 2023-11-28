@@ -34,10 +34,8 @@ const AppRoutes = () => {
             <Route path="/viajes" element={<Trips />} />
             <Route path="/viajes/crear" element={<NewTripForm />} />
             <Route path="/viajes/realizados" element={<h1>Soy los viajes realizados</h1>} />
-
             <Route path="/viajes/reservas/:id/crear" element={<NewBookingForm />} />
             <Route path="/viajes/detalles/:id" element={<TripDetail />} />
-
 
             <Route path="/viajes/reservas/:id" element={<h1>Detalles de reserva</h1>} />
             <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />

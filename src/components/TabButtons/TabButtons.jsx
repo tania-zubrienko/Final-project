@@ -52,7 +52,7 @@ const TabButtons = () => {
                         Ferry
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className="mt-5" style={{ borderRadius: '5px' }}>
                     <button>
                         <MdOutlineTrain className="image" />
                         <br />
