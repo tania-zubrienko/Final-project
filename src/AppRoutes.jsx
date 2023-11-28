@@ -9,11 +9,17 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx"
 import NewTripForm from "./components/Forms/NewTripForm/NewTripForm.jsx"
 import NewBookingForm from "./components/Forms/NewBookingForm/NewBookingForm.jsx"
 import TripDetail from "./pages/TripDetail/TripDetail.jsx"
+
 import NewExpenseForm from "./components/Forms/NewExpensesForm/NewExpensesForm.jsx"
+import TripCard from "./components/Cards/TripCard/TripCard.jsx"
+import TripList from "./components/Lists/TripList/TripList.jsx"
+
 
 const AppRoutes = () => {
 
     return (<Routes>
+
+        <Route path="/pruebas" element={<TripList />}></Route>
 
         <Route path="/" element={<HomePage />} />
         <Route path="/recomendados" element={<h1>Soy los Recomendados</h1>} />
@@ -28,6 +34,7 @@ const AppRoutes = () => {
             <Route path="/viajes" element={<Trips />} />
             <Route path="/viajes/crear" element={<NewTripForm />} />
             <Route path="/viajes/realizados" element={<h1>Soy los viajes realizados</h1>} />
+
             <Route path="/viajes/reservas/:id/crear" element={<NewBookingForm />} />
             <Route path="/viajes/detalles/:id" element={<TripDetail />} />
 
@@ -37,6 +44,9 @@ const AppRoutes = () => {
             <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
             <Route path="/viajes/gastos/:id/añadir" element={<NewExpenseForm />} />
             <Route path="/viajes/gastos/:id" element={<p>vista de gastos</p>} />
+
+
+
 
             <Route path="/perfil/documentos" element={<h1>Soy los documentos del usuario</h1>} />
             <Route path="/perfil/amigos" element={<h1>Soy la lista de amigos del usuario</h1>} />
