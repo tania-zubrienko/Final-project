@@ -1,0 +1,16 @@
+button {
+    border-radius: 5px !important;
+    padding: 10px 0;
+    width: 15vh;
+    background-color: white;
+    color: #011e3d;
+}
+
+button:hover {
+    background-color: #e5e9ec;
+}
+
+.image {
+    height: 35px;
+    width: 35px;
+}
