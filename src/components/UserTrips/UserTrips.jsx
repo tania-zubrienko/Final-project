@@ -19,7 +19,7 @@ const UserTrips = ({ destination, date, tripId }) => {
                 <img src={profileImg} alt='' />
                 <div className='info'>
                     <h5>{destination}</h5>
-                    <p>{startDate} - {endDate}</p>
+                    <p>Desde {startDate}  Hasta {endDate}</p>
                 </div>
 
             </Link>
