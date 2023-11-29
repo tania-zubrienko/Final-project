@@ -28,6 +28,10 @@ class UserServices {
     getFriendList() {
         return this.api.get('/friends')
     }
+
+    saveDocument(documentInfo) {
+        return this.api.post('documents/new', documentInfo)
+    }
 }
 
 const userServices = new UserServices()

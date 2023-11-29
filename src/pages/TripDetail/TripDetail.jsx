@@ -11,12 +11,30 @@ import HeaderExpenses from '../../components/Expenses/HeaderExpenses'
 import BodyExpenses from '../../components/Expenses/BodyExpenses'
 import FooterExpenses from '../../components/Expenses/FooterExpenses'
 import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import tripServices from '../../services/trips.services'
+import getDatesArray from '../../utils/dateArray.utils'
 
 
 const TripDetail = () => {
-
     const { id } = useParams()
-    console.log(id)
+
+    const [dates, setDates] = useState([])
+
+    useEffect(() => { getTripDates() }, [])
+
+    const getTripDates = () => {
+        tripServices
+            .getTripDates(id)
+            .then(res => setDates(res.data))
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        console.log(getDatesArray(dates.startDate, dates.endDate))
+    }, [dates])
+
+
 
     return (
         <div className="TripDetail">

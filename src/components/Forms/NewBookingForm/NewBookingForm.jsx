@@ -28,10 +28,9 @@ const NewBookingForm = () => {
     }
 
     function handleFileUpload(e) {
-
         for (let i = 0; i < e.target.files.length; i++) {
             const formData = new FormData()
-            formData.append('imageData', e.target.files[0])
+            formData.append('imageData', e.target.files[i])
 
             console.log(bookingInfo.documents)
 
