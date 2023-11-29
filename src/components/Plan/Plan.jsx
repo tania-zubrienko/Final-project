@@ -1,7 +1,9 @@
 import { MdOutlineCalendarToday } from 'react-icons/md'
 import './Plan.css'
+import shortDate from '../../utils/shortDate.utils'
 
-const Plan = () => {
+
+const Plan = ({ dates }) => {
 
     return (
         <div className='Plan'>
@@ -9,96 +11,18 @@ const Plan = () => {
                 <div className='icon'>
                     <h5> <MdOutlineCalendarToday /></h5>
                 </div>
-                <div className='fecha'>
-                    <h5>
-                        08/07
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/08
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/09
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/10
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/11
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/12
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/13
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/14
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/15
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/16
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/17
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/18
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/19
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/20
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/21
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/22
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/23
-                    </h5>
-                </div>
-                <div className='fecha'>
-                    <h5>
-                        08/24
-                    </h5>
-                </div>
+                {dates.map(e => {
+                    console.log(e)
+                    return (
+
+                        <div className='fecha'>
+                            <h5>
+                                {shortDate(new Date(Date.parse(e)))}
+                            </h5>
+                        </div>
+                    )
+                })}
+
             </div>
         </div>
     )

@@ -21,25 +21,20 @@ const TripDetail = () => {
 
     const [dates, setDates] = useState([])
 
+
     useEffect(() => { getTripDates() }, [])
 
     const getTripDates = () => {
         tripServices
             .getTripDates(id)
-            .then(res => setDates(res.data))
+            .then(res => setDates(getDatesArray(res.data.startDate, res.data.endDate)))
             .catch(err => console.log(err))
     }
-
-    useEffect(() => {
-        console.log(getDatesArray(dates.startDate, dates.endDate))
-    }, [dates])
-
-
 
     return (
         <div className="TripDetail">
             <Tabs />
-            <Plan />
+            <Plan dates={dates} />
             <TabButtons />
             <BookedDropdowns />
             <NotBookedDropdowns />
