@@ -9,6 +9,7 @@ const NewBookingForm = () => {
     const todayDate = new Date()
     const minDate = formatDate(todayDate)
     const [bookingInfo, setBookingInfo] = useState({
+        name: '',
         type: '',
         startDate: '',
         endDate: '',
@@ -19,13 +20,11 @@ const NewBookingForm = () => {
 
     function handleInputOnChange(event) {
         const { value, name, files } = event.target
-        console.log(name, ':', value, '->', [...files])
-        if (name === 'document') {
-            setBookingInfo({ ...bookingInfo, [name]: [...files] })
-        }
-        else {
-            setBookingInfo({ ...bookingInfo, [name]: value })
-        }
+        // for (let i = 0; i < files.length; i++) {
+        //     console.log(files[i])
+        // }
+        //console.log(name, ':', value, '->', files)
+        setBookingInfo({ ...bookingInfo, [name]: value })
     }
 
     function handleNewBookingSubmit(event) {
@@ -50,6 +49,11 @@ const NewBookingForm = () => {
                                 <option value="Bus">Bus</option>
                                 <option value="Entradas">Entradas</option>
                             </Form.Select>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label className='trip-label'>Nombre</Form.Label>
+                            <Form.Control className='trip-input' type="text" placeholder="Introduce tu nombre" name="name" value={bookingInfo.name} onChange={handleInputOnChange} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicStartDate">
