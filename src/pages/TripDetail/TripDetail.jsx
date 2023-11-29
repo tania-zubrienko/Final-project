@@ -36,7 +36,7 @@ const TripDetail = () => {
             <Tabs />
             <Plan dates={dates} />
             <TabButtons />
-            <BookedDropdowns />
+            <BookedDropdowns id={id} />
             <NotBookedDropdowns />
             <PlanCard />
             <NoTrips />

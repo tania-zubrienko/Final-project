@@ -5,11 +5,9 @@ import './Dropdowns.css'
 import Booked from "../Booked/Booked"
 import { Link, useParams } from "react-router-dom"
 
-const BookedDropdowns = () => {
+const BookedDropdowns = ({ id }) => {
 
     const [booked, setBooked] = useState([])
-
-    const { id } = useParams
 
     return (
         <div className="Dropdown">

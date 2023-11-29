@@ -22,8 +22,9 @@ class BookingService {
         return this.api.get('/')
     }
 
-    saveBookings(booking) {
-        return this.api.post('/add', booking)
+    saveBookings(booking, id) {
+
+        return this.api.post('/add', { booking, id })
     }
 
     editBookings(id, booking) {
