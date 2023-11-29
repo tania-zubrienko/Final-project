@@ -1,5 +1,4 @@
 import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
-import defaultImg from './../../assets/profile.jpeg'
 import './SearchBar.css'
 import userServices from '../../services/user.services'
 import { useEffect, useState } from 'react'
@@ -10,11 +9,19 @@ const SearchBar = ({ userToFind }) => {
 
     function getuser() {
 
-
         userServices
             .getUserData(userToFind)
             .then(result => setFoundUsers(result.data))
             .catch(err => console.log(err))
+    }
+
+    function handlerAddFriend(e) {
+        const fiendId = e.target.value
+        userServices
+            .addFriend(fiendId)
+            .then(result => console.log(result))
+            .catch(err => console.log(err))
+
     }
 
     return (
@@ -30,7 +37,7 @@ const SearchBar = ({ userToFind }) => {
                                     <p>{e.name}</p>
                                     <p>{e.email}</p>
                                 </div>
-                                <button className='ms-auto p-2 mybutton'>Añadir</button>
+                                <button className='ms-auto p-2 mybutton' value={e._id} onClick={handlerAddFriend}>Añadir</button>
                             </Col>
                             <hr />
                         </Row>
