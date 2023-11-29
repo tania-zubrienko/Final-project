@@ -1,11 +1,11 @@
-import { Button, Modal, Form, InputGroup } from 'react-bootstrap';
+import { Button, Modal, Form, InputGroup } from 'react-bootstrap'
 import profileImg from '../../assets/profileDefault.png'
-import { useState } from 'react';
+import { useState } from 'react'
 import './FriendList.css'
-import SearchBar from '../SearchBar/SearchBar';
+import SearchBar from '../SearchBar/SearchBar'
 
 const FriendList = () => {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false)
     const [userSearch, setUserSearch] = useState('')
 
     const handleClose = () => {

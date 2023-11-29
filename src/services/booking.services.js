@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 class BookingService {
 
@@ -8,7 +8,7 @@ class BookingService {
         })
 
         this.api.interceptors.request.use((config) => {
-            const storedToken = localStorage.getItem("authToken")
+            const storedToken = localStorage.getItem('authToken')
 
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
