@@ -16,6 +16,7 @@ import TripList from "./components/Lists/TripList/TripList.jsx"
 import PlanCard from "./components/PlanCard/PlanCard.jsx"
 import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
 import SavedPlanRow from "./components/SavedPlanRow/SavedPlanRow.jsx"
+import DocumentsForm from './components/Forms/DocumentsForm/DocumentsForm.jsx'
 
 
 const AppRoutes = () => {
@@ -23,7 +24,7 @@ const AppRoutes = () => {
     return (<Routes>
 
 
-        <Route path='/pruebas' element={<TripList />}></Route>
+        <Route path='/pruebas' element={<DocumentsForm />}></Route>
 
 
         <Route path='/' element={<HomePage />} />
