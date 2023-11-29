@@ -1,8 +1,8 @@
-import { Container, Row, Col } from "react-bootstrap"
-import { MdOutlineDirectionsCarFilled, MdOutlineDirectionsBusFilled, MdOutlineRestaurant, MdOutlineTrain, MdFlight } from "react-icons/md";
-import { GiDivingHelmet } from "react-icons/gi";
-import { FaFerry } from "react-icons/fa6";
-import { IoBedOutline } from "react-icons/io5"
+import { Container, Row, Col } from 'react-bootstrap'
+import { MdOutlineDirectionsCarFilled, MdOutlineDirectionsBusFilled, MdOutlineRestaurant, MdOutlineTrain, MdFlight } from 'react-icons/md'
+import { GiDivingHelmet } from 'react-icons/gi'
+import { FaFerry } from 'react-icons/fa6'
+import { IoBedOutline } from 'react-icons/io5'
 import './TabsButtons.css'
 
 const TabButtons = () => {
@@ -10,58 +10,58 @@ const TabButtons = () => {
     return (
         <Container>
             <Row>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <IoBedOutline className="image" />
+                        <IoBedOutline className='image' />
                         <br />
                         Lodging
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <MdOutlineDirectionsBusFilled className="image" />
+                        <MdOutlineDirectionsBusFilled className='image' />
                         <br />
                         Bus
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <MdOutlineDirectionsCarFilled className="image" />
+                        <MdOutlineDirectionsCarFilled className='image' />
                         <br />
                         Car Rental
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <GiDivingHelmet className="image" />
+                        <GiDivingHelmet className='image' />
                         <br />
                         Diving
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <MdOutlineRestaurant className="image" />
+                        <MdOutlineRestaurant className='image' />
                         <br />
                         Restaurant
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <FaFerry className="image" />
+                        <FaFerry className='image' />
                         <br />
                         Ferry
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5" style={{ borderRadius: '5px' }}>
+                <Col md={{ offset: 1, span: 2 }} className='mt-5' style={{ borderRadius: '5px' }}>
                     <button>
-                        <MdOutlineTrain className="image" />
+                        <MdOutlineTrain className='image' />
                         <br />
                         Train
                     </button>
                 </Col>
-                <Col md={{ offset: 1, span: 2 }} className="mt-5">
+                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
-                        <MdFlight className="image" />
+                        <MdFlight className='image' />
                         <br />
                         Flights
                     </button>

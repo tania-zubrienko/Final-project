@@ -1,6 +1,4 @@
-import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from './../context/auth.context'
+import axios from 'axios'
 
 
 class TripServices {
@@ -10,7 +8,7 @@ class TripServices {
         })
 
         this.api.interceptors.request.use((config) => {
-            const storedToken = localStorage.getItem("authToken")
+            const storedToken = localStorage.getItem('authToken')
 
             if (storedToken) {
                 config.headers = { Authorization: `Bearer ${storedToken}` }
@@ -21,7 +19,7 @@ class TripServices {
     }
 
     getUserTrips() {
-        console.log("estoy en get all")
+
         return this.api.get('/')
     }
 

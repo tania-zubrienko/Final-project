@@ -1,19 +1,18 @@
 import { Col, Row } from 'react-bootstrap'
-import Accordion from 'react-bootstrap/Accordion';
+import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
-import UserTrips from '../../components/UserTrips/UserTrips';
+import UserTrips from '../../components/UserTrips/UserTrips'
 
 import './ProfileLinks.css'
-import FriendList from '../FriendList/FriendList';
-import Trips from './../../pages/Trips/Trips'
-import TripList from '../Lists/TripList/TripList';
+import FriendList from '../FriendList/FriendList'
+
 
 const ProfileLinks = () => {
     const [userTrips, setUserTrips] = useState()
 
     useEffect(() => {
-        console.log('se renderizó, paso a servicios')
+
         tripServices
             .getUserTrips()
             .then(res => setUserTrips(res.data))
@@ -38,7 +37,7 @@ const ProfileLinks = () => {
             <Row>
                 <Col md={{ span: 8, offset: 2 }}>
 
-                    <Accordion defaultActiveKey='0' flush>
+                    <Accordion flush>
                         <Accordion.Item eventKey='0'>
                             <Accordion.Header>Mis Documentos</Accordion.Header>
                             <Accordion.Body>

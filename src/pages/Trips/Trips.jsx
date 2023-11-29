@@ -12,7 +12,7 @@ const Trips = () => {
     const [userTrips, setUserTrips] = useState()
 
     useEffect(() => {
-        console.log("se renderizó, paso a servicios")
+
         tripServices
             .getUserTrips()
             .then(res => setUserTrips(res.data))
