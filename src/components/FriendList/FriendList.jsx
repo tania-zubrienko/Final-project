@@ -50,9 +50,6 @@ const FriendList = () => {
 
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>
-                    <Button className='myButton2' onClick={handleClose}>
-                        Añadir
-                    </Button>
                     <Button className='myButton' onClick={handleClose}>
                         Cerrar
                     </Button>
