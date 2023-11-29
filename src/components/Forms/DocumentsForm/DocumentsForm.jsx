@@ -33,7 +33,7 @@ const DocumentsForm = () => {
         event.preventDefault()
         userServices
             .saveDocument(documentInfo)
-            .then(() => navigate('/'))
+            .then(() => navigate('/perfil'))
             .catch(err => console.log(err))
     }
 

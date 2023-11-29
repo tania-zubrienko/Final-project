@@ -29,8 +29,8 @@ class UserServices {
         return this.api.get('/friends')
     }
 
-    saveDocument() {
-        return this.api.post('documents/new')
+    saveDocument(documentInfo) {
+        return this.api.post('documents/new', documentInfo)
     }
 }
 
