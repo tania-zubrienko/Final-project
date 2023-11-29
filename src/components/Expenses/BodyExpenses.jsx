@@ -25,6 +25,7 @@ const BodyExpenses = () => {
                         <input type="number" />
                     </Col>
                 </Row>
+                <h3>Paid by <div className="btnWhite">you</div> and split <div className="btnWhite">equally</div></h3>
             </Container>
         </div>
     )

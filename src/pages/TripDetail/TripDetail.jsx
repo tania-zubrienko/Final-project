@@ -9,6 +9,7 @@ import NoTrips from '../../components/NoListed/NoTrips'
 import NoBookings from '../../components/NoListed/NoBookings'
 import HeaderExpenses from '../../components/Expenses/HeaderExpenses'
 import BodyExpenses from '../../components/Expenses/BodyExpenses'
+import FooterExpenses from '../../components/Expenses/FooterExpenses'
 
 
 const TripDetail = () => {
@@ -25,6 +26,7 @@ const TripDetail = () => {
             <NoBookings />
             <HeaderExpenses />
             <BodyExpenses />
+            <FooterExpenses />
         </div>
     )
 
