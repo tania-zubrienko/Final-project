@@ -35,3 +35,12 @@ input {
     border-right: 0;
 
 }
+
+.btnWhite {
+    display: inline-block;
+    text-align: center;
+    border-radius: 4vh;
+    border: 0.3vh solid #011e3d;
+    padding: 1vh 2vh;
+    margin: 0 2vh;
+}

@@ -1,7 +1,15 @@
 h1,
-
 h3 {
 
     color: #011e3d !important;
     font-weight: 1000 !important;
+}
+
+.btnAdd {
+    background-color: #c0ec6f;
+    border-radius: 10vh;
+    text-align: center;
+    width: 80%;
+    padding: 2vh 0;
+    margin: 0 auto;
 }

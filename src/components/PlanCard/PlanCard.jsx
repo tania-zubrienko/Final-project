@@ -15,7 +15,7 @@ const PlanCard = () => {
                         <Accordion.Item eventKey="0">
                             <Accordion.Header style={{ backgroundColor: " #e5e9ec" }}><h3>Saved to the Plan</h3></Accordion.Header>
                             <Accordion.Body>
-                                <SavedPlanRow/>
+                                <SavedPlanRow />
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>
@@ -25,17 +25,17 @@ const PlanCard = () => {
 
 
                 <Row className="mt-5">
-                    <Col md={{ span: 6 }}>
+                    <Col sm={12} md={{ span: 6 }}>
                         <figure>
                             <img src={image} alt="" />
                         </figure>
                     </Col>
-                    <Col md={{ offset: 1, span: 5 }}>
+                    <Col sm={12} md={{ offset: 1, span: 5 }}>
                         <h2>Perfect sign for photos</h2>
                         <h3 className="mt-3">★★★★☆</h3>
                         <h5 className="mt-3">Free admision</h5>
                         <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-5">Save to Plan</div>
+                        <div sm={6} className="button mt-3">Save to Plan</div>
                     </Col>
                 </Row>
 
@@ -50,7 +50,7 @@ const PlanCard = () => {
                         <h3 className="mt-3">★★★★☆</h3>
                         <h5 className="mt-3">Free admision</h5>
                         <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-5">Save to Plan</div>
+                        <div className="button mt-3">Save to Plan</div>
                     </Col>
                 </Row>
 
@@ -65,7 +65,7 @@ const PlanCard = () => {
                         <h3 className="mt-3">★★★★☆</h3>
                         <h5 className="mt-3">Free admision</h5>
                         <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-5">Save to Plan</div>
+                        <div className="button mt-3">Save to Plan</div>
                     </Col>
                 </Row>
 
@@ -80,7 +80,7 @@ const PlanCard = () => {
                         <h3 className="mt-3">★★★★☆</h3>
                         <h5 className="mt-3">Free admision</h5>
                         <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-5">Save to Plan</div>
+                        <div className="button mt-3">Save to Plan</div>
                     </Col>
                 </Row>
             </Container>

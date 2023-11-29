@@ -4,6 +4,14 @@
     color: #011e3d;
 }
 
+.PlanCard figure {
+    width: 100%;
+}
+
+.PlanCard img {
+    width: 100%;
+}
+
 .PlanCard .button {
     background-color: #c0ec6f;
     color: #011e3d;
@@ -12,6 +20,7 @@
     width: 100%;
     text-align: center;
 }
+
 a {
     text-decoration: none !important;
 }
