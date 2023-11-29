@@ -30,6 +30,10 @@ class TripServices {
     deleteTrip(id) {
         return this.api.post(`/${id}/delete`)
     }
+
+    getTripDates(id) {
+        return this.api.get(`/${id}/dates`)
+    }
 }
 
 const tripServices = new TripServices()
