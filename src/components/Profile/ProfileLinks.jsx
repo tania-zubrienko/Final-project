@@ -11,26 +11,14 @@ import FriendList from '../FriendList/FriendList'
 const ProfileLinks = () => {
     const [userTrips, setUserTrips] = useState()
 
-    useEffect(() => {
+    useEffect(() => { getTrips() }, [])
 
+    const getTrips = () => {
         tripServices
             .getUserTrips()
             .then(res => setUserTrips(res.data))
             .catch(err => console.log(err))
-
-    }, [])
-
-    const fakeTrips = [
-        {
-            destination: 'Madrid',
-            startDate: '24-09-2023',
-            endDate: '26-09-2023',
-        },
-        {
-            destination: 'Barcelona',
-            startDate: '24-09-2023',
-            endDate: '26-09-2023',
-        }]
+    }
 
     return (
         <div className='ProfileLinks'>

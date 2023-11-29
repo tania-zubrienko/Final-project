@@ -25,6 +25,9 @@ class UserServices {
         return this.api.get(`/find/${userEmail}`)
     }
 
+    getFriendList() {
+        return this.api.get('/friends')
+    }
 }
 
 const userServices = new UserServices()

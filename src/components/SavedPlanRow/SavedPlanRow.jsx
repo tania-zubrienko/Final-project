@@ -4,7 +4,6 @@ import { IoLocationOutline } from 'react-icons/io5'
 import cabeceraProvisional from '../../assets/cabeceraProvisional.jpeg'
 import './SavedPlanRow.css'
 
-
 const SavedPlanRow = () => {
     return (
 

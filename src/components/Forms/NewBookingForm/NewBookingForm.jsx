@@ -10,6 +10,7 @@ const NewBookingForm = () => {
     const todayDate = new Date()
     const minDate = formatDate(todayDate)
     const [bookingInfo, setBookingInfo] = useState({
+        name: '',
         type: '',
         startDate: '',
         endDate: '',
@@ -19,8 +20,7 @@ const NewBookingForm = () => {
     const navigate = useNavigate()
 
     function handleInputOnChange(event) {
-        const { value, name, files } = event.target
-        //console.log(name, ':', value, '->', files)
+        const { value, name } = event.target
         setBookingInfo({ ...bookingInfo, [name]: value })
 
     }
@@ -41,14 +41,8 @@ const NewBookingForm = () => {
                     bookingInfo.documents.push(data.cloudinary_url)
                     console.log(bookingInfo.documents)
                 })
-                // .then((cloudinary_urls) => {
-                //     console.log(bookingInfo)
-                //     setBookingInfo({ ...bookingInfo, document: cloudinary_urls })
-                //     console.log(bookingInfo)
-                // })
                 .catch(err => console.log(err))
         }
-
     }
 
     function handleNewBookingSubmit(event) {
@@ -73,6 +67,11 @@ const NewBookingForm = () => {
                                 <option value="Bus">Bus</option>
                                 <option value="Entradas">Entradas</option>
                             </Form.Select>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicName">
+                            <Form.Label className='trip-label'>Nombre</Form.Label>
+                            <Form.Control className='trip-input' type="text" placeholder="Introduce tu nombre" name="name" value={bookingInfo.name} onChange={handleInputOnChange} />
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicStartDate">
