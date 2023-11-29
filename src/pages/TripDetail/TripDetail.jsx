@@ -5,6 +5,10 @@ import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 
 import Plan from '../../components/Plan/Plan'
 import PlanCard from '../../components/PlanCard/PlanCard'
+import NoTrips from '../../components/NoListed/NoTrips'
+import NoBookings from '../../components/NoListed/NoBookings'
+import HeaderExpenses from '../../components/Expenses/HeaderExpenses'
+import BodyExpenses from '../../components/Expenses/BodyExpenses'
 
 
 const TripDetail = () => {
@@ -17,7 +21,10 @@ const TripDetail = () => {
             <BookedDropdowns />
             <NotBookedDropdowns />
             <PlanCard />
-
+            <NoTrips />
+            <NoBookings />
+            <HeaderExpenses />
+            <BodyExpenses />
         </div>
     )
 

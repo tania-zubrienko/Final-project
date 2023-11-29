@@ -11,7 +11,7 @@ const PlanDetails = () => {
             <h3 className='mt-4'>Chapultepec Castle</h3>
             <Row className='mt-4'>
                 <Col>
-                    <img src={cabeceraProvisional} alt="" />
+                    <img className='planImg' src={cabeceraProvisional} alt="" />
                 </Col>
                 <Col>
                     <Row>
