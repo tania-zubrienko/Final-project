@@ -1,15 +1,14 @@
-.FriendList {
+.friendCard {
     display: flex;
     align-items: center;
+
 }
 
 .FriendList img {
     width: 8%
 }
 
-.main {
-    text-align: center;
-}
+
 
 .myButton2 {
     background-color: #ceec97 !important;

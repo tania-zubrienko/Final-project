@@ -25,6 +25,15 @@ class UserServices {
         return this.api.get(`/find/${userEmail}`)
     }
 
+    getFriendList() {
+        return this.api.get('/friends')
+    }
+
+    getUserInfo(userId) {
+        console.log("estoy en servicios", userId)
+        return this.api.get(`/friendInfo?id=${userId}`)
+    }
+
 }
 
 const userServices = new UserServices()

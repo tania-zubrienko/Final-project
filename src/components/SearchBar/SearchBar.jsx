@@ -37,7 +37,9 @@ const SearchBar = ({ userToFind }) => {
                                     <p>{e.name}</p>
                                     <p>{e.email}</p>
                                 </div>
+
                                 <button className='ms-auto p-2 mybutton' value={e._id} onClick={handlerAddFriend}>Añadir</button>
+
                             </Col>
                             <hr />
                         </Row>
