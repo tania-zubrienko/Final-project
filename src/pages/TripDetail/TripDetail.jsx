@@ -10,16 +10,20 @@ import NoBookings from '../../components/NoListed/NoBookings'
 import HeaderExpenses from '../../components/Expenses/HeaderExpenses'
 import BodyExpenses from '../../components/Expenses/BodyExpenses'
 import FooterExpenses from '../../components/Expenses/FooterExpenses'
+import { useParams } from 'react-router-dom'
 
 
 const TripDetail = () => {
+
+    const { id } = useParams()
+    console.log(id)
 
     return (
         <div className="TripDetail">
             <Tabs />
             <Plan />
             <TabButtons />
-            <BookedDropdowns />
+            <BookedDropdowns id={id} />
             <NotBookedDropdowns />
             <PlanCard />
             <NoTrips />

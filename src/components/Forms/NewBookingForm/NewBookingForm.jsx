@@ -2,7 +2,7 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
 import { useState } from "react"
 import bookingService from "../../../services/booking.services"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import uploadServices from './../../../services/upload.services'
 
 
@@ -17,6 +17,8 @@ const NewBookingForm = () => {
         documents: []
     })
 
+    const { id } = useParams()
+
     const navigate = useNavigate()
 
     function handleInputOnChange(event) {
@@ -27,7 +29,6 @@ const NewBookingForm = () => {
 
     function handleFileUpload(e) {
 
-        const arrayImages = []
         for (let i = 0; i < e.target.files.length; i++) {
             const formData = new FormData()
             formData.append('imageData', e.target.files[0])
@@ -46,9 +47,10 @@ const NewBookingForm = () => {
     }
 
     function handleNewBookingSubmit(event) {
+
         event.preventDefault()
         bookingService
-            .saveBookings(bookingInfo)
+            .saveBookings(bookingInfo, id)
             .then(() => navigate('/'))
             .catch(err => console.log(err))
     }

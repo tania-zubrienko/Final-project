@@ -30,6 +30,7 @@ class TripServices {
     deleteTrip(id) {
         return this.api.post(`/${id}/delete`)
     }
+
 }
 
 const tripServices = new TripServices()
