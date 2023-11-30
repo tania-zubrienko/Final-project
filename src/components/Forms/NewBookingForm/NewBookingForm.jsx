@@ -32,14 +32,10 @@ const NewBookingForm = () => {
             const formData = new FormData()
             formData.append('imageData', e.target.files[i])
 
-            console.log(bookingInfo.documents)
-
             uploadServices
                 .uploadimage(formData)
                 .then(({ data }) => {
-                    console.log(data, bookingInfo.documents)
                     bookingInfo.documents.push(data.cloudinary_url)
-                    console.log(bookingInfo.documents)
                 })
                 .catch(err => console.log(err))
         }

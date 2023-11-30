@@ -13,7 +13,7 @@ const HeaderExpenses = ({ id }) => {
     }, [])
 
     function getDestinationTrip() {
-        console.log(id)
+
         tripServices
             .getTripById(id)
             .then(trip => {
@@ -21,6 +21,7 @@ const HeaderExpenses = ({ id }) => {
                 setTripName(trip.data.result.destination)
             })
             .catch(err => console.log(err))
+
     }
 
 
