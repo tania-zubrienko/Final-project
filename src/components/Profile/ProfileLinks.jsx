@@ -7,16 +7,28 @@ import UserTrips from '../../components/UserTrips/UserTrips'
 import './ProfileLinks.css'
 import FriendList from '../FriendList/FriendList'
 import userServices from '../../services/user.services'
+import DocumentCard from './DocumentCard/DocumentCard'
 
 
 const ProfileLinks = () => {
     const [userDocuments, setUserDocuments] = useState([])
+    const [userDni, setUserDni] = useState()
+    const [userPassport, setUserPassport] = useState()
+    const [userLicense, setUserLicense] = useState()
+    const [userInsurance, setUserInsurance] = useState()
     const [userTrips, setUserTrips] = useState()
 
     useEffect(() => {
         getDocuments() 
         getTrips()
     }, [])
+
+    useEffect(() => {
+        setUserDni(userDocuments.find(doc => doc.type === 'DNI'))
+        setUserPassport(userDocuments.find(doc => doc.type === 'Pasaporte'))
+        setUserLicense(userDocuments.find(doc => doc.type === 'Carnet'))
+        setUserInsurance(userDocuments.find(doc => doc.type === 'Seguro'))
+    }, [userDocuments])
 
     const getDocuments = () => {
         userServices
@@ -42,27 +54,11 @@ const ProfileLinks = () => {
                             <Accordion.Header>Mis Documentos</Accordion.Header>
                             <Accordion.Body>
                                 <Row className='justify-content-center justify-content-xl-start'>
-                                { userDocuments.map((doc, i) => {
-                                    return (
-                                        <Col key={ i } sm={10} md={8} lg={8} xl={6} className='mt-1'>
-                                            <Card>
-                                                <Card.Body>
-                                                    <Row className='align-items-center justify-content-center justify-content-sm-between'>
-                                                        <Col xs={7} sm={6} md={6} xl={5}>
-                                                            <Card.Title className='m-0'>{doc.type}</Card.Title>
-                                                        </Col>
-                                                        <Col xs={7} sm={5} md={6} lg={5} xxl={4}>
-                                                            <Button variant="primary">Editar</Button>
-                                                        </Col>
-                                                    </Row>
-                                                </Card.Body>
-                                                <Card.Img variant="bottom" src={doc.link} />
-                                            </Card>
-                                        </Col>
-                                    )
-                                })}
+                                    <DocumentCard type={'DNI'} getDocuments={getDocuments}>{userDni}</DocumentCard>
+                                    <DocumentCard type={'Pasaporte'} getDocuments={getDocuments}>{userPassport}</DocumentCard>
+                                    <DocumentCard type={'Carnet'} getDocuments={getDocuments}>{userLicense}</DocumentCard>
+                                    <DocumentCard type={'Seguro'} getDocuments={getDocuments}>{userInsurance}</DocumentCard>
                                 </Row>
-
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey='1'>
