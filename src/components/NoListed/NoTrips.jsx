@@ -14,7 +14,7 @@ const NoTrips = () => {
                         </figure>
                         <h1>No trips booked... yet!</h1>
                         <p>Time to dust off your bags and start planning your next adventure</p>
-                        <div className="button mb-5">
+                        <div className="button mt-3 mb-5">
                             <h3>Start Planing</h3>
                         </div>
                     </Col>

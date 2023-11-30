@@ -29,18 +29,10 @@ const HeaderExpenses = ({ id }) => {
     return (
         <div className="HeaderExpenses">
             <Container className="mb-5">
-                <Row className="mb-5">
-                    <h1>Add Expense</h1>
-                    <Col md={4}>
-                        <h3>With you and</h3>
-                    </Col>
-                    <Col md={6}>
-                        <div className="where">
-                            <figure>
-                                <img src={cabeceraProvisional} alt="" />
-                            </figure>
-                            <h5>All of {tripName}</h5>
-                        </div>
+                <Row>
+                    <h3 className="mb-3">Add Expense</h3>
+                    <Col md={12}>
+                        <h5>With you and</h5>
                     </Col>
                 </Row>
                 <hr />

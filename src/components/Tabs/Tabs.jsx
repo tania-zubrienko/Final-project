@@ -7,12 +7,9 @@ import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 import Plan from '../../components/Plan/Plan'
 import PlanCard from '../../components/PlanCard/PlanCard'
 import NoTrips from '../../components/NoListed/NoTrips'
-import NoBookings from '../../components/NoListed/NoBookings'
-import HeaderExpenses from '../../components/Expenses/HeaderExpenses'
-import BodyExpenses from '../../components/Expenses/BodyExpenses'
-import FooterExpenses from '../../components/Expenses/FooterExpenses'
 import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
+import ListExpenses from './../ListExpenses/ListExpenses'
 import './Tabs.css'
 
 const Tabs = ({ id }) => {
@@ -62,17 +59,14 @@ const Tabs = ({ id }) => {
 
 
                 <Tab.Content>
-                    <Tab.Pane defaultActiveKey="overview" eventKey="overview">
+                    <Tab.Pane defaultactivekey="overview" eventKey="overview">
                         <Plan dates={dates} />
                         <TabButtons />
                         <BookedDropdowns id={id} />
                         <NotBookedDropdowns />
                         <PlanCard />
                         <NoTrips />
-                        <NoBookings />
-                        <HeaderExpenses />
-                        <BodyExpenses />
-                        <FooterExpenses />
+                        <ListExpenses />
                     </Tab.Pane>
                     <Tab.Pane eventKey="bookings">
                         <BookedDropdowns id={id} />
@@ -83,15 +77,10 @@ const Tabs = ({ id }) => {
                         <PlanCard />
                     </Tab.Pane>
                     <Tab.Pane eventKey="expenses">
-                        <HeaderExpenses />
-                        <BodyExpenses />
-                        <FooterExpenses />
+                        <ListExpenses />
                     </Tab.Pane>
                     <Tab.Pane eventKey="info">Info</Tab.Pane>
                 </Tab.Content>
-
-
-
 
 
             </TabContainer>

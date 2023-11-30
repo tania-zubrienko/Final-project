@@ -4,16 +4,13 @@ import { LuEuro } from "react-icons/lu"
 import { useState } from "react"
 import './HeaderExpenses.css'
 
-const BodyExpenses = () => {
+const BodyExpenses = ({ expenseInfo, addExpenseInfo }) => {
 
-    const [expenseInfo, setExpenseInfo] = useState({
-        concept: '',
-        cost: 0
-    })
+
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
-        setExpenseInfo({ ...expenseInfo, [name]: value })
+        addExpenseInfo({ ...expenseInfo, [name]: value })
     }
 
     return (
@@ -22,7 +19,7 @@ const BodyExpenses = () => {
             <Container>
                 <Form.Group xs={12}>
                     <Row>
-                        <Col xs={{ offset: 1, span: 1 }}>
+                        <Col xs={{ span: 1 }}>
                             <MdOutlineDescription className="imagen" />
                         </Col>
                         <Col xs={{ span: 6 }}>
@@ -32,7 +29,7 @@ const BodyExpenses = () => {
                 </Form.Group>
                 <Form.Group>
                     <Row className="mt-5 mb-5">
-                        <Col xs={{ offset: 1, span: 1 }}>
+                        <Col xs={{ span: 1 }}>
                             <LuEuro className="imagen" />
                         </Col>
                         <Col xs={{ span: 6 }}>
