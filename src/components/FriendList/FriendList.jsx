@@ -1,7 +1,7 @@
-import { Button, Modal, Form, InputGroup } from 'react-bootstrap'
-import profileImg from '../../assets/profileDefault.png'
-import { useEffect, useState } from 'react'
 import './FriendList.css'
+import deleteIcon from './../../assets/delete.png'
+import { Button, Modal, Form, InputGroup } from 'react-bootstrap'
+import { useEffect, useState } from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import userServices from '../../services/user.services'
 
@@ -9,7 +9,8 @@ const FriendList = () => {
     const [show, setShow] = useState(false)
     const [userSearch, setUserSearch] = useState('')
     const [friends, setFriends] = useState([])
-    const [friendInfo, setFriendInfo] = useState({})
+
+
     const handleClose = () => {
         setUserSearch('')
         setShow(false)
@@ -25,7 +26,7 @@ const FriendList = () => {
 
     const searchHandler = e => setUserSearch(e.target.value)
 
-    useEffect(() => { getList() }, [])
+    useEffect(() => { getList() }, [show])
 
     const getList = () => {
 
@@ -38,16 +39,19 @@ const FriendList = () => {
 
     return (
 
-        <div className='FriendList'>
+        <div>
 
             {friends.map((e, i) => {
                 return (
-                    <div className='friendCard' key={i}>
-                        <img src={e.avatar} alt='' />
-                        <div className='info'>
-                            <h5>{e.name}</h5>
-                            <p>{e.email}</p>
+                    <div className='FriendList' key={i}>
+                        <div className='friendCard'>
+                            <img src={e.avatar} alt='' />
+                            <div className='info'>
+                                <h5>{e.name}</h5>
+                                <p>{e.email}</p>
+                            </div>
                         </div>
+                        <button className="iconButton"><img src={deleteIcon} alt="eliminar" /></button>
                     </div>
                 )
             })}
@@ -63,10 +67,10 @@ const FriendList = () => {
                 </Modal.Header>
                 <Modal.Body>
                     <div className='inputField'>
-                        <label>email</label>
+                        <label>Email :</label>
                         <input type='text' value={userSearch} onChange={searchHandler} placeholder='Email de usuario' />
                     </div>
-                    <SearchBar userToFind={userSearch} />
+                    <SearchBar userToFind={userSearch} friends={friends} handler={setShow} />
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>
                     <Button className='myButton' onClick={handleClose}>
