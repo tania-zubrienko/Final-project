@@ -37,7 +37,7 @@ const LoginForm = () => {
         <Container>
             <Row className="justify-content-center mt-5">
                 <Col md={7}>
-                    <Form onSubmit={ handleLoginSubmit }>
+                    <Form onSubmit={handleLoginSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label className='trip-label'>E-mail</Form.Label>
                             <Form.Control className='trip-input' type="email" placeholder="Introduce tu e-mail" name="email" value={loginInfo.email} onChange={handleInputOnChange} />

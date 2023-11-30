@@ -3,9 +3,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    position: absolute;
-    top: 15vh;
-    left: 45vw;
+    margin-top: -140px;
 }
 
 .backgroundLine {
@@ -13,6 +11,7 @@
     height: 20vh;
     background-color: #ceec97;
     position: relative;
+    z-index: -1;
 }
 
 .ProfileImage h1 {
