@@ -1,16 +1,13 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import uploadServices from './../../../services/upload.services'
 import userServices from "../../../services/user.services"
 
-const DocumentsForm = () => {
+const DocumentsForm = ({ finishActions, type }) => {
     const [documentInfo, setDocumentInfo] = useState({
-        type: '',
+        type: type,
         link: ''
     })
-
-    const navigate = useNavigate()
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
@@ -33,22 +30,21 @@ const DocumentsForm = () => {
         event.preventDefault()
         userServices
             .saveDocument(documentInfo)
-            .then(() => navigate('/perfil'))
+            .then(() => {
+                finishActions()
+            })
             .catch(err => console.log(err))
     }
 
     return (
         <Container>
-            <Row className="justify-content-center mt-5">
+            <Row className="justify-content-center">
                 <Col md={7}>
                     <Form onSubmit={handleNewDocumentSubmit}>
                         <Form.Group className="mb-3" controlId="doc_type">
                             <Form.Label className='trip-label'>Tipo de documento</Form.Label>
-                            <Form.Select className='trip-input' type="text" name="type" value={documentInfo.type} onChange={handleInputOnChange} >
-                                <option value="DNI">DNI</option>
-                                <option value="Pasaporte">Pasaporte</option>
-                                <option value="Carnet">Carnet</option>
-                                <option value="Seguro">Seguro</option>
+                            <Form.Select className='trip-input' type="text" name="type" defaultValue={type} disabled >
+                                <option value={type}>{type}</option>
                             </Form.Select>
                         </Form.Group>
 
