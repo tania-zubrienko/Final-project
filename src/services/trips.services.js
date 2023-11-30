@@ -23,8 +23,8 @@ class TripServices {
         return this.api.get('/')
     }
 
-    createTrip() {
-        return this.api.post('/add')
+    createTrip(tripInfo) {
+        return this.api.post('/add', tripInfo)
     }
 
     deleteTrip(id) {
