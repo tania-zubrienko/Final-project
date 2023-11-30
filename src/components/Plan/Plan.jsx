@@ -4,7 +4,7 @@ import './Plan.css'
 import shortDate from '../../utils/shortDate'
 
 const Plan = ({ dates }) => {
-
+    console.log(dates)
     return (
         <div className='Plan'>
             <div className='slider'>
@@ -12,17 +12,17 @@ const Plan = ({ dates }) => {
                     <h5> <MdOutlineCalendarToday /></h5>
                 </div>
                 {dates.map(e => {
-                    console.log(e)
-
-                        <div className='fecha'>
+                    return (
+                        < div className='fecha' >
                             <h5>
                                 {shortDate(new Date(Date.parse(e)))}
                             </h5>
                         </div>
                     )
-
+                })
+                }
             </div>
-        </div>
+        </div >
     )
 }
 
