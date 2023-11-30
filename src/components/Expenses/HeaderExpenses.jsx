@@ -1,8 +1,29 @@
 import { Col, Container, Row } from "react-bootstrap"
 import cabeceraProvisional from './../../assets/cabeceraProvisional.jpeg'
 import './HeaderExpenses.css'
+import { useEffect, useState } from "react"
+import tripServices from "../../services/trips.services"
 
-const HeaderExpenses = () => {
+const HeaderExpenses = ({ id }) => {
+
+    const [tripName, setTripName] = useState("")
+
+    useEffect(() => {
+        getDestinationTrip()
+    }, [])
+
+    function getDestinationTrip() {
+        console.log(id)
+        tripServices
+            .getTripById(id)
+            .then(trip => {
+                console.log(trip.data.result.destination)
+                setTripName(trip.data.result.destination)
+            })
+            .catch(err => console.log(err))
+    }
+
+
 
     return (
         <div className="HeaderExpenses">
@@ -17,7 +38,7 @@ const HeaderExpenses = () => {
                             <figure>
                                 <img src={cabeceraProvisional} alt="" />
                             </figure>
-                            <h5>All of Mexico City</h5>
+                            <h5>All of {tripName}</h5>
                         </div>
                     </Col>
                 </Row>

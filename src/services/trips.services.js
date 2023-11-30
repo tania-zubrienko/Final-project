@@ -41,6 +41,14 @@ class TripServices {
     getTripDates(id) {
         return this.api.get(`/${id}/dates`)
     }
+
+    addExpensetoTrip(id) {
+        return this.api.post(`/${id}/expenses`)
+    }
+
+    getTripById(id) {
+        return this.api.get(`/${id}`)
+    }
 }
 
 const tripServices = new TripServices()

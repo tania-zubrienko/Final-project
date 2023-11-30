@@ -1,25 +1,22 @@
-import { useState } from "react"
 import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import HeaderExpenses from './../../Expenses/HeaderExpenses'
 import BodyExpenses from './../../Expenses/BodyExpenses'
 import FooterExpenses from './../../Expenses/FooterExpenses'
+import { useParams, useNavigate } from "react-router-dom"
+import tripServices from "../../../services/trips.services"
 
 
 const NewExpenseForm = () => {
-    const [expenseInfo, setExpenseInfo] = useState({
-        concept: '',
-        cost: 0
-    })
 
-    function handleInputOnChange(event) {
-        const { value, name } = event.target
-        setExpenseInfo({ ...expenseInfo, [name]: value })
-    }
+    const { id } = useParams()
 
     function handleNewExpenseSubmit(event) {
         event.preventDefault()
 
-        // tripServices
+        tripServices
+            .addExpensetoTrip(id)
+            .then(() => navigate('/'))
+            .catch(err => console.log(err))
 
     }
 
@@ -28,19 +25,9 @@ const NewExpenseForm = () => {
             <Row className="justify-content-center mt-5">
                 <Col md={7}>
                     <Form onSubmit={handleNewExpenseSubmit}>
-                        {/* <Form.Group className="mb-3" controlId="destination-id">
-                            <Form.Label className='trip-label'>Asunto</Form.Label>
-                            <Form.Control className='trip-input' type="text" placeholder="Añade en que ha sido el gasto" name="concept" value={ expenseInfo.concept } onChange={ handleInputOnChange } />
-                        </Form.Group>
-
-                        <Form.Group className="mb-3" controlId="formBasicStartDate">
-                            <Form.Label className='trip-label'>Cantidad</Form.Label>
-                            <Form.Control className='trip-input' type="number" min="0" data-number-to-fixed="2" data-number-stepfactor="100" placeholder="Añade la cantidad de dinero" name="cost" value={ expenseInfo.cost } onChange={ handleInputOnChange } />
-                        </Form.Group> */}
-
-                        <HeaderExpenses />
-                        <BodyExpenses handleInputOnChange={handleInputOnChange} />
-                        <FooterExpenses />
+                        <HeaderExpenses id={id} />
+                        <BodyExpenses />
+                        <FooterExpenses id={id} />
 
                         <div className="d-grid gap-2 mt-4">
                             <Button className='primary-button' type="submit">
