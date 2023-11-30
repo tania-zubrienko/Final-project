@@ -4,13 +4,11 @@ import { useNavigate } from "react-router-dom"
 import uploadServices from './../../../services/upload.services'
 import userServices from "../../../services/user.services"
 
-const DocumentsForm = () => {
+const DocumentsForm = ({ finishActions }) => {
     const [documentInfo, setDocumentInfo] = useState({
         type: '',
         link: ''
     })
-
-    const navigate = useNavigate()
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
@@ -33,13 +31,15 @@ const DocumentsForm = () => {
         event.preventDefault()
         userServices
             .saveDocument(documentInfo)
-            .then(() => navigate('/perfil'))
+            .then(() => {
+                finishActions()
+            })
             .catch(err => console.log(err))
     }
 
     return (
         <Container>
-            <Row className="justify-content-center mt-5">
+            <Row className="justify-content-center">
                 <Col md={7}>
                     <Form onSubmit={handleNewDocumentSubmit}>
                         <Form.Group className="mb-3" controlId="doc_type">
