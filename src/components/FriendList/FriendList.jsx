@@ -5,15 +5,17 @@ import SearchBar from '../SearchBar/SearchBar'
 import userServices from '../../services/user.services'
 
 const FriendList = () => {
-    const [show, setShow] = useState(false)
+
     const [userSearch, setUserSearch] = useState('')
     const [friends, setFriends] = useState([])
+    const [show, setShow] = useState(false)
     const [state, setState] = useState(false)
 
     const handleClose = () => {
 
         setUserSearch('')
         setShow(false)
+        setState(!state)
 
     }
 
@@ -39,19 +41,20 @@ const FriendList = () => {
     }
 
     const handlerDeleteFriend = (e) => {
+
         const friendId = e.target.value
+
         userServices
             .deleteFriend(friendId)
             .then(getList())
             .catch(err => console.log(err))
 
         setState(!state)
+
     }
 
     return (
-
         <div>
-
             {friends.map((e, i) => {
                 return (
                     <div className='FriendList' key={i}>
@@ -66,7 +69,8 @@ const FriendList = () => {
                     </div>
                 )
             })}
-            <div className="d-flex justify-content-center">
+
+            <div className="d-flex justify-content-center mt-5">
                 <Button className='myButton2' onClick={handleShow}>
                     Añadir amigos
                 </Button>
@@ -89,6 +93,7 @@ const FriendList = () => {
                     </Button>
                 </Modal.Footer>
             </Modal>
+
         </div>
     )
 }

@@ -22,6 +22,14 @@
     border: #ceec97 1px !important;
     color: #001E3D !important;
     border-radius: 30px !important;
+    width: 300px
+}
+
+.myButton {
+    background-color: #001E3D !important;
+    border: #001E3D 1px !important;
+    color: white !important;
+    border-radius: 30px !important;
 }
 
 .deleteButton {
