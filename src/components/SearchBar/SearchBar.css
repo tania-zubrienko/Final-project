@@ -19,3 +19,7 @@ p {
     border: #ceec97 1px !important;
     color: #001E3D !important;
 }
+
+.userCard {
+    display: flex;
+}
