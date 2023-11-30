@@ -1,12 +1,16 @@
-import { Col, Container, Form, InputGroup, Row } from 'react-bootstrap'
 import './SearchBar.css'
+import addIcon from './../../assets/add.png'
+import { Col, Container, Row } from 'react-bootstrap'
 import userServices from '../../services/user.services'
 import { useEffect, useState } from 'react'
-const SearchBar = ({ userToFind }) => {
+
+const SearchBar = ({ userToFind, friends, handler }) => {
 
     const [foundUsers, setFoundUsers] = useState([])
     useEffect(() => { getuser() }, [userToFind])
 
+
+    const [friendList, setFriendList] = useState(friends)
     function getuser() {
 
         userServices
@@ -16,12 +20,12 @@ const SearchBar = ({ userToFind }) => {
     }
 
     function handlerAddFriend(e) {
+        handler()
         const fiendId = e.target.value
         userServices
             .addFriend(fiendId)
-            .then(result => console.log(result))
+            .then((res) => setFriendList(...friends, res))
             .catch(err => console.log(err))
-
     }
 
     return (
@@ -29,21 +33,25 @@ const SearchBar = ({ userToFind }) => {
             <Container>
                 <h5>Listado de usuarios</h5>
                 {foundUsers.map(e => {
-                    return (
-                        <Row md={{ span: 6, offset: 3 }}>
-                            <Col className='d-flex align-items-center userCard'>
-                                <img className='userPic' src={e.avatar} alt='' />
-                                <div>
-                                    <p>{e.name}</p>
-                                    <p>{e.email}</p>
-                                </div>
+                    if (!friends.filter(elm => elm.email === e.email).length > 0) {
+                        return (
+                            <Row md={{ span: 6, offset: 3 }}>
+                                <Col className='d-flex justify-content-between ' >
+                                    <div className='userCard'>
+                                        <img className='userPic' src={e.avatar} alt='' />
+                                        <div>
+                                            <p>{e.name}</p>
+                                            <p>{e.email}</p>
+                                        </div>
+                                    </div>
+                                    <button className="iconButton" value={e._id} onClick={handlerAddFriend}>
+                                        <img src={addIcon} alt="añadir" />
+                                    </button>
+                                </Col>
+                            </Row>
+                        )
+                    }
 
-                                <button className='ms-auto p-2 mybutton' value={e._id} onClick={handlerAddFriend}>Añadir</button>
-
-                            </Col>
-                            <hr />
-                        </Row>
-                    )
                 })}
 
             </Container>
