@@ -5,25 +5,35 @@ import tripServices from "../../services/trips.services"
 
 
 import TripList from "../../components/Lists/TripList/TripList"
+import AddButton from "../../components/Button/AddButton"
 
 
 const Trips = () => {
 
     const [userPastTrips, setUserPastTrips] = useState()
+    const [userFutureTrips, setUserFutureTrips] = useState()
 
     useEffect(() => {
 
         tripServices
-            .getUserTrips()
-            .then(res => setUserTrips(res.data))
+            .getPastTrips()
+            .then(res => setUserPastTrips(res.data))
             .catch(err => console.log(err))
-
+        tripServices
+            .getFutureTrips()
+            .then(res => setUserFutureTrips(res.data))
+            .catch(err => console.log(err))
     }, [])
 
 
     return (
+
         <div className="Trips">
-            <TripList trips={userTrips}></TripList>
+            <AddButton />
+            Viajes pendientes
+            <TripList trips={userFutureTrips}></TripList>
+            Viajes pasados
+            <TripList trips={userPastTrips}></TripList>
         </div>
     )
 }

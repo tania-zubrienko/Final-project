@@ -3,7 +3,7 @@ import { MdOutlineDescription } from "react-icons/md"
 import { LuEuro } from "react-icons/lu"
 import './HeaderExpenses.css'
 
-const BodyExpenses = () => {
+const BodyExpenses = ({ handleInputOnChange }) => {
 
     return (
 
@@ -14,7 +14,7 @@ const BodyExpenses = () => {
                         <MdOutlineDescription className="imagen" />
                     </Col>
                     <Col xs={{ span: 6 }}>
-                        <input type="text" placeholder="Descripción del pago" />
+                        <input type="text" placeholder="Descripción del pago" onChange={handleInputOnChange} />
                     </Col>
                 </Row>
                 <Row className="mt-5 mb-5">
@@ -22,10 +22,10 @@ const BodyExpenses = () => {
                         <LuEuro className="imagen" />
                     </Col>
                     <Col xs={{ span: 6 }}>
-                        <input type="number" />
+                        <input type="number" onChange={handleInputOnChange} />
                     </Col>
                 </Row>
-                <h3>Paid by <div className="btnWhite">you</div> and split <div className="btnWhite">equally</div></h3>
+                {/* <h3>Paid by <div className="btnWhite">you</div> and split <div className="btnWhite">equally</div></h3> */}
             </Container>
         </div>
     )

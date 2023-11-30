@@ -19,8 +19,15 @@ class TripServices {
     }
 
     getUserTrips() {
-
         return this.api.get('/')
+    }
+
+    getPastTrips() {
+        return this.api.get('/past')
+    }
+
+    getFutureTrips() {
+        return this.api.get('/future')
     }
 
     createTrip(tripInfo) {
