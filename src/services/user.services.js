@@ -30,7 +30,11 @@ class UserServices {
     }
 
     saveDocument(documentInfo) {
-        return this.api.post('documents/new', documentInfo)
+        return this.api.post('/documents/new', documentInfo)
+    }
+
+    getDocuments() {
+        return this.api.get('/documents')
     }
 }
 
