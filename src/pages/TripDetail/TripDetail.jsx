@@ -19,31 +19,9 @@ import getDatesArray from '../../utils/dateArray.utils'
 const TripDetail = () => {
     const { id } = useParams()
 
-    const [dates, setDates] = useState([])
-
-
-    useEffect(() => { getTripDates() }, [])
-
-    const getTripDates = () => {
-        tripServices
-            .getTripDates(id)
-            .then(res => setDates(getDatesArray(res.data.startDate, res.data.endDate)))
-            .catch(err => console.log(err))
-    }
-
     return (
         <div className="TripDetail">
-            <Tabs />
-            <Plan dates={dates} />
-            <TabButtons />
-            <BookedDropdowns id={id} />
-            <NotBookedDropdowns />
-            <PlanCard />
-            <NoTrips />
-            <NoBookings />
-            <HeaderExpenses />
-            <BodyExpenses />
-            <FooterExpenses />
+            <Tabs id={id} />
         </div>
     )
 

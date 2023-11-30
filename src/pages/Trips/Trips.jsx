@@ -5,6 +5,7 @@ import tripServices from "../../services/trips.services"
 
 
 import TripList from "../../components/Lists/TripList/TripList"
+import AddButton from "../../components/Button/AddButton"
 
 
 const Trips = () => {
@@ -85,7 +86,9 @@ const Trips = () => {
 
 
     return (
+
         <div className="Trips">
+            <AddButton />
             <TripList trips={fakeTrips}></TripList>
         </div>
     )

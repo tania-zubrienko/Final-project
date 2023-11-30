@@ -1,7 +1,7 @@
 import { MdOutlineCalendarToday } from 'react-icons/md'
 import './Plan.css'
-import shortDate from '../../utils/shortDate.utils'
 
+import shortDate from '../../utils/shortDate'
 
 const Plan = ({ dates }) => {
 
@@ -13,7 +13,6 @@ const Plan = ({ dates }) => {
                 </div>
                 {dates.map(e => {
                     console.log(e)
-                    return (
 
                         <div className='fecha'>
                             <h5>
@@ -21,7 +20,6 @@ const Plan = ({ dates }) => {
                             </h5>
                         </div>
                     )
-                })}
 
             </div>
         </div>
