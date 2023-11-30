@@ -24,13 +24,6 @@
     border-radius: 30px !important;
 }
 
-.myButton {
-    background-color: #001E3D !important;
-    border: #001E3D 1px !important;
-    color: white !important;
-    border-radius: 30px !important;
-}
-
 .deleteButton {
     height: 35px;
     align-self: center;
@@ -51,10 +44,13 @@
     height: 30px
 }
 
-.iconButton {
-    border: 0;
-    height: 50px;
-    width: 50px;
+.deleteButton {
     align-self: center;
     text-align: center;
+    width: 60px;
+    height: 40px;
+    background-image: url('./../../assets/delete.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px;
 }

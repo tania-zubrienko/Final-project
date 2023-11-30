@@ -10,12 +10,13 @@ const ProfileImage = () => {
     function display() { alert("hola") }
 
     return (
-        <div className="ProfileImage">
-
-            <h1>{loggedUser.name}</h1>
-            <img src={loggedUser.avatar} alt="" />
-
-        </div >
+        <>
+            <div className="backgroundLine" />
+            <div className="ProfileImage">
+                <h1>{loggedUser.name}</h1>
+                <img src={loggedUser.avatar} alt="" />
+            </div >
+        </>
     )
 
 }
