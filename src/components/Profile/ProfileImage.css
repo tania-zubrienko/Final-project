@@ -2,11 +2,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
+    position: absolute;
+    top: 15vh;
+    left: 45vw;
+}
+
+.backgroundLine {
+    width: 100vw;
+    height: 20vh;
+    background-color: #ceec97;
+    position: relative;
 }
 
 .ProfileImage h1 {
-    position: fixed;
     top: 137px;
     font-size: 3rem;
     color: #001E3D;
@@ -18,7 +27,6 @@
     background-position: center;
     width: 150px;
     height: 150px;
-    position: fixed;
     top: 210px;
 }
 

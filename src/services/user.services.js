@@ -21,6 +21,10 @@ class UserServices {
         return this.api.get(`/add/${friendId}`)
     }
 
+    deleteFriend(friendId) {
+        return this.api.get(`/delete/${friendId}`)
+    }
+
     getUserData(userEmail) {
         return this.api.get(`/find/${userEmail}`)
     }
