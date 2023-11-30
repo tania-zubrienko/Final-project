@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Col, Container, Row, Form, Button } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
 import tripServices from '../../../services/trips.services'
+import { useNavigate } from "react-router-dom"
 
 const NewTripForm = () => {
     const todayDate = new Date()
@@ -17,11 +18,15 @@ const NewTripForm = () => {
         setTripInfo({ ...tripInfo, [name]: value })
     }
 
+    const navigate = useNavigate()
+
     function handleNewTripSubmit(event) {
         event.preventDefault()
         
-        // tripServices
-            
+        tripServices
+            .createTrip(tripInfo)
+            .then(() => navigate('/viajes'))
+            .catch(err => console.log(err))
     }
 
     return (
