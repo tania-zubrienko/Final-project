@@ -6,7 +6,7 @@ const Profile = () => {
 
     return (
         <div className="Profile">
-            <ProfileHeader />
+            {/* <ProfileHeader /> */}
             <ProfileImage />
             <ProfileLinks />
         </div>

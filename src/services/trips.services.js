@@ -19,12 +19,19 @@ class TripServices {
     }
 
     getUserTrips() {
-
         return this.api.get('/')
     }
 
-    createTrip() {
-        return this.api.post('/add')
+    getPastTrips() {
+        return this.api.get('/past')
+    }
+
+    getFutureTrips() {
+        return this.api.get('/future')
+    }
+
+    createTrip(tripInfo) {
+        return this.api.post('/add', tripInfo)
     }
 
     deleteTrip(id) {

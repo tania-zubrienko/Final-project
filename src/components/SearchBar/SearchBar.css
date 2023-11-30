@@ -22,4 +22,14 @@ p {
 
 .userCard {
     display: flex;
+    align-items: center;
+}
+
+.addButton {
+    width: 50px;
+    height: 30px;
+    background-image: url('./../../assets/add.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px;
 }
