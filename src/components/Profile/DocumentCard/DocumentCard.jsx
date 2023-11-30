@@ -45,7 +45,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                                 <Modal.Title>Vamos a subir...</Modal.Title>
                                             </Modal.Header>
                                             <Modal.Body>
-                                                <DocumentsForm finishActions={finishActions}></DocumentsForm>
+                                                <DocumentsForm finishActions={finishActions} type={type}></DocumentsForm>
                                             </Modal.Body>
                                         </Modal>
                                     </>
