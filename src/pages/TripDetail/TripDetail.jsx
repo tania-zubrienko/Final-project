@@ -19,27 +19,27 @@ import getDatesArray from '../../utils/dateArray.utils'
 const TripDetail = () => {
     const { id } = useParams()
 
-    const [dates, setDates] = useState([])
+    // const [dates, setDates] = useState([])
 
-    useEffect(() => { getTripDates() }, [])
+    // useEffect(() => { getTripDates() }, [])
 
-    const getTripDates = () => {
-        tripServices
-            .getTripDates(id)
-            .then(res => setDates(res.data))
-            .catch(err => console.log(err))
-    }
+    // const getTripDates = () => {
+    //     tripServices
+    //         .getTripDates(id)
+    //         .then(res => setDates(res.data))
+    //         .catch(err => console.log(err))
+    // }
 
-    useEffect(() => {
-        console.log(getDatesArray(dates.startDate, dates.endDate))
-    }, [dates])
+    // useEffect(() => {
+    //     console.log(getDatesArray(dates.startDate, dates.endDate))
+    // }, [dates])
 
 
 
     return (
         <div className="TripDetail">
-            <Tabs />
-            <Plan />
+            <Tabs id={id} />
+            {/* <Plan />
             <TabButtons />
             <BookedDropdowns id={id} />
             <NotBookedDropdowns />
@@ -48,7 +48,7 @@ const TripDetail = () => {
             <NoBookings />
             <HeaderExpenses />
             <BodyExpenses />
-            <FooterExpenses />
+            <FooterExpenses /> */}
         </div>
     )
 
