@@ -17,8 +17,6 @@ import './Tabs.css'
 
 const Tabs = ({ id }) => {
 
-    console.log(id)
-
     const [dates, setDates] = useState([])
     const [activeTab, setActiveTab] = useState("overview")
 
@@ -34,7 +32,6 @@ const Tabs = ({ id }) => {
     }
 
     useEffect(() => {
-        console.log(getDatesArray(dates.startDate, dates.endDate))
     }, [dates])
 
     return (

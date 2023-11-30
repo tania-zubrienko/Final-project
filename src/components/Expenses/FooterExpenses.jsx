@@ -13,11 +13,9 @@ const FooterExpenses = ({ id }) => {
     }, [])
 
     function getDestinationTrip() {
-        console.log(id)
         tripServices
             .getTripById(id)
             .then(trip => {
-                console.log(trip.data.result.destination)
                 setTripName(trip.data.result.destination)
             })
             .catch(err => console.log(err))
