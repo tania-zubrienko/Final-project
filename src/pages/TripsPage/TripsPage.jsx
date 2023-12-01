@@ -3,6 +3,7 @@ import tripServices from "../../services/trips.services"
 import TripList from "../../components/Lists/TripList/TripList"
 import AddButton from "../../components/Button/AddButton"
 import { Container } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const TripsPage = () => {
 
