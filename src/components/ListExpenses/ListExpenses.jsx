@@ -45,16 +45,28 @@ const ListExpenses = () => {
     return (
         <div className="ListExpenses">
             <Container>
-                <AddButton />
+
+                <AddButton pageName='gastos' createModal={createModal} />
+
+
+                <Modal show={showModal} onHide={() => setShowModal(false)}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>Nuevo Gasto</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <NewExpensesForm fireFinalActions={fireFinalActions} />
+                    </Modal.Body>
+                </Modal>
+
                 {
                     expensesList ?
                         expensesList.map((elm, id) => {
                             return (
-                                <Row key={id}>
-                                    <Col sm={{ offset: 1, span: 5 }}>
+                                <Row key={id} className="mt-5 mb-3">
+                                    <Col sm={{ offset: 3, span: 3 }}>
                                         <h5>{elm.concept}</h5>
                                     </Col>
-                                    <Col sm={{ offset: 1, span: 5 }}>
+                                    <Col sm={{ offset: 3, span: 3 }}>
                                         <h5>{elm.cost}</h5>
                                     </Col>
                                 </Row>

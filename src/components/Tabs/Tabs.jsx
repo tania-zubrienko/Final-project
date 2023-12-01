@@ -60,7 +60,6 @@ const Tabs = ({ id }) => {
 
                 <Tab.Content>
                     <Tab.Pane defaultactivekey="overview" eventKey="overview">
-                        <Plan dates={dates} />
                         <TabButtons />
                         <BookedDropdowns id={id} />
                         <NotBookedDropdowns />
@@ -69,6 +68,7 @@ const Tabs = ({ id }) => {
                         <ListExpenses />
                     </Tab.Pane>
                     <Tab.Pane eventKey="bookings">
+                        <Plan dates={dates} />
                         <BookedDropdowns id={id} />
                         <NotBookedDropdowns />
                     </Tab.Pane>
