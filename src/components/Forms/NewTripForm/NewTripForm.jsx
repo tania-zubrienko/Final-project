@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
 import tripServices from '../../../services/trips.services'
 import { useNavigate } from "react-router-dom"
-
+import AlertForm from '../AlertForm/AlertForm'
 import { useRef, useEffect } from "react";
 
 
@@ -39,6 +39,8 @@ const NewTripForm = () => {
         destinationCoords: {}
     })
 
+    const [errors, setErrors] = useState([])
+
     function handleInputOnChange(event) {
         const { value, name } = event.target
         console.log(value, name)
@@ -60,7 +62,7 @@ const NewTripForm = () => {
         tripServices
             .createTrip(tripInfo)
             .then(() => navigate('/viajes'))
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err))
     }
 
     return (
@@ -80,6 +82,10 @@ const NewTripForm = () => {
                 <Form.Label className='trip-label'>Vuelta</Form.Label>
                 <Form.Control className='trip-input' type="date" min={tripInfo.startDate} placeholder="Introduce la fecha de vuelta" name="endDate" value={tripInfo.endDate} onChange={handleInputOnChange} />
             </Form.Group>
+
+            {
+                errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
+            }
 
             <div className="d-grid gap-2 mt-5">
                 <Button className='primary-button' type="submit">

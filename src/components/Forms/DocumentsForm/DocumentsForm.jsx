@@ -9,11 +9,6 @@ const DocumentsForm = ({ finishActions, type }) => {
         link: ''
     })
 
-    function handleInputOnChange(event) {
-        const { value, name } = event.target
-        setDocumentInfo({ ...documentInfo, [name]: value })
-    }
-
     function handleFileUpload(e) {
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
