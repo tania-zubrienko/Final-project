@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react"
-import authService from "../../services/auth.services"
 import tripServices from "../../services/trips.services"
-
-
-
 import TripList from "../../components/Lists/TripList/TripList"
 import AddButton from "../../components/Button/AddButton"
 import { Container } from "react-bootstrap"
 
-
-const Trips = () => {
+const TripsPage = () => {
 
     const [userPastTrips, setUserPastTrips] = useState()
     const [userFutureTrips, setUserFutureTrips] = useState()
@@ -26,7 +21,6 @@ const Trips = () => {
             .catch(err => console.log(err))
     }, [])
 
-
     return (
 
         <div className="Trips">
@@ -41,4 +35,4 @@ const Trips = () => {
     )
 }
 
-export default Trips
+export default TripsPage

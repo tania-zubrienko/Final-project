@@ -50,7 +50,6 @@ const NewTripForm = () => {
         const lng = coords.place.geometry.location.lng()
         const city = coords.place.address_components[0].long_name
         const picture = coords.place.photos[0].getUrl()
-        console.log(lat, lng, name)
         setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city, tripImage: picture })
     }
 
@@ -58,7 +57,6 @@ const NewTripForm = () => {
 
     function handleNewTripSubmit(event) {
         event.preventDefault()
-        console.log(tripInfo)
         tripServices
             .createTrip(tripInfo)
             .then(() => navigate('/viajes'))

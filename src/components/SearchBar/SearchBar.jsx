@@ -19,6 +19,7 @@ const SearchBar = ({ userToFind, friends, handler, closeModal }) => {
     }
 
     function handlerAddFriend(e) {
+        console.log("ESTOY EN HIJO AÑADIENDO", state)
         setState(!state)
         closeModal()
         const fiendId = e.target.value
@@ -26,6 +27,9 @@ const SearchBar = ({ userToFind, friends, handler, closeModal }) => {
             .addFriend(fiendId)
             .then((res) => setFriendList(...friends, res))
             .catch(err => console.log(err))
+        console.log("estoy en searchbar", state)
+
+
     }
 
     return (
