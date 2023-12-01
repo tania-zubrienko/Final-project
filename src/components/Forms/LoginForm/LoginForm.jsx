@@ -4,12 +4,15 @@ import { useNavigate } from "react-router-dom"
 import authService from '../../../services/auth.services'
 import { AuthContext } from '../../../context/auth.context'
 import { Button, Form, Container, Row, Col } from 'react-bootstrap'
+import AlertForm from '../AlertForm/AlertForm'
 
 const LoginForm = () => {
     const [loginInfo, setloginInfo] = useState({
         email: '',
         password: ''
     })
+
+    const [errors, setErrors] = useState([])
 
     const navigate = useNavigate()
 
@@ -21,6 +24,7 @@ const LoginForm = () => {
     }
 
     function handleLoginSubmit(event) {
+
         event.preventDefault()
 
         authService
@@ -30,7 +34,7 @@ const LoginForm = () => {
                 authUser()
                 navigate('/')
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessage))
     }
 
     return (
@@ -45,6 +49,10 @@ const LoginForm = () => {
                 <Form.Label>Contraseña</Form.Label>
                 <Form.Control className='trip-input' type="password" placeholder="Introduce tu contraseña" name="password" value={loginInfo.password} onChange={handleInputOnChange} />
             </Form.Group>
+
+            {
+                errors && errors.map(e => <AlertForm key={e} message={e} />)
+            }
 
             <div className="d-grid gap-2 mt-4">
                 <Button className='primary-button' type="submit">

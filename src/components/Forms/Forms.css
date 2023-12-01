@@ -16,9 +16,11 @@
     background-color: #ceec97 !important;
     border-color: #c1ec70 !important;
     color: #001e3d !important;
-    font-weight: 300 !important;
-    border-radius: 20px !important;
+    border-radius: 30px !important;
     width: 100%;
+    line-height: 50px !important;
+    font-size: 1.5em !important;
+    font-weight: 500 !important;
 }
 
 .navButtons {

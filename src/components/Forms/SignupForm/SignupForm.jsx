@@ -5,6 +5,7 @@ import { Button, Form } from 'react-bootstrap'
 import authService from '../../../services/auth.services'
 import uploadServices from '../../../services/upload.services'
 import profilepic from './../../../assets/profileDefault.png'
+import AlertForm from '../AlertForm/AlertForm'
 
 const SignupForm = () => {
     const [signupInfo, setSignupInfo] = useState({
@@ -66,6 +67,8 @@ const SignupForm = () => {
                 <Form.Label className='trip-label'>Foto de perfil</Form.Label>
                 <Form.Control className='trip-input' type="file" placeholder="Introduce tu foto de perfil" name="avatar" onChange={handleFileUpload} />
             </Form.Group>
+
+            {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
 
             <div className="d-grid gap-2 mt-4">
                 <Button className='primary-button' type="submit"> Registrarse </Button>
