@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Row } from "react-bootstrap"
+import { Button, Form } from "react-bootstrap"
 import { useState } from "react"
 import uploadServices from './../../../services/upload.services'
 import userServices from "../../../services/user.services"
@@ -32,31 +32,27 @@ const DocumentsForm = ({ finishActions, type }) => {
     }
 
     return (
-        <Container>
-            <Row className="justify-content-center">
-                <Col md={7}>
-                    <Form onSubmit={handleNewDocumentSubmit}>
-                        <Form.Group className="mb-3" controlId="doc_type">
-                            <Form.Label className='trip-label'>Tipo de documento</Form.Label>
-                            <Form.Select className='trip-input' type="text" name="type" defaultValue={type} disabled >
-                                <option value={type}>{type}</option>
-                            </Form.Select>
-                        </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicDocument">
-                            <Form.Label className='trip-label'>Documento</Form.Label>
-                            <Form.Control className='trip-input' type="file" placeholder="Introduce los archivos de tu reserva" name="document" onChange={handleFileUpload}  />
-                        </Form.Group>
+        <Form onSubmit={handleNewDocumentSubmit}>
+            <Form.Group className="mb-3" controlId="doc_type">
+                <Form.Label className='trip-label'>Tipo de documento</Form.Label>
+                <Form.Select className='trip-input' type="text" name="type" defaultValue={type} disabled >
+                    <option value={type}>{type}</option>
+                </Form.Select>
+            </Form.Group>
 
-                        <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit">
-                                Subir
-                            </Button>
-                        </div>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+            <Form.Group className="mb-3" controlId="formBasicDocument">
+                <Form.Label className='trip-label'>Documento</Form.Label>
+                <Form.Control className='trip-input' type="file" placeholder="Introduce los archivos de tu reserva" name="document" onChange={handleFileUpload} />
+            </Form.Group>
+
+            <div className="d-grid gap-2 mt-5">
+                <Button className='primary-button' type="submit">
+                    Subir
+                </Button>
+            </div>
+        </Form>
+
     )
 }
 

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Col, Container, Row, Form, Button } from "react-bootstrap"
+import { Form, Button } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
 import tripServices from '../../../services/trips.services'
 import { useNavigate } from "react-router-dom"
@@ -66,38 +66,34 @@ const NewTripForm = () => {
     }
 
     return (
-        <Container>
-            <Row className="justify-content-center mt-5">
-                <Col md={7}>
-                    <Form onSubmit={handleNewTripSubmit}>
-                        <Form.Group className="mb-3" controlId="destination-id">
-                            <Form.Label className='trip-label' >Destino</Form.Label>
-                            <Form.Control ref={inputRef} className='trip-input' type="text" placeholder="Introduce el destino" name="destination" value={tripInfo.destination} onChange={handleInputOnChange} />
-                        </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicStartDate">
-                            <Form.Label className='trip-label'>Ida</Form.Label>
-                            <Form.Control className='trip-input' type="date" min={minDate} placeholder="Introduce la fecha de ida" name="startDate" value={tripInfo.startDate} onChange={handleInputOnChange} />
-                        </Form.Group>
+        <Form onSubmit={handleNewTripSubmit}>
+            <Form.Group className="mb-3" controlId="destination-id">
+                <Form.Label className='trip-label' >Destino</Form.Label>
+                <Form.Control ref={inputRef} className='trip-input' type="text" placeholder="Introduce el destino" name="destination" value={tripInfo.destination} onChange={handleInputOnChange} />
+            </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicEndDate">
-                            <Form.Label className='trip-label'>Vuelta</Form.Label>
-                            <Form.Control className='trip-input' type="date" min={tripInfo.startDate} placeholder="Introduce la fecha de vuelta" name="endDate" value={tripInfo.endDate} onChange={handleInputOnChange} />
-                        </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicStartDate">
+                <Form.Label className='trip-label'>Ida</Form.Label>
+                <Form.Control className='trip-input' type="date" min={minDate} placeholder="Introduce la fecha de ida" name="startDate" value={tripInfo.startDate} onChange={handleInputOnChange} />
+            </Form.Group>
 
-                        {
-                            errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
-                        }
+            <Form.Group className="mb-3" controlId="formBasicEndDate">
+                <Form.Label className='trip-label'>Vuelta</Form.Label>
+                <Form.Control className='trip-input' type="date" min={tripInfo.startDate} placeholder="Introduce la fecha de vuelta" name="endDate" value={tripInfo.endDate} onChange={handleInputOnChange} />
+            </Form.Group>
 
-                        <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit">
-                                Crear
-                            </Button>
-                        </div>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+            {
+                errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
+            }
+
+            <div className="d-grid gap-2 mt-5">
+                <Button className='primary-button' type="submit">
+                    Crear
+                </Button>
+            </div>
+        </Form>
+
     )
 }
 

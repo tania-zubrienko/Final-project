@@ -6,20 +6,22 @@ import TripsPage from './pages/TripsPage/TripsPage.jsx'
 import SignupPage from './pages/SignupPage/SignupPage.jsx'
 
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'
-import NewTripForm from './components/Forms/NewTripForm/NewTripForm.jsx'
-import NewBookingForm from './components/Forms/NewBookingForm/NewBookingForm.jsx'
+import NewTripPage from './pages/NewTripPage/NewTripPage.jsx'
+import NewBookingPage from './pages/NewBookingPage/NewBookingPage.jsx'
 import TripDetail from './pages/TripDetail/TripDetail.jsx'
-import NewExpenseForm from "./components/Forms/NewExpensesForm/NewExpensesForm.jsx"
 import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
+
+import NewDocumentPage from './pages/NewDocumentPage/NewDocumentPage.jsx'
 import DocumentsForm from './components/Forms/DocumentsForm/DocumentsForm.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
+
 
 const AppRoutes = () => {
 
     return (<Routes>
 
 
-        <Route path='/pruebas' element={<DocumentsForm />}></Route>
+        <Route path='/pruebas' element={<NewDocumentPage />}></Route>
 
 
         <Route path='/' element={<HomePage />} />
@@ -31,12 +33,11 @@ const AppRoutes = () => {
             <Route path='/lista-deseos' element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
             <Route path='/perfil' element={<ProfilePage />} />
             <Route path='/viajes' element={<TripsPage />} />
-            <Route path='/viajes/crear' element={<NewTripForm />} />
-            <Route path='/viajes/reservas/:id/crear' element={<NewBookingForm />} />
+            <Route path='/viajes/crear' element={<NewTripPage />} />
+            <Route path='/viajes/reservas/:id/crear' element={<NewBookingPage />} />
             <Route path='/viajes/detalles/:id' element={<TripDetail />} />
             <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />
             <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
-            <Route path="/viajes/gastos/:id/añadir" element={<NewExpenseForm />} />
             <Route path="/viajes/gastos/:id" element={<p>vista de gastos</p>} />
             <Route path="/viajes/:id/planes/:id/detalle" element={<PlanDetails />} />
         </Route>
