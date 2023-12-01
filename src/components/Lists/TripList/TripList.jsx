@@ -4,7 +4,7 @@ import TripCard from "../../Cards/TripCard/TripCard"
 import Loader from "../../Loader/Loader"
 
 const TripList = ({ trips }) => {
-
+    console.log(trips)
     return (
         !trips ?
             <Loader />
@@ -15,7 +15,7 @@ const TripList = ({ trips }) => {
                         trips.length > 0 ?
                             trips.map((trip, i) => {
                                 return (
-                                    <TripCard key={i} image={cabeceraProvisional} destination={trip.destination} startDate={trip.startDate} endDate={trip.endDate}></TripCard>
+                                    <TripCard key={i} image={trip.tripImage} destination={trip.destination} startDate={trip.startDate} endDate={trip.endDate} id={trip._id}></TripCard>
                                 )
                             })
                             :
