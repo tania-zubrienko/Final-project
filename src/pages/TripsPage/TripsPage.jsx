@@ -5,7 +5,6 @@ import AddButton from "../../components/Button/AddButton"
 import { Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
-
 const TripsPage = () => {
 
     const [userPastTrips, setUserPastTrips] = useState()
