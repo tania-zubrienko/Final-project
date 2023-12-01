@@ -4,6 +4,7 @@ import { useState } from "react"
 import bookingService from "../../../services/booking.services"
 import { useNavigate, useParams } from "react-router-dom"
 import uploadServices from './../../../services/upload.services'
+import AlertForm from '../AlertForm/AlertForm'
 
 
 const NewBookingForm = () => {
@@ -16,6 +17,8 @@ const NewBookingForm = () => {
         endDate: '',
         documents: []
     })
+
+    const [errors, setErrors] = useState([])
 
     const { id } = useParams()
 
@@ -47,7 +50,7 @@ const NewBookingForm = () => {
         bookingService
             .saveBookings(bookingInfo, id)
             .then(() => navigate('/'))
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     return (
@@ -85,6 +88,10 @@ const NewBookingForm = () => {
                             <Form.Label className='trip-label'>Documento</Form.Label>
                             <Form.Control className='trip-input' type="file" multiple placeholder="Introduce los archivos de tu reserva" name="documents" onChange={handleFileUpload} />
                         </Form.Group>
+
+                        {
+                            errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
+                        }
 
                         <div className="d-grid gap-2 mt-4">
                             <Button className='primary-button' type="submit">
