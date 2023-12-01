@@ -1,15 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
+
 import HomePage from './pages/HomePage/HomePage.jsx'
 import ProfilePage from './pages/ProfilePage/ProfilePage.jsx'
 import TripsPage from './pages/TripsPage/TripsPage.jsx'
-import SignupForm from './components/Forms/SignupForm/SignupForm.jsx'
-import LoginForm from './components/Forms/LoginForm/LoginForm.jsx'
+import SignupPage from './pages/SignupPage/SignupPage.jsx'
+
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.jsx'
 import NewTripPage from './pages/NewTripPage/NewTripPage.jsx'
 import NewBookingPage from './pages/NewBookingPage/NewBookingPage.jsx'
 import TripDetail from './pages/TripDetail/TripDetail.jsx'
 import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
+
 import NewDocumentPage from './pages/NewDocumentPage/NewDocumentPage.jsx'
+import DocumentsForm from './components/Forms/DocumentsForm/DocumentsForm.jsx'
+import LoginPage from './pages/LoginPage/LoginPage.jsx'
+
 
 const AppRoutes = () => {
 
@@ -21,8 +26,8 @@ const AppRoutes = () => {
 
         <Route path='/' element={<HomePage />} />
         <Route path='/recomendados' element={<h1>Soy los Recomendados</h1>} />
-        <Route path='/registrarse' element={<SignupForm />} />
-        <Route path='/inicio-sesion' element={<LoginForm />} />
+        <Route path='/registrarse' element={<SignupPage />} />
+        <Route path='/inicio-sesion' element={<LoginPage />} />
 
         <Route element={<PrivateRoute />}>
             <Route path='/lista-deseos' element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
