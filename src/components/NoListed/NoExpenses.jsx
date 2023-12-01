@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa6"
 import './NoListed.css'
 import imagen from './../../assets/NoExpenses.png'
 
-const NoBookings = () => {
+const NoBookings = ({ createModal }) => {
 
     return (
         <div className="NoBookings mt-5 mb-5">
@@ -15,7 +15,7 @@ const NoBookings = () => {
                         </figure>
                         <h1>No expenses here... yet!</h1>
                         <p>Tap the plus button below to add a expense with the group</p>
-                        <div className="button mb-5">
+                        <div className="button mt-3 mb-5" onClick={createModal}>
                             <h3><FaPlus /></h3>
                         </div>
                     </Col>
