@@ -24,7 +24,7 @@ class BookingService {
 
     saveBookings(booking, id) {
 
-        return this.api.post('/add', { booking, id })
+        return this.api.post(`/add/${id}`, booking)
     }
 
     editBookings(id, booking) {
