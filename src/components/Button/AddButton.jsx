@@ -2,18 +2,16 @@ import { Container, Row, Col } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './AddButton.css'
 
-const AddButton = () => {
+const AddButton = ({ pageName, createModal }) => {
 
     return (
         <div className="AddButton">
             <Container className="mt-5">
                 <Row>
                     <Col md={{ offset: 4, span: 4 }}>
-                        <Link to='/viajes/crear'>
-                            <div className="add">
-                                <h3>añadir viaje</h3>
-                            </div>
-                        </Link>
+                        <div className="add" onClick={createModal}>
+                            <h3>añadir {pageName}</h3>
+                        </div>
                     </Col>
                 </Row>
             </Container>

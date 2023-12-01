@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
 import authService from "../../services/auth.services"
 import tripServices from "../../services/trips.services"
-
-
-
+import { Link } from "react-router-dom"
 import TripList from "../../components/Lists/TripList/TripList"
 import AddButton from "../../components/Button/AddButton"
 
@@ -29,7 +27,9 @@ const Trips = () => {
     return (
 
         <div className="Trips">
-            <AddButton />
+            <Link to="/viajes/crear">
+                <AddButton pageName='viajes' />
+            </Link>
             Viajes pendientes
             <TripList trips={userFutureTrips}></TripList>
             Viajes pasados

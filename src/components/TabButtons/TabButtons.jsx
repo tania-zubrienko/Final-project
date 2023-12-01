@@ -7,17 +7,45 @@ import './TabsButtons.css'
 
 const TabButtons = () => {
 
+    const buttons = [{
+        icono: <IoBedOutline className='image' />,
+        name: 'Lodging'
+    },
+    {
+        icono: <MdOutlineDirectionsBusFilled className='image' />,
+        name: 'Bus'
+    }, {
+        icono: <MdOutlineRestaurant className='image' />,
+        name: 'Restaurant'
+    }, {
+        icono: <MdOutlineTrain className='image' />,
+        name: 'Train'
+    }, {
+        icono: <MdOutlineDirectionsCarFilled className='image' />,
+        name: 'Car Rental'
+    }, {
+        icono: <MdFlight className='image' />,
+        name: 'Flight'
+    }]
+
     return (
         <Container>
             <Row>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <IoBedOutline className='image' />
-                        <br />
-                        Lodging
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
+                {
+                    buttons.map(elm => {
+                        return (
+
+                            <Col md={{ offset: 1, span: 3 }} className='mt-5'>
+                                <button>
+                                    {elm.icono}
+                                    <br />
+                                    {elm.name}
+                                </button>
+                            </Col>
+                        )
+                    })
+                }
+                {/* <Col md={{ offset: 1, span: 2 }} className='mt-5'>
                     <button>
                         <MdOutlineDirectionsBusFilled className='image' />
                         <br />
@@ -65,7 +93,7 @@ const TabButtons = () => {
                         <br />
                         Flights
                     </button>
-                </Col>
+                </Col> */}
             </Row>
         </Container>
 
