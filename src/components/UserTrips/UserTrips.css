@@ -7,6 +7,10 @@
 }
 
 .UserTrips img {
-    width: 8%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     margin-right: 10px;
+    object-position: top;
+    border-radius: 20px;
 }

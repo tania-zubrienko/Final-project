@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react"
-import authService from "../../services/auth.services"
 import tripServices from "../../services/trips.services"
-import { Link } from "react-router-dom"
 import TripList from "../../components/Lists/TripList/TripList"
 import AddButton from "../../components/Button/AddButton"
+import { Container } from "react-bootstrap"
 
-
-const Trips = () => {
+const TripsPage = () => {
 
     const [userPastTrips, setUserPastTrips] = useState()
     const [userFutureTrips, setUserFutureTrips] = useState()
@@ -23,19 +21,18 @@ const Trips = () => {
             .catch(err => console.log(err))
     }, [])
 
-
     return (
 
         <div className="Trips">
-            <Link to="/viajes/crear">
-                <AddButton pageName='viajes' />
-            </Link>
-            Viajes pendientes
-            <TripList trips={userFutureTrips}></TripList>
-            Viajes pasados
-            <TripList trips={userPastTrips}></TripList>
+            <Container >
+                <AddButton />
+                <h1 className="mt-5"> Viajes pendientes</h1>
+                <TripList trips={userFutureTrips}></TripList>
+                <h1 className="mt-5"> Viajes realizados</h1>
+                <TripList trips={userPastTrips}></TripList>
+            </Container>
         </div>
     )
 }
 
-export default Trips
+export default TripsPage

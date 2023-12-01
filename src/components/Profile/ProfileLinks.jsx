@@ -19,7 +19,7 @@ const ProfileLinks = () => {
     const [userTrips, setUserTrips] = useState()
 
     useEffect(() => {
-        getDocuments() 
+        getDocuments()
         getTrips()
     }, [])
 
@@ -47,7 +47,7 @@ const ProfileLinks = () => {
     return (
         <div className='ProfileLinks'>
             <Row className='m-1'>
-                <Col md={{ span: 8, offset: 2}}>
+                <Col md={{ span: 8, offset: 2 }}>
 
                     <Accordion flush>
                         <Accordion.Item eventKey='0'>
@@ -64,7 +64,7 @@ const ProfileLinks = () => {
                         <Accordion.Item eventKey='1'>
                             <Accordion.Header>Mis Viajes</Accordion.Header>
                             <Accordion.Body>
-                                {userTrips && userTrips.map(e => <UserTrips key={e._id} tripId={e._id} destination={e.destination} date={{ end: e.endDate, start: e.startDate }} />)}
+                                {userTrips && userTrips.map(e => <UserTrips tripImage={e.tripImage} key={e._id} tripId={e._id} destination={e.destination} date={{ end: e.endDate, start: e.startDate }} />)}
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey='2'>
