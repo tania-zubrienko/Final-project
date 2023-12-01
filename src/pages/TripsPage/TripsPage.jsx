@@ -3,6 +3,8 @@ import tripServices from "../../services/trips.services"
 import TripList from "../../components/Lists/TripList/TripList"
 import AddButton from "../../components/Button/AddButton"
 import { Container } from "react-bootstrap"
+import { Link } from "react-router-dom"
+
 
 const TripsPage = () => {
 
@@ -25,11 +27,11 @@ const TripsPage = () => {
 
         <div className="Trips">
             <Container >
-                
+
                 <Link to="/viajes/crear">
                     <AddButton pageName='viajes' />
                 </Link>
-                
+
                 <h1 className="mt-5"> Viajes pendientes</h1>
                 <TripList trips={userFutureTrips}></TripList>
                 <h1 className="mt-5"> Viajes realizados</h1>
