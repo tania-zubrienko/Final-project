@@ -9,9 +9,13 @@
     font-size: 2rem;
     font-weight: 900;
     color: #001e3d;
+    padding-left: 20px;
+    padding-top: 10px;
 }
 
 .trip-card p {
     font-size: 0.9rem;
     color: #001e3d;
+    padding-left: 20px;
+    padding-bottom: 10px;
 }
