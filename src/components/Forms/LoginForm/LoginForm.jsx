@@ -34,29 +34,24 @@ const LoginForm = () => {
     }
 
     return (
-        <Container>
-            <Row className="justify-content-center mt-5">
-                <Col md={7}>
-                    <Form onSubmit={handleLoginSubmit}>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label className='trip-label'>E-mail</Form.Label>
-                            <Form.Control className='trip-input' type="email" placeholder="Introduce tu e-mail" name="email" value={loginInfo.email} onChange={handleInputOnChange} />
-                        </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
-                            <Form.Label>Contraseña</Form.Label>
-                            <Form.Control className='trip-input' type="password" placeholder="Introduce tu contraseña" name="password" value={loginInfo.password} onChange={handleInputOnChange} />
-                        </Form.Group>
+        <Form onSubmit={handleLoginSubmit}>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className='trip-label'>E-mail</Form.Label>
+                <Form.Control className='trip-input' type="email" placeholder="Introduce tu e-mail" name="email" value={loginInfo.email} onChange={handleInputOnChange} />
+            </Form.Group>
 
-                        <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit">
-                                Iniciar Sesion
-                            </Button>
-                        </div>
-                    </Form>
-                </Col>
-            </Row>
-        </Container>
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control className='trip-input' type="password" placeholder="Introduce tu contraseña" name="password" value={loginInfo.password} onChange={handleInputOnChange} />
+            </Form.Group>
+
+            <div className="d-grid gap-2 mt-4">
+                <Button className='primary-button' type="submit">
+                    Iniciar Sesion
+                </Button>
+            </div>
+        </Form>
     )
 }
 

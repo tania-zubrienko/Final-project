@@ -81,7 +81,7 @@ const FriendList = () => {
                         <label>Email :</label>
                         <input type='text' value={userSearch} onChange={searchHandler} placeholder='Email de usuario' />
                     </div>
-                    <SearchBar userToFind={userSearch} friends={friends} handler={{ setState, state, }} closeModal={handleClose} />
+                    <SearchBar userToFind={userSearch} friends={friends} handler={{ setState, state, }} closeModal={handleClose} refresh={getList} />
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>
                     <Button className='myButton' onClick={handleClose}>
