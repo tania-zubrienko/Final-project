@@ -46,32 +46,38 @@ const ListExpenses = () => {
         <div className="ListExpenses">
             <Container>
 
-                <AddButton pageName='gastos' createModal={createModal} />
-
-
-                <Modal show={showModal} onHide={() => setShowModal(false)}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>Nuevo Gasto</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <NewExpensesForm fireFinalActions={fireFinalActions} />
-                    </Modal.Body>
-                </Modal>
 
                 {
                     expensesList ?
-                        expensesList.map((elm, id) => {
-                            return (
-                                <Row key={id} className="mt-5 mb-3">
-                                    <Col sm={{ offset: 3, span: 3 }}>
-                                        <h5>{elm.concept}</h5>
-                                    </Col>
-                                    <Col sm={{ offset: 3, span: 3 }}>
-                                        <h5>{elm.cost}</h5>
-                                    </Col>
-                                </Row>
-                            )
-                        })
+                        <div>
+
+                            <AddButton pageName='gastos' createModal={createModal} />
+
+
+                            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>Nuevo Gasto</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <NewExpensesForm fireFinalActions={fireFinalActions} />
+                                </Modal.Body>
+                            </Modal>
+                            {
+
+                                expensesList.map((elm, id) => {
+                                    return (
+                                        <Row key={id} className="mt-5 mb-3">
+                                            <Col sm={{ offset: 3, span: 3 }}>
+                                                <h5>{elm.concept}</h5>
+                                            </Col>
+                                            <Col sm={{ offset: 3, span: 3 }}>
+                                                <h5>{elm.cost}</h5>
+                                            </Col>
+                                        </Row>
+                                    )
+                                })
+                            }
+                        </div>
                         :
                         <div className="noExpenses">
 
@@ -92,4 +98,5 @@ const ListExpenses = () => {
         </div>
     )
 }
+
 export default ListExpenses
