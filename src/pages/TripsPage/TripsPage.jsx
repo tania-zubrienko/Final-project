@@ -25,7 +25,11 @@ const TripsPage = () => {
 
         <div className="Trips">
             <Container >
-                <AddButton />
+                
+                <Link to="/viajes/crear">
+                    <AddButton pageName='viajes' />
+                </Link>
+                
                 <h1 className="mt-5"> Viajes pendientes</h1>
                 <TripList trips={userFutureTrips}></TripList>
                 <h1 className="mt-5"> Viajes realizados</h1>
