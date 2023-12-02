@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
 import { Nav, TabContainer, Tab } from 'react-bootstrap'
-import cabeceraProvisional from './../../assets/cabeceraProvisional.jpeg'
 import './TripDetail.css'
 
 
@@ -18,17 +17,22 @@ const TripDetail = () => {
 
     const { id } = useParams()
 
+    const [currentTrip, setCurrentTrip] = useState()
     const [dates, setDates] = useState([])
     const [activeTab, setActiveTab] = useState("overview")
 
     useEffect(() => {
-        getTripDates()
+        // getTripDates()
+        getTripInfo()
     }, [])
 
-    const getTripDates = () => {
+    const getTripInfo = () => {
         tripServices
-            .getTripDates(id)
-            .then(res => setDates(getDatesArray(res.data.startDate, res.data.endDate)))
+            .getTripById(id)
+            .then(res => {
+                setCurrentTrip(res.data.result)
+                setDates(getDatesArray(res.data.result.startDate, res.data.result.endDate))
+            })
             .catch(err => console.log(err))
     }
 
@@ -38,7 +42,7 @@ const TripDetail = () => {
     return (
         <div className="TripDetail">
             <div className='header'>
-                <img src={cabeceraProvisional} alt='' />
+                {currentTrip && <img src={currentTrip.tripImage} alt={currentTrip.destination} />}
             </div>
             <TabContainer>
 

@@ -35,7 +35,7 @@ const TabButtons = () => {
                     buttons.map(elm => {
                         return (
 
-                            <Col md={{ offset: 1, span: 3 }} className='mt-5'>
+                            <Col md={{ offset: 1, span: 3 }} className='mt-5' key={elm.name}>
                                 <button>
                                     {elm.icono}
                                     <br />

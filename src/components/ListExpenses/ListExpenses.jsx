@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import NoExpenses from './../NoListed/NoExpenses'
-import NewExpensesForm from './../Forms/NewExpensesForm/NewExpensesForm'
+import NoExpenses from '../NoListed/NoExpenses'
+import NewExpensesForm from '../Forms/NewExpensesForm/NewExpensesForm'
 import { useParams } from "react-router-dom"
 import tripServices from "../../services/trips.services"
 import { Modal, Container, Row, Col } from "react-bootstrap"
@@ -22,7 +22,6 @@ const ListExpenses = () => {
         tripServices
             .getTripById(id)
             .then(trip => {
-                console.log(trip.data.result.expenses)
                 if (trip.data.result.expenses.length > 0) {
                     setExpensesList(trip.data.result.expenses)
                 }
@@ -45,7 +44,6 @@ const ListExpenses = () => {
     return (
         <div className="ListExpenses">
             <Container className="mb-5">
-
 
                 {
                     expensesList ?
