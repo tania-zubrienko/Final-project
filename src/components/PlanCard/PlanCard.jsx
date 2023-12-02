@@ -4,10 +4,14 @@ import image from './../../assets/cabeceraProvisional.jpeg'
 import SavedPlanRow from "../SavedPlanRow/SavedPlanRow"
 import { useParams } from "react-router-dom"
 
+
+
 const PlanCard = () => {
     //console.log(useParams.id)
     const { id } = useParams()
+
     console.log(id)
+
     return (
 
         <div className="PlanCard">

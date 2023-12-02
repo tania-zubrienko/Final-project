@@ -8,7 +8,7 @@ import tripServices from "../../../services/trips.services"
 import { useState } from "react"
 
 
-const NewExpenseForm = () => {
+const NewExpenseForm = ({ fireFinalActions }) => {
 
     const { id } = useParams()
     const [expenseInfo, setExpenseInfo] = useState({
@@ -26,7 +26,7 @@ const NewExpenseForm = () => {
             .then(trip => {
                 console.log(expenseInfo)
                 console.log(trip.data.result)
-                //navigate('/')
+                fireFinalActions()
             })
             .catch(err => setErrors(err))
 
@@ -50,7 +50,7 @@ const NewExpenseForm = () => {
                         }
 
                         <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit">
+                            <Button className='primary-button' type="submit" >
                                 Crear
                             </Button>
                         </div>

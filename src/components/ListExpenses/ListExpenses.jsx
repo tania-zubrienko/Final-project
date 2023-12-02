@@ -44,7 +44,7 @@ const ListExpenses = () => {
 
     return (
         <div className="ListExpenses">
-            <Container>
+            <Container className="mb-5">
 
 
                 {
