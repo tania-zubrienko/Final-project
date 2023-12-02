@@ -11,9 +11,12 @@ import { FaTheaterMasks } from "react-icons/fa";
 import { RiGalleryLine } from "react-icons/ri";
 
 
+
+
 const PlanCard = () => {
 
     const { id } = useParams()
+
 
     const [recomendations, setRecomendations] = useState([])
     const indexArray = []
