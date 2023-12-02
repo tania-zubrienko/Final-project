@@ -4,7 +4,7 @@ import TripCard from "../../Cards/TripCard/TripCard"
 import Loader from "../../Loader/Loader"
 
 const TripList = ({ trips }) => {
-    console.log(trips)
+
     return (
         !trips ?
             <Loader />
