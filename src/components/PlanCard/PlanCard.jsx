@@ -1,13 +1,42 @@
 import { Container, Row, Col, Accordion } from "react-bootstrap"
 import './PlanCard.css'
-import image from './../../assets/cabeceraProvisional.jpeg'
 import SavedPlanRow from "../SavedPlanRow/SavedPlanRow"
 import { useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import tripServices from "../../services/trips.services"
+import googlePlcesServices from "../../services/googlePlacesAPI"
+
+import { HiOutlineBuildingLibrary } from "react-icons/hi2";
+import { FaTheaterMasks } from "react-icons/fa";
+import { RiGalleryLine } from "react-icons/ri";
+
 
 const PlanCard = () => {
-    //console.log(useParams.id)
+
     const { id } = useParams()
-    console.log(id)
+
+    const [recomendations, setRecomendations] = useState([])
+    const indexArray = []
+
+    useEffect(() => {
+        tripServices
+            .getTripById(id)
+            .then(result => {
+                const { lat, lng } = result.data.result.destinationCoords
+                googlePlcesServices
+                    .getPlaceBycoords(lat, lng)
+                    .then(res => {
+                        setRecomendations(res.data.places)
+                        // recomendations.forEach(e => indexArray.push(e.id))
+                        googlePlcesServices
+                            .getPlacesPhoto(recomendations)
+                            .then(res => console.log(res))
+                    })
+                    .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
+    }, [])
+
     return (
 
         <div className="PlanCard">
@@ -24,70 +53,35 @@ const PlanCard = () => {
                     </Accordion>
                 </Row>
 
-                <h1 className="mt-5 mb-3">Do not miss it!</h1>
+                <h3 className="mt-5 mb-3">Te puede interesar!</h3>
 
+                < Row className="mt-5"  >
+                    {recomendations.length > 0 && recomendations.map(e => {
 
-                <Row className="mt-5">
-                    <Col sm={12} md={{ span: 6 }}>
-                        <figure>
-                            <img src={image} alt="" />
-                        </figure>
-                    </Col>
-                    <Col sm={12} md={{ offset: 1, span: 5 }}>
-                        <h2>Perfect sign for photos</h2>
-                        <h3 className="mt-3">★★★★☆</h3>
-                        <h5 className="mt-3">Free admision</h5>
-                        <h5 className="mt-3">6,7 km</h5>
-                        <div sm={6} className="button mt-3">Save to Plan</div>
-                    </Col>
-                </Row>
+                        return (
+                            <Col key={e.id} className="mb-5">
+                                <div className="recomedationCard">
+                                    {(e.types.includes("tourist_attraction") || e.types.includes("museum")) && <h1 ><HiOutlineBuildingLibrary className="placeIcon" /></h1>}
+                                    {e.types.includes("art_gallery") && <h1 ><RiGalleryLine className="placeIcon" /></h1>}
+                                    {e.types.includes("performing_arts_theater") && <h1 ><FaTheaterMasks className="placeIcon" /></h1>}
 
-                <Row className="mt-5">
-                    <Col md={{ span: 6 }}>
-                        <figure>
-                            <img src={image} alt="" />
-                        </figure>
-                    </Col>
-                    <Col md={{ offset: 1, span: 5 }}>
-                        <h2>Perfect sign for photos</h2>
-                        <h3 className="mt-3">★★★★☆</h3>
-                        <h5 className="mt-3">Free admision</h5>
-                        <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-3">Save to Plan</div>
-                    </Col>
-                </Row>
+                                    <div className="details">
+                                        <h5>{e.displayName.text}</h5>
+                                        <h6 className="mt-3">Valoraciones: {e.rating}</h6>
+                                        <h6>{e.formattedAddress}</h6>
+                                        {e.currentOpeningHours && <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>}
 
-                <Row className="mt-5">
-                    <Col md={{ span: 6 }}>
-                        <figure>
-                            <img src={image} alt="" />
-                        </figure>
-                    </Col>
-                    <Col md={{ offset: 1, span: 5 }}>
-                        <h2>Perfect sign for photos</h2>
-                        <h3 className="mt-3">★★★★☆</h3>
-                        <h5 className="mt-3">Free admision</h5>
-                        <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-3">Save to Plan</div>
-                    </Col>
-                </Row>
+                                        <div sm={6} className="saveButton mt-3">Save to Plan</div>
+                                    </div>
+                                </div>
 
-                <Row className="mt-5">
-                    <Col md={{ span: 6 }}>
-                        <figure>
-                            <img src={image} alt="" />
-                        </figure>
-                    </Col>
-                    <Col md={{ offset: 1, span: 5 }}>
-                        <h2>Perfect sign for photos</h2>
-                        <h3 className="mt-3">★★★★☆</h3>
-                        <h5 className="mt-3">Free admision</h5>
-                        <h5 className="mt-3">6,7 km</h5>
-                        <div className="button mt-3">Save to Plan</div>
-                    </Col>
+                            </Col>
+                        )
+                    }
+                    )}
                 </Row>
             </Container>
-        </div>
+        </div >
     )
 
 }
