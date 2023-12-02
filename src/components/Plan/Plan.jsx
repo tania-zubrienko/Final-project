@@ -11,7 +11,7 @@ const Plan = ({ dates }) => {
                 {dates.map(e => {
 
                     return (
-                        <div className='fecha'>
+                        <div className='fecha' key={e}>
                             <h5>
                                 {shortDate(new Date(Date.parse(e)))}
                             </h5>

@@ -25,7 +25,7 @@ const AppRoutes = () => {
 
 
         <Route path='/' element={<HomePage />} />
-        <Route path='/recomendados' element={<h1>Soy los Recomendados</h1>} />
+        {/* <Route path='/recomendados' element={<h1>Soy los Recomendados</h1>} /> */}
         <Route path='/registrarse' element={<SignupPage />} />
         <Route path='/inicio-sesion' element={<LoginPage />} />
 
