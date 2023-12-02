@@ -19,3 +19,28 @@
     padding-left: 20px;
     padding-bottom: 10px;
 }
+
+.cardBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toast {
+    position: fixed;
+    bottom: 6vh;
+    right: 2vw;
+    background-color: rgb(29, 80, 134, 0.5) !important;
+    color: white !important;
+    text-align: center;
+    border-radius: 30px !important;
+    z-index: 5 !important;
+}
+
+.delete {
+    border: 0;
+    border-radius: 30px !important;
+    background-color: #001e3d;
+    color: white;
+    margin-right: 10px;
+}

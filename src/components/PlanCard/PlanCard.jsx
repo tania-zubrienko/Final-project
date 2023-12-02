@@ -8,7 +8,6 @@ import { FaTheaterMasks } from "react-icons/fa";
 import { RiGalleryLine } from "react-icons/ri";
 import tripServices from "../../services/trips.services"
 import searchNearbyService from "../../../../Trip-Planner-back/services/searchNearby.sevices"
-import googlePlacesPhoto from '../../../../Trip-Planner-back/services/placesPhoto.services'
 
 
 

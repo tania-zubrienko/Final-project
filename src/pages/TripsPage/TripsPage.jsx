@@ -11,7 +11,10 @@ const TripsPage = () => {
     const [userFutureTrips, setUserFutureTrips] = useState()
 
     useEffect(() => {
+        getTrips()
+    }, [])
 
+    const getTrips = () => {
         tripServices
             .getPastTrips()
             .then(res => setUserPastTrips(res.data))
@@ -20,7 +23,7 @@ const TripsPage = () => {
             .getFutureTrips()
             .then(res => setUserFutureTrips(res.data))
             .catch(err => console.log(err))
-    }, [])
+    }
 
     return (
 
@@ -32,11 +35,11 @@ const TripsPage = () => {
                 </Link>
 
                 <h1 className="mt-5"> Viajes pendientes</h1>
-                <TripList trips={userFutureTrips}></TripList>
+                <TripList trips={userFutureTrips} refresh={getTrips}></TripList>
                 <h1 className="mt-5"> Viajes realizados</h1>
                 <TripList trips={userPastTrips}></TripList>
             </Container>
-        </div>
+        </div >
     )
 }
 
