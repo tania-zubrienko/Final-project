@@ -13,10 +13,10 @@ const FriendList = () => {
     const [state, setState] = useState(false)
 
     const handleClose = () => {
+
         console.log("estoy en close")
         setUserSearch('')
         setShow(false)
-        // setState(!state)
 
     }
 
@@ -41,7 +41,7 @@ const FriendList = () => {
     }
 
     const handlerDeleteFriend = (e) => {
-        console.log("ELIMINAR")
+
         const friendId = e.target.value
 
         userServices
