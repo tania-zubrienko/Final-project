@@ -23,10 +23,10 @@ const FooterExpenses = ({ id }) => {
 
     return (
         <div className='FooterExpenses' style={{ marginTop: '5vh', marginBottom: '5vh' }}>
-            <Container>
-                <hr />
-                <h3 className='mt-3'><SlPeople /> {tripName} Team</h3>
-            </Container>
+
+            <hr />
+            <h4 className='mt-3'><SlPeople /> {tripName} Team</h4>
+
         </div>
     )
 }

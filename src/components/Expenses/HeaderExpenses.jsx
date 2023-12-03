@@ -28,15 +28,12 @@ const HeaderExpenses = ({ id }) => {
 
     return (
         <div className="HeaderExpenses">
-            <Container className="mb-5">
-                <Row>
-                    <h3 className="mb-3">Add Expense</h3>
-                    <Col md={12}>
-                        <h5>With you and</h5>
-                    </Col>
-                </Row>
-                <hr />
-            </Container>
+
+            <Row>
+                <h3 className="mb-3">Añadir gasto</h3>
+            </Row>
+            <hr />
+
         </div>
     )
 
