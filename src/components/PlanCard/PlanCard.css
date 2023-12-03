@@ -24,3 +24,46 @@
 a {
     text-decoration: none !important;
 }
+
+.recomedationCard {
+    display: flex;
+
+}
+
+.recomedationCard img {
+    margin-right: 50px;
+    width: 40%;
+    object-fit: cover
+}
+
+.saveButton {
+    background-color: #c0ec6f !important;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 40px;
+    color: #011e3d;
+    font-weight: 500;
+    width: 400px
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.placeIcon {
+    font-size: 2.5em;
+    margin-right: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.recomedationCard h1 {
+    padding-top: 20px;
+}
+
+.recomedationCard h5 {
+    font-weight: 600 !important;
+    margin: 0;
+}
