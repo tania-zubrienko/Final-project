@@ -1,7 +1,7 @@
 import './Participants.css'
 import { Modal, Button } from 'react-bootstrap';
 import { MdOutlineGroupAdd } from "react-icons/md";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import userServices from '../../services/user.services';
 import tripServices from '../../services/trips.services';
 
@@ -9,6 +9,8 @@ const Participants = ({ participants, id }) => {
 
     const [show, setShow] = useState(false)
     const [friends, setFriends] = useState([])
+
+    useEffect(() => getFriends(), [])
 
     const getFriends = () => {
         userServices
@@ -27,7 +29,7 @@ const Participants = ({ participants, id }) => {
     }
 
     const handleAddToGroup = () => {
-
+        console.log(selectedFriends)
         tripServices
             .addParticipants(selectedFriends, id)
             .then(res => console.log(res))
@@ -35,14 +37,12 @@ const Participants = ({ participants, id }) => {
         setShow(false)
     }
 
-    const [selectedFriends, setSelectedFriends] = useState([participants])
+    const [selectedFriends, setSelectedFriends] = useState(participants)
 
     const handleCheckboxChange = e => {
         const { value } = e.target
-        console.log(value)
         setSelectedFriends([...selectedFriends, value])
     }
-
     return (
         <div className="Participants">
             {participants.length > 0 &&
@@ -54,13 +54,25 @@ const Participants = ({ participants, id }) => {
                 )}
             <button className='addToGroupButton' onClick={handlerAddParticipant}><p><MdOutlineGroupAdd /></p></button>
 
-
             <Modal size='lg' show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Añadir amigos</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-
+                    {friends.length > 0 && friends.map(e => {
+                        return (
+                            < div className="cardRow" key={e._id} >
+                                <div class="d-flex text-align-center">
+                                    <img src={e.avatar} alt={e.name} />
+                                    <p>{e.name}</p>
+                                </div>
+                                <div >
+                                    <button onClick={handleCheckboxChange} value={e._id}>add</button>
+                                </div>
+                            </div>
+                        )
+                    }
+                    )}
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>
                     <Button className='myButton2' onClick={handleAddToGroup}>
@@ -71,7 +83,7 @@ const Participants = ({ participants, id }) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </div >
 
 
 

@@ -1,11 +1,5 @@
 .userCard {
-    display: flex;
     flex-direction: column;
-}
-
-.userCard img {
-    width: 100px;
-    border-radius: 50px;
 }
 
 .addToGroupButton {
@@ -20,4 +14,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.cardRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userCard img,
+.cardRow img {
+    width: 100px;
+    border-radius: 50px;
+    margin: 0 0 10px 10px;
 }
