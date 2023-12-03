@@ -12,6 +12,10 @@ import Participants from '../../components/Participants/Participants'
 import TripDates from '../../components/TripDates/TripDates'
 
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
+import TabButtons from '../../components/TabButtons/TabButtons'
+import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
+import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
+
 
 
 

@@ -53,9 +53,8 @@ const ListExpenses = () => {
                         <div>
                             <AddButton pageName='gastos' createModal={createModal} />
                             <Modal show={showModal} onHide={() => setShowModal(false)}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Nuevo Gasto</Modal.Title>
-                                </Modal.Header>
+                                <Modal.Header closeButton />
+
                                 <Modal.Body>
                                     <NewExpensesForm fireFinalActions={fireFinalActions} />
                                 </Modal.Body>
@@ -82,9 +81,7 @@ const ListExpenses = () => {
                             <NoExpenses createModal={createModal} />
 
                             <Modal show={showModal} onHide={() => setShowModal(false)}>
-                                <Modal.Header closeButton>
-                                    <Modal.Title>Nuevo Gasto</Modal.Title>
-                                </Modal.Header>
+                                <Modal.Header closeButton />
                                 <Modal.Body>
                                     <NewExpensesForm fireFinalActions={fireFinalActions} />
                                 </Modal.Body>

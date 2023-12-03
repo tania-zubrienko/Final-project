@@ -6,3 +6,7 @@
     border-radius: 5vh;
     text-align: center;
 }
+
+.add h3 {
+    margin: 0 !important;
+}
