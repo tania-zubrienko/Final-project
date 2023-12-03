@@ -2,7 +2,7 @@ import TabButtons from '../../components/TabButtons/TabButtons'
 import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 import Plan from '../../components/Plan/Plan'
-import PlanCard from '../../components/PlanCard/PlanCard'
+import Recomendations from '../../components/Recomendations/Recomendations'
 import NoTrips from '../../components/NoListed/NoTrips'
 import ListExpenses from '../../components/ListExpenses/ListExpenses'
 import { useParams } from 'react-router-dom'
@@ -11,6 +11,7 @@ import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
 import { Nav, TabContainer, Tab, Tabs } from 'react-bootstrap'
 import './TripDetail.css'
+import Participants from '../../components/Participants/Participants'
 
 
 const TripDetail = () => {
@@ -22,7 +23,6 @@ const TripDetail = () => {
     const [activeTab, setActiveTab] = useState("overview")
 
     useEffect(() => {
-        // getTripDates()
         getTripInfo()
     }, [])
 
@@ -44,53 +44,7 @@ const TripDetail = () => {
             <div className='header'>
                 {currentTrip && <img src={currentTrip.tripImage} alt={currentTrip.destination} />}
             </div>
-            {/* <TabContainer>
 
-                <Nav fill variant="tabs" defaultActiveKey="overview" activeKey={activeTab} onSelect={setActiveTab} >
-                    <Nav.Item>
-                        <Nav.Link eventKey="overview" className='tab' style={{ color: "#011e3d", padding: "2vh 0" }}>Overview</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="bookings" className='tab' style={{ color: "#011e3d", padding: "2vh 0" }}>Booking</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="plan" className='tab' style={{ color: "#011e3d", padding: "2vh 0" }}>Plan</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="expenses" className='tab' style={{ color: "#011e3d", padding: "2vh 0" }}>Expenses</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link eventKey="info" className='tab' style={{ color: "#011e3d", padding: "2vh 0" }}>Inform</Nav.Link>
-                    </Nav.Item>
-                </Nav>
-
-
-                <Tab.Content>
-                    <Tab.Pane defaultactivekey="overview" eventKey="overview">
-                        <TabButtons />
-                        <BookedDropdowns id={id} />
-                        <NotBookedDropdowns />
-                        <PlanCard />
-                        <NoTrips />
-                        <ListExpenses />
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="bookings"  >
-                        <Plan dates={dates} />
-                        <BookedDropdowns id={id} />
-                        <NotBookedDropdowns />
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="plan">
-                        <Plan dates={dates} />
-                        <PlanCard />
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="expenses" >
-                        <ListExpenses />
-                    </Tab.Pane>
-                    <Tab.Pane eventKey="info">Info</Tab.Pane>
-                </Tab.Content>
-
-
-            </TabContainer> */}
             <Tabs
                 id="controlled-tab-example"
                 activeKey={key}
@@ -99,21 +53,18 @@ const TripDetail = () => {
                 fill
             >
                 <Tab eventKey="overview" title="Detalles de viaje" className='tab'>
-                    <TabButtons />
-                    {/* <BookedDropdowns id={id} />
-                    <NotBookedDropdowns /> */}
-                    <PlanCard />
-                    <NoTrips />
-                    <ListExpenses />
+
+                    {currentTrip && <Participants participants={currentTrip.participants} />}
+                    <Recomendations />
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
-                    <Plan dates={dates} />
+                    <TabButtons />
                     <BookedDropdowns id={id} />
                     <NotBookedDropdowns />
                 </Tab>
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <Plan dates={dates} />
-                    <PlanCard />
+                    <Recomendations />
                 </Tab>
                 <Tab eventKey="gastos" title="Gastos" className='tab'>
                     <ListExpenses />
@@ -123,7 +74,6 @@ const TripDetail = () => {
             </Tabs>
         </div >
     )
-
 }
 
 export default TripDetail
