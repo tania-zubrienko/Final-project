@@ -1,6 +1,3 @@
-import TabButtons from '../../components/TabButtons/TabButtons'
-import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
-import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 import Plan from '../../components/Plan/Plan'
 import Recomendations from '../../components/Recomendations/Recomendations'
 import NoTrips from '../../components/NoListed/NoTrips'
@@ -12,6 +9,7 @@ import getDatesArray from '../../utils/dateArray.utils'
 import { Nav, TabContainer, Tab, Tabs } from 'react-bootstrap'
 import './TripDetail.css'
 import Participants from '../../components/Participants/Participants'
+import BookingsTab from '../../components/BookingsTab/BookingsTab'
 
 
 const TripDetail = () => {
@@ -58,9 +56,7 @@ const TripDetail = () => {
                     <Recomendations />
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
-                    <TabButtons />
-                    <BookedDropdowns id={id} />
-                    <NotBookedDropdowns />
+                    <BookingsTab dates={dates} id={id}></BookingsTab>
                 </Tab>
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <Plan dates={dates} />

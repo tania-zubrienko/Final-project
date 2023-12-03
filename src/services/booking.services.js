@@ -22,7 +22,7 @@ class BookingService {
         return this.api.get('/')
     }
 
-    saveBookings(booking, id) {
+    saveBookings(id, booking) {
 
         return this.api.post(`/add/${id}`, booking)
     }
@@ -33,6 +33,10 @@ class BookingService {
 
     deleteBookings(id) {
         return this.api.post(`/delete/${id}`)
+    }
+
+    filterBookingByDay(id, bookingDate) {
+        return this.api.post(`/filter/${id}`, bookingDate)
     }
 
 }
