@@ -48,7 +48,7 @@ const NewBookingForm = () => {
 
         event.preventDefault()
         bookingService
-            .saveBookings(bookingInfo, id)
+            .saveBookings(id, bookingInfo)
             .then(() => navigate('/'))
             .catch(err => setErrors(err.response.data.errorMessages))
     }
