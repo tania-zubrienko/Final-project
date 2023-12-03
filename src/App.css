@@ -1,3 +1,7 @@
 * {
     font-family: 'Poppins'
 }
+
+body {
+    padding-bottom: 50px;
+}

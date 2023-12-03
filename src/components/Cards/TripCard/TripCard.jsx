@@ -6,18 +6,21 @@ import shortDate from './../../../utils/shortDate.utils'
 import tripServices from '../../../services/trips.services';
 import { useEffect, useState } from 'react';
 
-const TripCard = ({ trip, toast, refresh }) => {
+const TripCard = ({ trip, refreshList }) => {
     const { _id: tripId, tripImage, startDate, endDate, destination } = trip
     const [show, setShow] = useState(false)
+
+
+    useEffect(() => refreshList(), [show])
+
 
     const deleteHandler = () => {
         setShow(true)
         tripServices
             .deleteTrip(tripId)
-            .then(() => {
-                refresh()   //comprobar no recarga contenido
-            })
+            .then(() => setShow(true))
             .catch(err => console.log(err))
+        refreshList()   //comprobar no recarga contenido
     }
 
     return (
