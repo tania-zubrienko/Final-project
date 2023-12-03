@@ -11,10 +11,10 @@ const NoBookings = ({ createModal }) => {
                 <Row>
                     <Col md={{ offset: 3, span: 6 }} style={{ color: "#001e3d", textAlign: "center", border: ".5vh solid #001e3d", borderRadius: "20px" }}>
                         <figure>
-                            <img src={imagen} alt="" />
+                            <img src={imagen} alt="no expenses" />
                         </figure>
-                        <h1>No expenses here... yet!</h1>
-                        <p>Tap the plus button below to add a expense with the group</p>
+                        <h3>Todavía nada por aquí!</h3>
+                        <p>Añadir registro de gastos</p>
                         <div className="button mt-3 mb-5" onClick={createModal}>
                             <h3><FaPlus /></h3>
                         </div>

@@ -1,6 +1,5 @@
-import './PlanCard.css'
+import './Recomendations.css'
 import { Container, Row, Col, Accordion } from "react-bootstrap"
-import SavedPlanRow from "../SavedPlanRow/SavedPlanRow"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { HiOutlineBuildingLibrary } from "react-icons/hi2";
@@ -9,13 +8,9 @@ import { RiGalleryLine } from "react-icons/ri";
 import tripServices from "../../services/trips.services"
 import searchNearbyService from "../../../../Trip-Planner-back/services/searchNearby.sevices"
 
-
-
-
-const PlanCard = () => {
+const Recomendations = () => {
 
     const { id } = useParams()
-
 
     const [recomendations, setRecomendations] = useState([])
     const indexArray = []
@@ -36,19 +31,8 @@ const PlanCard = () => {
 
     return (
 
-        <div className="PlanCard">
+        <div className="Recomendations">
             <Container>
-
-                <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
-                    <Accordion >
-                        <Accordion.Item eventKey="0">
-                            <Accordion.Header style={{ backgroundColor: " #e5e9ec" }}><h3>Saved to the Plan</h3></Accordion.Header>
-                            <Accordion.Body>
-                                <SavedPlanRow />
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    </Accordion>
-                </Row>
 
                 <h3 className="mt-5 mb-3">Te puede interesar!</h3>
 
@@ -83,4 +67,4 @@ const PlanCard = () => {
 
 
 }
-export default PlanCard
+export default Recomendations

@@ -1,6 +1,7 @@
 import { Container, Row, Col } from "react-bootstrap"
 import './NoListed.css'
 import imagen from './../../assets/NoTrips.png'
+import { Link } from "react-router-dom"
 
 const NoTrips = () => {
 
@@ -8,14 +9,14 @@ const NoTrips = () => {
         <div className="NoTrips mt-5 mb-5">
             <Container>
                 <Row >
-                    <Col md={{ offset: 3, span: 6 }} style={{ color: "#001e3d", textAlign: "center", border: ".5vh solid #001e3d", borderRadius: "20px" }}>
+                    <Col md={{ offset: 3, span: 6 }} className="card">
                         <figure>
-                            <img src={imagen} alt="" />
+                            <img src={imagen} alt="no trips" />
                         </figure>
-                        <h1>No trips booked... yet!</h1>
-                        <p>Time to dust off your bags and start planning your next adventure</p>
-                        <div className="button mt-3 mb-5">
-                            <h3>Start Planing</h3>
+                        <h3>No tienes viajes pendientes...todavía!</h3>
+                        <p>Empieza a planificar tu siguiente aventura!</p>
+                        <div className="button mt-3 mb-2">
+                            <Link to="/viajes/crear"><h6>Añadir viaje</h6></Link>
                         </div>
                     </Col>
                 </Row>
