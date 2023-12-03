@@ -1,15 +1,18 @@
 import Plan from '../../components/Plan/Plan'
 import Recomendations from '../../components/Recomendations/Recomendations'
-import NoTrips from '../../components/NoListed/NoTrips'
 import ListExpenses from '../../components/ListExpenses/ListExpenses'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
-import { Nav, TabContainer, Tab, Tabs } from 'react-bootstrap'
+import { Tab, Tabs } from 'react-bootstrap'
 import './TripDetail.css'
 import Participants from '../../components/Participants/Participants'
+
+import TripDates from '../../components/TripDates/TripDates'
+
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
+
 
 
 const TripDetail = () => {
@@ -18,7 +21,6 @@ const TripDetail = () => {
 
     const [currentTrip, setCurrentTrip] = useState()
     const [dates, setDates] = useState([])
-    const [activeTab, setActiveTab] = useState("overview")
 
     useEffect(() => {
         getTripInfo()
@@ -51,14 +53,29 @@ const TripDetail = () => {
                 fill
             >
                 <Tab eventKey="overview" title="Detalles de viaje" className='tab'>
+                    {currentTrip &&
+                        <>
+                            <h3>Destino: {currentTrip.destination}</h3>
+                            <h3>Participantes: </h3>
 
-                    {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} />}
+                            {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} />}
+
+                        </>
+                    }
                     <Recomendations />
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
+
+                    <TripDates dates={dates} />
+                    <TabButtons />
+                    <BookedDropdowns id={id} />
+                    <NotBookedDropdowns />
+
                     <BookingsTab dates={dates} id={id}></BookingsTab>
+
                 </Tab>
                 <Tab eventKey="planes" title="Planes" className='tab'>
+                    <TripDates dates={dates} />
                     <Plan dates={dates} />
                     <Recomendations />
                 </Tab>

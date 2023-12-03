@@ -1,9 +1,8 @@
-import { Modal, Button } from 'react-bootstrap';
 import './Participants.css'
+import { Modal, Button } from 'react-bootstrap';
 import { MdOutlineGroupAdd } from "react-icons/md";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import userServices from '../../services/user.services';
-import FriendCard from '../Cards/FriendCard/FriendCard';
 import tripServices from '../../services/trips.services';
 
 const Participants = ({ participants, id }) => {
