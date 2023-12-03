@@ -1,0 +1,22 @@
+.userCard {
+    display: flex;
+    flex-direction: column;
+}
+
+.userCard img {
+    width: 100px;
+    border-radius: 50px;
+}
+
+.addToGroupButton {
+    border: 0px;
+}
+
+.addToGroupButton p {
+    font-size: 3em;
+}
+
+.Participants {
+    display: flex;
+    justify-content: space-around;
+}

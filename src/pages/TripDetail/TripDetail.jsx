@@ -52,7 +52,7 @@ const TripDetail = () => {
             >
                 <Tab eventKey="overview" title="Detalles de viaje" className='tab'>
 
-                    {currentTrip && <Participants participants={currentTrip.participants} />}
+                    {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} />}
                     <Recomendations />
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>

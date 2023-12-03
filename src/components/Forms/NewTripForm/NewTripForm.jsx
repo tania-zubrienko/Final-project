@@ -43,7 +43,6 @@ const NewTripForm = () => {
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
-        console.log(value, name)
         setTripInfo({ ...tripInfo, [name]: value })
     }
 
