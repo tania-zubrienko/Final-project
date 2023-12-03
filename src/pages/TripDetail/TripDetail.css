@@ -13,3 +13,14 @@
     font-weight: 400 !important;
     color: #092D52 !important;
 }
+
+.TripDetail h3 {
+    margin: 1em;
+    text-align: center;
+}
+
+.participantes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
