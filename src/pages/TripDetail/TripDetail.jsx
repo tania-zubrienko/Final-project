@@ -8,9 +8,7 @@ import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
 import './TripDetail.css'
 import Participants from '../../components/Participants/Participants'
-import TabButtons from '../../components/TabButtons/TabButtons'
 import searchDetailsService from '../../../../Trip-Planner-back/services/searchDetails.services'
-import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import TripDates from '../../components/TripDates/TripDates'
 
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
@@ -95,7 +93,7 @@ const TripDetail = () => {
                 </Tab>
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <TripDates dates={dates} />
-                    <Plan dates={dates} myPlans={myPlans} />
+                    <Plan myPlans={myPlans} />
                     <Recomendations savePlan={savePlan} />
                 </Tab>
                 <Tab eventKey="gastos" title="Gastos" className='tab'>
