@@ -1,14 +1,9 @@
 .userCard {
-    display: flex;
     flex-direction: column;
 }
 
-.userCard img {
-    width: 100px;
-    border-radius: 50px;
-}
-
-.addToGroupButton {
+.addToGroupButton,
+.unChecked {
     border: 0px;
 }
 
@@ -20,4 +15,32 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.cardRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userCard img,
+.cardRow img {
+    width: 100px;
+    border-radius: 50px;
+    margin: 0 0 10px 10px;
+}
+
+.userCard2 img {
+    width: 60px;
+    border-radius: 50px;
+    margin: 0 0 0 20px;
+}
+
+.checked {
+    background-color: red;
+}
+
+.unChecked p {
+    border: 0;
+    font-size: 3em;
 }

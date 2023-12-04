@@ -1,22 +1,27 @@
 import shortDate from "../../utils/shortDate"
 import './TripDates.css'
 import { MdOutlineCalendarToday } from 'react-icons/md'
-const TripDates = ({ dates }) => {
+const TripDates = ({ dates, filterByDay }) => {
+
+    function handleFilter(e) {
+        console.log(e.target.value)
+        filterByDay(e)
+    }
 
     return (
 
         <div className='slider'>
 
-            <h5 className="icon"> <MdOutlineCalendarToday /></h5>
-            {dates.map(e => {
-
+            <button className="icon" onClick={filterByDay} value={undefined}> <MdOutlineCalendarToday /> </button>
+            {
+            dates.map(e => {
                 return (
-                    <div className='fecha' key={e}>
-                        <h5>{shortDate(new Date(Date.parse(e)))} </h5>
-                    </div>
+                    <button className='fecha' onClick={filterByDay} value={e} key={e}>
+                        {shortDate(new Date(Date.parse(e)))}
+                    </button>
                 )
-
-            })}
+            })
+            }
 
         </div >
 

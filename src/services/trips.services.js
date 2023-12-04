@@ -46,12 +46,23 @@ class TripServices {
         return this.api.get(`/${id}`)
     }
 
+
     addPlantoTrip(id, body) {
         return this.api.post(`/${id}/plan`, { placeId: body })
     }
 
+    getParticipantList(id) {
+        console.log(id)
+        return this.api.get(`/${id}/participants`)
+    }
+
     addParticipants(participantsArray, id) {
+        console.log(participantsArray)
         return this.api.post(`/${id}/edit`, participantsArray)
+    }
+
+    deleteParticipant(participantId, tripId) {
+        return this.api.post(`/${tripId}/deleteMember`, { member: participantId })
     }
 }
 

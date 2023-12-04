@@ -7,9 +7,8 @@ h3 {
 
 .btnAdd {
     background-color: #c0ec6f;
-    border-radius: 10vh;
+    border-radius: 30px;
     text-align: center;
-    width: 80%;
-    padding: 2vh 0;
+    width: 50%;
     margin: 0 auto;
 }

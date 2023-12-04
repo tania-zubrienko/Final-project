@@ -14,3 +14,9 @@ button:hover {
     height: 35px;
     width: 35px;
 }
+
+.filters {
+    display: flex !important;
+    justify-content: center;
+    margin-top: 50px !important;
+}

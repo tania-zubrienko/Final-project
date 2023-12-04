@@ -14,7 +14,11 @@ import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import TripDates from '../../components/TripDates/TripDates'
 
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
+
+import TabButtons from '../../components/TabButtons/TabButtons'
+import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
+
 
 
 
@@ -52,7 +56,9 @@ const TripDetail = () => {
 
     useEffect(() => {
     }, [dates])
+
     const [key, setKey] = useState('overview');
+
     return (
         <div className="TripDetail">
             <div className='header'>
@@ -72,7 +78,7 @@ const TripDetail = () => {
                             <h3>Destino: {currentTrip.destination}</h3>
                             <h3>Participantes: </h3>
 
-                            {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} />}
+                            {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} refresh={getTripInfo} />}
 
                         </>
                     }
@@ -80,11 +86,10 @@ const TripDetail = () => {
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
 
-                    <TripDates dates={dates} />
+                    {/* <TripDates dates={dates} />
                     <TabButtons />
                     <BookedDropdowns id={id} />
-                    <NotBookedDropdowns />
-
+                    <NotBookedDropdowns /> */}
                     <BookingsTab dates={dates} id={id}></BookingsTab>
 
                 </Tab>

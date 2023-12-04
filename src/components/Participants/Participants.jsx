@@ -1,14 +1,17 @@
 import './Participants.css'
 import { Modal, Button } from 'react-bootstrap';
 import { MdOutlineGroupAdd } from "react-icons/md";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import userServices from '../../services/user.services';
 import tripServices from '../../services/trips.services';
 
-const Participants = ({ participants, id }) => {
+const Participants = ({ participants, id, refresh }) => {
 
     const [show, setShow] = useState(false)
     const [friends, setFriends] = useState([])
+    const [members, setMembers] = useState(participants)
+
+    useEffect(() => getFriends(), [])
 
     const getFriends = () => {
         userServices
@@ -17,53 +20,92 @@ const Participants = ({ participants, id }) => {
             .catch(err => console.log(err))
     }
 
-    const handlerAddParticipant = () => {
-        setShow(true)
-        getFriends()
-    }
+    const handlerAddParticipant = () => setShow(true)
 
     const handleClose = () => {
+        refresh()
         setShow(false)
     }
 
-    const handleAddToGroup = () => {
+    const addMember = (e) => {
+        const { value } = e.target
+        setMembers([...members, value])
+        refresh()
+    }
 
+    const deleteMember = (e) => {
+        const { value } = e.target
         tripServices
-            .addParticipants(selectedFriends, id)
-            .then(res => console.log(res))
+            .deleteParticipant(value, id)
+            .then(() => setShow(false))
             .catch(err => console.log(err))
         setShow(false)
+        refresh()
     }
 
-    const [selectedFriends, setSelectedFriends] = useState([participants])
+    const updateGroup = () => {
+        const newMembers = Array.from(new Set(members))
+        tripServices
+            .addParticipants(newMembers, id)
+            .then(setShow(false))
+            .catch(err => console.log(err))
+        setMembers(participants)
+        refresh()
 
-    const handleCheckboxChange = e => {
-        const { value } = e.target
-        console.log(value)
-        setSelectedFriends([...selectedFriends, value])
     }
 
+    useEffect(() => refresh(), [show])
     return (
         <div className="Participants">
             {participants.length > 0 &&
-                participants.map(e =>
-                    <div className="userCard" key={e._id}>
+                participants.map(e => {
+
+                    return (<div className="userCard" key={e._id}>
                         <img src={e.avatar} alt={e.name} />
                         <h5 > {e.name}</h5>
-                    </div>
+                    </div>)
+
+                }
                 )}
             <button className='addToGroupButton' onClick={handlerAddParticipant}><p><MdOutlineGroupAdd /></p></button>
 
-
             <Modal size='lg' show={show} onHide={handleClose} centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Añadir amigos</Modal.Title>
+                    <Modal.Title> En el grupo:</Modal.Title>
+                    {participants.length > 0 &&
+                        participants.map(e =>
+                            <div className="userCard2" key={e._id}>
+                                <img src={e.avatar} alt={e.name} />
+                            </div>
+                        )}
                 </Modal.Header>
                 <Modal.Body>
+                    {friends.length > 0 && friends.map(e => {
 
+
+
+                        return (
+                            < div className="cardRow" key={e._id} >
+                                <div class="d-flex text-align-center">
+                                    <img src={e.avatar} alt={e.name} />
+                                    <p>{e.name}</p>
+                                </div>
+                                <div >
+                                    {(!participants.filter(elm => elm._id === e._id).length > 0) ?
+                                        <button onClick={addMember} value={e._id} >add</button>
+                                        :
+                                        <button onClick={deleteMember} value={e._id} >delete</button>
+                                    }
+                                </div>
+                            </div>
+                        )
+
+
+                    }
+                    )}
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>
-                    <Button className='myButton2' onClick={handleAddToGroup}>
+                    <Button className='myButton2' onClick={updateGroup}>
                         Añadir al grupo
                     </Button>
                     <Button className='myButton' onClick={handleClose}>
@@ -71,7 +113,7 @@ const Participants = ({ participants, id }) => {
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </div>
+        </div >
 
 
 

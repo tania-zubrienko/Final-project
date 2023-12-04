@@ -1,0 +1,21 @@
+.see-doc-button  {
+     align-self: center;
+     text-align: center;
+     width: 40px;
+     height: 45px;
+     background-image: url('../../../assets/seeDoc.png');
+     background-repeat: no-repeat;
+     background-size: cover;
+     border: 0px;
+}
+
+.add-doc-button {
+    align-self: center;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    background-image: url('../../../assets/addDoc.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px;
+}
