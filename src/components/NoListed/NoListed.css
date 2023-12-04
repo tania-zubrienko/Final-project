@@ -1,8 +1,39 @@
 .button {
-    background-color: #c0ec6f;
-    border-radius: 10vh;
+    background-color: #c0ec6f !important;
+    border-radius: 10vh !important;
+    text-align: center !important;
+    width: 80% !important;
+    padding: 2vh 0 !important;
+    margin: 0 auto !important;
+    border: 0 !important;
+    width: 150px !important;
+}
+
+.NoTrips img,
+.NoBookings img {
+    width: 30%;
+}
+
+.button h6 {
+    color: #001e3d !important;
+    margin: 0;
+    font-weight: 500 !important;
+}
+
+.NoTrips .card,
+.NoBookings .card {
+    color: #001e3d;
     text-align: center;
-    width: 80%;
-    padding: 2vh 0;
-    margin: 0 auto;
+    border: 2px solid #001e3d !important;
+    border-radius: 30px !important;
+    margin: 0 auto !important;
+}
+
+.NoTrips figure,
+.NoBookings figure {
+    margin: 0;
+}
+
+.NoBookings h3 {
+    margin: 0 !important;
 }

@@ -1,21 +1,25 @@
-import { Container, Row } from "react-bootstrap"
-import cabeceraProvisional from '../../../assets/cabeceraProvisional.jpg'
+import { Container, Row, Toast } from "react-bootstrap"
 import TripCard from "../../Cards/TripCard/TripCard"
 import Loader from "../../Loader/Loader"
+import { useState } from "react"
 
-const TripList = ({ trips }) => {
-    console.log(trips)
+
+const TripList = ({ trips, refresh }) => {
+
+    const update = () => refresh()
+
     return (
         !trips ?
             <Loader />
             :
             <Container>
+
                 <Row>
                     {
                         trips.length > 0 ?
                             trips.map((trip, i) => {
                                 return (
-                                    <TripCard key={i} image={trip.tripImage} destination={trip.destination} startDate={trip.startDate} endDate={trip.endDate} id={trip._id}></TripCard>
+                                    <TripCard trip={trip} refreshList={update} key={i} />
                                 )
                             })
                             :

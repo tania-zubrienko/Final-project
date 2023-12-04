@@ -30,12 +30,13 @@ const TabButtons = () => {
 
     return (
         <Container>
+
             <Row>
                 {
                     buttons.map(elm => {
                         return (
 
-                            <Col md={{ offset: 1, span: 3 }} className='mt-5'>
+                            <Col md={{ offset: 1, span: 3 }} className='mt-5' key={elm.name}>
                                 <button>
                                     {elm.icono}
                                     <br />
@@ -45,55 +46,6 @@ const TabButtons = () => {
                         )
                     })
                 }
-                {/* <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <MdOutlineDirectionsBusFilled className='image' />
-                        <br />
-                        Bus
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <MdOutlineDirectionsCarFilled className='image' />
-                        <br />
-                        Car Rental
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <GiDivingHelmet className='image' />
-                        <br />
-                        Diving
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <MdOutlineRestaurant className='image' />
-                        <br />
-                        Restaurant
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <FaFerry className='image' />
-                        <br />
-                        Ferry
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5' style={{ borderRadius: '5px' }}>
-                    <button>
-                        <MdOutlineTrain className='image' />
-                        <br />
-                        Train
-                    </button>
-                </Col>
-                <Col md={{ offset: 1, span: 2 }} className='mt-5'>
-                    <button>
-                        <MdFlight className='image' />
-                        <br />
-                        Flights
-                    </button>
-                </Col> */}
             </Row>
         </Container>
 

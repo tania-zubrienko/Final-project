@@ -2,18 +2,21 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap"
 import HeaderExpenses from './../../Expenses/HeaderExpenses'
 import BodyExpenses from './../../Expenses/BodyExpenses'
 import FooterExpenses from './../../Expenses/FooterExpenses'
+import AlertForm from '../AlertForm/AlertForm'
 import { useParams, useNavigate } from "react-router-dom"
 import tripServices from "../../../services/trips.services"
 import { useState } from "react"
 
 
-const NewExpenseForm = () => {
+const NewExpenseForm = ({ fireFinalActions }) => {
 
     const { id } = useParams()
     const [expenseInfo, setExpenseInfo] = useState({
         concept: '',
         cost: 0
     })
+
+    const [errors, setErrors] = useState([])
 
     function handleNewExpenseSubmit(event) {
         event.preventDefault()
@@ -23,9 +26,9 @@ const NewExpenseForm = () => {
             .then(trip => {
                 console.log(expenseInfo)
                 console.log(trip.data.result)
-                //navigate('/')
+                fireFinalActions()
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err))
 
     }
 
@@ -42,8 +45,12 @@ const NewExpenseForm = () => {
                         <BodyExpenses expenseInfo={expenseInfo} addExpenseInfo={addExpenseInfo} />
                         <FooterExpenses id={id} />
 
+                        {
+                            errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
+                        }
+
                         <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit">
+                            <Button className='primary-button' type="submit" >
                                 Crear
                             </Button>
                         </div>

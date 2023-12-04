@@ -1,0 +1,30 @@
+.userCard {
+    flex-direction: column;
+}
+
+.addToGroupButton {
+    border: 0px;
+}
+
+.addToGroupButton p {
+    font-size: 3em;
+}
+
+.Participants {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cardRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userCard img,
+.cardRow img {
+    width: 100px;
+    border-radius: 50px;
+    margin: 0 0 10px 10px;
+}

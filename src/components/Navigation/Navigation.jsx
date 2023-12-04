@@ -34,8 +34,8 @@ const Navigation = () => {
                             {loggedUser && <>
 
                                 <Link className='navButtons' to={'/viajes'}><img src={tripIcon} alt='trips' /> Viajes </Link>
-                                <Link className='navButtons' to={'/lista-deseos'}><img src={wishListIcon} alt='wishlist' /> WishList </Link>
-                                <Link className='navButtons' to={'/pruebas'}> Pruebas </Link>
+                                {/* <Link className='navButtons' to={'/lista-deseos'}><img src={wishListIcon} alt='wishlist' /> WishList </Link> */}
+                                {/* <Link className='navButtons' to={'/pruebas'}> Pruebas </Link> */}
 
                             </>}
 
@@ -48,7 +48,6 @@ const Navigation = () => {
                                     <Link className='navButtons' to={'/perfil'}> Mi Perfil</Link>
                                     <Link className='navButtons' onClick={closeSession}>Cerrar sessión</Link>
                                 </>
-
                                 :
                                 <>
                                     <Link className='navButtons' to={'/inicio-sesion'}> Iniciar Sesion </Link>

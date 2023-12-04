@@ -1,33 +1,5 @@
-.slider {
-    overflow-x: scroll;
-    white-space: nowrap;
-}
-
 .icon {
     display: inline-block;
     text-align: center;
     margin-left: 1vh;
-}
-
-.fecha {
-    display: inline-block;
-    border-radius: 5px;
-    width: 15vh;
-    padding-top: 1vh;
-    text-align: center;
-    align-items: center;
-    margin: 1vh;
-}
-
-.fecha:hover {
-    background-color: #e6e6e6;
-}
-
-.fecha:active {
-    background-color: #e6e6e6;
-}
-
-.fecha>h5 {
-    color: #011e3d;
-    font-weight: 300;
 }

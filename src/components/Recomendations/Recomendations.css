@@ -1,0 +1,69 @@
+.PlanCard h2,
+.PlanCard h3,
+.PlanCard h5 {
+    color: #011e3d;
+}
+
+.PlanCard figure {
+    width: 100%;
+}
+
+.PlanCard img {
+    width: 100%;
+}
+
+.PlanCard .button {
+    background-color: #c0ec6f;
+    color: #011e3d;
+    border-radius: 5vh;
+    padding: 3vh 0;
+    width: 100%;
+    text-align: center;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.recomedationCard {
+    display: flex;
+
+}
+
+.recomedationCard img {
+    margin-right: 50px;
+    width: 40%;
+    object-fit: cover
+}
+
+.saveButton {
+    background-color: #c0ec6f !important;
+    border-radius: 30px;
+    text-align: center;
+    line-height: 40px;
+    color: #011e3d;
+    font-weight: 500;
+    width: 400px
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.placeIcon {
+    font-size: 2.5em;
+    margin-right: 30px;
+    text-align: center;
+    align-items: center;
+}
+
+.recomedationCard h1 {
+    padding-top: 20px;
+}
+
+.recomedationCard h5 {
+    font-weight: 600 !important;
+    margin: 0;
+}

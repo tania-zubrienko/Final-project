@@ -1,14 +1,24 @@
-import { Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Col, Row, Modal } from 'react-bootstrap'
 import { IoLocationOutline } from 'react-icons/io5'
 import cabeceraProvisional from '../../assets/cabeceraProvisional.jpeg'
 import './SavedPlanRow.css'
+import { useState } from 'react'
+import PlanDetails from '../PlanDetails/PlanDetails'
 
 const SavedPlanRow = () => {
+
+    const [showModal, setShowModal] = useState(false)
+
+    const createModal = () => {
+        setShowModal(true)
+    }
+
+
     return (
 
-        <Link to={'/viajes/:id/planes/:id/detalle'}>
-            <Row className='align-items-center'>
+        <div className='SavedPlanRow'>
+
+            <Row className='align-items-center' onClick={createModal}>
                 <Col xs={1}>
                     <IoLocationOutline className='icon' />
                 </Col>
@@ -20,7 +30,17 @@ const SavedPlanRow = () => {
                     <img className='plan-img' src={cabeceraProvisional} alt='' />
                 </Col>
             </Row>
-        </Link>
+
+            <Modal size='lg' show={showModal} onHide={() => setShowModal(false)} >
+                <Modal.Header closeButton>
+                    <Modal.Title>Detalle del Plan</Modal.Title>
+                </Modal.Header>
+                <Modal.Body >
+                    <PlanDetails />
+                </Modal.Body>
+            </Modal>
+
+        </div>
     )
 }
 
