@@ -8,10 +8,13 @@ import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
 import './TripDetail.css'
 import Participants from '../../components/Participants/Participants'
-
+import TabButtons from '../../components/TabButtons/TabButtons'
+import searchDetailsService from '../../../../Trip-Planner-back/services/searchDetails.services'
+import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import TripDates from '../../components/TripDates/TripDates'
 
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
+
 import TabButtons from '../../components/TabButtons/TabButtons'
 import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
@@ -25,6 +28,8 @@ const TripDetail = () => {
 
     const [currentTrip, setCurrentTrip] = useState()
     const [dates, setDates] = useState([])
+    const [myPlans, setMyPlans] = useState([])
+    const [chosenPlan, setChosenPlan] = useState({})
 
     useEffect(() => {
         getTripInfo()
@@ -39,6 +44,15 @@ const TripDetail = () => {
             })
             .catch(err => console.log(err))
     }
+
+    const savePlan = (planId) => {
+        tripServices
+            .addPlantoTrip(id, planId)
+            .then(() => console.log())
+            .catch()
+    }
+
+
 
     useEffect(() => {
     }, [dates])
@@ -68,7 +82,7 @@ const TripDetail = () => {
 
                         </>
                     }
-                    <Recomendations />
+                    <Recomendations savePlan={savePlan} />
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
 
@@ -81,8 +95,8 @@ const TripDetail = () => {
                 </Tab>
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <TripDates dates={dates} />
-                    <Plan dates={dates} />
-                    <Recomendations />
+                    <Plan dates={dates} myPlans={myPlans} />
+                    <Recomendations savePlan={savePlan} />
                 </Tab>
                 <Tab eventKey="gastos" title="Gastos" className='tab'>
                     <ListExpenses />

@@ -46,6 +46,11 @@ class TripServices {
         return this.api.get(`/${id}`)
     }
 
+
+    addPlantoTrip(id, body) {
+        return this.api.post(`/${id}/plan`, { placeId: body })
+    }
+
     getParticipantList(id) {
         console.log(id)
         return this.api.get(`/${id}/participants`)
