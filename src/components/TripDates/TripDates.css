@@ -12,6 +12,7 @@
     text-align: center;
     align-items: center;
     border: none;
+    margin-right: 10px;
 }
 
 .fecha:hover {
