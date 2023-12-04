@@ -11,6 +11,7 @@
     padding-top: 1vh;
     text-align: center;
     align-items: center;
+    border: none;
 }
 
 .fecha:hover {
@@ -21,11 +22,18 @@
     background-color: #e6e6e6;
 }
 
-.fecha>h5 {
+.fecha {
     color: #011e3d;
     font-weight: 300;
 }
 
 .slider .icon {
-    font-size: 1.7em
+    font-size: 1.7em;
+    display: inline-block;
+    border-radius: 5px;
+    width: 15vh;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    border: none;
 }
