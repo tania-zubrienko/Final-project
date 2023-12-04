@@ -40,6 +40,10 @@ class UserServices {
     getDocuments() {
         return this.api.get('/documents')
     }
+
+    deleteDocument(documentId) {
+        return this.api.post(`/documents/delete/${documentId}`)
+    }
 }
 
 const userServices = new UserServices()

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Modal, Row } from "react-bootstrap"
 import DocumentsForm from '../../Forms/DocumentsForm/DocumentsForm.jsx'
+import userServices from "../../../services/user.services.js";
 
 const DocumentCard = ({ type, getDocuments, children }) => {
     const [show, setShow] = useState(false)
@@ -11,6 +12,19 @@ const DocumentCard = ({ type, getDocuments, children }) => {
     const finishActions = () => {
         handleClose()
         getDocuments()
+    }
+
+    const deleteDocument = (e) => {
+        const documentId = e.target.value
+        console.log(documentId)
+        userServices
+            .deleteDocument(documentId)
+            .then(() => {
+                console.log('eliminado')
+                getDocuments()
+                handleClose()
+            })
+            .catch(err => console.log(err))
     }
     
     return (
@@ -28,13 +42,16 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                         <Button variant="primary" onClick={handleShow}>Ver</Button>
                                         <Modal show={show} onHide={handleClose}>
                                             <Modal.Header closeButton>
-                                                <Modal.Title>Vamos a ver...</Modal.Title>
+                                                <Modal.Title>{type}</Modal.Title>
                                             </Modal.Header>
                                             <Modal.Body>
                                                 <Row>
                                                     <img src={children.link} alt="" />
                                                 </Row>
                                             </Modal.Body>
+                                            <Modal.Footer>
+                                                <Button variant="danger" value={children._id} onClick={deleteDocument}>Eliminar</Button>
+                                            </Modal.Footer>
                                         </Modal>
                                     </>
                                 :
@@ -42,7 +59,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                         <Button variant="primary" onClick={handleShow}>Subir</Button>
                                         <Modal show={show} onHide={handleClose}>
                                             <Modal.Header closeButton>
-                                                <Modal.Title>Vamos a subir...</Modal.Title>
+                                                <Modal.Title>{type}</Modal.Title>
                                             </Modal.Header>
                                             <Modal.Body>
                                                 <DocumentsForm finishActions={finishActions} type={type}></DocumentsForm>
