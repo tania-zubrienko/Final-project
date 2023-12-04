@@ -33,6 +33,16 @@ const Participants = ({ participants, id, refresh }) => {
         refresh()
     }
 
+    const deleteMember = (e) => {
+        const { value } = e.target
+        tripServices
+            .deleteParticipant(value, id)
+            .then(() => setShow(false))
+            .catch(err => console.log(err))
+        setShow(false)
+        refresh()
+    }
+
     const updateGroup = () => {
         const newMembers = Array.from(new Set(members))
         tripServices
@@ -71,19 +81,26 @@ const Participants = ({ participants, id, refresh }) => {
                 </Modal.Header>
                 <Modal.Body>
                     {friends.length > 0 && friends.map(e => {
-                        if (!participants.filter(elm => elm._id === e._id).length > 0) {
-                            return (
-                                < div className="cardRow" key={e._id} >
-                                    <div class="d-flex text-align-center">
-                                        <img src={e.avatar} alt={e.name} />
-                                        <p>{e.name}</p>
-                                    </div>
-                                    <div >
-                                        <button onClick={addMember} value={e._id} >add</button>
-                                    </div>
+
+
+
+                        return (
+                            < div className="cardRow" key={e._id} >
+                                <div class="d-flex text-align-center">
+                                    <img src={e.avatar} alt={e.name} />
+                                    <p>{e.name}</p>
                                 </div>
-                            )
-                        }
+                                <div >
+                                    {(!participants.filter(elm => elm._id === e._id).length > 0) ?
+                                        <button onClick={addMember} value={e._id} >add</button>
+                                        :
+                                        <button onClick={deleteMember} value={e._id} >delete</button>
+                                    }
+                                </div>
+                            </div>
+                        )
+
+
                     }
                     )}
                 </Modal.Body>

@@ -55,6 +55,10 @@ class TripServices {
         console.log(participantsArray)
         return this.api.post(`/${id}/edit`, participantsArray)
     }
+
+    deleteParticipant(participantId, tripId) {
+        return this.api.post(`/${tripId}/deleteMember`, { member: participantId })
+    }
 }
 
 const tripServices = new TripServices()
