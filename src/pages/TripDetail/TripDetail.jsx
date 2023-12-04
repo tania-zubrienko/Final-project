@@ -6,14 +6,15 @@ import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
-import { Tab, Tabs } from 'react-bootstrap'
 import './TripDetail.css'
 import Participants from '../../components/Participants/Participants'
+import TabButtons from '../../components/TabButtons/TabButtons'
 import searchDetailsService from '../../../../Trip-Planner-back/services/searchDetails.services'
-
+import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import TripDates from '../../components/TripDates/TripDates'
 
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
+import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 
 
 
