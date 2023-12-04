@@ -46,7 +46,13 @@ class TripServices {
         return this.api.get(`/${id}`)
     }
 
+    getParticipantList(id) {
+        console.log(id)
+        return this.api.get(`/${id}/participants`)
+    }
+
     addParticipants(participantsArray, id) {
+        console.log(participantsArray)
         return this.api.post(`/${id}/edit`, participantsArray)
     }
 }

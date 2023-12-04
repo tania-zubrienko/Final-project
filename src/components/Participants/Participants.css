@@ -2,7 +2,8 @@
     flex-direction: column;
 }
 
-.addToGroupButton {
+.addToGroupButton,
+.unChecked {
     border: 0px;
 }
 
@@ -27,4 +28,19 @@
     width: 100px;
     border-radius: 50px;
     margin: 0 0 10px 10px;
+}
+
+.userCard2 img {
+    width: 60px;
+    border-radius: 50px;
+    margin: 0 0 0 20px;
+}
+
+.checked {
+    background-color: red;
+}
+
+.unChecked p {
+    border: 0;
+    font-size: 3em;
 }
