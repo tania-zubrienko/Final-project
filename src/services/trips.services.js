@@ -49,6 +49,10 @@ class TripServices {
     getTripById(id) {
         return this.api.get(`/${id}`)
     }
+
+    addPlantoTrip(id, body) {
+        return this.api.post(`/${id}/plan`, { placeId: body })
+    }
 }
 
 const tripServices = new TripServices()

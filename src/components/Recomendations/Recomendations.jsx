@@ -2,18 +2,21 @@ import './Recomendations.css'
 import { Container, Row, Col, Accordion } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { HiOutlineBuildingLibrary } from "react-icons/hi2";
-import { FaTheaterMasks } from "react-icons/fa";
-import { RiGalleryLine } from "react-icons/ri";
+import { HiOutlineBuildingLibrary } from "react-icons/hi2"
+import { FaTheaterMasks } from "react-icons/fa"
+import { RiGalleryLine } from "react-icons/ri"
 import tripServices from "../../services/trips.services"
 import searchNearbyService from "../../../../Trip-Planner-back/services/searchNearby.sevices"
 
-const Recomendations = () => {
+
+const Recomendations = ({ savePlan }) => {
 
     const { id } = useParams()
 
     const [recomendations, setRecomendations] = useState([])
     const indexArray = []
+
+
 
     useEffect(() => {
 
@@ -28,6 +31,7 @@ const Recomendations = () => {
             })
             .catch(err => console.log(err))
     }, [])
+
 
     return (
 
@@ -52,7 +56,7 @@ const Recomendations = () => {
                                         <h6>{e.formattedAddress}</h6>
                                         {e.currentOpeningHours && <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>}
 
-                                        <div sm={6} className="saveButton mt-3">Save to Plan</div>
+                                        <div sm={6} className="saveButton mt-3" onClick={() => savePlan(e.id)}>Save to Plan</div>
                                     </div>
                                 </div>
 
