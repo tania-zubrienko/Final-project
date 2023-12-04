@@ -6,6 +6,7 @@ import { useState } from "react"
 
 const TripList = ({ trips, refresh }) => {
 
+    const update = () => refresh()
 
     return (
         !trips ?
@@ -18,7 +19,7 @@ const TripList = ({ trips, refresh }) => {
                         trips.length > 0 ?
                             trips.map((trip, i) => {
                                 return (
-                                    <TripCard trip={trip} refresh={refresh} />
+                                    <TripCard trip={trip} refreshList={update} key={i} />
                                 )
                             })
                             :
