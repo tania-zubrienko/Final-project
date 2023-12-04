@@ -13,17 +13,20 @@ import TripDates from '../TripDates/TripDates'
 
 const BookingsTab = ({ dates, id }) => {
     const [searchDate, setSearchDate] = useState()
+    const [searchType, setSearchType] = useState()
     const [booked, setBooked] = useState([])
 
     useEffect(() => {
         console.log('fecha', searchDate)
+        console.log('tipo', searchType)
         bookingService
-            .filterBookingByDay(id, { bookingDate: searchDate })
+            .filterBooking(id, searchDate, searchType)
             .then(({ data }) => {
+                console.log(data)
                 setBooked(data)
             })
             .catch(err => console.log(err))
-    }, [searchDate])
+    }, [searchDate, searchType])
 
     function filterByDay(e) {
         if (e.target.value !== undefined) {
@@ -34,10 +37,20 @@ const BookingsTab = ({ dates, id }) => {
         }
     }
 
+    function filterByType(e) {
+        console.log(e.target.value)
+        if (e.target.value !== 'Todo') {
+            setSearchType(e.target.value)
+        }
+        else {
+            setSearchType(undefined)
+        }
+    }
+
     return (
         <div>
             <TripDates dates={dates} filterByDay={filterByDay} />
-            <TabButtons />
+            <TabButtons filterByType={filterByType} />
             <div className="Dropdown">
 
 

@@ -35,8 +35,8 @@ class BookingService {
         return this.api.post(`/delete/${id}`)
     }
 
-    filterBookingByDay(id, bookingDate) {
-        return this.api.post(`/filter/${id}`, bookingDate)
+    filterBooking(id, bookingDate, bookingType) {
+        return this.api.post(`/filter/${id}`, { bookingDate, bookingType })
     }
 
 }
