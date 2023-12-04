@@ -1,32 +1,35 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import { MdOutlineDirectionsCarFilled, MdOutlineDirectionsBusFilled, MdOutlineRestaurant, MdOutlineTrain, MdFlight } from 'react-icons/md'
-import { GiDivingHelmet } from 'react-icons/gi'
-import { FaFerry } from 'react-icons/fa6'
+import { MdOutlineDirectionsBusFilled, MdOutlineRestaurant, MdOutlineTrain, MdFlight } from 'react-icons/md'
+import { IoTicketOutline } from "react-icons/io5";
 import { IoBedOutline } from 'react-icons/io5'
+import { VscClearAll } from "react-icons/vsc";
 import './TabsButtons.css'
 
 const TabButtons = () => {
 
-    const buttons = [{
-        icono: <IoBedOutline className='image' />,
-        name: 'Lodging'
-    },
-    {
-        icono: <MdOutlineDirectionsBusFilled className='image' />,
-        name: 'Bus'
-    }, {
-        icono: <MdOutlineRestaurant className='image' />,
-        name: 'Restaurant'
-    }, {
-        icono: <MdOutlineTrain className='image' />,
-        name: 'Train'
-    }, {
-        icono: <MdOutlineDirectionsCarFilled className='image' />,
-        name: 'Car Rental'
-    }, {
-        icono: <MdFlight className='image' />,
-        name: 'Flight'
-    }]
+    const buttons = [
+        {
+            icono: <VscClearAll className='image' />,
+            name: 'Todo'
+        }, {
+            icono: <IoBedOutline className='image' />,
+            name: 'Hotel'
+        },
+        {
+            icono: <MdFlight className='image' />,
+            name: 'Avión'
+        },
+        {
+            icono: <MdOutlineTrain className='image' />,
+            name: 'Trén'
+        },
+        {
+            icono: <MdOutlineDirectionsBusFilled className='image' />,
+            name: 'Bus'
+        }, {
+            icono: <IoTicketOutline className='image' />,
+            name: 'Entradas'
+        }]
 
     return (
         <Container>
@@ -36,8 +39,8 @@ const TabButtons = () => {
                     buttons.map(elm => {
                         return (
 
-                            <Col md={{ offset: 1, span: 3 }} className='mt-5' key={elm.name}>
-                                <button>
+                            <Col className='filters' key={elm.name}>
+                                <button value={elm.name}>
                                     {elm.icono}
                                     <br />
                                     {elm.name}
