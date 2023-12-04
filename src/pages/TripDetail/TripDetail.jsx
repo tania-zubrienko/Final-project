@@ -42,7 +42,9 @@ const TripDetail = () => {
 
     useEffect(() => {
     }, [dates])
+
     const [key, setKey] = useState('overview');
+
     return (
         <div className="TripDetail">
             <div className='header'>
@@ -62,7 +64,7 @@ const TripDetail = () => {
                             <h3>Destino: {currentTrip.destination}</h3>
                             <h3>Participantes: </h3>
 
-                            {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} />}
+                            {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} refresh={getTripInfo} />}
 
                         </>
                     }
