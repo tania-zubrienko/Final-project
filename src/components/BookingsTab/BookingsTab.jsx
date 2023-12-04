@@ -9,6 +9,7 @@ import { FaPlus } from "react-icons/fa6"
 import Booked from '../Booked/Booked'
 import bookingService from '../../services/booking.services'
 import formatDate from '../../utils/date-utils'
+import TripDates from '../TripDates/TripDates'
 
 const BookingsTab = ({ dates, id }) => {
     const [searchDate, setSearchDate] = useState()
@@ -25,20 +26,17 @@ const BookingsTab = ({ dates, id }) => {
     }, [searchDate])
 
     function filterByDay(e) {
-        setSearchDate(formatDate(new Date(e.target.value)))
+        if (e.target.value !== undefined) {
+            setSearchDate(formatDate(new Date(e.target.value)))
+        }
+        else {
+            setSearchDate(undefined)
+        }
     }
 
     return (
         <div>
-            {
-                dates.map(e => {
-                    return (
-                        <Button className='fecha' variant="outline-secondary" onClick={filterByDay} value={e} key={e}>
-                            {shortDate(new Date(Date.parse(e)))}
-                        </Button>
-                    )
-                })
-            }
+            <TripDates dates={dates} filterByDay={filterByDay} />
             <TabButtons />
             <div className="Dropdown">
 

@@ -72,11 +72,10 @@ const TripDetail = () => {
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
 
-                    <TripDates dates={dates} />
+                    {/* <TripDates dates={dates} />
                     <TabButtons />
                     <BookedDropdowns id={id} />
-                    <NotBookedDropdowns />
-
+                    <NotBookedDropdowns /> */}
                     <BookingsTab dates={dates} id={id}></BookingsTab>
 
                 </Tab>
