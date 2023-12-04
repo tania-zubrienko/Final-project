@@ -4,8 +4,7 @@ import formatDate from '../../utils/date-utils'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const UserTrips = ({ destination, date, tripId }) => {
-
+const UserTrips = ({ destination, date, tripId, tripImage }) => {
 
     const endDate = (formatDate(new Date(Date.parse(date.end))))
     const startDate = (formatDate(new Date(Date.parse(date.start))))
@@ -16,7 +15,7 @@ const UserTrips = ({ destination, date, tripId }) => {
         <Container>
             <Link to={`/viajes/detalles/${tripId}`} className='UserTrips'>
 
-                <img src={profileImg} alt='' />
+                <img src={tripImage} alt='' />
                 <div className='info'>
                     <h5>{destination}</h5>
                     <p>Desde {startDate}  Hasta {endDate}</p>

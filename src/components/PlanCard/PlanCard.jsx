@@ -2,9 +2,10 @@ import { Container, Row, Col, Accordion } from "react-bootstrap"
 import './PlanCard.css'
 import image from './../../assets/cabeceraProvisional.jpeg'
 import SavedPlanRow from "../SavedPlanRow/SavedPlanRow"
+import { useParams } from "react-router-dom"
 
 const PlanCard = () => {
-
+    console.log(useParams.id)
     return (
 
         <div className="PlanCard">

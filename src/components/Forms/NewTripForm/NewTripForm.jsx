@@ -13,7 +13,7 @@ const NewTripForm = () => {
     let inputRef = useRef();
 
     let options = {
-        fields: ["address_components", "geometry", "icon", "name"],
+        fields: ["address_components", "geometry", "photos", "name"],
     }
     useEffect(() => {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
@@ -22,6 +22,7 @@ const NewTripForm = () => {
         )
         autoCompleteRef.current.addListener("place_changed", async function () {
             const place = await autoCompleteRef.current.getPlace();
+            console.log(place.photos[0].getUrl())
             handleDestinationChange({ place })
 
         })
@@ -34,6 +35,7 @@ const NewTripForm = () => {
         destination: '',
         startDate: '',
         endDate: '',
+        tripImage: '',
         destinationCoords: {}
     })
 
@@ -47,9 +49,8 @@ const NewTripForm = () => {
         const lat = coords.place.geometry.location.lat()
         const lng = coords.place.geometry.location.lng()
         const city = coords.place.address_components[0].long_name
-
-        console.log(lat, lng, name)
-        setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city })
+        const picture = coords.place.photos[0].getUrl()
+        setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city, tripImage: picture })
     }
 
     const navigate = useNavigate()

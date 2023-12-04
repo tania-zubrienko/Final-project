@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap'
 import userServices from '../../services/user.services'
 import { useEffect, useState } from 'react'
 
-const SearchBar = ({ userToFind, friends, handler, closeModal }) => {
+const SearchBar = ({ userToFind, friends, handler, closeModal, refresh }) => {
     const { state, setState } = handler
     const [foundUsers, setFoundUsers] = useState([])
     useEffect(() => { getuser() }, [userToFind])
@@ -19,13 +19,20 @@ const SearchBar = ({ userToFind, friends, handler, closeModal }) => {
     }
 
     function handlerAddFriend(e) {
-        setState(!state)
+
         closeModal()
+
         const fiendId = e.target.value
         userServices
             .addFriend(fiendId)
-            .then((res) => setFriendList(...friends, res))
+            .then((res) => {
+                setFriendList(...friends, res)
+                refresh()
+            })
             .catch(err => console.log(err))
+        console.log("estoy en searchbar", state)
+
+
     }
 
     return (

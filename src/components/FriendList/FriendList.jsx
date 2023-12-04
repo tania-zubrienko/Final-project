@@ -3,6 +3,7 @@ import { Button, Modal, Form, InputGroup } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 import SearchBar from '../SearchBar/SearchBar'
 import userServices from '../../services/user.services'
+import FriendCard from '../Cards/FriendCard/FriendCard'
 
 const FriendList = () => {
 
@@ -12,10 +13,10 @@ const FriendList = () => {
     const [state, setState] = useState(false)
 
     const handleClose = () => {
-
+        console.log("estoy en close")
         setUserSearch('')
         setShow(false)
-        setState(!state)
+        // setState(!state)
 
     }
 
@@ -29,7 +30,6 @@ const FriendList = () => {
 
     const searchHandler = e => setUserSearch(e.target.value)
 
-    useEffect(() => { getList() }, [state])
 
     const getList = () => {
 
@@ -41,7 +41,7 @@ const FriendList = () => {
     }
 
     const handlerDeleteFriend = (e) => {
-
+        console.log("ELIMINAR")
         const friendId = e.target.value
 
         userServices
@@ -53,18 +53,14 @@ const FriendList = () => {
 
     }
 
+    useEffect(() => { getList() }, [state])
+
     return (
         <div>
             {friends.map((e, i) => {
                 return (
                     <div className='FriendList' key={i}>
-                        <div className='friendCard'>
-                            <img src={e.avatar} alt='' />
-                            <div className='info'>
-                                <h5>{e.name}</h5>
-                                <p>{e.email}</p>
-                            </div>
-                        </div>
+                        <FriendCard friend={e} key={i} />
                         <button className="deleteButton" value={e._id} onClick={handlerDeleteFriend}></button>
                     </div>
                 )
@@ -85,7 +81,7 @@ const FriendList = () => {
                         <label>Email :</label>
                         <input type='text' value={userSearch} onChange={searchHandler} placeholder='Email de usuario' />
                     </div>
-                    <SearchBar userToFind={userSearch} friends={friends} handler={{ setState, state, }} closeModal={handleClose} />
+                    <SearchBar userToFind={userSearch} friends={friends} handler={{ setState, state, }} closeModal={handleClose} refresh={getList} />
                 </Modal.Body>
                 <Modal.Footer className='d-flex justify-content-around'>
                     <Button className='myButton' onClick={handleClose}>

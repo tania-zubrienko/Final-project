@@ -1,17 +1,3 @@
-.friendCard {
-    display: flex;
-    align-items: center;
-
-}
-
-.friendCard img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-right: 20px;
-}
-
 .FriendList {
     display: flex;
     justify-content: space-between;

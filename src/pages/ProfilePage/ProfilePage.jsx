@@ -2,7 +2,7 @@
 import ProfileImage from "../../components/Profile/ProfileImage"
 import ProfileLinks from "../../components/Profile/ProfileLinks"
 
-const Profile = () => {
+const ProfilePage = () => {
 
     return (
         <div className="Profile">
@@ -12,4 +12,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default ProfilePage
