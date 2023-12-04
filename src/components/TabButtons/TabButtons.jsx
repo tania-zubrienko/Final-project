@@ -5,31 +5,39 @@ import { IoBedOutline } from 'react-icons/io5'
 import { VscClearAll } from "react-icons/vsc";
 import './TabsButtons.css'
 
-const TabButtons = () => {
+const TabButtons = ({ filterByType }) => {
 
     const buttons = [
         {
             icono: <VscClearAll className='image' />,
-            name: 'Todo'
+            name: 'Todo',
+            type: 'Todo'
         }, {
             icono: <IoBedOutline className='image' />,
-            name: 'Hotel'
+            name: 'Hotel',
+            type: 'Hotel'
         },
         {
             icono: <MdFlight className='image' />,
-            name: 'Avión'
+            name: 'Avión',
+            type: 'Avión'
         },
         {
             icono: <MdOutlineTrain className='image' />,
-            name: 'Trén'
+            name: 'Tren',
+            type: 'Tren'
         },
         {
-            icono: <MdOutlineDirectionsBusFilled className='image' />,
-            name: 'Bus'
-        }, {
+            icono: <MdOutlineDirectionsBusFilled className='image' values='' />,
+            name: 'Bus',
+            type: 'Bus'
+        },
+        {
             icono: <IoTicketOutline className='image' />,
-            name: 'Entradas'
-        }]
+            name: 'Entradas',
+            type: 'Entradas'
+        }
+    ]
 
     return (
         <Container>
@@ -40,9 +48,8 @@ const TabButtons = () => {
                         return (
 
                             <Col className='filters' key={elm.name}>
-                                <button value={elm.name}>
-                                    {elm.icono}
-                                    <br />
+                                
+                                <button onClick={filterByType} value={elm.type}>
                                     {elm.name}
                                 </button>
                             </Col>

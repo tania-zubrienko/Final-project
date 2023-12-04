@@ -3,11 +3,6 @@ import './TripDates.css'
 import { MdOutlineCalendarToday } from 'react-icons/md'
 const TripDates = ({ dates, filterByDay }) => {
 
-    function handleFilter(e) {
-        console.log(e.target.value)
-        filterByDay(e)
-    }
-
     return (
 
         <div className='slider'>
