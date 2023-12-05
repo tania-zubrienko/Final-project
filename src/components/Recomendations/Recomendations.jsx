@@ -6,7 +6,8 @@ import { HiOutlineBuildingLibrary } from "react-icons/hi2"
 import { FaTheaterMasks } from "react-icons/fa"
 import { RiGalleryLine } from "react-icons/ri"
 import tripServices from "../../services/trips.services"
-import searchNearbyService from "../../../../Trip-Planner-back/services/searchNearby.sevices"
+import searchService from '../../services/searchNearby.services'
+
 
 
 const Recomendations = ({ savePlan }) => {
@@ -24,7 +25,7 @@ const Recomendations = ({ savePlan }) => {
             .getTripById(id)
             .then(result => {
                 const { lat, lng } = result.data.result.destinationCoords
-                return searchNearbyService.getPlaceBycoords(lat, lng)
+                return searchService.getPlaceBycoords(lat, lng)
             })
             .then(res => {
                 setRecomendations(res.data.places)
