@@ -6,16 +6,15 @@ import shortDate from '../../utils/shortDate'
 import SavedPlanRow from '../SavedPlanRow/SavedPlanRow'
 import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
-import searchDetailsService from './../../../../Trip-Planner-back/services/searchDetails.services'
 
 
-const Plan = ({ dates }) => {
 
+const Plan = ({ myPlans }) => {
     const { id } = useParams()
 
     const [state, setState] = useState(false)
     const [planSearch, setPlanSearch] = useState('')
-    const [myPlans, setMyPlans] = useState()
+    // const [myPlans, setMyPlans] = useState()
     const [plansId, setPlansId] = useState([])
 
     const searchHandler = e => setPlanSearch(e.target.value)
@@ -31,10 +30,10 @@ const Plan = ({ dates }) => {
 
                 arrPlacesIdsTrip.map(elm => {
                     console.log("------", elm.placeId)
-                    searchDetailsService
-                        .getDetailsPlace()
-                        .then(response => console.log("----------------------", response))
-                        .catch(err => console.log(err))
+                    // searchDetailsService
+                    //     .getDetailsPlace()
+                    //     .then(response => console.log("----------------------", response))
+                    //     .catch(err => console.log(err))
                 })
 
                 // setPlansId(...plansId, elm.placeId)

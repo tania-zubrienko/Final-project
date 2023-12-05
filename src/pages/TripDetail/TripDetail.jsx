@@ -1,3 +1,4 @@
+import './TripDetail.css'
 import Plan from '../../components/Plan/Plan'
 import Recomendations from '../../components/Recomendations/Recomendations'
 import ListExpenses from '../../components/ListExpenses/ListExpenses'
@@ -6,9 +7,7 @@ import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
-import './TripDetail.css'
 import Participants from '../../components/Participants/Participants'
-import searchDetailsService from '../../../../Trip-Planner-back/services/searchDetails.services'
 import TripDates from '../../components/TripDates/TripDates'
 
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
@@ -34,23 +33,25 @@ const TripDetail = () => {
     }, [])
 
     const getTripInfo = () => {
+
         tripServices
             .getTripById(id)
             .then(res => {
                 setCurrentTrip(res.data.result)
                 setDates(getDatesArray(res.data.result.startDate, res.data.result.endDate))
+                setMyPlans(res.data.result.placesOfInterest)
             })
             .catch(err => console.log(err))
     }
 
-    const savePlan = (planId) => {
+    const savePlan = (planId, planName) => {
+        console.log("ENTRO EN SAVE PLAN", planId, planName)
         tripServices
-            .addPlantoTrip(id, planId)
-            .then(() => console.log())
-            .catch()
+            .addPlantoTrip(id, { planId, planName })
+            .then(getTripInfo())
+            .catch(err => console.log(err))
+
     }
-
-
 
     useEffect(() => {
     }, [dates])
