@@ -40,6 +40,7 @@ const SavedPlanRow = ({ myPlans }) => {
 
             <Row className='align-items-center' onClick={createModal}>
                 {myPlans.map(e => {
+
                     return (
                         <Col md={{ span: 3, offset: 1 }}>
                             <div className='d-flex  text-align-center align-items-center'>
@@ -50,6 +51,7 @@ const SavedPlanRow = ({ myPlans }) => {
 
                             </div>
                         </Col>)
+
                 })}
             </Row>
 
