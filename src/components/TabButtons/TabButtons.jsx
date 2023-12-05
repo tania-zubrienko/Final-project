@@ -9,31 +9,31 @@ const TabButtons = ({ filterByType }) => {
 
     const buttons = [
         {
-            icono: <VscClearAll className='image' />,
+            // icono: <VscClearAll className='image' />,
             name: 'Todo',
             type: 'Todo'
         }, {
-            icono: <IoBedOutline className='image' />,
+            // icono: <IoBedOutline className='image' />,
             name: 'Hotel',
             type: 'Hotel'
         },
         {
-            icono: <MdFlight className='image' />,
+            // icono: <MdFlight className='image' />,
             name: 'Avión',
             type: 'Avión'
         },
         {
-            icono: <MdOutlineTrain className='image' />,
+            // icono: <MdOutlineTrain className='image' />,
             name: 'Tren',
             type: 'Tren'
         },
         {
-            icono: <MdOutlineDirectionsBusFilled className='image' values='' />,
+            // icono: <MdOutlineDirectionsBusFilled className='image' values='' />,
             name: 'Bus',
             type: 'Bus'
         },
         {
-            icono: <IoTicketOutline className='image' />,
+            // icono: <IoTicketOutline className='image' />,
             name: 'Entradas',
             type: 'Entradas'
         }
@@ -48,10 +48,11 @@ const TabButtons = ({ filterByType }) => {
                         return (
 
                             <Col className='filters' key={elm.name}>
-                                
-                                <button onClick={filterByType} value={elm.type}>
-                                    {elm.name}
+
+                                <button onClick={filterByType} value={elm.type} className={elm.type}>
+
                                 </button>
+                                <p>{elm.name}</p>
                             </Col>
                         )
                     })
