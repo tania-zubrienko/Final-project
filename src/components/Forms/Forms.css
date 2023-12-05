@@ -18,7 +18,18 @@
     color: #001e3d !important;
     border-radius: 30px !important;
     width: 100%;
-    line-height: 50px !important;
+    line-height: 30px !important;
+    font-size: 1.5em !important;
+    font-weight: 500 !important;
+}
+
+.primary-button2 {
+    background-color: #001e3d !important;
+    border-color: #001e3d !important;
+    color: #c1ec70 !important;
+    border-radius: 30px !important;
+    width: 100%;
+    line-height: 30px !important;
     font-size: 1.5em !important;
     font-weight: 500 !important;
 }

@@ -6,7 +6,8 @@ import { HiOutlineBuildingLibrary } from "react-icons/hi2"
 import { FaTheaterMasks } from "react-icons/fa"
 import { RiGalleryLine } from "react-icons/ri"
 import tripServices from "../../services/trips.services"
-import searchNearbyService from "../../../../Trip-Planner-back/services/searchNearby.sevices"
+import searchService from '../../services/searchNearby.services'
+
 
 
 const Recomendations = ({ savePlan }) => {
@@ -14,24 +15,39 @@ const Recomendations = ({ savePlan }) => {
     const { id } = useParams()
 
     const [recomendations, setRecomendations] = useState([])
-    const indexArray = []
+    const [savedPlans, setSavedPlans] = useState([])
 
 
+    useEffect(() => getTripInfo(id), [])
+    // useEffect(() => getTripInfo(id), [getTripInfo, id])   // puse esto y lo quité después
 
-    useEffect(() => {
 
+    const getTripInfo = (id) => {
         tripServices
             .getTripById(id)
             .then(result => {
                 const { lat, lng } = result.data.result.destinationCoords
-                return searchNearbyService.getPlaceBycoords(lat, lng)
+                setSavedPlans(result.data.result.placesOfInterest)
+                return searchService.getPlaceBycoords(lat, lng)
             })
+            .then(res => setRecomendations(res.data.places))
+            .catch(err => console.log(err))
+    }
+
+    const save = (e) => {
+        console.log(e.target.value)
+        const { value: placeId } = e.target
+        tripServices
+            .getPlaceInfo(placeId)
             .then(res => {
-                setRecomendations(res.data.places)
+                const { name } = res.data
+                return (
+                    tripServices.addPlantoTrip(id, { placeId, name }))
             })
             .catch(err => console.log(err))
-    }, [])
 
+        getTripInfo(id)
+    }
 
     return (
 
@@ -55,8 +71,7 @@ const Recomendations = ({ savePlan }) => {
                                         <h6 className="mt-3">Valoraciones: {e.rating}</h6>
                                         <h6>{e.formattedAddress}</h6>
                                         {e.currentOpeningHours && <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>}
-
-                                        <div sm={6} className="saveButton mt-3" onClick={() => savePlan(e.id)}>Save to Plan</div>
+                                        <button sm={6} className="saveButton mt-3" onClick={save} value={e.id}>Añadir al viaje</button>
                                     </div>
                                 </div>
 

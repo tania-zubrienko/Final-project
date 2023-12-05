@@ -1,15 +1,17 @@
 import { Button, Form } from "react-bootstrap"
 import formatDate from "../../../utils/date-utils"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import bookingService from "../../../services/booking.services"
 import { useNavigate, useParams } from "react-router-dom"
 import uploadServices from './../../../services/upload.services'
 import AlertForm from '../AlertForm/AlertForm'
+import tripServices from "../../../services/trips.services"
 
 
 const NewBookingForm = () => {
     const todayDate = new Date()
-    const minDate = formatDate(todayDate)
+    const [minDate, setMinDate] = useState(formatDate(todayDate))
+    const [maxDate, setMaxDate] = useState(formatDate(todayDate))
     const [bookingInfo, setBookingInfo] = useState({
         name: '',
         type: '',
@@ -23,6 +25,20 @@ const NewBookingForm = () => {
     const { id } = useParams()
 
     const navigate = useNavigate()
+
+    useEffect(() => {
+        setDateLimits()
+    }, [])
+
+    function setDateLimits() {
+        tripServices
+            .getTripDates(id)
+            .then(({ data }) => {
+                setMinDate(formatDate(new Date(data.startDate)))
+                setMaxDate(formatDate(new Date(data.endDate)))
+            })
+            .catch(err => console.log(err))
+    }
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
@@ -49,8 +65,12 @@ const NewBookingForm = () => {
         event.preventDefault()
         bookingService
             .saveBookings(id, bookingInfo)
-            .then(() => navigate('/'))
+            .then(() => navigate(`/viajes/detalles/${id}`))
             .catch(err => setErrors(err.response.data.errorMessages))
+    }
+
+    function volver() {
+        navigate(`/viajes/detalles/${id}`)
     }
 
     return (
@@ -59,6 +79,7 @@ const NewBookingForm = () => {
             <Form.Group className="mb-3" controlId="destination-id">
                 <Form.Label className='trip-label'>Tipo de reserva</Form.Label>
                 <Form.Select className='trip-input' type="text" name="type" value={bookingInfo.type} onChange={handleInputOnChange} >
+                    <option >Elige un tipo de reserva </option>
                     <option value="Hotel">Hotel</option>
                     <option value="Avión">Avión</option>
                     <option value="Tren">Tren</option>
@@ -74,12 +95,12 @@ const NewBookingForm = () => {
 
             <Form.Group className="mb-3" controlId="formBasicStartDate">
                 <Form.Label className='trip-label'>Entrada</Form.Label>
-                <Form.Control className='trip-input' type="date" min={minDate} placeholder="Introduce la fecha de ida" name="startDate" value={bookingInfo.startDate} onChange={handleInputOnChange} />
+                <Form.Control className='trip-input' type="date" min={minDate} max={bookingInfo.endDate ? bookingInfo.endDate : maxDate} placeholder="Introduce la fecha de ida" name="startDate" value={bookingInfo.startDate} onChange={handleInputOnChange} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEndDate">
                 <Form.Label className='trip-label'>Salida</Form.Label>
-                <Form.Control className='trip-input' type="date" min={bookingInfo.startDate} placeholder="Introduce la fecha de vuelta" name="endDate" value={bookingInfo.endDate} onChange={handleInputOnChange} />
+                <Form.Control className='trip-input' type="date" min={bookingInfo.startDate ? bookingInfo.startDate : minDate} max={maxDate} placeholder="Introduce la fecha de vuelta" name="endDate" value={bookingInfo.endDate} onChange={handleInputOnChange} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicDocument">
@@ -91,9 +112,12 @@ const NewBookingForm = () => {
                 errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
             }
 
-            <div className="d-grid gap-2 mt-5">
+            <div className="d-grid gap-2 mt-3 d-flex">
                 <Button className='primary-button' type="submit">
                     Crear
+                </Button>
+                <Button className='primary-button2' onClick={volver}>
+                    Volver atrás
                 </Button>
             </div>
         </Form>
