@@ -20,13 +20,13 @@ const SearchPlanBar = ({ planToFind, plans, handler, refresh }) => {
     function handlerAddPlan(e) {
         const planId = e.target.value
 
-        // planServices
-        //     .addPlan(planId)
-        //     .then((res) => {
-        //         setPlanList(...plans, res)
-        //         refresh()
-        //     })
-        //     .catch(err => console.log(err))
+        planServices
+            .addPlan(planId)
+            .then((res) => {
+                setPlanList(...plans, res)
+                refresh()
+            })
+            .catch(err => console.log(err))
     }
 
     return (
