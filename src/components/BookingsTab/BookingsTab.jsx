@@ -53,7 +53,6 @@ const BookingsTab = ({ dates, id }) => {
             <TabButtons filterByType={filterByType} />
             <div className="Dropdown">
 
-
                 <Container className="mt-5">
                     <Link to={`/viajes/reservas/${id}/crear`}><div className="btnAdd"><h3><FaPlus /></h3></div></Link>
 
