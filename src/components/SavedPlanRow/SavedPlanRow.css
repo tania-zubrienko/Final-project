@@ -19,3 +19,15 @@ p {
     width: 4vh;
     height: 4vh;
 }
+
+.SavedPlanRow {
+    margin: auto;
+    text-align: center;
+}
+
+.placeLink {
+    width: 350px;
+    text-align: left;
+    border: 0;
+    font-size: 1.5em;
+}

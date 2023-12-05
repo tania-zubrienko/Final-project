@@ -7,6 +7,7 @@ import { FaTheaterMasks } from "react-icons/fa"
 import { RiGalleryLine } from "react-icons/ri"
 import tripServices from "../../services/trips.services"
 import searchService from '../../services/searchNearby.services'
+import placeServices from '../../services/places.services'
 
 
 
@@ -37,7 +38,8 @@ const Recomendations = ({ savePlan }) => {
     const save = (e) => {
         console.log(e.target.value)
         const { value: placeId } = e.target
-        tripServices
+
+        placeServices
             .getPlaceInfo(placeId)
             .then(res => {
                 const { name } = res.data
@@ -45,6 +47,15 @@ const Recomendations = ({ savePlan }) => {
                     tripServices.addPlantoTrip(id, { placeId, name }))
             })
             .catch(err => console.log(err))
+
+        // tripServices
+        //     .getPlaceInfo(placeId)
+        //     .then(res => {
+        //         const { name } = res.data
+        //         return (
+        //             tripServices.addPlantoTrip(id, { placeId, name }))
+        //     })
+        //     .catch(err => console.log(err))
 
         getTripInfo(id)
     }

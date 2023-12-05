@@ -34,9 +34,9 @@ class TripServices {
         return this.api.post('/add', tripInfo)
     }
 
-    getPlaceInfo(placeId) {
-        return this.api.get(`/place/${placeId}`)
-    }
+    // getPlaceInfo(placeId) {
+    //     return this.api.get(`/place/${placeId}`)
+    // }
     deleteTrip(id) {
         return this.api.post(`/${id}/delete`)
     }
