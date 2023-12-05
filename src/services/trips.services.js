@@ -34,6 +34,9 @@ class TripServices {
         return this.api.post('/add', tripInfo)
     }
 
+    getPlaceInfo(placeId) {
+        return this.api.get(`/place/${placeId}`)
+    }
     deleteTrip(id) {
         return this.api.post(`/${id}/delete`)
     }
@@ -42,13 +45,10 @@ class TripServices {
         return this.api.post(`/${id}/expenses`, body)
     }
 
-    getTripById(id) {
-        return this.api.get(`/${id}`)
-    }
-
 
     addPlantoTrip(id, body) {
-        return this.api.post(`/${id}/plan`, { placeId: body })
+        console.log("estoy en AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAd")
+        return this.api.post(`/${id}/plan`, { placeId: body.placeId, name: body.name })
     }
 
     getParticipantList(id) {
@@ -63,6 +63,10 @@ class TripServices {
 
     deleteParticipant(participantId, tripId) {
         return this.api.post(`/${tripId}/deleteMember`, { member: participantId })
+    }
+
+    getTripById(id) {
+        return this.api.get(`/${id}`)
     }
 }
 

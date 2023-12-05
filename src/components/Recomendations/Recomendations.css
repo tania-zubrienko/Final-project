@@ -38,12 +38,13 @@ a {
 
 .saveButton {
     background-color: #c0ec6f !important;
-    border-radius: 30px;
-    text-align: center;
-    line-height: 40px;
-    color: #011e3d;
-    font-weight: 500;
-    width: 400px
+    border-radius: 30px !important;
+    border: 0;
+    text-align: center !important;
+    line-height: 25px !important;
+    color: #011e3d !important;
+    font-weight: 500 !important;
+    width: 400px !important
 }
 
 .details {
