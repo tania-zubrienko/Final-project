@@ -17,6 +17,51 @@ button:hover {
 
 .filters {
     display: flex !important;
-    justify-content: center;
+    justify-content: center !important;
+    flex-direction: column;
     margin-top: 50px !important;
+}
+
+.filters p {
+    text-align: center;
+}
+
+.Todo,
+.Hotel,
+.Avión,
+.Tren,
+.Bus,
+.Entradas {
+    align-self: center;
+    text-align: center;
+    width: 60px;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px;
+    object-fit: cover;
+}
+
+.Todo {
+    background-image: url('./../../assets/all.png');
+}
+
+.Hotel {
+    background-image: url('./../../assets/hotel.png');
+}
+
+.Avión {
+    background-image: url('./../../assets/flight.png');
+}
+
+.Tren {
+    background-image: url('./../../assets/train.png');
+}
+
+.Bus {
+    background-image: url('./../../assets/bus.png');
+}
+
+.Entradas {
+    background-image: url('./../../assets/tickets.png');
 }

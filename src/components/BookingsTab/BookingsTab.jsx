@@ -57,15 +57,11 @@ const BookingsTab = ({ dates, id }) => {
                 <Container className="mt-5">
                     <Link to={`/viajes/reservas/${id}/crear`}><div className="btnAdd"><h3><FaPlus /></h3></div></Link>
 
-                    <br />
-                    <h1 style={{ color: '#011e3d' }}>Booked</h1>
-                    <hr />
-
 
                     <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
                         <Accordion >
                             <Accordion.Item eventKey="0">
-                                <Accordion.Header style={{ backgroundColor: " #e5e9ec" }}><h3>Flights</h3></Accordion.Header>
+                                <Accordion.Header className="bookingsHeader"><h3>Reservas realizadas</h3></Accordion.Header>
                                 <Accordion.Body>
                                     {
                                         booked.length > 0 && booked.map((book) => {
@@ -81,7 +77,7 @@ const BookingsTab = ({ dates, id }) => {
 
                 </Container>
             </div>
-            <NotBookedDropdowns />
+            {/* <NotBookedDropdowns /> */}
         </div>
     )
 }

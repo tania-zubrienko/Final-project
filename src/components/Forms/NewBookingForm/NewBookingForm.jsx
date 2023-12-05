@@ -49,8 +49,12 @@ const NewBookingForm = () => {
         event.preventDefault()
         bookingService
             .saveBookings(id, bookingInfo)
-            .then(() => navigate('/'))
+            .then(() => navigate(`/viajes/detalles/${id}`))
             .catch(err => setErrors(err.response.data.errorMessages))
+    }
+
+    function volver() {
+        navigate(`/viajes/detalles/${id}`)
     }
 
     return (
@@ -59,6 +63,7 @@ const NewBookingForm = () => {
             <Form.Group className="mb-3" controlId="destination-id">
                 <Form.Label className='trip-label'>Tipo de reserva</Form.Label>
                 <Form.Select className='trip-input' type="text" name="type" value={bookingInfo.type} onChange={handleInputOnChange} >
+                    <option >Elige un tipo de reserva </option>
                     <option value="Hotel">Hotel</option>
                     <option value="Avión">Avión</option>
                     <option value="Tren">Tren</option>
@@ -91,9 +96,12 @@ const NewBookingForm = () => {
                 errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
             }
 
-            <div className="d-grid gap-2 mt-5">
+            <div className="d-grid gap-2 mt-3 d-flex">
                 <Button className='primary-button' type="submit">
                     Crear
+                </Button>
+                <Button className='primary-button2' onClick={volver}>
+                    Volver atrás
                 </Button>
             </div>
         </Form>

@@ -9,6 +9,11 @@ h3 {
     background-color: #c0ec6f;
     border-radius: 30px;
     text-align: center;
-    width: 50%;
+    width: 30%;
     margin: 0 auto;
+}
+
+.bookingsHeader h3 {
+    margin: 0;
+    border: 0;
 }
