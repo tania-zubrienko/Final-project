@@ -3,3 +3,7 @@
     text-align: center;
     margin-left: 1vh;
 }
+
+.header h2 {
+    line-height: 0.1em !important;
+}

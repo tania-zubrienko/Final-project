@@ -6,39 +6,50 @@ import { useEffect, useState } from 'react'
 import PlanDetails from '../PlanDetails/PlanDetails'
 import { Link } from 'react-router-dom'
 import tripServices from '../../services/trips.services'
+import placeServices from '../../services/places.services'
 
 //myPlans
 const SavedPlanRow = ({ myPlans }) => {
 
     const [showModal, setShowModal] = useState(false)
+    const [currentPlace, setCurrentPlace] = useState()
+
     const createModal = () => {
         setShowModal(true)
     }
 
     const getPlaceInfo = e => {
+
         const { value } = e.target
-        tripServices.getPlaceInfo(value).then(res => console.log(res.data))
+
+        placeServices
+            .getPlaceInfo(value)
+            .then(res => setCurrentPlace(res.data))
+            .catch(err => console.log(err))
+
+        // tripServices
+        //     .getPlaceInfo(value)
+        //     .then(res => setCurrentPlace(res.data))
+        //     .catch(err => console.log(err))
     }
 
 
     return (
 
-        <div className='SavedPlanRow'>
+        <div className='SavedPlanRow' >
 
             <Row className='align-items-center' onClick={createModal}>
                 {myPlans.map(e => {
-                    return (<>
-                        <Col xs={1}>
-                            <IoLocationOutline className='icon' />
-                        </Col>
-                        <Col xs={10} sm={9}>
-                            <button value={e.placeId} onClick={getPlaceInfo}>{e.name}</button>
-                            <p>9AM  - 5PM Monday closed. 4,51€.</p>
-                        </Col>
-                        <Col sm={2}>
-                            <img className='plan-img' src={cabeceraProvisional} alt='' />
-                        </Col>
-                    </>)
+                    return (
+                        <Col md={{ span: 3, offset: 1 }}>
+                            <div className='d-flex  text-align-center align-items-center'>
+
+                                <p><IoLocationOutline className='icon' /></p>
+
+                                <button value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
+
+                            </div>
+                        </Col>)
                 })}
             </Row>
 
@@ -68,7 +79,7 @@ const SavedPlanRow = ({ myPlans }) => {
                     <Modal.Title>Detalle del Plan</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <PlanDetails />
+                    <PlanDetails placeInfo={currentPlace} />
                 </Modal.Body>
             </Modal>
 

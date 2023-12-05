@@ -1,17 +1,24 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import cabeceraProvisional from '../../assets/cabeceraProvisional.jpeg'
 import { IoLocationOutline, IoHourglassOutline, IoEarthOutline, IoDocumentOutline } from "react-icons/io5"
+import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go"
-import { LuEuro } from "react-icons/lu"
+import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import './PlanDetails.css'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import placeServices from '../../services/places.services';
 
-const PlanDetails = () => {
+const PlanDetails = ({ placeInfo }) => {
+    console.log(placeInfo)
+
     return (
+        placeInfo &&
         <Container>
-            <h3 className='mt-3'>Chapultepec Castle</h3>
+            <h3 className='mt-3'>{placeInfo.name}</h3>
             <Row className='mt-4'>
                 <Col md={{ offset: 1, span: 10 }}>
-                    <img className='planImg' src={cabeceraProvisional} alt="" />
+                    <img className='planImg' src={placeInfo.img} alt="" />
                 </Col>
             </Row>
             <Row>
@@ -20,7 +27,7 @@ const PlanDetails = () => {
                         <IoLocationOutline className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Bosque de Chapultepec I Secc, Miguel Hidalgo, 11580 Mexico City, Mexico</p>
+                        <p>{placeInfo.formatted_address}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
@@ -28,31 +35,31 @@ const PlanDetails = () => {
                         <GoClock className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>9AM  - 5PM Monday closed</p>
+                        <p>Horario habitual: {placeInfo.hours[0]}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
                     <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }}>
-                        <IoHourglassOutline className='icon' />
+                        <FaRegStar className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>People typically spend 3 hr here</p>
+                        <p>Rating: {placeInfo.rating}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
                     <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }}>
-                        <IoEarthOutline className='icon' />
+                        <LiaMapMarkerAltSolid className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>https://mnh.inah.gob.mx/</p>
+                        <Link to={placeInfo.url}>Como llegar</Link>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
                     <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }} >
-                        <LuEuro className='icon' />
+                        <IoEarthOutline className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>4,51€* The prices could be change</p>
+                        <Link to={placeInfo.url}><p>{placeInfo.website}</p></Link>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
