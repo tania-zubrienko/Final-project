@@ -27,7 +27,7 @@ const SavedPlanRow = ({ myPlans }) => {
 
             <Row className='align-items-center' onClick={createModal}>
                 {myPlans.map(e => {
-                    return (<>
+                    return (<div key={e}>
                         <Col xs={1}>
                             <IoLocationOutline className='icon' />
                         </Col>
@@ -38,7 +38,7 @@ const SavedPlanRow = ({ myPlans }) => {
                         <Col sm={2}>
                             <img className='plan-img' src={cabeceraProvisional} alt='' />
                         </Col>
-                    </>)
+                    </div>)
                 })}
             </Row>
 

@@ -1,63 +1,79 @@
-import { Col, Container, Row } from 'react-bootstrap'
-import { useEffect, useState } from 'react'
+import { Col, Container, Form, FormGroup, Row } from 'react-bootstrap'
+import { useEffect, useState, useRef } from 'react'
+import tripServices from '../../services/trips.services'
+import { useParams } from 'react-router-dom'
 
 
-const SearchPlanBar = ({ planToFind, plans, handler, refresh }) => {
+const SearchPlanBar = () => {
+    const { id } = useParams()
 
-    const { state, setState } = handler
-    const [foundPlans, setFoundPlans] = useState([])
-    useEffect(() => { getPlan() }, [planToFind])
+    let autoCompleteRef = useRef()
+    let inputRef = useRef()
+    const [planInfo, setPlanInfo] = useState({
+        name: '',
+        placeId: '',
+        destinationCoords: {}
+    })
 
-    const [planList, setPlanList] = useState(plans)
+    let options = {
+        fields: ["address_components", "geometry", "photos", "place_id", "name"],
+    }
+    useEffect(() => {
+        autoCompleteRef.current = new window.google.maps.places.Autocomplete(
+            inputRef.current,
+            options
+        )
+        autoCompleteRef.current.addListener("place_changed", async function () {
+            const place = await autoCompleteRef.current.getPlace();
+            console.log(place)
+            handlePlaceChange({ place })
+        })
+    }, [])
 
-    function getPlan() {
-        // planServices
-        //     .getPlanData(planToFind)
-        //     .then(result => setFoundPlans(result.data))
-        //     .catch(err => console.log(err))
+    useEffect(() => {
+        console.log(planInfo)
+    }, [planInfo])
+
+    function handleInputOnChange(event) {
+        const { value, name } = event.target
+        setPlanInfo({ ...planInfo, [name]: value })
     }
 
-    function handlerAddPlan(e) {
-        const planId = e.target.value
+    function handlePlaceChange(coords) {
+        const lat = coords.place.geometry.location.lat()
+        const lng = coords.place.geometry.location.lng()
+        const name = coords.place.name
+        const id = coords.place.place_id
+        // const picture = coords.place.photos[0].getUrl()
+        setPlanInfo({ ...planInfo, name: name, placeId: id, destinationCoords: { lat: lat, lng: lng } })
+    }
 
-        // planServices
-        //     .addPlan(planId)
-        //     .then((res) => {
-        //         setPlanList(...plans, res)
-        //         refresh()
-        //     })
-        //     .catch(err => console.log(err))
+    function handleNewPlanSubmit(event) {
+        event.preventDefault()
+        console.log('holaaaaa')
+        tripServices
+            .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name })
+            .then(() => console.log("para que no pete"))
+            .catch(err => console.log(err))
+
     }
 
     return (
-        <div className='SearchBar'>
-            <Container>
-                <h5>Listado de Planes</h5>
-                {foundPlans.map(e => {
-                    if (!plans.filter(elm => elm.name === e.name).length > 0) {
-                        return (
-                            <Row md={{ span: 6, offset: 3 }} className='mb-3'>
-                                <Col className='d-flex justify-content-between align-items-center' >
-                                    <div className='userCard'>
-                                        {/* <img className='userPic' src={e.photo} alt='' /> */}
-                                        <div>
-                                            <p>{e.name}</p>
-                                            {/* <p>{e.distance}</p>
-                                            <p>{e.ranking}</p>
-                                            <p>{e.admision}</p> */}
-                                        </div>
-                                    </div>
-                                    <button className='addButton' value={e._id} onClick={handlerAddPlan} ></button>
-                                </Col>
-                            </Row>
-                        )
-                    }
-
-                })}
-
-            </Container>
-
-        </div >
+        <Container>
+            <Form>
+                <Form.Group className="mb-3" controlId="place-id" >
+                    <Row>
+                        <Col md={{ offset: 1, span: 9 }}>
+                            <Form.Label className='place-label' >Plan</Form.Label>
+                            <Form.Control ref={inputRef} className='place-input' type="text" placeholder="Introduce que quieres visitar" name="name" value={planInfo.name} onChange={handleInputOnChange} />
+                        </Col>
+                        <Col md={{ span: 2 }} className='mt-4'>
+                            <button onClick={handleNewPlanSubmit}>Asi??</button>
+                        </Col>
+                    </Row>
+                </Form.Group>
+            </Form>
+        </Container>
     )
 }
 

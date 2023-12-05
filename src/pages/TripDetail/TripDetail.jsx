@@ -15,6 +15,7 @@ import BookingsTab from '../../components/BookingsTab/BookingsTab'
 import TabButtons from '../../components/TabButtons/TabButtons'
 import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
 import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
+import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
 
 
 
@@ -90,6 +91,7 @@ const TripDetail = () => {
                 </Tab>
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <TripDates dates={dates} />
+                    <SearchPlanBar tripId={id} />
                     <Plan myPlans={myPlans} />
                     <Recomendations savePlan={savePlan} />
                 </Tab>
