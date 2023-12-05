@@ -38,6 +38,10 @@ class TripServices {
         return this.api.post(`/${id}/delete`)
     }
 
+    getTripDates(id) {
+        return this.api.get(`/${id}/dates`)
+    }
+
     addExpensetoTrip(id, body) {
         return this.api.post(`/${id}/expenses`, body)
     }
