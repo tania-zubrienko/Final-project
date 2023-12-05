@@ -1,31 +1,14 @@
-import { Container, Row, Col, Button } from "react-bootstrap"
+import { Container, Row, Col, Button, Modal } from "react-bootstrap"
 import { FaRegCircleCheck } from "react-icons/fa6"
 import './Booked.css'
 import shortDate from "../../utils/shortDate"
+import { useState } from "react"
 
 const Booked = ({ booked }) => {
     const [show, setShow] = useState(false)
 
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
-
-    const deleteDocument = (e) => {
-        const documentId = e.target.value
-        console.log(documentId)
-        userServices
-            .deleteDocument(documentId)
-            .then(() => {
-                console.log('eliminado')
-                getDocuments()
-                handleClose()
-            })
-            .catch(err => console.log(err))
-    }
-
-    // const finishActions = () => {
-    //     handleClose()
-    //     getDocuments()
-    // }
 
     return (
         booked &&
@@ -49,16 +32,19 @@ const Booked = ({ booked }) => {
                                     <button className="see-document" onClick={handleShow}></button>
                                     <Modal show={show} onHide={handleClose}>
                                         <Modal.Header closeButton>
-                                            <Modal.Title>{booked.type}</Modal.Title>
+                                            <Modal.Title>{booked.name}</Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
-                                            <Row>
-                                                <img src={booked.documents} alt="" />
-                                            </Row>
+                                            {
+                                                booked.documents.map(doc => {
+                                                    return (
+                                                        <Row key={doc}>
+                                                            <img src={doc} alt="" />
+                                                        </Row>
+                                                    )
+                                                })
+                                            }
                                         </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="danger" value={children._id} onClick={deleteDocument}><h3><MdDeleteOutline /></h3></Button>
-                                        </Modal.Footer>
                                     </Modal>
                                 </>
                             }
