@@ -66,7 +66,7 @@ const ListExpenses = () => {
                             {
                                 expensesList.map((elm, id) => {
                                     return (
-
+<>
                                         <ExpenseRow key={id} expense={elm} />
 
                                         // TODO: DESACOPLAR A EXPENSEROW
@@ -81,6 +81,7 @@ const ListExpenses = () => {
                                                 <button value={elm._id} onClick={deleteTripExpense}>Eliminar</button>
                                             </Col>
                                         </Row>
+    </>
                                     )
                                 })
                             }
