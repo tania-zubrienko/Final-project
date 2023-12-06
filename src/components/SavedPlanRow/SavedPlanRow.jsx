@@ -9,10 +9,11 @@ import tripServices from '../../services/trips.services'
 import placeServices from '../../services/places.services'
 
 //myPlans
-const SavedPlanRow = ({ myPlans }) => {
+const SavedPlanRow = ({ myPlans, refresh }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [currentPlace, setCurrentPlace] = useState()
+    const [currentId, setCurrentId] = useState("")
 
     const createModal = () => {
         setShowModal(true)
@@ -21,7 +22,8 @@ const SavedPlanRow = ({ myPlans }) => {
     const getPlaceInfo = e => {
 
         const { value } = e.target
-
+        const buttonId = e.target.id
+        setCurrentId(buttonId)
         placeServices
             .getPlaceInfo(value)
             .then(res => setCurrentPlace(res.data))
@@ -31,6 +33,15 @@ const SavedPlanRow = ({ myPlans }) => {
         //     .getPlaceInfo(value)
         //     .then(res => setCurrentPlace(res.data))
         //     .catch(err => console.log(err))
+    }
+
+    // const getCurrentId = (id) => {
+    //     setCurrentId(id)
+    // }
+
+    const refreshInfo = () => {
+        refresh()
+        setShowModal(false)
     }
 
 
@@ -47,7 +58,7 @@ const SavedPlanRow = ({ myPlans }) => {
 
                                 <p><IoLocationOutline className='icon' /></p>
 
-                                <button value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
+                                <button id={e._id} value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
 
                             </div>
                         </Col>)
@@ -81,7 +92,7 @@ const SavedPlanRow = ({ myPlans }) => {
                     <Modal.Title>Detalle del Plan</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <PlanDetails placeInfo={currentPlace} />
+                    <PlanDetails placeInfo={currentPlace} currentId={currentId} refreshInfo={refreshInfo} />
                 </Modal.Body>
             </Modal>
 

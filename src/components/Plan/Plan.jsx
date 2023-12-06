@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom'
 
 
 
-const Plan = ({ myPlans }) => {
+const Plan = ({ myPlans, refresh }) => {
     const { id } = useParams()
 
     const [state, setState] = useState(false)
@@ -94,7 +94,7 @@ const Plan = ({ myPlans }) => {
                 <Accordion.Item eventKey="0" >
                     <Accordion.Header ><h3>Sitios guardados</h3></Accordion.Header>
                     <Accordion.Body>
-                        <SavedPlanRow myPlans={myPlans} />
+                        <SavedPlanRow myPlans={myPlans} refresh={refresh} />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
