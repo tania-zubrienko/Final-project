@@ -21,6 +21,8 @@ const NewBookingForm = () => {
         documents: []
     })
 
+    const [isLoading, setIsLoading] = useState(false)
+
     const [errors, setErrors] = useState([])
 
     const { id } = useParams()
@@ -49,6 +51,7 @@ const NewBookingForm = () => {
 
     function handleFileUpload(e) {
         for (let i = 0; i < e.target.files.length; i++) {
+            setIsLoading(true)
             const formData = new FormData()
             formData.append('imageData', e.target.files[i])
 
@@ -56,8 +59,12 @@ const NewBookingForm = () => {
                 .uploadimage(formData)
                 .then(({ data }) => {
                     bookingInfo.documents.push(data.cloudinary_url)
+                    setIsLoading(false)
                 })
-                .catch(err => console.log(err))
+                .catch(err => {
+                    console.log(err)
+                    setIsLoading(false)
+                })
         }
     }
 
@@ -110,8 +117,8 @@ const NewBookingForm = () => {
             }
 
             <div className="d-grid gap-2 mt-3 d-flex">
-                <Button className='primary-button' type="submit">
-                    Crear
+                <Button className='primary-button' type="submit" disabled={isLoading}>
+                    {isLoading ? 'Cargando...' : 'Crear'}
                 </Button>
                 <Button className='primary-button2' onClick={volver}>
                     Volver atrás
