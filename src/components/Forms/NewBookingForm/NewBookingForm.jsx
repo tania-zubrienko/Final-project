@@ -94,7 +94,7 @@ const NewBookingForm = () => {
 
             <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label className='trip-label'>Nombre</Form.Label>
-                <Form.Control className='trip-input' type="text" placeholder="Introduce tu nombre" name="name" value={bookingInfo.name} onChange={handleInputOnChange} />
+                <Form.Control className='trip-input' type="text" placeholder="Ponle un nombre a la reserva" name="name" value={bookingInfo.name} onChange={handleInputOnChange} />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicStartDate">

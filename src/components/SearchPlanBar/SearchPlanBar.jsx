@@ -54,12 +54,12 @@ const SearchPlanBar = () => {
         <Container>
             <Form>
                 <Form.Group className="mb-3" controlId="place-id" >
-                    <Row className='align-items-center'>
+                    <Row className='align-items-center mt-4'>
                         <Col md={{ offset: 1, span: 9 }}>
 
                             <Form.Control ref={inputRef} className='place-input' type="text" placeholder="¿A donde vamos?" name="name" value={planInfo.name} onChange={handleInputOnChange} />
                         </Col>
-                        <Col md={{ span: 2 }} className='mt-4'>
+                        <Col md={{ span: 2 }}>
                             <button onClick={handleNewPlanSubmit} className='addPlaceBtn'>Añadir al plan</button>
                         </Col>
                     </Row>

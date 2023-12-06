@@ -75,22 +75,23 @@ const TripDetail = () => {
                     }
                     <Recomendations refresh={getTripInfo} />
                 </Tab>
+
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
-
                     <BookingsTab dates={dates} id={id}></BookingsTab>
-
                 </Tab>
+
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <TripDates dates={dates} />
                     <SearchPlanBar tripId={id} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} />
                     <Recomendations refresh={getTripInfo} />
                 </Tab>
+
                 <Tab eventKey="gastos" title="Gastos" className='tab'>
                     <ListExpenses />
                 </Tab>
-                <Tab eventKey="info" title="Información" className='tab'>
-                </Tab>
+
+                <Tab eventKey="info" title="Información" className='tab'></Tab>
             </Tabs>
         </div >
     )

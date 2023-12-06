@@ -6,15 +6,15 @@ import userServices from '../../services/user.services';
 import tripServices from '../../services/trips.services';
 
 const Participants = ({ participants, id, refresh }) => {
-    
+
     const [show, setShow] = useState(false)
     const [friends, setFriends] = useState([])
     const [members, setMembers] = useState(participants)
-    
+
     useEffect(() => getFriends(), [])
     useEffect(() => refresh(), [show])
 
-    function getFriends(){
+    function getFriends() {
 
         userServices
             .getFriendList()
@@ -22,26 +22,29 @@ const Participants = ({ participants, id, refresh }) => {
             .catch(err => console.log(err))
     }
 
-    function handlerAddParticipant(){
+    function handlerAddParticipant() {
 
-       setShow(true) 
+        setShow(true)
 
     }
 
-    function handleClose(){
+    function handleClose() {
 
         refresh()
         setShow(false)
 
     }
 
-    function addMember(e){
+    function addMember(e) {
+
         const { value } = e.target
+
         setMembers([...members, value])
         refresh()
+
     }
 
-    function deleteMember(e){
+    function deleteMember(e) {
 
         const { value } = e.target
 
@@ -55,7 +58,7 @@ const Participants = ({ participants, id, refresh }) => {
 
     }
 
-    function updateGroup(){
+    function updateGroup() {
 
         const newMembers = Array.from(new Set(members))
 
@@ -105,7 +108,7 @@ const Participants = ({ participants, id, refresh }) => {
                                 </div>
                                 <div >
                                     {(!participants.filter(elm => elm._id === e._id).length > 0) ?
-                                        <button onClick={addMember} value={e._id} >add</button>
+                                        <button onClick={addMember} value={e._id} className={members.filter(member => member._id === e).length > 0 ? "checked" : "unChecked"}>add</button>
                                         :
                                         <button onClick={deleteMember} value={e._id} >delete</button>
                                     }

@@ -21,7 +21,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
     }
 
     function deleteDocument(e) {
-        
+
         const documentId = e.target.value
 
         userServices
@@ -56,7 +56,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                                 </Row>
                                             </Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="danger" value={children._id} onClick={deleteDocument}>Eliminar</Button>
+                                                <button className="deleteButton" value={children._id} onClick={deleteDocument} />
                                             </Modal.Footer>
                                         </Modal>
                                     </>

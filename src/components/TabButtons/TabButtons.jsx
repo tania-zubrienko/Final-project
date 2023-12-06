@@ -11,7 +11,7 @@ const TabButtons = ({ filterByType }) => {
 
                         return (
 
-                            <Col className='filters' key={elm.name}>
+                            <Col xs={4} md={2} className='filters' key={elm.name}>
                                 <button onClick={filterByType} value={elm.type} className={elm.type}>
                                 </button>
                                 <p>{elm.name}</p>
