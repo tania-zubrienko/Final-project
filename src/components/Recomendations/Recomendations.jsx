@@ -2,6 +2,7 @@ import './Recomendations.css'
 import { Container, Row, Col, Toast } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { HiOutlinePhoto } from "react-icons/hi2"
 import { HiOutlineBuildingLibrary } from "react-icons/hi2"
 import { FaTheaterMasks } from "react-icons/fa"
 import { RiGalleryLine } from "react-icons/ri"
@@ -18,6 +19,7 @@ const Recomendations = ({ refresh }) => {
     const [recomendations, setRecomendations] = useState([])
     const [savedPlans, setSavedPlans] = useState([])
     const [show, setShow] = useState(false)
+    let icon = ''
 
     useEffect(() => getTripInfo(id), [])
 
@@ -38,6 +40,7 @@ const Recomendations = ({ refresh }) => {
     function save(e) {
 
         setShow(true)
+        getTripInfo(id)
 
         const { value: placeId } = e.target
 
@@ -45,13 +48,10 @@ const Recomendations = ({ refresh }) => {
             .getPlaceInfo(placeId)
             .then(res => {
                 const { name } = res.data
-                return (
-                    tripServices.addPlantoTrip(id, { placeId, name })
-                        .then(() => refresh()))
+                return tripServices.addPlantoTrip(id, { placeId, name })
             })
+            .then(() => refresh())
             .catch(err => console.log(err))
-
-        getTripInfo(id)
 
     }
 
@@ -68,19 +68,33 @@ const Recomendations = ({ refresh }) => {
                 <h3 className="mt-5 mb-3">Te puede interesar!</h3>
                 < Row className="mt-5"  >
                     {recomendations && recomendations.map(e => {
+                        if (e.types.includes("art_gallery")) {
+                            icon = 'RiGalleryLine'
+                        }
+                        else if (e.types.includes("museum")) {
+                            icon = 'HiOutlineBuildingLibrary'
+                        }
+                        else if (e.types.includes("tourist_attraction")) {
+                            icon = 'HiOutlinePhoto'
+                        }
+                        else if (e.types.includes("performing_arts_theater")) {
+                            icon = 'FaTheaterMasks'
+                        }
                         return (
 
                             <Col key={e.id} className="mb-5">
                                 <div className="recomedationCard" >
-                                    {(e.types.includes("tourist_attraction") || e.types.includes("museum")) && <h1 ><HiOutlineBuildingLibrary className="placeIcon" /></h1>}
-                                    {e.types.includes("art_gallery") && <h1 ><RiGalleryLine className="placeIcon" /></h1>}
-                                    {e.types.includes("performing_arts_theater") && <h1 ><FaTheaterMasks className="placeIcon" /></h1>}
+                                    {icon === 'HiOutlinePhoto' && <h1 ><HiOutlinePhoto className="placeIcon" /></h1>}
+                                    {icon === 'HiOutlineBuildingLibrary' && <h1 ><HiOutlineBuildingLibrary className="placeIcon" /></h1>}
+                                    {icon === 'RiGalleryLine' && <h1 ><RiGalleryLine className="placeIcon" /></h1>}
+                                    {icon === 'FaTheaterMasks' && <h1 ><FaTheaterMasks className="placeIcon" /></h1>}
 
                                     <div className="details">
                                         <h5>{e.displayName.text}</h5>
                                         <h6 className="mt-3">Valoraciones: {e.rating}</h6>
                                         <h6>{e.formattedAddress}</h6>
-                                        {e.currentOpeningHours && <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>}
+                                        {e.currentOpeningHours ? <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>
+                                            : <p>No hay información sobre el horario </p>}
                                         <button sm={6} className="saveButton mt-3" onClick={save} value={e.id}>Añadir al viaje</button>
                                     </div>
                                 </div>
@@ -92,6 +106,7 @@ const Recomendations = ({ refresh }) => {
 
         </div >
     )
+
 }
 
 export default Recomendations

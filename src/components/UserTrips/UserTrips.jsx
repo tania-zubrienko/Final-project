@@ -5,8 +5,9 @@ import { Link } from 'react-router-dom'
 
 const UserTrips = ({ destination, date, tripId, tripImage }) => {
 
-    const endDate = (formatDate(new Date(Date.parse(date.end))))
-    const startDate = (formatDate(new Date(Date.parse(date.start))))
+    // TODO: MOVER A UTILS
+    const endDate = formatDate(new Date(Date.parse(date.end)))
+    const startDate = formatDate(new Date(Date.parse(date.start)))
 
     return (
         <Container>

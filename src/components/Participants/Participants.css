@@ -36,10 +36,28 @@
     margin: 0 0 0 20px;
 }
 
-.checked {
-    background-color: red;
+.checked,
+.unChecked,
+.delete {
+    align-self: center;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 0px;
+    margin-right: 10px;
 }
 
-.unChecked p {
-    background-color: rgb(0, 255, 179);
+.checked {
+    background-image: url('./../../assets/checked.png');
+}
+
+.unChecked {
+    background-image: url('./../../assets/unchecked.png');
+}
+
+.delete {
+    background-image: url('./../../assets/deleteMember.png');
+    background-color: transparent !important;
 }

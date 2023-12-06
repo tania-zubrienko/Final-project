@@ -3,6 +3,8 @@ import { useState } from "react"
 import uploadServices from './../../../services/upload.services'
 import userServices from "../../../services/user.services"
 
+
+// TODO: REVISAR ESTAS PROPS CUANDO SE RENDERIZA DESDE LA PÁGINA
 const DocumentsForm = ({ finishActions, type }) => {
     const [documentInfo, setDocumentInfo] = useState({
         type: type,

@@ -47,6 +47,7 @@ class TripServices {
     }
 
     addPlantoTrip(id, body) {
+        console.log("estoy en aaaaaaaaaaaaaaaaad")
         return this.api.post(`/${id}/plan`, { placeId: body.placeId, name: body.name })
     }
 
@@ -63,7 +64,6 @@ class TripServices {
     }
 
     deletePlan(tripId, currentId) {
-        console.log("estoy entrando aquiiiiiiiiiiiiiii")
         return this.api.post(`/${tripId}/deletePlan`, { planId: currentId })
     }
 

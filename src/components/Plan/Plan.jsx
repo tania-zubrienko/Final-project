@@ -4,7 +4,7 @@ import SavedPlanRow from '../SavedPlanRow/SavedPlanRow'
 
 
 const Plan = ({ myPlans, refresh }) => {
-
+    // TODO: REVISAR LAYOUT DE BOOTSTRAP
     return (
 
         <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>

@@ -32,20 +32,21 @@ const TripsPage = () => {
         <div className="Trips">
             <Container >
                 {userFutureTrips ?
-                    userFutureTrips.length > 0 ?
+                    userFutureTrips.length ?
                         <Link to="/viajes/crear">
                             <AddButton pageName='viaje' />
                         </Link>
-                        : <NoTrips />
+                        :
+                        <NoTrips />
                     :
                     <Loader />
                 }
 
                 <h1 className="mt-5"> Viajes pendientes</h1>
 
-                <TripList trips={userFutureTrips} refresh={getTrips}></TripList>
+                <TripList trips={userFutureTrips} refresh={getTrips} />
                 <h1 className="mt-5"> Viajes realizados</h1>
-                <TripList trips={userPastTrips}></TripList>
+                <TripList trips={userPastTrips} />
             </Container>
         </div >
     )

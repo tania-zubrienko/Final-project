@@ -17,32 +17,29 @@ import LoginPage from './pages/LoginPage/LoginPage.jsx'
 
 const AppRoutes = () => {
 
-    return (<Routes>
+    return (
+        <Routes>
+            <Route path='/pruebas' element={<NewDocumentPage />} />
 
+            <Route path='/' element={<HomePage />} />
+            <Route path='/registrarse' element={<SignupPage />} />
+            <Route path='/inicio-sesion' element={<LoginPage />} />
 
-        <Route path='/pruebas' element={<NewDocumentPage />}></Route>
+            <Route element={<PrivateRoute />}>
+                <Route path='/lista-deseos' element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
+                <Route path='/perfil' element={<ProfilePage />} />
+                <Route path='/viajes' element={<TripsPage />} />
+                <Route path='/viajes/crear' element={<NewTripPage />} />
+                <Route path='/viajes/reservas/:id/crear' element={<NewBookingPage />} />
+                <Route path='/viajes/detalles/:id' element={<TripDetail />} />
+                <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />
+                <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
+                <Route path="/viajes/gastos/:id" element={<p>vista de gastos</p>} />
+                <Route path="/viajes/:id/planes/:id/detalle" element={<PlanDetails />} />
+            </Route>
 
-
-        <Route path='/' element={<HomePage />} />
-        <Route path='/registrarse' element={<SignupPage />} />
-        <Route path='/inicio-sesion' element={<LoginPage />} />
-
-        <Route element={<PrivateRoute />}>
-            <Route path='/lista-deseos' element={<h1>Dime tu lista de deseos para reyes :P</h1>} />
-            <Route path='/perfil' element={<ProfilePage />} />
-            <Route path='/viajes' element={<TripsPage />} />
-            <Route path='/viajes/crear' element={<NewTripPage />} />
-            <Route path='/viajes/reservas/:id/crear' element={<NewBookingPage />} />
-            <Route path='/viajes/detalles/:id' element={<TripDetail />} />
-            <Route path="/viajes/planes/:id" element={<h1>Soy los planes del viaje</h1>} />
-            <Route path="/viajes/informacion/:id" element={<h1>Soy la información viajes</h1>} />
-            <Route path="/viajes/gastos/:id" element={<p>vista de gastos</p>} />
-            <Route path="/viajes/:id/planes/:id/detalle" element={<PlanDetails />} />
-        </Route>
-
-        <Route path='*' element={<h1>Error 404 (no soy una tetera pero ojalá)</h1>} />
-
-    </Routes>
+            <Route path='*' element={<h1>Error 404 (no soy una tetera pero ojalá)</h1>} />
+        </Routes>
     )
 
 }

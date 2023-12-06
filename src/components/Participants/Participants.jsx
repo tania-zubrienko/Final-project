@@ -108,9 +108,9 @@ const Participants = ({ participants, id, refresh }) => {
                                 </div>
                                 <div >
                                     {(!participants.filter(elm => elm._id === e._id).length > 0) ?
-                                        <button onClick={addMember} value={e._id} className={members.filter(member => member._id === e).length > 0 ? "checked" : "unChecked"}>add</button>
+                                        <button onClick={addMember} value={e._id} className={members.includes(e._id) ? "checked" : "unChecked"}></button>
                                         :
-                                        <button onClick={deleteMember} value={e._id} >delete</button>
+                                        <button onClick={deleteMember} value={e._id} className='delete'></button>
                                     }
                                 </div>
                             </div>
