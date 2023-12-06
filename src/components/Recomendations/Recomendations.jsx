@@ -11,7 +11,7 @@ import placeServices from '../../services/places.services'
 
 
 
-const Recomendations = ({ savePlan }) => {
+const Recomendations = ({ refresh }) => {
 
     const { id } = useParams()
 
@@ -46,7 +46,8 @@ const Recomendations = ({ savePlan }) => {
             .then(res => {
                 const { name } = res.data
                 return (
-                    tripServices.addPlantoTrip(id, { placeId, name }))
+                    tripServices.addPlantoTrip(id, { placeId, name })
+                        .then(() => refresh()))
             })
             .catch(err => console.log(err))
 
