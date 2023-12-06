@@ -21,7 +21,7 @@ const Recomendations = ({ savePlan }) => {
 
     useEffect(() => getTripInfo(id), [])
 
-    function getTripInfo(id){
+    function getTripInfo(id) {
 
         tripServices
             .getTripById(id)
@@ -35,7 +35,7 @@ const Recomendations = ({ savePlan }) => {
 
     }
 
-    function save(e){
+    function save(e) {
 
         setShow(true)
 
@@ -79,7 +79,8 @@ const Recomendations = ({ savePlan }) => {
                                         <h5>{e.displayName.text}</h5>
                                         <h6 className="mt-3">Valoraciones: {e.rating}</h6>
                                         <h6>{e.formattedAddress}</h6>
-                                        {e.currentOpeningHours && <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>}
+                                        {e.currentOpeningHours ? <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>
+                                            : <p>No hay información sobre el horario </p>}
                                         <button sm={6} className="saveButton mt-3" onClick={save} value={e.id}>Añadir al viaje</button>
                                     </div>
                                 </div>
