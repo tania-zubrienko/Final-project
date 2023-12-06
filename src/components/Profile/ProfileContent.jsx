@@ -24,10 +24,10 @@ const ProfileContent = () => {
     }, [])
 
     useEffect(() => {
-        setUserDni(userDocuments.find(doc => doc.type === 'DNI'))
-        setUserPassport(userDocuments.find(doc => doc.type === 'Pasaporte'))
-        setUserLicense(userDocuments.find(doc => doc.type === 'Carnet'))
-        setUserInsurance(userDocuments.find(doc => doc.type === 'Seguro'))
+        setUserDni(userDocuments.find(({ type }) => type === 'DNI'))
+        setUserPassport(userDocuments.find(({ type }) => type === 'Pasaporte'))
+        setUserLicense(userDocuments.find(({ type }) => type === 'Carnet'))
+        setUserInsurance(userDocuments.find(({ type }) => type === 'Seguro'))
     }, [userDocuments])
 
     function getDocuments() {
@@ -54,10 +54,18 @@ const ProfileContent = () => {
                             <Accordion.Header>Mis Documentos</Accordion.Header>
                             <Accordion.Body>
                                 <Row className='justify-content-center justify-content-xl-start'>
-                                    <DocumentCard type={'DNI'} getDocuments={getDocuments}>{userDni}</DocumentCard>
-                                    <DocumentCard type={'Pasaporte'} getDocuments={getDocuments}>{userPassport}</DocumentCard>
-                                    <DocumentCard type={'Carnet'} getDocuments={getDocuments}>{userLicense}</DocumentCard>
-                                    <DocumentCard type={'Seguro'} getDocuments={getDocuments}>{userInsurance}</DocumentCard>
+                                    <Col sm={10} md={8} lg={8} xl={6} className='mt-1'>
+                                        <DocumentCard type={'DNI'} getDocuments={getDocuments}>{userDni}</DocumentCard>
+                                    </Col>
+                                    <Col sm={10} md={8} lg={8} xl={6} className='mt-1'>
+                                        <DocumentCard type={'Pasaporte'} getDocuments={getDocuments}>{userPassport}</DocumentCard>
+                                    </Col>
+                                    <Col sm={10} md={8} lg={8} xl={6} className='mt-1'>
+                                        <DocumentCard type={'Carnet'} getDocuments={getDocuments}>{userLicense}</DocumentCard>
+                                    </Col>
+                                    <Col sm={10} md={8} lg={8} xl={6} className='mt-1'>
+                                        <DocumentCard type={'Seguro'} getDocuments={getDocuments}>{userInsurance}</DocumentCard>
+                                    </Col>
                                 </Row>
                             </Accordion.Body>
                         </Accordion.Item>

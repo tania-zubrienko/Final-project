@@ -19,6 +19,7 @@ const TripDetail = () => {
     const [currentTrip, setCurrentTrip] = useState()
     const [dates, setDates] = useState([])
     const [myPlans, setMyPlans] = useState([])
+    const [key, setKey] = useState('overview');
 
     useEffect(() => {
         getTripInfo()
@@ -42,13 +43,7 @@ const TripDetail = () => {
             .addPlantoTrip(id, { planId, planName })
             .then(getTripInfo())
             .catch(err => console.log(err))
-
     }
-
-    useEffect(() => {
-    }, [dates])
-
-    const [key, setKey] = useState('overview');
 
     return (
         <div className="TripDetail">
@@ -70,7 +65,6 @@ const TripDetail = () => {
                             <h3>Participantes: </h3>
 
                             {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} refresh={getTripInfo} />}
-
                         </>
                     }
                     <Recomendations refresh={getTripInfo} />

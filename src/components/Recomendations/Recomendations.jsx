@@ -40,6 +40,7 @@ const Recomendations = ({ refresh }) => {
     function save(e) {
 
         setShow(true)
+        getTripInfo(id)
 
         const { value: placeId } = e.target
 
@@ -47,13 +48,10 @@ const Recomendations = ({ refresh }) => {
             .getPlaceInfo(placeId)
             .then(res => {
                 const { name } = res.data
-                return (
-                    tripServices.addPlantoTrip(id, { placeId, name })
-                        .then(() => refresh()))
+                return tripServices.addPlantoTrip(id, { placeId, name })
             })
+            .then(() => refresh())
             .catch(err => console.log(err))
-
-        getTripInfo(id)
 
     }
 

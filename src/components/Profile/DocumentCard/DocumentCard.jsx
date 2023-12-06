@@ -34,50 +34,39 @@ const DocumentCard = ({ type, getDocuments, children }) => {
     }
 
     return (
-        <Col sm={10} md={8} lg={8} xl={6} className='mt-1'>
-            <Card>
-                <Card.Body>
-                    <Row className='align-items-center justify-content-between justify-content-sm-between'>
-                        <Col xs={6} sm={6} md={6} xl={6}>
-                            <Card.Title className='m-0'>{type}</Card.Title>
-                        </Col>
-                        <Col xs={4} sm={2} md={3} lg={2} xl={2} xxl={2}>
-                            {
-                                children ?
-                                    <>
-                                        <button className="see-doc-button" onClick={handleShow}></button>
-                                        <Modal show={show} onHide={handleClose}>
-                                            <Modal.Header closeButton>
-                                                <Modal.Title>{type}</Modal.Title>
-                                            </Modal.Header>
-                                            <Modal.Body>
-                                                <Row>
-                                                    <img src={children.link} alt="" />
-                                                </Row>
-                                            </Modal.Body>
-                                            <Modal.Footer>
-                                                <button className="deleteButton" value={children._id} onClick={deleteDocument} />
-                                            </Modal.Footer>
-                                        </Modal>
-                                    </>
-                                    :
-                                    <>
-                                        <button className="add-doc-button" onClick={handleShow}></button>
-                                        <Modal show={show} onHide={handleClose}>
-                                            <Modal.Header closeButton>
-                                                <Modal.Title>{type}</Modal.Title>
-                                            </Modal.Header>
-                                            <Modal.Body>
-                                                <DocumentsForm finishActions={finishActions} type={type}></DocumentsForm>
-                                            </Modal.Body>
-                                        </Modal>
-                                    </>
-                            }
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </Col>
+        <Card>
+            <Card.Body>
+                <Row className='align-items-center justify-content-between justify-content-sm-between'>
+                    <Col xs={6} sm={6} md={6} xl={6}>
+                        <Card.Title className='m-0'>{type}</Card.Title>
+                    </Col>
+                    <Col xs={4} sm={2} md={3} lg={2} xl={2} xxl={2}>
+                        <button className={children ? "see-doc-button" : "add-doc-button"} onClick={handleShow}></button>
+                        {
+                            <Modal show={show} onHide={handleClose}>
+                                <Modal.Header closeButton>
+                                    <Modal.Title>{type}</Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    {
+                                        children
+                                            ?
+                                            <img className="imgDoc" src={children.link} alt="" />
+                                            :
+                                            <DocumentsForm finishActions={finishActions} type={type}></DocumentsForm>
+                                    }
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    {
+                                        children && <button className="deleteButton" value={children._id} onClick={deleteDocument} />
+                                    }
+                                </Modal.Footer>
+                            </Modal>
+                        }
+                    </Col>
+                </Row>
+            </Card.Body>
+        </Card>
     )
 }
 

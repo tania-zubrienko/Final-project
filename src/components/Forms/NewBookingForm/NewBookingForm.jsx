@@ -46,7 +46,6 @@ const NewBookingForm = () => {
     function handleInputOnChange(event) {
         const { value, name } = event.target
         setBookingInfo({ ...bookingInfo, [name]: value })
-
     }
 
     function handleFileUpload(e) {
@@ -62,7 +61,6 @@ const NewBookingForm = () => {
                     setIsLoading(false)
                 })
                 .catch(err => {
-                    console.log(err)
                     setIsLoading(false)
                 })
         }
