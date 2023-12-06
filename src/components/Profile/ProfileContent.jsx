@@ -2,15 +2,15 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
-import UserTrips from '../../components/UserTrips/UserTrips'
+import UserTrips from '../UserTrips/UserTrips'
 
-import './ProfileLinks.css'
+import './ProfileContent.css'
 import FriendList from '../FriendList/FriendList'
 import userServices from '../../services/user.services'
 import DocumentCard from './DocumentCard/DocumentCard'
 
 
-const ProfileLinks = () => {
+const ProfileContent = () => {
     const [userDocuments, setUserDocuments] = useState([])
     const [userDni, setUserDni] = useState()
     const [userPassport, setUserPassport] = useState()
@@ -45,7 +45,7 @@ const ProfileLinks = () => {
     }
 
     return (
-        <div className='ProfileLinks'>
+        <div className='ProfileContent'>
             <Row className='m-1'>
                 <Col md={{ span: 8, offset: 2 }}>
 
@@ -81,4 +81,4 @@ const ProfileLinks = () => {
 
 }
 
-export default ProfileLinks
+export default ProfileContent

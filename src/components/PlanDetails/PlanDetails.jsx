@@ -1,13 +1,10 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import cabeceraProvisional from '../../assets/cabeceraProvisional.jpeg'
 import { IoLocationOutline, IoHourglassOutline, IoEarthOutline, IoDocumentOutline } from "react-icons/io5"
 import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go"
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import './PlanDetails.css'
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react';
-import placeServices from '../../services/places.services';
 
 const PlanDetails = ({ placeInfo }) => {
     console.log(placeInfo)
@@ -35,7 +32,7 @@ const PlanDetails = ({ placeInfo }) => {
                         <GoClock className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Horario habitual: {placeInfo.hours[0]}</p>
+                        <p>Horario habitual: {placeInfo.hours == "Closed" ? <p>No hay información</p> : <p>{placeInfo.hours}</p>}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
@@ -51,7 +48,7 @@ const PlanDetails = ({ placeInfo }) => {
                         <LiaMapMarkerAltSolid className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <Link to={placeInfo.url}>Como llegar</Link>
+                        <Link to={placeInfo.url}>Ubicación</Link>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
@@ -60,14 +57,6 @@ const PlanDetails = ({ placeInfo }) => {
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
                         <Link to={placeInfo.url}><p>{placeInfo.website}</p></Link>
-                    </Col>
-                </Row>
-                <Row className='mb-3'>
-                    <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }} >
-                        <IoDocumentOutline className='icon' />
-                    </Col>
-                    <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Tickets cannot be purchased in advance</p>
                     </Col>
                 </Row>
             </Row>

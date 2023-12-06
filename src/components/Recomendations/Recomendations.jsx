@@ -1,5 +1,5 @@
 import './Recomendations.css'
-import { Container, Row, Col, Accordion } from "react-bootstrap"
+import { Container, Row, Col, Toast } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { HiOutlineBuildingLibrary } from "react-icons/hi2"
@@ -17,11 +17,8 @@ const Recomendations = ({ savePlan }) => {
 
     const [recomendations, setRecomendations] = useState([])
     const [savedPlans, setSavedPlans] = useState([])
-
-
+    const [show, setShow] = useState(false)
     useEffect(() => getTripInfo(id), [])
-    // useEffect(() => getTripInfo(id), [getTripInfo, id])   // puse esto y lo quité después
-
 
     const getTripInfo = (id) => {
         tripServices
@@ -36,7 +33,7 @@ const Recomendations = ({ savePlan }) => {
     }
 
     const save = (e) => {
-        console.log(e.target.value)
+        setShow(true)
         const { value: placeId } = e.target
 
         placeServices
@@ -48,21 +45,17 @@ const Recomendations = ({ savePlan }) => {
             })
             .catch(err => console.log(err))
 
-        // tripServices
-        //     .getPlaceInfo(placeId)
-        //     .then(res => {
-        //         const { name } = res.data
-        //         return (
-        //             tripServices.addPlantoTrip(id, { placeId, name }))
-        //     })
-        //     .catch(err => console.log(err))
-
         getTripInfo(id)
     }
 
     return (
 
         <div className="Recomendations">
+            <Toast onClose={() => setShow(false)} show={show} delay={2000} autohide className='toastAdd'>
+                <Toast.Body>
+                    <h5><strong className="me-auto">Plan actualizado</strong></h5>
+                </Toast.Body>
+            </Toast>
             <Container>
 
                 <h3 className="mt-5 mb-3">Te puede interesar!</h3>

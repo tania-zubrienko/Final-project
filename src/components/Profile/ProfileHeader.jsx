@@ -1,10 +1,10 @@
 
-import "./ProfileImage.css"
+import "./ProfileHeader.css"
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 
 
-const ProfileImage = () => {
+const ProfileHeader = () => {
 
     const { loggedUser } = useContext(AuthContext)
     function display() { alert("hola") }
@@ -12,7 +12,7 @@ const ProfileImage = () => {
     return (
         <>
             <div className="backgroundLine" />
-            <div className="ProfileImage">
+            <div className="ProfileHeader">
                 <h1>{loggedUser.name}</h1>
                 <img src={loggedUser.avatar} alt="" />
             </div >
@@ -21,4 +21,4 @@ const ProfileImage = () => {
 
 }
 
-export default ProfileImage
+export default ProfileHeader

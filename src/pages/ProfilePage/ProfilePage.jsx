@@ -1,13 +1,13 @@
 
-import ProfileImage from "../../components/Profile/ProfileImage"
-import ProfileLinks from "../../components/Profile/ProfileLinks"
+import ProfileHeader from "../../components/Profile/ProfileHeader"
+import ProfileContent from "../../components/Profile/ProfileContent"
 
 const ProfilePage = () => {
 
     return (
         <div className="Profile">
-            <ProfileImage />
-            <ProfileLinks />
+            <ProfileHeader />
+            <ProfileContent />
         </div>
     )
 }

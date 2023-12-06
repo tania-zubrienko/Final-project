@@ -1,4 +1,4 @@
-.ProfileImage {
+.ProfileHeader {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,13 +14,13 @@
     z-index: -1;
 }
 
-.ProfileImage h1 {
+.ProfileHeader h1 {
     top: 137px;
     font-size: 3rem;
     color: #001E3D;
 }
 
-.ProfileImage img {
+.ProfileHeader img {
     border-radius: 50%;
     object-fit: cover;
     background-position: center;
