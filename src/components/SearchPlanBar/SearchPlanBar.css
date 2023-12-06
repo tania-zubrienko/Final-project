@@ -1,6 +1,5 @@
 .place-input {
-    border-radius: 30px;
-    margin-top: 2em;
+    border-radius: 30px !important;
     line-height: 2em !important;
 }
 
@@ -10,4 +9,6 @@
     border: 0px;
     font-weight: 500 !important;
     line-height: 2em !important;
+    height: auto;
+
 }
