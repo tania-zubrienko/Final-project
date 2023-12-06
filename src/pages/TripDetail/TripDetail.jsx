@@ -73,7 +73,7 @@ const TripDetail = () => {
 
                         </>
                     }
-                    <Recomendations savePlan={savePlan} />
+                    <Recomendations refresh={getTripInfo} />
                 </Tab>
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
 
@@ -84,7 +84,7 @@ const TripDetail = () => {
                     <TripDates dates={dates} />
                     <SearchPlanBar tripId={id} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} />
-                    <Recomendations savePlan={savePlan} />
+                    <Recomendations refresh={getTripInfo} />
                 </Tab>
                 <Tab eventKey="gastos" title="Gastos" className='tab'>
                     <ListExpenses />

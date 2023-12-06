@@ -1,5 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import { IoLocationOutline, IoEarthOutline } from "react-icons/io5"
+import { IoLocationOutline, IoEarthOutline, IoDocumentOutline } from "react-icons/io5"
 import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go"
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
