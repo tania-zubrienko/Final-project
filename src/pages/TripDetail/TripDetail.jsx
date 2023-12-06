@@ -11,6 +11,7 @@ import Participants from '../../components/Participants/Participants'
 import TripDates from '../../components/TripDates/TripDates'
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
 import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
+import Information from '../../components/Information/Information'
 
 const TripDetail = () => {
 
@@ -85,7 +86,9 @@ const TripDetail = () => {
                     <ListExpenses />
                 </Tab>
 
-                <Tab eventKey="info" title="Información" className='tab'></Tab>
+                <Tab eventKey="info" title="Información" className='tab'>
+                    <Information />
+                </Tab>
             </Tabs>
         </div >
     )
