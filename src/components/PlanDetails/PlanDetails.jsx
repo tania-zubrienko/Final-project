@@ -1,5 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import { IoLocationOutline, IoEarthOutline } from "react-icons/io5"
+import { IoLocationOutline, IoEarthOutline, IoDocumentOutline } from "react-icons/io5"
 import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go"
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
@@ -72,18 +72,9 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                         <Link to={placeInfo.url}><p>{placeInfo.website}</p></Link>
                     </Col>
                 </Row>
-
-                <Row className='mb-3'>
-                    <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }} >
-                        <IoDocumentOutline className='icon' />
-                    </Col>
-                    <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Tickets cannot be purchased in advance</p>
-                    </Col>
-                </Row>
                 <Row>
-                    <Col md={{ offset: 9, span: 2 }}>
-                        <button value={currentId} onClick={deleteTripPlan}>Eliminar</button>
+                    <Col md={{ offset: 11 }}>
+                        <button value={currentId} onClick={deleteTripPlan} className='deleteButton'></button>
                     </Col>
                 </Row>
             </Row>
