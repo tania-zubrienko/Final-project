@@ -15,7 +15,7 @@ const NoBookings = ({ createModal }) => {
                     </figure>
                     <h3>Todavía nada por aquí!</h3>
                     <p>Añadir registro de gastos</p>
-                    <button className="button mt-3 mb-2" onClick={createModal}>
+                    <button className="button mt-3 mb-3" onClick={createModal}>
                         <h3><FaPlus /></h3>
                     </button>
                 </Col>
