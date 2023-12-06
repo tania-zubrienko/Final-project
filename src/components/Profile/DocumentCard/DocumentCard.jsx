@@ -32,7 +32,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
             })
             .catch(err => console.log(err))
     }
-    
+
     return (
         <Col sm={10} md={8} lg={8} xl={6} className='mt-1'>
             <Card>
@@ -60,7 +60,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                             </Modal.Footer>
                                         </Modal>
                                     </>
-                                :
+                                    :
                                     <>
                                         <button className="add-doc-button" onClick={handleShow}></button>
                                         <Modal show={show} onHide={handleClose}>
