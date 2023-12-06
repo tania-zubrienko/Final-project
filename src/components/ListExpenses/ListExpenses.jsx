@@ -24,7 +24,7 @@ const ListExpenses = () => {
 
         tripServices
             .getTripById(id)
-            .then(trip => trip.data.result.expenses.length > 0 && setExpensesList(trip.data.result.expenses))
+            .then(trip => trip.data.result.expenses.length > 0 ? setExpensesList(trip.data.result.expenses) : setExpensesList())
             .catch(err => console.log(err))
 
     }
@@ -36,6 +36,17 @@ const ListExpenses = () => {
 
     function createModal() {
         setShowModal(true)
+    }
+
+    function deleteTripExpense(e) {
+
+        const { value } = e.target
+
+        tripServices
+            .deleteExpense(id, value)
+            .then(() => getTripExpenses())
+            .catch(err => console.log(err))
+
     }
 
     return (
@@ -57,11 +68,14 @@ const ListExpenses = () => {
                                     return (
                                         // TODO: DESACOPLAR A EXPENSEROW
                                         <Row key={id} className="mt-5 mb-3">
-                                            <Col sm={{ offset: 3, span: 3 }} className="d-flex">
+                                            <Col sm={{ offset: 1, span: 3 }} className="d-flex">
                                                 <h5><MdOutlineDescription className="imagenList" />{elm.concept}</h5>
                                             </Col>
-                                            <Col sm={{ offset: 2, span: 3 }}>
+                                            <Col sm={{ offset: 1, span: 3 }}>
                                                 <h5>{elm.cost} €</h5>
+                                            </Col>
+                                            <Col sm={{ offset: 1, span: 3 }}>
+                                                <button value={elm._id} onClick={deleteTripExpense}>Eliminar</button>
                                             </Col>
                                         </Row>
                                     )
