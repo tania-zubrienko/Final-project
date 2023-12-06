@@ -47,7 +47,6 @@ class TripServices {
     }
 
     addPlantoTrip(id, body) {
-        console.log("estoy en aaaaaaaaaaaaaaaaad")
         return this.api.post(`/${id}/plan`, { placeId: body.placeId, name: body.name })
     }
 

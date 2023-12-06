@@ -43,7 +43,7 @@ const SearchBar = ({ userToFind, friends, handler, closeModal, refresh }) => {
                 {foundUsers.map(e => {
                     if (!friends.filter(elm => elm.email === e.email).length > 0) {
                         return (
-                            <Row md={{ span: 6, offset: 3 }} className='mb-3'>
+                            <Row md={{ span: 6, offset: 3 }} className='mb-3' key={e.email}>
                                 <Col className='d-flex justify-content-between align-items-center' >
                                     <div className='userCard'>
                                         <img className='userPic' src={e.avatar} alt='' />

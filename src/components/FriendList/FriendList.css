@@ -18,7 +18,7 @@
     border-radius: 30px !important;
 }
 
-.deleteButton {
+.deleteFriend {
     height: 35px;
     align-self: center;
     text-align: center;
@@ -38,12 +38,12 @@
     height: 30px
 }
 
-.deleteButton {
+.deleteFriend {
     align-self: center;
     text-align: center;
-    width: 60px;
-    height: 40px;
-    background-image: url('./../../assets/delete.png');
+    width: 30px;
+    height: 30px;
+    background-image: url('./../../assets/deleteMember.png');
     background-repeat: no-repeat;
     background-size: cover;
     border: 0px;

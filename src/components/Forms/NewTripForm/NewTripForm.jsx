@@ -20,7 +20,7 @@ const NewTripForm = () => {
         initAutocomplete()
     }, [])
 
-    const initAutocomplete = () => {
+    function initAutocomplete() {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options

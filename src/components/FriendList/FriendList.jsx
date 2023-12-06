@@ -12,14 +12,14 @@ const FriendList = () => {
     const [show, setShow] = useState(false)
     const [state, setState] = useState(false)
 
-    const handleClose = () => {
+    function handleClose() {
 
         setUserSearch('')
         setShow(false)
 
     }
 
-    const handleShow = () => {
+    function handleShow() {
 
         setUserSearch('')
         setShow(true)
@@ -58,7 +58,7 @@ const FriendList = () => {
                 return (
                     <div className='FriendList' key={i}>
                         <FriendCard friend={e} key={i} />
-                        <button className="deleteButton" value={e._id} onClick={handlerDeleteFriend}></button>
+                        <button className="deleteFriend" value={e._id} onClick={handlerDeleteFriend}></button>
                     </div>
                 )
             })}
