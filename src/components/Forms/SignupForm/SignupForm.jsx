@@ -15,6 +15,7 @@ const SignupForm = () => {
         avatar: profilepic
     })
 
+    const [isLoading, setIsLoading] = useState(false)
     const [errors, setErrors] = useState([])
 
     const navigate = useNavigate()
@@ -34,14 +35,20 @@ const SignupForm = () => {
     }
 
     function handleFileUpload(e) {
-
+        setIsLoading(true)
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
         uploadServices
             .uploadimage(formData)
-            .then(({ data }) => setSignupInfo({ ...signupInfo, avatar: data.cloudinary_url }))
-            .catch(err => console.log(err))
+            .then(({ data }) => {
+                setSignupInfo({ ...signupInfo, avatar: data.cloudinary_url })
+                setIsLoading(false)
+            })
+            .catch(err => {
+                console.log(err)
+                setIsLoading(false)
+            })
     }
 
     return (
@@ -70,7 +77,9 @@ const SignupForm = () => {
             {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
 
             <div className="d-grid gap-2 mt-4">
-                <Button className='primary-button' type="submit"> Registrarse </Button>
+                <Button className='primary-button' type="submit" disabled={isLoading}>
+                    {isLoading ? 'Cargando...' : 'Registrarse'} 
+                </Button>
             </div>
         </Form>
 

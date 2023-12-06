@@ -9,7 +9,10 @@ const DocumentsForm = ({ finishActions, type }) => {
         link: ''
     })
 
+    const [isLoading, setIsLoading] = useState(false)
+
     function handleFileUpload(e) {
+        setIsLoading(true)
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
@@ -17,8 +20,12 @@ const DocumentsForm = ({ finishActions, type }) => {
             .uploadimage(formData)
             .then(({ data }) => {
                 setDocumentInfo({ ...documentInfo, link: data.cloudinary_url })
+                setIsLoading(false)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setIsLoading(false)
+            })
     }
 
     function handleNewDocumentSubmit(event) {
@@ -47,8 +54,8 @@ const DocumentsForm = ({ finishActions, type }) => {
             </Form.Group>
 
             <div className="d-grid gap-2 mt-5">
-                <Button className='primary-button' type="submit">
-                    Subir
+                <Button className='primary-button' type="submit" disabled={isLoading}>
+                    {isLoading ? 'Cargando...' : 'Subir'}
                 </Button>
             </div>
         </Form>
