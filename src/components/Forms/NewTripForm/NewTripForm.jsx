@@ -64,7 +64,7 @@ const NewTripForm = () => {
         tripServices
             .createTrip(tripInfo)
             .then(() => navigate('/viajes'))
-            .catch(err => setErrors(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     return (

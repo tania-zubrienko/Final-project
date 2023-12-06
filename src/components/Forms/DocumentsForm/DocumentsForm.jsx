@@ -2,6 +2,7 @@ import { Button, Form } from "react-bootstrap"
 import { useState } from "react"
 import uploadServices from './../../../services/upload.services'
 import userServices from "../../../services/user.services"
+import AlertForm from "../AlertForm/AlertForm"
 
 const DocumentsForm = ({ finishActions, type }) => {
     const [documentInfo, setDocumentInfo] = useState({
@@ -10,6 +11,8 @@ const DocumentsForm = ({ finishActions, type }) => {
     })
 
     const [isLoading, setIsLoading] = useState(false)
+
+    const [errors, setErrors] = useState([])
 
     function handleFileUpload(e) {
         setIsLoading(true)
@@ -35,7 +38,7 @@ const DocumentsForm = ({ finishActions, type }) => {
             .then(() => {
                 finishActions()
             })
-            .catch(err => console.log(err))
+            .catch(err => setErrors(err.response.data.errorMessages))
     }
 
     return (
@@ -52,6 +55,10 @@ const DocumentsForm = ({ finishActions, type }) => {
                 <Form.Label className='trip-label'>Documento</Form.Label>
                 <Form.Control className='trip-input' type="file" placeholder="Introduce los archivos de tu reserva" name="document" onChange={handleFileUpload} />
             </Form.Group>
+
+            {
+                errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
+            }
 
             <div className="d-grid gap-2 mt-5">
                 <Button className='primary-button' type="submit" disabled={isLoading}>
