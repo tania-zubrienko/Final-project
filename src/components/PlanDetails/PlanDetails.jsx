@@ -45,7 +45,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                         <GoClock className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Horario habitual: {placeInfo.hours == "Closed" ? <p>No hay información</p> : <p>{placeInfo.hours}</p>}</p>
+                        <p>Horario habitual: {placeInfo.hours == "Closed" ? "No hay información " : `${placeInfo.hours}`}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>

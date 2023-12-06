@@ -16,6 +16,7 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
 
     function createModal() {
 
+        setCurrentPlace()
         setShowModal(true)
 
     }
@@ -32,11 +33,8 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
 
     }
 
-    // const getCurrentId = (id) => {
-    //     setCurrentId(id)
-    // }
-
     const refreshInfo = () => {
+
         refresh()
         setShowModal(false)
     }
