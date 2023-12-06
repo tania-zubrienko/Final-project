@@ -24,15 +24,10 @@ const SearchPlanBar = () => {
             options
         )
         autoCompleteRef.current.addListener("place_changed", async function () {
-            const place = await autoCompleteRef.current.getPlace();
-            console.log(place)
+            const place = await autoCompleteRef.current.getPlace()
             handlePlaceChange({ place })
         })
     }, [])
-
-    useEffect(() => {
-        console.log(planInfo)
-    }, [planInfo])
 
     function handleInputOnChange(event) {
         const { value, name } = event.target
@@ -49,12 +44,10 @@ const SearchPlanBar = () => {
 
     function handleNewPlanSubmit(event) {
         event.preventDefault()
-        console.log(planInfo)
         tripServices
             .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name })
             .then(() => console.log("para que no pete"))
             .catch(err => console.log(err))
-
     }
 
     return (

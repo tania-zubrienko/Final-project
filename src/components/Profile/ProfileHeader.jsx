@@ -1,13 +1,10 @@
-
 import "./ProfileHeader.css"
 import { useContext } from 'react'
 import { AuthContext } from '../../context/auth.context'
 
-
 const ProfileHeader = () => {
 
     const { loggedUser } = useContext(AuthContext)
-    function display() { alert("hola") }
 
     return (
         <>

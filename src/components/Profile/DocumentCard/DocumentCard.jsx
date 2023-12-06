@@ -8,21 +8,25 @@ import './DocumentCard.css'
 const DocumentCard = ({ type, getDocuments, children }) => {
     const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
+    function handleClose() {
+        setShow(false)
+    }
+    function handleShow() {
+        setShow(true)
+    }
 
-    const finishActions = () => {
+    function finishActions() {
         handleClose()
         getDocuments()
     }
 
-    const deleteDocument = (e) => {
+    function deleteDocument(e) {
+        
         const documentId = e.target.value
-        console.log(documentId)
+
         userServices
             .deleteDocument(documentId)
             .then(() => {
-                console.log('eliminado')
                 getDocuments()
                 handleClose()
             })

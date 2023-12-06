@@ -3,13 +3,12 @@ import HeaderExpenses from './../../Expenses/HeaderExpenses'
 import BodyExpenses from './../../Expenses/BodyExpenses'
 import FooterExpenses from './../../Expenses/FooterExpenses'
 import AlertForm from '../AlertForm/AlertForm'
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import tripServices from "../../../services/trips.services"
 import { useState } from "react"
 
 
 const NewExpenseForm = ({ fireFinalActions }) => {
-
     const { id } = useParams()
     const [expenseInfo, setExpenseInfo] = useState({
         concept: '',
@@ -24,8 +23,6 @@ const NewExpenseForm = ({ fireFinalActions }) => {
         tripServices
             .addExpensetoTrip(id, expenseInfo)
             .then(trip => {
-                console.log(expenseInfo)
-                console.log(trip.data.result)
                 fireFinalActions()
             })
             .catch(err => setErrors(err))

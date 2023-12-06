@@ -1,12 +1,9 @@
-import { Col, Container, Form, Row } from "react-bootstrap"
+import { Col, Form, Row } from "react-bootstrap"
 import { MdOutlineDescription } from "react-icons/md"
 import { LuEuro } from "react-icons/lu"
-import { useState } from "react"
 import './HeaderExpenses.css'
 
 const BodyExpenses = ({ expenseInfo, addExpenseInfo }) => {
-
-
 
     function handleInputOnChange(event) {
         const { value, name } = event.target

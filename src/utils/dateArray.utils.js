@@ -1,5 +1,5 @@
-
 const getDatesArray = (start, end) => {
+    
     const dates = new Array()
     let currentDate = new Date(start)
     let endDate = new Date(end)

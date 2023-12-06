@@ -1,5 +1,4 @@
-import { Col, Container, Row } from "react-bootstrap"
-import cabeceraProvisional from './../../assets/cabeceraProvisional.jpeg'
+import { Row } from "react-bootstrap"
 import './HeaderExpenses.css'
 import { useEffect, useState } from "react"
 import tripServices from "../../services/trips.services"
@@ -17,7 +16,6 @@ const HeaderExpenses = ({ id }) => {
         tripServices
             .getTripById(id)
             .then(trip => {
-                console.log(trip.data.result.destination)
                 setTripName(trip.data.result.destination)
             })
             .catch(err => console.log(err))

@@ -6,45 +6,59 @@ import userServices from '../../services/user.services';
 import tripServices from '../../services/trips.services';
 
 const Participants = ({ participants, id, refresh }) => {
-
+    
     const [show, setShow] = useState(false)
     const [friends, setFriends] = useState([])
     const [members, setMembers] = useState(participants)
-
+    
     useEffect(() => getFriends(), [])
+    useEffect(() => refresh(), [show])
 
-    const getFriends = () => {
+    function getFriends(){
+
         userServices
             .getFriendList()
             .then(result => setFriends(result.data))
             .catch(err => console.log(err))
     }
 
-    const handlerAddParticipant = () => setShow(true)
+    function handlerAddParticipant(){
 
-    const handleClose = () => {
-        refresh()
-        setShow(false)
+       setShow(true) 
+
     }
 
-    const addMember = (e) => {
+    function handleClose(){
+
+        refresh()
+        setShow(false)
+
+    }
+
+    function addMember(e){
         const { value } = e.target
         setMembers([...members, value])
         refresh()
     }
 
-    const deleteMember = (e) => {
+    function deleteMember(e){
+
         const { value } = e.target
+
         tripServices
             .deleteParticipant(value, id)
             .then(() => setShow(false))
             .catch(err => console.log(err))
         setShow(false)
+
         refresh()
+
     }
 
-    const updateGroup = () => {
+    function updateGroup(){
+
         const newMembers = Array.from(new Set(members))
+
         tripServices
             .addParticipants(newMembers, id)
             .then(setShow(false))
@@ -54,7 +68,6 @@ const Participants = ({ participants, id, refresh }) => {
 
     }
 
-    useEffect(() => refresh(), [show])
     return (
         <div className="Participants">
             {participants.length > 0 &&
@@ -67,6 +80,7 @@ const Participants = ({ participants, id, refresh }) => {
 
                 }
                 )}
+
             <button className='addToGroupButton' onClick={handlerAddParticipant}><p><MdOutlineGroupAdd /></p></button>
 
             <Modal size='lg' show={show} onHide={handleClose} centered>
@@ -80,9 +94,8 @@ const Participants = ({ participants, id, refresh }) => {
                         )}
                 </Modal.Header>
                 <Modal.Body>
+
                     {friends.length > 0 && friends.map(e => {
-
-
 
                         return (
                             < div className="cardRow" key={e._id} >
@@ -100,10 +113,10 @@ const Participants = ({ participants, id, refresh }) => {
                             </div>
                         )
 
-
                     }
                     )}
                 </Modal.Body>
+
                 <Modal.Footer className='d-flex justify-content-around'>
                     <Button className='myButton2' onClick={updateGroup}>
                         Añadir al grupo
@@ -112,11 +125,9 @@ const Participants = ({ participants, id, refresh }) => {
                         Cerrar
                     </Button>
                 </Modal.Footer>
+
             </Modal>
         </div >
-
-
-
     )
 }
 

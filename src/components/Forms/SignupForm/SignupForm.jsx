@@ -19,13 +19,12 @@ const SignupForm = () => {
 
     const navigate = useNavigate()
 
-    const handleInputOnChange = (event) => {
+    function handleInputOnChange(event) {
         const { value, name } = event.target
         setSignupInfo({ ...signupInfo, [name]: value })
     }
 
-    const handleSignupSubmit = (event) => {
-
+    function handleSignupSubmit(event) {
         event.preventDefault()
 
         authService
@@ -34,7 +33,7 @@ const SignupForm = () => {
             .catch(err => setErrors(err.response.data.errorMessages))
     }
 
-    const handleFileUpload = (e) => {
+    function handleFileUpload(e) {
 
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])

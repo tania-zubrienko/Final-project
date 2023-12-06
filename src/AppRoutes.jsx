@@ -12,7 +12,6 @@ import TripDetail from './pages/TripDetail/TripDetail.jsx'
 import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
 
 import NewDocumentPage from './pages/NewDocumentPage/NewDocumentPage.jsx'
-import DocumentsForm from './components/Forms/DocumentsForm/DocumentsForm.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 
 
@@ -25,7 +24,6 @@ const AppRoutes = () => {
 
 
         <Route path='/' element={<HomePage />} />
-        {/* <Route path='/recomendados' element={<h1>Soy los Recomendados</h1>} /> */}
         <Route path='/registrarse' element={<SignupPage />} />
         <Route path='/inicio-sesion' element={<LoginPage />} />
 

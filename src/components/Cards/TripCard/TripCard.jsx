@@ -15,13 +15,13 @@ const TripCard = ({ trip, refreshList }) => {
     useEffect(() => refreshList(), [show])
 
 
-    const deleteHandler = () => {
+    function deleteHandler() {
         setShow(true)
         tripServices
             .deleteTrip(tripId)
             .then(() => setShow(true))
             .catch(err => console.log(err))
-        refreshList()   //comprobar no recarga contenido
+        refreshList()
     }
 
     return (
