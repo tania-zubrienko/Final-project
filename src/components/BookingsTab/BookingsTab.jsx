@@ -1,7 +1,4 @@
 import TabButtons from '../../components/TabButtons/TabButtons'
-import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
-import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
-import shortDate from '../../utils/shortDate'
 import { useEffect, useState } from 'react'
 import { Accordion, Button, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -17,12 +14,9 @@ const BookingsTab = ({ dates, id }) => {
     const [booked, setBooked] = useState([])
 
     useEffect(() => {
-        console.log('fecha', searchDate)
-        console.log('tipo', searchType)
         bookingService
             .filterBooking(id, searchDate, searchType)
             .then(({ data }) => {
-                console.log(data)
                 setBooked(data)
             })
             .catch(err => console.log(err))
@@ -38,7 +32,6 @@ const BookingsTab = ({ dates, id }) => {
     }
 
     function filterByType(e) {
-        console.log(e.target.value)
         if (e.target.value !== 'Todo') {
             setSearchType(e.target.value)
         }
@@ -76,7 +69,6 @@ const BookingsTab = ({ dates, id }) => {
 
                 </Container>
             </div>
-            {/* <NotBookedDropdowns /> */}
         </div>
     )
 }

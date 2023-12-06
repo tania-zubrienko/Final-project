@@ -4,8 +4,10 @@ import userServices from '../../services/user.services'
 import { useEffect, useState } from 'react'
 
 const SearchBar = ({ userToFind, friends, handler, closeModal, refresh }) => {
+
     const { state, setState } = handler
     const [foundUsers, setFoundUsers] = useState([])
+
     useEffect(() => { getuser() }, [userToFind])
 
     const [friendList, setFriendList] = useState(friends)
@@ -16,6 +18,7 @@ const SearchBar = ({ userToFind, friends, handler, closeModal, refresh }) => {
             .getUserData(userToFind)
             .then(result => setFoundUsers(result.data))
             .catch(err => console.log(err))
+
     }
 
     function handlerAddFriend(e) {
@@ -30,8 +33,6 @@ const SearchBar = ({ userToFind, friends, handler, closeModal, refresh }) => {
                 refresh()
             })
             .catch(err => console.log(err))
-        console.log("estoy en searchbar", state)
-
 
     }
 
@@ -56,11 +57,8 @@ const SearchBar = ({ userToFind, friends, handler, closeModal, refresh }) => {
                             </Row>
                         )
                     }
-
                 })}
-
             </Container>
-
         </div >
     )
 }

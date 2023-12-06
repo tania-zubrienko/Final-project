@@ -8,6 +8,7 @@ import './HomeCarousel.css'
 
 
 const HomeCarousel = () => {
+
     return (
         <div className='HomeCarousel'>
             <Carousel fade data-bs-theme='dark'>
@@ -55,6 +56,7 @@ const HomeCarousel = () => {
             </Carousel>
         </div>
     )
+    
 }
 
 export default HomeCarousel

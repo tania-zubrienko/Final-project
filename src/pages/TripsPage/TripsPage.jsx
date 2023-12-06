@@ -16,8 +16,7 @@ const TripsPage = () => {
         getTrips()
     }, [])
 
-    const getTrips = () => {
-
+    function getTrips() {
         tripServices
             .getUserTrips()
             .then(result => {

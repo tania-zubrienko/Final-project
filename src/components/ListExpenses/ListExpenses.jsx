@@ -33,8 +33,6 @@ const ListExpenses = () => {
 
     }
 
-
-
     function fireFinalActions() {
         setShowModal(false)
         getTripExpenses()
@@ -47,7 +45,6 @@ const ListExpenses = () => {
     return (
         <div className="ListExpenses">
             <Container className="mb-5">
-
                 {
                     expensesList ?
                         <div>

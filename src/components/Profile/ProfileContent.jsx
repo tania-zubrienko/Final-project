@@ -30,14 +30,14 @@ const ProfileContent = () => {
         setUserInsurance(userDocuments.find(doc => doc.type === 'Seguro'))
     }, [userDocuments])
 
-    const getDocuments = () => {
+    function getDocuments() {
         userServices
             .getDocuments()
             .then(res => setUserDocuments(res.data.documents))
             .catch(err => console.log(err))
     }
 
-    const getTrips = () => {
+    function getTrips() {
         tripServices
             .getUserTrips()
             .then(res => setUserTrips(res.data))

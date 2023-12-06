@@ -17,11 +17,7 @@ class PlaceServices {
             return config
         })
     }
-
-    // getPhoto(photoRef) {
-    //     return this.api.get(`/getPhoto/${photoRef}`)
-    // }
-
+    
     getPlaceInfo(placeId) {
         return this.api.get(`/${placeId}`)
     }

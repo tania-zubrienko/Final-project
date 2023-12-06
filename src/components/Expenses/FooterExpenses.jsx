@@ -1,6 +1,5 @@
 import { SlPeople } from 'react-icons/sl'
 import './HeaderExpenses.css'
-import { Container } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import tripServices from '../../services/trips.services'
 
