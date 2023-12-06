@@ -19,6 +19,10 @@ const SearchPlanBar = () => {
         fields: ["address_components", "geometry", "photos", "place_id", "name"],
     }
     useEffect(() => {
+        initAutocomplete()
+    }, [])
+
+    const initAutocomplete = () => {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options
@@ -27,7 +31,7 @@ const SearchPlanBar = () => {
             const place = await autoCompleteRef.current.getPlace()
             handlePlaceChange({ place })
         })
-    }, [])
+    }
 
     function handleInputOnChange(event) {
         const { value, name } = event.target

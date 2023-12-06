@@ -15,7 +15,12 @@ const NewTripForm = () => {
     let options = {
         fields: ["address_components", "geometry", "photos", "name"],
     }
+
     useEffect(() => {
+        initAutocomplete()
+    }, [])
+
+    const initAutocomplete = () => {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options
@@ -23,9 +28,8 @@ const NewTripForm = () => {
         autoCompleteRef.current.addListener("place_changed", async function () {
             const place = await autoCompleteRef.current.getPlace()
             handleDestinationChange({ place })
-
         })
-    }, [])
+    }
 
     const todayDate = new Date()
     const minDate = formatDate(todayDate)

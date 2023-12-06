@@ -30,3 +30,7 @@
     background-size: contain;
     border: 0px;
 }
+
+.imgDoc {
+    width: 100% !important;
+}

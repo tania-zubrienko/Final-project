@@ -19,14 +19,17 @@ const TripCard = ({ trip, refreshList }) => {
         setShow(true)
         tripServices
             .deleteTrip(tripId)
-            .then(() => setShow(true))
+            .then(() => {
+                setShow(true)
+
+            })
             .catch(err => console.log(err))
         refreshList()
     }
 
     return (
         <>
-            <Col className='mt-4 mt-5' xl={{ span: 4, offset: 1 }}>
+            <Col className='mt-5' xl={{ span: 4 }}>
                 <Card className='trip-card'>
                     <Row className='align-items-center'>
                         <Link to={`/viajes/detalles/${tripId}`}>
@@ -38,7 +41,7 @@ const TripCard = ({ trip, refreshList }) => {
                             <Link to={`/viajes/detalles/${tripId}`}><Card.Title>{destination}</Card.Title></Link>
                             <Card.Text className='cardBody'>
                                 Desde {shortDate(new Date(startDate))}  Hasta {shortDate(new Date(endDate))}
-                                <button onClick={deleteHandler} className='delete'>Eliminar viaje</button>
+                                <button onClick={deleteHandler} className='deleteTrip'>Eliminar viaje</button>
                             </Card.Text>
                         </Col>
                     </Row>
