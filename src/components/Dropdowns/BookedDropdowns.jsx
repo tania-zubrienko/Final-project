@@ -3,11 +3,9 @@ import { Container, Row, Accordion } from "react-bootstrap"
 import { FaPlus } from "react-icons/fa6"
 import './Dropdowns.css'
 import Booked from "../Booked/Booked"
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const BookedDropdowns = ({ id }) => {
-
-    const [booked, setBooked] = useState([])
 
     return (
         <div className="Dropdown">

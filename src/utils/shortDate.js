@@ -1,4 +1,5 @@
 const shortDate = date => {
+    
     let month = '' + (date.getMonth() + 1)
     let day = '' + date.getDate()
 

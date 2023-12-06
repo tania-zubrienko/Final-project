@@ -8,21 +8,25 @@ import './DocumentCard.css'
 const DocumentCard = ({ type, getDocuments, children }) => {
     const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
+    function handleClose() {
+        setShow(false)
+    }
+    function handleShow() {
+        setShow(true)
+    }
 
-    const finishActions = () => {
+    function finishActions() {
         handleClose()
         getDocuments()
     }
 
-    const deleteDocument = (e) => {
+    function deleteDocument(e) {
+        
         const documentId = e.target.value
-        console.log(documentId)
+
         userServices
             .deleteDocument(documentId)
             .then(() => {
-                console.log('eliminado')
                 getDocuments()
                 handleClose()
             })
@@ -52,7 +56,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                                 </Row>
                                             </Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="danger" value={children._id} onClick={deleteDocument}><h3><MdDeleteOutline /></h3></Button>
+                                                <Button variant="danger" value={children._id} onClick={deleteDocument}>Eliminar</Button>
                                             </Modal.Footer>
                                         </Modal>
                                     </>

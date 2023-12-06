@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import uploadServices from './../../../services/upload.services'
 import AlertForm from '../AlertForm/AlertForm'
 import tripServices from "../../../services/trips.services"
+import { DOCUMENT_TYPE } from "../../../const/buttonConst"
 
 
 const NewBookingForm = () => {
@@ -80,11 +81,7 @@ const NewBookingForm = () => {
                 <Form.Label className='trip-label'>Tipo de reserva</Form.Label>
                 <Form.Select className='trip-input' type="text" name="type" value={bookingInfo.type} onChange={handleInputOnChange} >
                     <option >Elige un tipo de reserva </option>
-                    <option value="Hotel">Hotel</option>
-                    <option value="Avión">Avión</option>
-                    <option value="Tren">Tren</option>
-                    <option value="Bus">Bus</option>
-                    <option value="Entradas">Entradas</option>
+                    {DOCUMENT_TYPE.map(e => <option value={e}>{e}</option>)}
                 </Form.Select>
             </Form.Group>
 

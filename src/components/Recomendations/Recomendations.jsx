@@ -1,5 +1,5 @@
 import './Recomendations.css'
-import { Container, Row, Col, Accordion } from "react-bootstrap"
+import { Container, Row, Col, Toast } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { HiOutlineBuildingLibrary } from "react-icons/hi2"
@@ -17,13 +17,12 @@ const Recomendations = ({ savePlan }) => {
 
     const [recomendations, setRecomendations] = useState([])
     const [savedPlans, setSavedPlans] = useState([])
-
+    const [show, setShow] = useState(false)
 
     useEffect(() => getTripInfo(id), [])
-    // useEffect(() => getTripInfo(id), [getTripInfo, id])   // puse esto y lo quité después
 
+    function getTripInfo(id){
 
-    const getTripInfo = (id) => {
         tripServices
             .getTripById(id)
             .then(result => {
@@ -33,10 +32,13 @@ const Recomendations = ({ savePlan }) => {
             })
             .then(res => setRecomendations(res.data.places))
             .catch(err => console.log(err))
+
     }
 
-    const save = (e) => {
-        console.log(e.target.value)
+    function save(e){
+
+        setShow(true)
+
         const { value: placeId } = e.target
 
         placeServices
@@ -48,29 +50,25 @@ const Recomendations = ({ savePlan }) => {
             })
             .catch(err => console.log(err))
 
-        // tripServices
-        //     .getPlaceInfo(placeId)
-        //     .then(res => {
-        //         const { name } = res.data
-        //         return (
-        //             tripServices.addPlantoTrip(id, { placeId, name }))
-        //     })
-        //     .catch(err => console.log(err))
-
         getTripInfo(id)
+
     }
 
     return (
-
         <div className="Recomendations">
+
+            <Toast onClose={() => setShow(false)} show={show} delay={2000} autohide className='toastAdd'>
+                <Toast.Body>
+                    <h5><strong className="me-auto">Plan actualizado</strong></h5>
+                </Toast.Body>
+            </Toast>
+
             <Container>
-
                 <h3 className="mt-5 mb-3">Te puede interesar!</h3>
-
                 < Row className="mt-5"  >
                     {recomendations && recomendations.map(e => {
-
                         return (
+
                             <Col key={e.id} className="mb-5">
                                 <div className="recomedationCard" >
                                     {(e.types.includes("tourist_attraction") || e.types.includes("museum")) && <h1 ><HiOutlineBuildingLibrary className="placeIcon" /></h1>}
@@ -85,16 +83,14 @@ const Recomendations = ({ savePlan }) => {
                                         <button sm={6} className="saveButton mt-3" onClick={save} value={e.id}>Añadir al viaje</button>
                                     </div>
                                 </div>
-
                             </Col>
                         )
-                    }
-                    )}
+                    })}
                 </Row>
             </Container>
+
         </div >
     )
-
-
 }
+
 export default Recomendations

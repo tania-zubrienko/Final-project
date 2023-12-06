@@ -68,3 +68,10 @@ a {
     font-weight: 600 !important;
     margin: 0;
 }
+
+.toastAdd {
+    position: fixed !important;
+    bottom: 8vh !important;
+    line-height: 100px !important;
+    right: 2vw !important;
+}

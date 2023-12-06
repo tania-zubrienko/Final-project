@@ -21,8 +21,7 @@ const NewTripForm = () => {
             options
         )
         autoCompleteRef.current.addListener("place_changed", async function () {
-            const place = await autoCompleteRef.current.getPlace();
-            console.log(place.photos[0].getUrl())
+            const place = await autoCompleteRef.current.getPlace()
             handleDestinationChange({ place })
 
         })

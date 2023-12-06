@@ -6,14 +6,15 @@ import { useState } from "react"
 
 const TripList = ({ trips, refresh }) => {
 
-    const update = () => refresh()
+    function update() {
+        refresh()
+    }
 
     return (
         !trips ?
             <Loader />
             :
             <Container>
-
                 <Row>
                     {
                         trips.length > 0 ?

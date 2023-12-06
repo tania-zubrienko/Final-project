@@ -7,8 +7,12 @@ import { useState } from "react"
 const Booked = ({ booked }) => {
     const [show, setShow] = useState(false)
 
-    const handleClose = () => setShow(false)
-    const handleShow = () => setShow(true)
+    function handleClose() {
+        setShow(false)
+    }
+    function handleShow() {
+        setShow(true)
+    }
 
     return (
         booked &&

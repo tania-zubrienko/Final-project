@@ -9,16 +9,8 @@ import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
 import Participants from '../../components/Participants/Participants'
 import TripDates from '../../components/TripDates/TripDates'
-
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
-
-import TabButtons from '../../components/TabButtons/TabButtons'
-import BookedDropdowns from '../../components/Dropdowns/BookedDropdowns'
-import NotBookedDropdowns from '../../components/Dropdowns/NotBookedDropdowns'
 import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
-
-
-
 
 const TripDetail = () => {
 
@@ -27,7 +19,6 @@ const TripDetail = () => {
     const [currentTrip, setCurrentTrip] = useState()
     const [dates, setDates] = useState([])
     const [myPlans, setMyPlans] = useState([])
-    const [chosenPlan, setChosenPlan] = useState({})
 
     useEffect(() => {
         getTripInfo()
@@ -46,7 +37,7 @@ const TripDetail = () => {
     }
 
     const savePlan = (planId, planName) => {
-        console.log("ENTRO EN SAVE PLAN", planId, planName)
+
         tripServices
             .addPlantoTrip(id, { planId, planName })
             .then(getTripInfo())

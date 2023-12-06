@@ -14,7 +14,6 @@ const FriendList = () => {
 
     const handleClose = () => {
 
-        console.log("estoy en close")
         setUserSearch('')
         setShow(false)
 
@@ -28,20 +27,19 @@ const FriendList = () => {
 
     }
 
-    const searchHandler = e => setUserSearch(e.target.value)
+    function searchHandler(e) {
+        setUserSearch(e.target.value)
+    }
 
 
-    const getList = () => {
-
+    function getList() {
         userServices
             .getFriendList()
             .then(res => setFriends(res.data))
             .catch(err => console.log(err))
-
     }
 
-    const handlerDeleteFriend = (e) => {
-
+    function handlerDeleteFriend(e) {
         const friendId = e.target.value
 
         userServices
@@ -50,7 +48,6 @@ const FriendList = () => {
             .catch(err => console.log(err))
 
         setState(!state)
-
     }
 
     useEffect(() => { getList() }, [state])

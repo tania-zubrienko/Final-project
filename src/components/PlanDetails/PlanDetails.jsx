@@ -1,5 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap'
-import { IoLocationOutline, IoEarthOutline, IoDocumentOutline } from "react-icons/io5"
+import { IoLocationOutline, IoEarthOutline } from "react-icons/io5"
 import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go"
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
@@ -8,10 +8,8 @@ import { Link, useParams } from 'react-router-dom'
 import tripServices from '../../services/trips.services';
 
 const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
-    console.log(placeInfo)
 
     const { id } = useParams()
-    console.log(id)
 
     const deleteTripPlan = e => {
         const { value } = e.target
@@ -22,11 +20,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
             .then(() => refreshInfo())
             .catch(err => console.log(err))
 
-
     }
-
-
-
 
     return (
         placeInfo &&
@@ -51,7 +45,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                         <GoClock className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Horario habitual: {placeInfo.hours[0]}</p>
+                        <p>Horario habitual: {placeInfo.hours == "Closed" ? <p>No hay información</p> : <p>{placeInfo.hours}</p>}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
@@ -67,7 +61,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                         <LiaMapMarkerAltSolid className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <Link to={placeInfo.url}>Como llegar</Link>
+                        <Link to={placeInfo.url}>Ubicación</Link>
                     </Col>
                 </Row>
                 <Row className='mb-3'>
@@ -78,6 +72,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                         <Link to={placeInfo.url}><p>{placeInfo.website}</p></Link>
                     </Col>
                 </Row>
+
                 <Row className='mb-3'>
                     <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }} >
                         <IoDocumentOutline className='icon' />

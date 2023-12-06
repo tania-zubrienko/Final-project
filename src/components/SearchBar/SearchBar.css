@@ -22,7 +22,13 @@ p {
 
 .userCard {
     display: flex;
+    flex-direction: row !important;
     align-items: center;
+}
+
+.userCard img {
+    height: 100px;
+    margin-right: 20px !important;
 }
 
 .addButton {
