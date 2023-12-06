@@ -86,7 +86,7 @@ const NewBookingForm = () => {
                 <Form.Label className='trip-label'>Tipo de reserva</Form.Label>
                 <Form.Select className='trip-input' type="text" name="type" value={bookingInfo.type} onChange={handleInputOnChange} >
                     <option >Elige un tipo de reserva </option>
-                    {DOCUMENT_TYPE.map(e => <option value={e}>{e}</option>)}
+                    {DOCUMENT_TYPE.map(e => <option value={e} key={e}>{e}</option>)}
                 </Form.Select>
             </Form.Group>
 

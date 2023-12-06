@@ -25,7 +25,7 @@ const NewExpenseForm = ({ fireFinalActions }) => {
             .then(trip => {
                 fireFinalActions()
             })
-            .catch(err => setErrors(err))
+            .catch(err => setErrors(err.response.data.errorMessage))
 
     }
 
