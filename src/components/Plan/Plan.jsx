@@ -17,35 +17,35 @@ const Plan = ({ myPlans }) => {
     // const [myPlans, setMyPlans] = useState()
     const [plansId, setPlansId] = useState([])
 
-    const searchHandler = e => setPlanSearch(e.target.value)
+    // const searchHandler = e => setPlanSearch(e.target.value)
 
 
-    const showPlans = () => {
-        tripServices
-            .getTripById(id)
-            .then(({ data }) => {
-                return data.result.placesOfInterest
-            })
-            .then(arrPlacesIdsTrip => {
+    // const showPlans = () => {
+    //     tripServices
+    //         .getTripById(id)
+    //         .then(({ data }) => {
+    //             return data.result.placesOfInterest
+    //         })
+    //         .then(arrPlacesIdsTrip => {
 
-                arrPlacesIdsTrip.map(elm => {
-                    console.log("------", elm.placeId)
-                    // searchDetailsService
-                    //     .getDetailsPlace()
-                    //     .then(response => console.log("----------------------", response))
-                    //     .catch(err => console.log(err))
-                })
+    //             arrPlacesIdsTrip.map(elm => {
+    //                 console.log("------", elm.placeId)
+    //                 // searchDetailsService
+    //                 //     .getDetailsPlace()
+    //                 //     .then(response => console.log("----------------------", response))
+    //                 //     .catch(err => console.log(err))
+    //             })
 
-                // setPlansId(...plansId, elm.placeId)
+    //             // setPlansId(...plansId, elm.placeId)
 
-            })
-            .catch(err => console.log(err))
-    }
+    //         })
+    //         .catch(err => console.log(err))
+    // }
 
-    useEffect((() => {
-        showPlans()
-        console.log("estos son los ids", plansId)
-    }), [])
+    // useEffect((() => {
+    //     showPlans()
+    //     console.log("estos son los ids", plansId)
+    // }), [])
 
     // const getList = () => {
 

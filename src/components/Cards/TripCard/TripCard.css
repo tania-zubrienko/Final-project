@@ -27,9 +27,9 @@
 }
 
 .toast {
-    position: fixed;
+    /* position: fixed;
     bottom: 6vh;
-    right: 2vw;
+    right: 2vw; */
     background-color: rgb(29, 80, 134, 0.5) !important;
     color: white !important;
     text-align: center;
