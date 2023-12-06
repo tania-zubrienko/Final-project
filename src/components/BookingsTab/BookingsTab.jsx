@@ -1,12 +1,13 @@
 import TabButtons from '../../components/TabButtons/TabButtons'
 import { useEffect, useState } from 'react'
-import { Accordion, Button, Container, Row } from 'react-bootstrap'
+import { Accordion, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { FaPlus } from "react-icons/fa6"
 import Booked from '../Booked/Booked'
 import bookingService from '../../services/booking.services'
 import formatDate from '../../utils/date-utils'
 import TripDates from '../TripDates/TripDates'
+import './../Dropdowns/Dropdowns.css'
 
 const BookingsTab = ({ dates, id }) => {
     const [searchDate, setSearchDate] = useState()
@@ -48,7 +49,6 @@ const BookingsTab = ({ dates, id }) => {
 
                 <Container className="mt-5">
                     <Link to={`/viajes/reservas/${id}/crear`}><div className="btnAdd"><h3><FaPlus /></h3></div></Link>
-
 
                     <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
                         <Accordion >

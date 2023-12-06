@@ -1,16 +1,19 @@
 h1,
 h3 {
-
     color: #011e3d !important;
     font-weight: 1000 !important;
 }
 
 .btnAdd {
-    background-color: #c0ec6f;
+    background-color: #c0ec6f !important;
     border-radius: 30px;
     text-align: center;
     width: 30%;
     margin: 0 auto;
+}
+
+.btnAdd h3 {
+    padding: 5px 0px;
 }
 
 .bookingsHeader h3 {
