@@ -11,7 +11,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
 
     const { id } = useParams()
 
-    const deleteTripPlan = e => {
+    function deleteTripPlan(e) {
         const { value } = e.target
         const currentId = value
 

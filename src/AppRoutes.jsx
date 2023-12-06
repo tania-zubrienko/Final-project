@@ -10,8 +10,6 @@ import NewTripPage from './pages/NewTripPage/NewTripPage.jsx'
 import NewBookingPage from './pages/NewBookingPage/NewBookingPage.jsx'
 import TripDetail from './pages/TripDetail/TripDetail.jsx'
 import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
-
-import NewDocumentPage from './pages/NewDocumentPage/NewDocumentPage.jsx'
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
 
 
@@ -19,7 +17,6 @@ const AppRoutes = () => {
 
     return (
         <Routes>
-            <Route path='/pruebas' element={<NewDocumentPage />} />
 
             <Route path='/' element={<HomePage />} />
             <Route path='/registrarse' element={<SignupPage />} />

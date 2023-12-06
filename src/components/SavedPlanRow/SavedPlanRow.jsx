@@ -33,7 +33,7 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
 
     }
 
-    const refreshInfo = () => {
+    function refreshInfo() {
 
         refresh()
         setShowModal(false)

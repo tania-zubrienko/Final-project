@@ -25,7 +25,7 @@ const TripDetail = () => {
         getTripInfo()
     }, [])
 
-    const getTripInfo = () => {
+    function getTripInfo() {
 
         tripServices
             .getTripById(id)
@@ -37,7 +37,7 @@ const TripDetail = () => {
             .catch(err => console.log(err))
     }
 
-    const savePlan = (planId, planName) => {
+    function savePlan(planId, planName) {
 
         tripServices
             .addPlantoTrip(id, { planId, planName })
