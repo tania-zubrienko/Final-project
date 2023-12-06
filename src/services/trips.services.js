@@ -67,6 +67,10 @@ class TripServices {
         return this.api.post(`/${tripId}/deletePlan`, { planId: currentId })
     }
 
+    deleteExpense(tripId, expenseId) {
+        return this.api.post(`/${tripId}/deleteExpense`, { expenseId })
+    }
+
     getTripById(id) {
         return this.api.get(`/${id}`)
     }

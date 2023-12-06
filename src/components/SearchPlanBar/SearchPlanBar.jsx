@@ -4,7 +4,7 @@ import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
 import './SearchPlanBar.css'
 
-const SearchPlanBar = () => {
+const SearchPlanBar = ({ refresh }) => {
     const { id } = useParams()
 
     let autoCompleteRef = useRef()
@@ -50,7 +50,14 @@ const SearchPlanBar = () => {
         event.preventDefault()
         tripServices
             .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name })
-            .then(() => console.log("para que no pete"))
+            .then(() => {
+                refresh()
+                setPlanInfo({
+                    name: '',
+                    placeId: '',
+                    destinationCoords: {}
+                })
+            })
             .catch(err => console.log(err))
     }
 
