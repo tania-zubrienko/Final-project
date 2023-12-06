@@ -14,13 +14,13 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
     const [currentPlace, setCurrentPlace] = useState()
     const [currentId, setCurrentId] = useState("")
 
-    function createModal(){
+    function createModal() {
 
         setShowModal(true)
 
     }
 
-    function getPlaceInfo(e){
+    function getPlaceInfo(e) {
 
         const { value } = e.target
         const buttonId = e.target.id
@@ -48,7 +48,7 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
             <Row className='align-items-center' onClick={createModal}>
                 {myPlans.map(e => {
                     return (
-                        <Col md={{ span: 3, offset: 1 }}>
+                        <Col md={{ span: 3, offset: 1 }} key={e._id}>
                             <div className='d-flex  text-align-center align-items-center'>
                                 <p><IoLocationOutline className='icon' /></p>
                                 <button id={e._id} value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>

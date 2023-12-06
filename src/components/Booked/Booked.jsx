@@ -1,4 +1,5 @@
 import { Container, Row, Col, Modal } from "react-bootstrap"
+import { FaRegCircleCheck } from "react-icons/fa6"
 import './Booked.css'
 import shortDate from "../../utils/shortDate"
 import { useState } from "react"
