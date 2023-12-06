@@ -5,10 +5,10 @@ import { useParams } from "react-router-dom"
 import tripServices from "../../services/trips.services"
 import { Modal, Container, Row, Col } from "react-bootstrap"
 import AddButton from "../Button/AddButton"
-import { MdOutlineDescription } from "react-icons/md"
 import { LuEuro } from "react-icons/lu"
 
 import './ListExpenses.css'
+import ExpenseRow from "../Expenses/ExpenseRow"
 const ListExpenses = () => {
 
     const [expensesList, setExpensesList] = useState()
@@ -55,15 +55,7 @@ const ListExpenses = () => {
                             {
                                 expensesList.map((elm, id) => {
                                     return (
-                                        // TODO: DESACOPLAR A EXPENSEROW
-                                        <Row key={id} className="mt-5 mb-3">
-                                            <Col sm={{ offset: 3, span: 3 }} className="d-flex">
-                                                <h5><MdOutlineDescription className="imagenList" />{elm.concept}</h5>
-                                            </Col>
-                                            <Col sm={{ offset: 2, span: 3 }}>
-                                                <h5>{elm.cost} €</h5>
-                                            </Col>
-                                        </Row>
+                                        <ExpenseRow key={id} expense={elm} />
                                     )
                                 })
                             }
