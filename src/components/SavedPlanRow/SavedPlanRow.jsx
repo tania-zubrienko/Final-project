@@ -8,10 +8,11 @@ import { Link } from 'react-router-dom'
 import tripServices from '../../services/trips.services'
 import placeServices from '../../services/places.services'
 
-const SavedPlanRow = ({ myPlans }) => {
+const SavedPlanRow = ({ myPlans, refresh }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [currentPlace, setCurrentPlace] = useState()
+    const [currentId, setCurrentId] = useState("")
 
     function createModal(){
 
@@ -22,12 +23,22 @@ const SavedPlanRow = ({ myPlans }) => {
     function getPlaceInfo(e){
 
         const { value } = e.target
-
+        const buttonId = e.target.id
+        setCurrentId(buttonId)
         placeServices
             .getPlaceInfo(value)
             .then(res => setCurrentPlace(res.data))
             .catch(err => console.log(err))
 
+    }
+
+    // const getCurrentId = (id) => {
+    //     setCurrentId(id)
+    // }
+
+    const refreshInfo = () => {
+        refresh()
+        setShowModal(false)
     }
 
 
@@ -40,7 +51,7 @@ const SavedPlanRow = ({ myPlans }) => {
                         <Col md={{ span: 3, offset: 1 }}>
                             <div className='d-flex  text-align-center align-items-center'>
                                 <p><IoLocationOutline className='icon' /></p>
-                                <button value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
+                                <button id={e._id} value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
                             </div>
                         </Col>)
                 })}
@@ -51,7 +62,7 @@ const SavedPlanRow = ({ myPlans }) => {
                     <Modal.Title>Detalle del Plan</Modal.Title>
                 </Modal.Header>
                 <Modal.Body >
-                    <PlanDetails placeInfo={currentPlace} />
+                    <PlanDetails placeInfo={currentPlace} currentId={currentId} refreshInfo={refreshInfo} />
                 </Modal.Body>
             </Modal>
 

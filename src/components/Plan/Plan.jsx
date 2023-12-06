@@ -2,7 +2,8 @@ import { Accordion, Row } from 'react-bootstrap'
 import './Plan.css'
 import SavedPlanRow from '../SavedPlanRow/SavedPlanRow'
 
-const Plan = ({ myPlans }) => {
+
+const Plan = ({ myPlans, refresh }) => {
 
     return (
 
@@ -11,7 +12,7 @@ const Plan = ({ myPlans }) => {
                 <Accordion.Item eventKey="0" >
                     <Accordion.Header ><h3>Sitios guardados</h3></Accordion.Header>
                     <Accordion.Body>
-                        <SavedPlanRow myPlans={myPlans} />
+                        <SavedPlanRow myPlans={myPlans} refresh={refresh} />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>

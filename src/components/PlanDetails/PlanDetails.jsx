@@ -4,9 +4,23 @@ import { FaRegStar } from "react-icons/fa";
 import { GoClock } from "react-icons/go"
 import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import './PlanDetails.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import tripServices from '../../services/trips.services';
 
-const PlanDetails = ({ placeInfo }) => {
+const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
+
+    const { id } = useParams()
+
+    const deleteTripPlan = e => {
+        const { value } = e.target
+        const currentId = value
+
+        tripServices
+            .deletePlan(id, currentId)
+            .then(() => refreshInfo())
+            .catch(err => console.log(err))
+
+    }
 
     return (
         placeInfo &&
@@ -56,6 +70,20 @@ const PlanDetails = ({ placeInfo }) => {
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
                         <Link to={placeInfo.url}><p>{placeInfo.website}</p></Link>
+                    </Col>
+                </Row>
+
+                <Row className='mb-3'>
+                    <Col md={{ offset: 1, span: 2 }} lg={{ offset: 1, span: 1 }} >
+                        <IoDocumentOutline className='icon' />
+                    </Col>
+                    <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
+                        <p>Tickets cannot be purchased in advance</p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col md={{ offset: 9, span: 2 }}>
+                        <button value={currentId} onClick={deleteTripPlan}>Eliminar</button>
                     </Col>
                 </Row>
             </Row>
