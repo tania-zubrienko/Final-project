@@ -52,7 +52,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
                                                 </Row>
                                             </Modal.Body>
                                             <Modal.Footer>
-                                                <Button variant="danger" value={children._id} onClick={deleteDocument}><h3><MdDeleteOutline /></h3></Button>
+                                                <Button variant="danger" value={children._id} onClick={deleteDocument}>Eliminar</Button>
                                             </Modal.Footer>
                                         </Modal>
                                     </>
