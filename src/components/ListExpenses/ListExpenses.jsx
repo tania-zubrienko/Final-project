@@ -5,8 +5,6 @@ import { useParams } from "react-router-dom"
 import tripServices from "../../services/trips.services"
 import { Modal, Container, Row, Col } from "react-bootstrap"
 import AddButton from "../Button/AddButton"
-import { LuEuro } from "react-icons/lu"
-import { MdOutlineDescription } from "react-icons/md"
 import './ListExpenses.css'
 import ExpenseRow from "../Expenses/ExpenseRow"
 import { MdOutlineDescription } from "react-icons/md"
