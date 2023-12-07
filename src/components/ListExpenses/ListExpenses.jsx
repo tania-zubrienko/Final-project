@@ -9,7 +9,6 @@ import { LuEuro } from "react-icons/lu"
 import { MdOutlineDescription } from "react-icons/md"
 import './ListExpenses.css'
 import ExpenseRow from "../Expenses/ExpenseRow"
-import { MdOutlineDescription } from "react-icons/md"
 const ListExpenses = () => {
 
     const [expensesList, setExpensesList] = useState()
