@@ -87,7 +87,7 @@ const TripDetail = () => {
 
                 <Tab eventKey="planes" title="Planes" className='tab'>
                     <TripDates dates={dates} />
-                    <SearchPlanBar tripId={id} refresh={getTripInfo} />
+                    <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} />
                     <Recomendations refresh={getTripInfo} />
                 </Tab>

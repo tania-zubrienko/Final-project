@@ -3,8 +3,10 @@ import { useEffect, useState, useRef } from 'react'
 import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
 import './SearchPlanBar.css'
+import shortDate from '../../utils/shortDate.utils'
+import formatDate from '../../utils/date-utils'
 
-const SearchPlanBar = ({ refresh }) => {
+const SearchPlanBar = ({ refresh, dates }) => {
     const { id } = useParams()
 
     let autoCompleteRef = useRef()
@@ -12,7 +14,8 @@ const SearchPlanBar = ({ refresh }) => {
     const [planInfo, setPlanInfo] = useState({
         name: '',
         placeId: '',
-        destinationCoords: {}
+        destinationCoords: {},
+        date: ''
     })
 
     let options = {
@@ -49,7 +52,7 @@ const SearchPlanBar = ({ refresh }) => {
     function handleNewPlanSubmit(event) {
         event.preventDefault()
         tripServices
-            .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name })
+            .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
             .then(() => {
                 refresh()
                 setPlanInfo({
@@ -68,6 +71,12 @@ const SearchPlanBar = ({ refresh }) => {
                     <Row className='align-items-center mt-4'>
                         <Col md={{ offset: 1, span: 8 }}>
                             <Form.Control ref={inputRef} className='place-input' type="text" placeholder="¿A donde vamos?" name="name" value={planInfo.name} onChange={handleInputOnChange} />
+                        </Col>
+                        <Col>
+                            <Form.Select aria-label="date" onChange={handleInputOnChange} name="date">
+                                <option>Elige la fecha</option>
+                                {dates.map(e => <option>{formatDate(e)}</option>)}
+                            </Form.Select>
                         </Col>
                         <Col md={{ span: 2 }}>
                             <button onClick={handleNewPlanSubmit} className='addPlaceBtn shadow'>Añadir plan</button>
