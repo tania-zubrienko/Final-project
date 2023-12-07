@@ -19,7 +19,6 @@ class CountryService {
     }
 
     getCountryInfo(country) {
-        console.log("Estoy en servicios", country.toLowerCase())
         return this.api.get(`/${country.toLowerCase()}`)
     }
 

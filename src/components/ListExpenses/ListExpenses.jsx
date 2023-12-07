@@ -67,20 +67,9 @@ const ListExpenses = () => {
                                 expensesList.map((elm, id) => {
                                     return (
                                         <>
-                                            <ExpenseRow key={id} expense={elm} />
+                                            <ExpenseRow key={id} expense={elm} deleteTripExpense={deleteTripExpense} />
 
-                                        // TODO: DESACOPLAR A EXPENSEROW
-                                            <Row key={id} className="mt-5 mb-3">
-                                                <Col sm={{ offset: 1, span: 3 }} className="d-flex">
-                                                    <h5><MdOutlineDescription className="imagenList" />{elm.concept}</h5>
-                                                </Col>
-                                                <Col sm={{ offset: 1, span: 3 }}>
-                                                    <h5>{elm.cost} €</h5>
-                                                </Col>
-                                                <Col sm={{ offset: 1, span: 3 }}>
-                                                    <button value={elm._id} onClick={deleteTripExpense}>Eliminar</button>
-                                                </Col>
-                                            </Row>
+
                                         </>
                                     )
                                 })

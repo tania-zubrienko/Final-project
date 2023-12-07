@@ -1,0 +1,32 @@
+.HomePage {
+    padding-top: 2vh;
+    background-color: #001F3F !important;
+    height: 93vh;
+}
+
+.HomePage h3,
+.HomePage p {
+    color: white !important;
+    margin-bottom: 5vh;
+}
+
+.textCard {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 10vw;
+
+}
+
+.text {
+    display: flex !important;
+    flex-direction: column;
+    background-color: rgb(214, 234, 255, 0.3) !important;
+    color: #001F3F !important;
+    width: 30vw;
+    border: rgb(214, 234, 255, 0.5)2px solid;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 30px;
+    box-shadow: 20px 20px 20px rgb(209, 244, 159, 0.3);
+}
