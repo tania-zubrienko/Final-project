@@ -7,7 +7,7 @@ const TripDates = ({ dates, filterByDay }) => {
 
         <div className='slider'>
 
-            <button className="icon" onClick={filterByDay} value={undefined}> <MdOutlineCalendarToday /> </button>
+            <button className="icon" onClick={filterByDay} value={'Todo'}> <MdOutlineCalendarToday /> </button>
             {
             dates.map(e => {
                 return (

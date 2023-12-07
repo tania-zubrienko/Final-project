@@ -24,7 +24,7 @@ const BookingsTab = ({ dates, id }) => {
     }, [searchDate, searchType])
 
     function filterByDay(e) {
-        if (e.target.value !== undefined) {
+        if (e.target.value !== undefined && e.target.value !== 'Todo') {
             setSearchDate(formatDate(new Date(e.target.value)))
         }
         else {
