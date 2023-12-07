@@ -11,6 +11,7 @@ import NewBookingPage from './pages/NewBookingPage/NewBookingPage.jsx'
 import TripDetail from './pages/TripDetail/TripDetail.jsx'
 import PlanDetails from "./components/PlanDetails/PlanDetails.jsx"
 import LoginPage from './pages/LoginPage/LoginPage.jsx'
+import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 
 
 const AppRoutes = () => {
@@ -35,7 +36,7 @@ const AppRoutes = () => {
                 <Route path="/viajes/:id/planes/:id/detalle" element={<PlanDetails />} />
             </Route>
 
-            <Route path='*' element={<h1>Error 404 (no soy una tetera pero ojalá)</h1>} />
+            <Route path='*' element={<ErrorPage />} />
         </Routes>
     )
 
