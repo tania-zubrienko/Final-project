@@ -11,4 +11,12 @@
     width: 50vw;
     text-align: center;
     box-shadow: 20px 20px 20px rgb(0, 31, 61, 0.4) !important;
+    display: flex !important;
+    flex-direction: column;
+    color: #001F3F !important;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding: 30px;
 }
+
+.text2 {}

@@ -15,15 +15,15 @@
     align-items: center;
     justify-content: space-around;
     padding: 0 10vw;
-background-color: #001F3F !important;
+    background-color: #001F3F !important;
 }
 
-.text {
+.text2 {
     display: flex !important;
     flex-direction: column;
     background-color: rgb(214, 234, 255, 0.3) !important;
     color: #001F3F !important;
-    width: 30vw;
+    width: 40vw;
     border: rgb(214, 234, 255, 0.5)2px solid;
     border-top-left-radius: 30px;
     border-bottom-right-radius: 30px;
