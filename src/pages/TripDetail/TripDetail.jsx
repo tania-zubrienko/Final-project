@@ -12,6 +12,7 @@ import TripDates from '../../components/TripDates/TripDates'
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
 import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
 import Information from '../../components/Information/Information'
+import Carousel from 'react-bootstrap/Carousel';
 
 const TripDetail = () => {
 
@@ -49,7 +50,16 @@ const TripDetail = () => {
     return (
         <div className="TripDetail">
             <div className='header'>
-                {currentTrip && <img src={currentTrip.tripImage} alt={currentTrip.destination} />}
+
+                <Carousel fade>
+                    {currentTrip && //<img src={currentTrip.tripImage} alt={currentTrip.destination} />
+                        currentTrip.tripImage.map(e =>
+                            <Carousel.Item interval={1500}>
+                                <img src={e} alt={currentTrip.destination} />
+                            </Carousel.Item>
+                        )
+                    }
+                </Carousel>
             </div>
 
             <Tabs
