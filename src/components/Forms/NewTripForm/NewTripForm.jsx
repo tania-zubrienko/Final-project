@@ -13,7 +13,7 @@ const NewTripForm = () => {
     let inputRef = useRef();
 
     let options = {
-        fields: ["address_components", "geometry", "photos", "name"],
+        fields: ["address_components", "geometry", "photos", "name"]
     }
 
     useEffect(() => {
@@ -54,7 +54,8 @@ const NewTripForm = () => {
         const lng = coords.place.geometry.location.lng()
         const city = coords.place.address_components[0].long_name
         const picture = coords.place.photos[0].getUrl()
-        setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city, tripImage: picture })
+        const country = coords.place.address_components.reverse()[0].long_name
+        setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city, tripImage: picture, country })
     }
 
     const navigate = useNavigate()
