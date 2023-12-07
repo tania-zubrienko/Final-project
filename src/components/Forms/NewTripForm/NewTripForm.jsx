@@ -91,7 +91,7 @@ const NewTripForm = () => {
             }
 
             <div className="d-grid gap-2 mt-5">
-                <Button className='primary-button' type="submit">
+                <Button className='primary-button shadow' type="submit">
                     Crear
                 </Button>
             </div>

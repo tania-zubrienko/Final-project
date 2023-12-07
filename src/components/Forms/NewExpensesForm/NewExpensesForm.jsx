@@ -47,7 +47,7 @@ const NewExpenseForm = ({ fireFinalActions }) => {
                         }
 
                         <div className="d-grid gap-2 mt-4">
-                            <Button className='primary-button' type="submit" >
+                            <Button className='primary-button shadow' type="submit" >
                                 Crear
                             </Button>
                         </div>

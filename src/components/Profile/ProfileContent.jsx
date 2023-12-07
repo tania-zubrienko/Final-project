@@ -1,4 +1,4 @@
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap'
 import Accordion from 'react-bootstrap/Accordion'
 import { useEffect, useState } from 'react'
 import tripServices from '../../services/trips.services'
@@ -72,13 +72,17 @@ const ProfileContent = () => {
                         <Accordion.Item eventKey='1'>
                             <Accordion.Header>Mis Viajes</Accordion.Header>
                             <Accordion.Body>
-                                {userTrips && userTrips.map(e => <UserTrips tripImage={e.tripImage} key={e._id} tripId={e._id} destination={e.destination} date={{ end: e.endDate, start: e.startDate }} />)}
+                                <ListGroup className='container-scroll'>
+                                    {userTrips && userTrips.map(e => <UserTrips tripImage={e.tripImage} key={e._id} tripId={e._id} destination={e.destination} date={{ end: e.endDate, start: e.startDate }} />)}
+                                </ListGroup>
                             </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey='2'>
                             <Accordion.Header>Mis Amigos</Accordion.Header>
                             <Accordion.Body>
-                                <FriendList />
+                                <ListGroup className='container-scroll'>
+                                    <FriendList />
+                                </ListGroup>
                             </Accordion.Body>
                         </Accordion.Item>
                     </Accordion>

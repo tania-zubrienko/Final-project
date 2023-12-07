@@ -30,7 +30,7 @@ const TripCard = ({ trip, refreshList }) => {
     return (
         <>
             <Col className='mt-5' xl={{ span: 4 }}>
-                <Card className='trip-card'>
+                <Card className='trip-card shadow'>
                     <Row className='align-items-center'>
                         <Link to={`/viajes/detalles/${tripId}`}>
                             <Col>

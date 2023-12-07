@@ -70,7 +70,7 @@ const SearchPlanBar = ({ refresh }) => {
                             <Form.Control ref={inputRef} className='place-input' type="text" placeholder="¿A donde vamos?" name="name" value={planInfo.name} onChange={handleInputOnChange} />
                         </Col>
                         <Col md={{ span: 2 }}>
-                            <button onClick={handleNewPlanSubmit} className='addPlaceBtn'>Añadir plan</button>
+                            <button onClick={handleNewPlanSubmit} className='addPlaceBtn shadow'>Añadir plan</button>
                         </Col>
                     </Row>
                 </Form.Group>

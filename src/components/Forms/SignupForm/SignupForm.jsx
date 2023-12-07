@@ -77,7 +77,7 @@ const SignupForm = () => {
             {errors.length > 0 && errors.map(e => <AlertForm key={e} message={e} />)}
 
             <div className="d-grid gap-2 mt-4">
-                <Button className='primary-button' type="submit" disabled={isLoading}>
+                <Button className='primary-button shadow' type="submit" disabled={isLoading}>
                     {isLoading ? 'Cargando...' : 'Registrarse'} 
                 </Button>
             </div>
