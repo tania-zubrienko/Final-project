@@ -69,7 +69,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                         <IoEarthOutline className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <Link to={placeInfo.url}><p>{placeInfo.website}</p></Link>
+                        <Link to={placeInfo.website}><p>{placeInfo.website}</p></Link>
                     </Col>
                 </Row>
                 <Row>
