@@ -34,7 +34,7 @@ const DocumentCard = ({ type, getDocuments, children }) => {
     }
 
     return (
-        <Card>
+        <Card className="shadow">
             <Card.Body>
                 <Row className='align-items-center justify-content-between justify-content-sm-between'>
                     <Col xs={6} sm={6} md={6} xl={6}>

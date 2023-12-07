@@ -61,7 +61,7 @@ const DocumentsForm = ({ finishActions, type }) => {
             }
 
             <div className="d-grid gap-2 mt-5">
-                <Button className='primary-button' type="submit" disabled={isLoading}>
+                <Button className='primary-button shadow' type="submit" disabled={isLoading}>
                     {isLoading ? 'Cargando...' : 'Subir'}
                 </Button>
             </div>
