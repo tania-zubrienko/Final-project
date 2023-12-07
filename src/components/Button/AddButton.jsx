@@ -9,7 +9,7 @@ const AddButton = ({ pageName, createModal }) => {
 
             <Row className="mt-5">
                 <Col md={{ offset: 4, span: 4 }}>
-                    <div className="add" onClick={createModal}>
+                    <div className="add shadow" onClick={createModal}>
                         <h3>Añadir {pageName}</h3>
                     </div>
                 </Col>

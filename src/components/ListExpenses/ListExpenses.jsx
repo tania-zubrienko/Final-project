@@ -7,7 +7,6 @@ import { Modal, Container, Row, Col } from "react-bootstrap"
 import AddButton from "../Button/AddButton"
 import './ListExpenses.css'
 import ExpenseRow from "../Expenses/ExpenseRow"
-import { MdOutlineDescription } from "react-icons/md"
 const ListExpenses = () => {
 
     const [expensesList, setExpensesList] = useState()

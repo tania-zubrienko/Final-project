@@ -115,10 +115,10 @@ const NewBookingForm = () => {
             }
 
             <div className="d-grid gap-2 mt-3 d-flex">
-                <Button className='primary-button' type="submit" disabled={isLoading}>
+                <Button className='primary-button shadow' type="submit" disabled={isLoading}>
                     {isLoading ? 'Cargando...' : 'Crear'}
                 </Button>
-                <Button className='primary-button2' onClick={volver}>
+                <Button className='primary-button2 shadow' onClick={volver}>
                     Volver atrás
                 </Button>
             </div>

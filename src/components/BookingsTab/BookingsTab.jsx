@@ -48,7 +48,7 @@ const BookingsTab = ({ dates, id }) => {
             <div className="Dropdown">
 
                 <Container className="mt-5">
-                    <Link to={`/viajes/reservas/${id}/crear`}><div className="btnAdd"><h3><FaPlus /></h3></div></Link>
+                    <Link to={`/viajes/reservas/${id}/crear`}><div className="btnAdd shadow"><h3><FaPlus /></h3></div></Link>
 
                     <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
                         <Accordion >
