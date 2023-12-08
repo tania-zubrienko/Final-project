@@ -19,6 +19,7 @@ class TripServices {
     }
 
     getUserTrips() {
+        console.log("Estoy en back")
         return this.api.get('/')
     }
 

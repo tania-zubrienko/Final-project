@@ -21,7 +21,7 @@ const TripCard = ({ trip, refreshList }) => {
             .deleteTrip(tripId)
             .then(() => {
                 setShow(true)
-
+                refreshList()
             })
             .catch(err => console.log(err))
         refreshList()
