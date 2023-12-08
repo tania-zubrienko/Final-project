@@ -52,7 +52,7 @@ const TripDetail = () => {
             <div className='header'>
 
                 <Carousel fade>
-                    {currentTrip && //<img src={currentTrip.tripImage} alt={currentTrip.destination} />
+                    {currentTrip &&
                         currentTrip.tripImage.map(e =>
                             <Carousel.Item interval={1500}>
                                 <img src={e} alt={currentTrip.destination} />
