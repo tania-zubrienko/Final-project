@@ -17,7 +17,7 @@ const TripsPage = () => {
     }, [])
 
     function getTrips() {
-        console.log("entro en trippage")
+
         tripServices
             .getUserTrips()
             .then(result => {

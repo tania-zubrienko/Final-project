@@ -19,7 +19,7 @@ class TripServices {
     }
 
     getUserTrips() {
-        console.log("Estoy en back")
+
         return this.api.get('/')
     }
 
@@ -32,7 +32,7 @@ class TripServices {
     }
 
     createTrip(tripInfo) {
-        console.log(tripInfo)
+
         return this.api.post('/add', tripInfo)
     }
 
