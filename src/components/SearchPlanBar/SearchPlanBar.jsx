@@ -51,6 +51,7 @@ const SearchPlanBar = ({ refresh, dates }) => {
 
     function handleNewPlanSubmit(event) {
         event.preventDefault()
+        console.log(Date.parse(planInfo.date))
         tripServices
             .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
             .then(() => {
@@ -58,7 +59,8 @@ const SearchPlanBar = ({ refresh, dates }) => {
                 setPlanInfo({
                     name: '',
                     placeId: '',
-                    destinationCoords: {}
+                    destinationCoords: {},
+                    date: null
                 })
             })
             .catch(err => console.log(err))

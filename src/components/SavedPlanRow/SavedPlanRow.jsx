@@ -1,18 +1,20 @@
 import { Col, Row, Modal } from 'react-bootstrap'
 import { IoLocationOutline } from 'react-icons/io5'
-import cabeceraProvisional from '../../assets/cabeceraProvisional.jpeg'
 import './SavedPlanRow.css'
 import { useEffect, useState } from 'react'
 import PlanDetails from '../PlanDetails/PlanDetails'
-import { Link } from 'react-router-dom'
-import tripServices from '../../services/trips.services'
 import placeServices from '../../services/places.services'
+import planService from '../../services/plan.services'
+import TripDates from '../TripDates/TripDates'
 
-const SavedPlanRow = ({ myPlans, refresh }) => {
+const SavedPlanRow = ({ myPlans, refresh, dates, id }) => {
 
     const [showModal, setShowModal] = useState(false)
     const [currentPlace, setCurrentPlace] = useState()
     const [currentId, setCurrentId] = useState("")
+
+
+
 
     function createModal() {
 
@@ -42,7 +44,6 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
 
     return (
         <div className='SavedPlanRow' >
-
             <Row className='align-items-center' onClick={createModal}>
                 {myPlans.map(e => {
                     return (

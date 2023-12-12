@@ -9,7 +9,7 @@ class SearchNearby {
 
             config.headers = {
 
-                "X-Goog-Api-Key": "AIzaSyBDuPHmeT2hJFxWwcM2p7abZU05Gau84Pw",
+                "X-Goog-Api-Key": "",
 
 
                 "X-Goog-FieldMask":
