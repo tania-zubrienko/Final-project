@@ -7,7 +7,7 @@ import { useState } from "react"
 const TripList = ({ trips, refresh }) => {
 
     function update() {
-        refresh()
+        refresh && refresh()
     }
 
     return (

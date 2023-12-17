@@ -8,7 +8,7 @@ const HomePage = () => {
         <div className="HomePage">
 
             <div className="textCard">
-                <div className="text">
+                <div className="text2">
                     <h3> Planificación fácil e intuitiva</h3>
                     <p> ✦  Guarda documentos en un mismo lugar</p>
                     <br />
@@ -34,7 +34,7 @@ const HomePage = () => {
                     style={{ height: '400px', width: '400px', }}
                 >
                 </Player>
-                <div className="text">
+                <div className="text2">
                     <h3> Información del país a tu alcance</h3>
                     <p> ✦  Optimiza tus itenerarios</p>
                     <br />

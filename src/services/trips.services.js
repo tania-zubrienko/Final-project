@@ -19,6 +19,7 @@ class TripServices {
     }
 
     getUserTrips() {
+
         return this.api.get('/')
     }
 
@@ -31,7 +32,7 @@ class TripServices {
     }
 
     createTrip(tripInfo) {
-        console.log(tripInfo)
+
         return this.api.post('/add', tripInfo)
     }
 
