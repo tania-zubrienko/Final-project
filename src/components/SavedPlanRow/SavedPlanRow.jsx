@@ -12,9 +12,11 @@ import { useParams } from 'react-router-dom'
 const SavedPlanRow = ({ myPlans, refresh }) => {
 
     const { id } = useParams()
+
     const [showModal, setShowModal] = useState(false)
     const [currentPlace, setCurrentPlace] = useState()
     const [currentId, setCurrentId] = useState("")
+
 
     function createModal() {
 
@@ -36,7 +38,6 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
     }
 
     function refreshInfo() {
-
         refresh()
         setShowModal(false)
     }
@@ -57,7 +58,7 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
     return (
         <div className='SavedPlanRow' >
             <Row className='align-items-center' onClick={createModal}>
-                {myPlans.placesOfInterest?.map(e => {
+                {myPlans.map(e => {
                     return (
                         <Col md={{ span: 3, offset: 1 }} key={e._id}>
                             <div className='d-flex  text-align-center align-items-center'>

@@ -10,18 +10,20 @@ const Plan = ({ myPlans, refresh, dates, id }) => {
 
     const [searchDate, setSearchDate] = useState()
     const [planData, setPlanData] = useState(myPlans)
-    //no refresca l apagina a porque a los componentes hijios no llega actualizacion de planes del padre.
-    useEffect(() => {
-        refresh()
+
+    //no refresca la pagina a porque a los componentes hijios (saved plan row) no llega actualizacion de planes del padre. porque no cambia planData
+    useEffect(() => filterPlans(), [searchDate || myPlans])
+
+    function filterPlans() {
         planService
             .filterPlans(id, searchDate)
             .then(({ data }) => {
                 setPlanData(data)
-                refresh()
             })
             .catch(err => console.log(err))
-        refresh()
-    }, [searchDate])
+
+        console.log(planData)
+    }
 
     function filterByDay(e) {
         if (e.target.value !== undefined && e.target.value !== 'Todo') {

@@ -26,6 +26,10 @@ class PlanServices {
         return this.api.post(`/filter/${id}`, { planDate })
     }
 
+    getPlanDate(tripId, planId) {
+        return this.api.get(`/planDate/${tripId}?${planId}`)
+    }
+
 }
 
 const planService = new PlanServices()

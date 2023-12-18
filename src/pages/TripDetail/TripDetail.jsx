@@ -41,13 +41,7 @@ const TripDetail = () => {
             .catch(err => console.log(err))
     }
 
-    // function savePlan(planId, planName) {
 
-    //     tripServices
-    //         .addPlantoTrip(id, { planId, planName })
-    //         .then(getTripInfo())
-    //         .catch(err => console.log(err))
-    // }
 
     return (
         currentTrip &&

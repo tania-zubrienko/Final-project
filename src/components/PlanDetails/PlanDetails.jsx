@@ -6,11 +6,16 @@ import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import './PlanDetails.css'
 import { Link, useParams } from 'react-router-dom'
 import tripServices from '../../services/trips.services';
+import { useEffect, useState } from 'react';
+import planService from '../../services/plan.services';
+import shortDate from '../../utils/shortDate';
 
 const PlanDetails = ({ placeInfo, currentId }) => {
 
     const { id } = useParams()
+    const [date, setDate] = useState()
 
+    useEffect(() => getSavedDate(currentId), [])
     // function deleteTripPlan(e) {
     //     const { value } = e.target
     //     const currentId = value
@@ -21,11 +26,25 @@ const PlanDetails = ({ placeInfo, currentId }) => {
     //         .catch(err => console.log(err))
 
     // }
-
+    function getSavedDate(currentId) {
+        planService
+            .getPlanDate(id, currentId)
+            .then(({ data }) => {
+                const planDate = shortDate(new Date(data[0].date))
+                planDate === "NaN/NaN" ? setDate("No hay fecha") : setDate(planDate)
+            })
+            .catch(err => console.log(err))
+    }
     return (
         placeInfo &&
         <Container>
             <h3 className='mt-3'>{placeInfo.name}</h3>
+            {date &&
+                <>
+                    <span >Guardado para </span>
+                    <span className='savedDate'>{date}</span>
+                </>
+            }
             <Row className='mt-4'>
                 <Col md={{ offset: 1, span: 10 }}>
                     {placeInfo.img ? <img className='planImg' src={placeInfo.img} alt="" /> : <p>La foto no está disponible</p>}

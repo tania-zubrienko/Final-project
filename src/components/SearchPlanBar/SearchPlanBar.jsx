@@ -54,7 +54,8 @@ const SearchPlanBar = ({ refresh, dates }) => {
         event.preventDefault()
         tripServices
             .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
-            .then(() => {
+            .then((res) => {
+                console.log(res)
                 setPlanInfo({
                     name: '',
                     placeId: '',
