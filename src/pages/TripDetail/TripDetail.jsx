@@ -8,7 +8,6 @@ import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
 import Participants from '../../components/Participants/Participants'
-import TripDates from '../../components/TripDates/TripDates'
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
 import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
 import Information from '../../components/Information/Information'
@@ -23,11 +22,14 @@ const TripDetail = () => {
     const [myPlans, setMyPlans] = useState([])
     const [key, setKey] = useState('overview');
 
+
     useEffect(() => {
         getTripInfo()
     }, [])
 
     function getTripInfo() {
+
+        console.log("ENTRO")
 
         tripServices
             .getTripById(id)
@@ -39,22 +41,23 @@ const TripDetail = () => {
             .catch(err => console.log(err))
     }
 
-    function savePlan(planId, planName) {
+    // function savePlan(planId, planName) {
 
-        tripServices
-            .addPlantoTrip(id, { planId, planName })
-            .then(getTripInfo())
-            .catch(err => console.log(err))
-    }
+    //     tripServices
+    //         .addPlantoTrip(id, { planId, planName })
+    //         .then(getTripInfo())
+    //         .catch(err => console.log(err))
+    // }
 
     return (
+        currentTrip &&
         <div className="TripDetail">
             <div className='header'>
 
                 <Carousel fade>
                     {currentTrip &&
-                        currentTrip.tripImage.map(e =>
-                            <Carousel.Item interval={1500}>
+                        currentTrip.tripImage.map((e, i) =>
+                            <Carousel.Item interval={1500} key={i}>
                                 <img src={e} alt={currentTrip.destination} />
                             </Carousel.Item>
                         )

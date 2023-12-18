@@ -7,18 +7,20 @@ import planService from '../../services/plan.services'
 import formatDate from '../../utils/date-utils'
 
 const Plan = ({ myPlans, refresh, dates, id }) => {
-    const [searchDate, setSearchDate] = useState()
-    const [planData, setPlanData] = useState()
 
+    const [searchDate, setSearchDate] = useState()
+    const [planData, setPlanData] = useState(myPlans)
+    //no refresca l apagina a porque a los componentes hijios no llega actualizacion de planes del padre.
     useEffect(() => {
+        refresh()
         planService
             .filterPlans(id, searchDate)
             .then(({ data }) => {
-                console.log(data)
                 setPlanData(data)
+                refresh()
             })
             .catch(err => console.log(err))
-
+        refresh()
     }, [searchDate])
 
     function filterByDay(e) {
@@ -27,6 +29,7 @@ const Plan = ({ myPlans, refresh, dates, id }) => {
         }
         else {
             setSearchDate(undefined)
+            setPlanData(myPlans)
         }
     }
     // TODO: REVISAR LAYOUT DE BOOTSTRAP
@@ -38,7 +41,7 @@ const Plan = ({ myPlans, refresh, dates, id }) => {
                     <Accordion.Item eventKey="0" >
                         <Accordion.Header ><h3>Sitios guardados</h3></Accordion.Header>
                         <Accordion.Body>
-                            <SavedPlanRow myPlans={myPlans} refresh={refresh} dates={dates} id={id} />
+                            <SavedPlanRow myPlans={planData} refresh={refresh} dates={dates} id={id} />
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

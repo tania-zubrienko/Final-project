@@ -52,7 +52,7 @@ const Recomendations = ({ refresh }) => {
             })
             .then(() => refresh())
             .catch(err => console.log(err))
-
+        refresh()
     }
 
     return (

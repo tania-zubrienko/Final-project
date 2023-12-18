@@ -7,20 +7,20 @@ import './PlanDetails.css'
 import { Link, useParams } from 'react-router-dom'
 import tripServices from '../../services/trips.services';
 
-const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
+const PlanDetails = ({ placeInfo, currentId }) => {
 
     const { id } = useParams()
 
-    function deleteTripPlan(e) {
-        const { value } = e.target
-        const currentId = value
+    // function deleteTripPlan(e) {
+    //     const { value } = e.target
+    //     const currentId = value
 
-        tripServices
-            .deletePlan(id, currentId)
-            .then(() => refreshInfo())
-            .catch(err => console.log(err))
+    //     tripServices
+    //         .deletePlan(id, currentId)
+    //         .then(() => refreshInfo())
+    //         .catch(err => console.log(err))
 
-    }
+    // }
 
     return (
         placeInfo &&
@@ -28,7 +28,7 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
             <h3 className='mt-3'>{placeInfo.name}</h3>
             <Row className='mt-4'>
                 <Col md={{ offset: 1, span: 10 }}>
-                    <img className='planImg' src={placeInfo.img} alt="" />
+                    {placeInfo.img ? <img className='planImg' src={placeInfo.img} alt="" /> : <p>La foto no está disponible</p>}
                 </Col>
             </Row>
             <Row>
@@ -70,11 +70,6 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
                         <Link to={placeInfo.website}><p>{placeInfo.website}</p></Link>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={{ offset: 11 }}>
-                        <button value={currentId} onClick={deleteTripPlan} className='deleteButton'></button>
                     </Col>
                 </Row>
             </Row>

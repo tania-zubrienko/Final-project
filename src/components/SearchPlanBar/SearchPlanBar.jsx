@@ -23,6 +23,7 @@ const SearchPlanBar = ({ refresh, dates }) => {
     }
     useEffect(() => {
         initAutocomplete()
+        refresh()
     }, [])
 
     function initAutocomplete() {
@@ -51,19 +52,19 @@ const SearchPlanBar = ({ refresh, dates }) => {
 
     function handleNewPlanSubmit(event) {
         event.preventDefault()
-        console.log(Date.parse(planInfo.date))
         tripServices
             .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
             .then(() => {
-                refresh()
                 setPlanInfo({
                     name: '',
                     placeId: '',
                     destinationCoords: {},
                     date: null
                 })
+                refresh()
             })
             .catch(err => console.log(err))
+        refresh()
     }
 
     return (
@@ -71,14 +72,11 @@ const SearchPlanBar = ({ refresh, dates }) => {
             <Form>
                 <Form.Group className="mb-3" controlId="place-id" >
                     <Row className='align-items-center mt-4'>
-                        <Col md={{ offset: 1, span: 8 }}>
+                        <Col md={{ offset: 1, span: 6 }}>
                             <Form.Control ref={inputRef} className='place-input' type="text" placeholder="¿A donde vamos?" name="name" value={planInfo.name} onChange={handleInputOnChange} />
                         </Col>
                         <Col>
-                            <Form.Select aria-label="date" onChange={handleInputOnChange} name="date">
-                                <option>Elige la fecha</option>
-                                {dates.map(e => <option>{formatDate(e)}</option>)}
-                            </Form.Select>
+                            <Form.Control className='trip-input' type="date" min={formatDate(new Date(dates[0]))} max={formatDate(new Date(dates[dates.length - 1]))} name="date" onChange={handleInputOnChange} />
                         </Col>
                         <Col md={{ span: 2 }}>
                             <button onClick={handleNewPlanSubmit} className='addPlaceBtn shadow'>Añadir plan</button>

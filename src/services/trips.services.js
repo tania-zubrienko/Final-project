@@ -49,7 +49,6 @@ class TripServices {
     }
 
     addPlantoTrip(id, body) {
-
         return this.api.post(`/${id}/plan`, { placeId: body.placeId, name: body.name, date: body.date })
     }
 
