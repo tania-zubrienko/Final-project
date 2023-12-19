@@ -21,8 +21,6 @@ const Plan = ({ myPlans, refresh, dates, id }) => {
                 setPlanData(data)
             })
             .catch(err => console.log(err))
-
-        console.log(planData)
     }
 
     function filterByDay(e) {
@@ -41,7 +39,7 @@ const Plan = ({ myPlans, refresh, dates, id }) => {
             <Row className="row" style={{ color: '#011e3d', borderRadius: '5px', padding: "10px" }}>
                 <Accordion className='header' >
                     <Accordion.Item eventKey="0" >
-                        <Accordion.Header ><h3>Sitios guardados</h3></Accordion.Header>
+                        <Accordion.Header><p className='accTitle'>Sitios guardados</p></Accordion.Header>
                         <Accordion.Body>
                             <SavedPlanRow myPlans={planData} refresh={refresh} dates={dates} id={id} />
                         </Accordion.Body>

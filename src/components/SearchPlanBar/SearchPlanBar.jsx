@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from 'react'
 import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
 import './SearchPlanBar.css'
-import shortDate from '../../utils/shortDate.utils'
 import formatDate from '../../utils/date-utils'
 
 const SearchPlanBar = ({ refresh, dates }) => {
@@ -17,6 +16,7 @@ const SearchPlanBar = ({ refresh, dates }) => {
         destinationCoords: {},
         date: ''
     })
+    const [err, setErr] = useState(false)
 
     let options = {
         fields: ["address_components", "geometry", "photos", "place_id", "name"],
@@ -51,23 +51,28 @@ const SearchPlanBar = ({ refresh, dates }) => {
     }
 
     function handleNewPlanSubmit(event) {
-        event.preventDefault()
-        tripServices
-            .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
-            .then((res) => {
-                console.log(res)
-                setPlanInfo({
-                    name: '',
-                    placeId: '',
-                    destinationCoords: {},
-                    date: null
-                })
-                refresh()
-            })
-            .catch(err => console.log(err))
-        refresh()
-    }
 
+        if (planInfo.date === '' || planInfo.name === '') {
+            event.preventDefault()
+            setErr(true)
+        } else {
+            setErr(false)
+            event.preventDefault()
+            tripServices
+                .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
+                .then(() => {
+                    setPlanInfo({
+                        name: '',
+                        placeId: '',
+                        destinationCoords: {},
+                        date: null
+                    })
+                    refresh()
+                })
+                .catch(err => console.log(err))
+            refresh()
+        }
+    }
     return (
         <Container>
             <Form>
@@ -83,6 +88,7 @@ const SearchPlanBar = ({ refresh, dates }) => {
                             <button onClick={handleNewPlanSubmit} className='addPlaceBtn shadow'>Añadir plan</button>
                         </Col>
                     </Row>
+                    <p className={err ? 'd-block text-center' : 'd-none'} style={{ color: 'red' }}>Rellena todos campos</p>
                 </Form.Group>
             </Form>
         </Container>

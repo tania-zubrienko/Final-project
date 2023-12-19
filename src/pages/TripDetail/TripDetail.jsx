@@ -29,8 +29,6 @@ const TripDetail = () => {
 
     function getTripInfo() {
 
-        console.log("ENTRO")
-
         tripServices
             .getTripById(id)
             .then(res => {
@@ -75,7 +73,7 @@ const TripDetail = () => {
                             {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} refresh={getTripInfo} />}
                         </>
                     }
-                    <Recomendations refresh={getTripInfo} />
+                    <Recomendations refresh={getTripInfo} dates={dates} />
                 </Tab>
 
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
@@ -86,7 +84,7 @@ const TripDetail = () => {
                     {/* <TripDates dates={dates} /> */}
                     <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} dates={dates} id={id} />
-                    <Recomendations refresh={getTripInfo} />
+                    <Recomendations refresh={getTripInfo} dates={dates} />
                 </Tab>
 
                 <Tab eventKey="gastos" title="Gastos" className='tab'>

@@ -23,6 +23,7 @@ p {
 .SavedPlanRow {
     margin: auto;
     text-align: center;
+    line-height: 1em !important;
 }
 
 .placeLink {
@@ -30,4 +31,8 @@ p {
     text-align: left;
     border: 0;
     font-size: 1.5em;
+}
+
+.SavedPlanRow {
+    margin: 1.5em 0;
 }

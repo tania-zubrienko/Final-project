@@ -17,7 +17,7 @@ class PlaceServices {
             return config
         })
     }
-    
+
     getPlaceInfo(placeId) {
         return this.api.get(`/${placeId}`)
     }

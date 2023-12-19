@@ -1,11 +1,9 @@
 import { Col, Row, Modal } from 'react-bootstrap'
 import { IoLocationOutline } from 'react-icons/io5'
 import './SavedPlanRow.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import PlanDetails from '../PlanDetails/PlanDetails'
 import placeServices from '../../services/places.services'
-import planService from '../../services/plan.services'
-import TripDates from '../TripDates/TripDates'
 import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
 
@@ -58,15 +56,20 @@ const SavedPlanRow = ({ myPlans, refresh }) => {
     return (
         <div className='SavedPlanRow' >
             <Row className='align-items-center' onClick={createModal}>
-                {myPlans.map(e => {
-                    return (
-                        <Col md={{ span: 3, offset: 1 }} key={e._id}>
-                            <div className='d-flex  text-align-center align-items-center'>
-                                <p><IoLocationOutline className='icon' /></p>
-                                <button id={e._id} value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
-                            </div>
-                        </Col>)
-                })}
+                {myPlans.length > 0 ?
+                    myPlans.map(e => {
+                        return (
+                            <Col md={{ span: 3, offset: 1 }} key={e._id}>
+                                <div className='d-flex  text-align-center align-items-center'>
+                                    <p><IoLocationOutline className='icon' /></p>
+                                    <button id={e._id} value={e.placeId} onClick={getPlaceInfo} className='placeLink'>{e.name}</button>
+                                </div>
+                            </Col>)
+                    })
+                    :
+                    <p style={{ color: 'grey' }}>Aún no tienes planes para este dia</p>
+                }
+
             </Row>
 
             <Modal size='lg' show={showModal} onHide={() => setShowModal(false)} >
