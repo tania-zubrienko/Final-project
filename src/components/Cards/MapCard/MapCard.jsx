@@ -1,22 +1,25 @@
 import Loader from "../../Loader/Loader";
 import TripDates from "../../TripDates/TripDates"
-import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, useJsApiLoader, Marker } from '@react-google-maps/api';
 import './MapCard.css'
 import { useEffect, useState } from "react";
 
 
 const MapCard = ({ dates, defaultCords, plans }) => {
 
-    const { isLoaded, loadError } = useLoadScript({
+    const { isLoaded, loadError } = useJsApiLoader({
+        id: 'google-map-script',
         googleMapsApiKey: 'AIzaSyBDuPHmeT2hJFxWwcM2p7abZU05Gau84Pw'
     })
     const [markers, setMarkers] = useState([])
+
     useEffect(() => {
         getMarkers()
     }, [plans])
 
     function getMarkers() {
-        console.log("aqui los marcadores")
+        const coords = plans.map(elm => elm.location)
+        setMarkers(coords)
     }
     return (
         <div className="MapCard mt-5">
@@ -28,11 +31,11 @@ const MapCard = ({ dates, defaultCords, plans }) => {
                     <TripDates dates={dates} />
                     <GoogleMap
                         mapContainerClassName="mapContainer"
-                        zoom={10}
+                        zoom={11}
                         center={defaultCords}
                     >
+                        {markers.map((e, i) => <Marker position={e} key={i} />)}
 
-                        <Marker position={defaultCords} />
                     </GoogleMap>
                 </>
 

@@ -21,7 +21,7 @@ const Recomendations = ({ refresh, dates }) => {
     const [showModal, setShowModal] = useState(false)
     const [savedPlan, setSavedPlan] = useState({
         planId: '',
-        planDate: ''
+        planDate: '',
     })
     const [errClass, setErrClass] = useState(false)
 
@@ -73,9 +73,10 @@ const Recomendations = ({ refresh, dates }) => {
             placeServices
                 .getPlaceInfo(savedPlan.planId)
                 .then(res => {
+                    const { location } = res.data
                     const { name } = res.data
                     const { planId: placeId, planDate: date } = savedPlan
-                    return tripServices.addPlantoTrip(id, { placeId, name, date })
+                    return tripServices.addPlantoTrip(id, { placeId, name, date, location })
                 })
                 .then(() => {
                     refresh()
