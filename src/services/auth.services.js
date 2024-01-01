@@ -23,6 +23,7 @@ class AuthService {
     }
 
     login(user) {
+        console.log("AQUI SI")
         return this.api.post('/login', user)
     }
 

@@ -12,12 +12,15 @@ import BookingsTab from '../../components/BookingsTab/BookingsTab'
 import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
 import Information from '../../components/Information/Information'
 import Carousel from 'react-bootstrap/Carousel';
+import MapCard from '../../components/Cards/MapCard/MapCard'
+
 
 const TripDetail = () => {
 
     const { id } = useParams()
 
     const [currentTrip, setCurrentTrip] = useState()
+    const [defaultCords, setDefaultCords] = useState()
     const [dates, setDates] = useState([])
     const [myPlans, setMyPlans] = useState([])
     const [key, setKey] = useState('overview');
@@ -32,9 +35,11 @@ const TripDetail = () => {
         tripServices
             .getTripById(id)
             .then(res => {
+                console.log(res.data.result)
                 setCurrentTrip(res.data.result)
                 setDates(getDatesArray(res.data.result.startDate, res.data.result.endDate))
                 setMyPlans(res.data.result.placesOfInterest)
+                setDefaultCords({ lat: res.data.result.destinationCoords.lat, lng: res.data.result.destinationCoords.lng })
             })
             .catch(err => console.log(err))
     }
@@ -73,7 +78,7 @@ const TripDetail = () => {
                             {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} refresh={getTripInfo} />}
                         </>
                     }
-                    <Recomendations refresh={getTripInfo} dates={dates} />
+                    {defaultCords && <MapCard dates={dates} defaultCords={defaultCords} plans={myPlans} />}
                 </Tab>
 
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
@@ -81,7 +86,6 @@ const TripDetail = () => {
                 </Tab>
 
                 <Tab eventKey="planes" title="Planes" className='tab'>
-                    {/* <TripDates dates={dates} /> */}
                     <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} dates={dates} id={id} />
                     <Recomendations refresh={getTripInfo} dates={dates} />
