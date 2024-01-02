@@ -1,11 +1,15 @@
-import { Col, Container, Form, FormGroup, Row } from 'react-bootstrap'
+import { Col, Container, Form, Row } from 'react-bootstrap'
 import { useEffect, useState, useRef } from 'react'
 import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
 import './SearchPlanBar.css'
 import formatDate from '../../utils/date-utils'
 
-const SearchPlanBar = ({ refresh, dates }) => {
+const SearchPlanBar = ({ refresh, dates, location }) => {
+    //location ahora contiene coordenadas para poder restringir resultados de busqueda
+    //opcion alternativa - recibir nombre del pais en formato 'xx' para poder limitar resultados dentro de options => componentRestrictions: { country: "xx" },
+    //INVESTIGAR ALTERNATIVAS
+
     const { id } = useParams()
 
     let autoCompleteRef = useRef()
@@ -18,7 +22,8 @@ const SearchPlanBar = ({ refresh, dates }) => {
     })
     const [err, setErr] = useState(false)
 
-    let options = {
+
+    const options = {
         fields: ["address_components", "geometry", "photos", "place_id", "name"],
     }
     useEffect(() => {
@@ -30,6 +35,7 @@ const SearchPlanBar = ({ refresh, dates }) => {
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options
+
         )
         autoCompleteRef.current.addListener("place_changed", async function () {
             const place = await autoCompleteRef.current.getPlace()
@@ -59,7 +65,7 @@ const SearchPlanBar = ({ refresh, dates }) => {
             setErr(false)
             event.preventDefault()
             tripServices
-                .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date })
+                .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date, location: planInfo.destinationCoords })
                 .then(() => {
                     setPlanInfo({
                         name: '',

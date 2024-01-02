@@ -23,6 +23,7 @@ class PlanServices {
     }
 
     filterPlans(id, planDate) {
+        console.log(id, planDate)
         return this.api.post(`/filter/${id}`, { planDate })
     }
 

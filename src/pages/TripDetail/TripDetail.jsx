@@ -13,6 +13,7 @@ import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
 import Information from '../../components/Information/Information'
 import Carousel from 'react-bootstrap/Carousel';
 import MapCard from '../../components/Cards/MapCard/MapCard'
+import SavedPlanRow from '../../components/SavedPlanRow/SavedPlanRow'
 
 
 const TripDetail = () => {
@@ -79,6 +80,7 @@ const TripDetail = () => {
                         </>
                     }
                     {defaultCords && <MapCard dates={dates} defaultCords={defaultCords} plans={myPlans} />}
+
                 </Tab>
 
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
@@ -86,7 +88,7 @@ const TripDetail = () => {
                 </Tab>
 
                 <Tab eventKey="planes" title="Planes" className='tab'>
-                    <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} />
+                    <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} location={currentTrip.destinationCoords} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} dates={dates} id={id} />
                     <Recomendations refresh={getTripInfo} dates={dates} />
                 </Tab>
