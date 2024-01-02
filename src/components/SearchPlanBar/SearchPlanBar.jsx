@@ -21,10 +21,18 @@ const SearchPlanBar = ({ refresh, dates, location }) => {
         date: ''
     })
     const [err, setErr] = useState(false)
+    const bounds = {
+        north: location.lat + 0.1,
+        south: location.lng - 0.1,
+        east: location.lat + 0.1,
+        west: location.lng - 0.1,
+    }
 
 
     const options = {
         fields: ["address_components", "geometry", "photos", "place_id", "name"],
+        bounds
+
     }
     useEffect(() => {
         initAutocomplete()
@@ -32,10 +40,10 @@ const SearchPlanBar = ({ refresh, dates, location }) => {
     }, [])
 
     function initAutocomplete() {
+
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options
-
         )
         autoCompleteRef.current.addListener("place_changed", async function () {
             const place = await autoCompleteRef.current.getPlace()

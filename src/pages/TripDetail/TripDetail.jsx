@@ -36,7 +36,6 @@ const TripDetail = () => {
         tripServices
             .getTripById(id)
             .then(res => {
-                console.log(res.data.result)
                 setCurrentTrip(res.data.result)
                 setDates(getDatesArray(res.data.result.startDate, res.data.result.endDate))
                 setMyPlans(res.data.result.placesOfInterest)
