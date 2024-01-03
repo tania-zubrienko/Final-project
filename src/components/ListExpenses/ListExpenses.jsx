@@ -64,9 +64,9 @@ const ListExpenses = () => {
                             {
                                 expensesList.map((elm, id) => {
                                     return (
-                                        <>
-                                            <ExpenseRow key={id} expense={elm} deleteTripExpense={deleteTripExpense} />
-                                        </>
+
+                                        <ExpenseRow key={id} expense={elm} deleteTripExpense={deleteTripExpense} />
+
                                     )
                                 })
                             }

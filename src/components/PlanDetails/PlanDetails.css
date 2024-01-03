@@ -20,3 +20,7 @@ p {
     width: 4vh;
     height: 4vh;
 }
+
+.savedDate {
+    font-style: italic;
+}

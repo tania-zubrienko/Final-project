@@ -1,5 +1,5 @@
 import './Recomendations.css'
-import { Container, Row, Col, Toast } from "react-bootstrap"
+import { Container, Row, Col, Toast, Modal, Button, Form } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { HiOutlinePhoto } from "react-icons/hi2"
@@ -9,19 +9,26 @@ import { RiGalleryLine } from "react-icons/ri"
 import tripServices from "../../services/trips.services"
 import searchService from '../../services/searchNearby.services'
 import placeServices from '../../services/places.services'
+import formatDate from '../../utils/date-utils'
 
 
-
-const Recomendations = ({ refresh }) => {
-
+const Recomendations = ({ refresh, dates }) => {
     const { id } = useParams()
 
     const [recomendations, setRecomendations] = useState([])
     const [savedPlans, setSavedPlans] = useState([])
     const [show, setShow] = useState(false)
+    const [showModal, setShowModal] = useState(false)
+    const [savedPlan, setSavedPlan] = useState({
+        planId: '',
+        planDate: '',
+    })
+    const [errClass, setErrClass] = useState(false)
+
+
     let icon = ''
 
-    useEffect(() => getTripInfo(id), [])
+    useEffect(() => getTripInfo(id), [dates])
 
     function getTripInfo(id) {
 
@@ -37,22 +44,48 @@ const Recomendations = ({ refresh }) => {
 
     }
 
-    function save(e) {
+    function getPlanId(e) {
+        setShowModal(true)
+        const { value } = e.target
+        setSavedPlan({ ...savedPlan, planId: value })
 
-        setShow(true)
-        getTripInfo(id)
+    }
 
-        const { value: placeId } = e.target
+    function handleInputOnChange(e) {
+        const date = e.target.value
+        setSavedPlan({ ...savedPlan, planDate: date })
+        setErrClass(false)
+    }
 
-        placeServices
-            .getPlaceInfo(placeId)
-            .then(res => {
-                const { name } = res.data
-                return tripServices.addPlantoTrip(id, { placeId, name })
-            })
-            .then(() => refresh())
-            .catch(err => console.log(err))
+    function closeModal() {
+        setErrClass(false)
+        setShowModal(false)
+        setSavedPlan({ planDate: '', planId: '' })
+    }
 
+    function save() {
+        if (savedPlan.planDate !== '') {
+            setErrClass(false)
+            setShowModal(false)
+            setShow(true)
+            getTripInfo(id)
+
+            placeServices
+                .getPlaceInfo(savedPlan.planId)
+                .then(res => {
+                    const { location } = res.data
+                    const { name } = res.data
+                    const { planId: placeId, planDate: date } = savedPlan
+                    return tripServices.addPlantoTrip(id, { placeId, name, date, location })
+                })
+                .then(() => {
+                    refresh()
+                    setSavedPlan({ planDate: '', planId: '' })
+                })
+                .catch(err => console.log(err))
+        } else {
+            setErrClass(true)
+        }
     }
 
     return (
@@ -63,6 +96,27 @@ const Recomendations = ({ refresh }) => {
                     <h5><strong className="me-auto">Plan actualizado</strong></h5>
                 </Toast.Body>
             </Toast>
+
+            <Modal show={showModal} onHide={() => setShowModal(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Elije la fecha</Modal.Title>
+                </Modal.Header>
+                {dates &&
+                    <Modal.Body>
+                        <Form.Control className='trip-input' type="date" min={formatDate(new Date(dates[0]))} max={formatDate(new Date(dates[dates.length - 1]))} name="date" onChange={handleInputOnChange} />
+                        <p className={errClass ? `d-block text-center` : `d-none`} style={{ color: 'red' }}> La fecha es obligatoria</p>
+                    </Modal.Body>}
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={closeModal}>
+                        Cerrar
+                    </Button>
+                    <Button variant="primary" onClick={save}>
+                        Guardar
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+
+
 
             <Container>
                 <h3 className="mt-5 mb-3">Te puede interesar!</h3>
@@ -95,7 +149,7 @@ const Recomendations = ({ refresh }) => {
                                         <h6>{e.formattedAddress}</h6>
                                         {e.currentOpeningHours ? <p>Suele estar abierto : {e.currentOpeningHours.weekdayDescriptions[0].split(' ').slice(1)}</p>
                                             : <p>No hay información sobre el horario </p>}
-                                        <button sm={6} className="saveButton mt-3" onClick={save} value={e.id}>Añadir al viaje</button>
+                                        <button sm={6} className="saveButton mt-3" onClick={getPlanId} value={e.id}>Añadir al viaje</button>
                                     </div>
                                 </div>
                             </Col>

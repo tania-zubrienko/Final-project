@@ -8,20 +8,24 @@ import tripServices from '../../services/trips.services'
 import getDatesArray from '../../utils/dateArray.utils'
 import { Tab, Tabs } from 'react-bootstrap'
 import Participants from '../../components/Participants/Participants'
-import TripDates from '../../components/TripDates/TripDates'
 import BookingsTab from '../../components/BookingsTab/BookingsTab'
 import SearchPlanBar from '../../components/SearchPlanBar/SearchPlanBar'
 import Information from '../../components/Information/Information'
 import Carousel from 'react-bootstrap/Carousel';
+import MapCard from '../../components/Cards/MapCard/MapCard'
+import SavedPlanRow from '../../components/SavedPlanRow/SavedPlanRow'
+
 
 const TripDetail = () => {
 
     const { id } = useParams()
 
     const [currentTrip, setCurrentTrip] = useState()
+    const [defaultCords, setDefaultCords] = useState()
     const [dates, setDates] = useState([])
     const [myPlans, setMyPlans] = useState([])
     const [key, setKey] = useState('overview');
+
 
     useEffect(() => {
         getTripInfo()
@@ -35,26 +39,22 @@ const TripDetail = () => {
                 setCurrentTrip(res.data.result)
                 setDates(getDatesArray(res.data.result.startDate, res.data.result.endDate))
                 setMyPlans(res.data.result.placesOfInterest)
+                setDefaultCords({ lat: res.data.result.destinationCoords.lat, lng: res.data.result.destinationCoords.lng })
             })
             .catch(err => console.log(err))
     }
 
-    function savePlan(planId, planName) {
 
-        tripServices
-            .addPlantoTrip(id, { planId, planName })
-            .then(getTripInfo())
-            .catch(err => console.log(err))
-    }
 
     return (
+        currentTrip &&
         <div className="TripDetail">
             <div className='header'>
 
                 <Carousel fade>
                     {currentTrip &&
-                        currentTrip.tripImage.map(e =>
-                            <Carousel.Item interval={1500}>
+                        currentTrip.tripImage.map((e, i) =>
+                            <Carousel.Item interval={1500} key={i}>
                                 <img src={e} alt={currentTrip.destination} />
                             </Carousel.Item>
                         )
@@ -78,7 +78,8 @@ const TripDetail = () => {
                             {currentTrip && <Participants participants={currentTrip.participants} id={currentTrip._id} refresh={getTripInfo} />}
                         </>
                     }
-                    <Recomendations refresh={getTripInfo} />
+                    {defaultCords && <MapCard dates={dates} defaultCords={defaultCords} plans={myPlans} />}
+
                 </Tab>
 
                 <Tab eventKey="reservas" title="Reservas" className='tab'>
@@ -86,10 +87,9 @@ const TripDetail = () => {
                 </Tab>
 
                 <Tab eventKey="planes" title="Planes" className='tab'>
-                    <TripDates dates={dates} />
-                    <SearchPlanBar tripId={id} refresh={getTripInfo} />
-                    <Plan myPlans={myPlans} refresh={getTripInfo} />
-                    <Recomendations refresh={getTripInfo} />
+                    <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} location={currentTrip.destinationCoords} />
+                    <Plan myPlans={myPlans} refresh={getTripInfo} dates={dates} id={id} />
+                    <Recomendations refresh={getTripInfo} dates={dates} />
                 </Tab>
 
                 <Tab eventKey="gastos" title="Gastos" className='tab'>

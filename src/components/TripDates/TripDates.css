@@ -2,6 +2,8 @@
     overflow-x: scroll;
     white-space: nowrap;
     display: flex;
+    width: 95vw;
+    margin: auto;
 }
 
 .fecha {

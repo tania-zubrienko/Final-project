@@ -1,10 +1,12 @@
-import { Col, Container, Form, FormGroup, Row } from 'react-bootstrap'
+import { Col, Container, Form, Row } from 'react-bootstrap'
 import { useEffect, useState, useRef } from 'react'
 import tripServices from '../../services/trips.services'
 import { useParams } from 'react-router-dom'
 import './SearchPlanBar.css'
+import formatDate from '../../utils/date-utils'
 
-const SearchPlanBar = ({ refresh }) => {
+const SearchPlanBar = ({ refresh, dates, location }) => {
+
     const { id } = useParams()
 
     let autoCompleteRef = useRef()
@@ -12,17 +14,30 @@ const SearchPlanBar = ({ refresh }) => {
     const [planInfo, setPlanInfo] = useState({
         name: '',
         placeId: '',
-        destinationCoords: {}
+        destinationCoords: {},
+        date: ''
     })
+    const [err, setErr] = useState(false)
+    const bounds = {
+        north: location.lat + 0.1,
+        south: location.lng - 0.1,
+        east: location.lat + 0.1,
+        west: location.lng - 0.1,
+    }
 
-    let options = {
+
+    const options = {
         fields: ["address_components", "geometry", "photos", "place_id", "name"],
+        bounds
+
     }
     useEffect(() => {
         initAutocomplete()
+        refresh()
     }, [])
 
     function initAutocomplete() {
+
         autoCompleteRef.current = new window.google.maps.places.Autocomplete(
             inputRef.current,
             options
@@ -47,32 +62,44 @@ const SearchPlanBar = ({ refresh }) => {
     }
 
     function handleNewPlanSubmit(event) {
-        event.preventDefault()
-        tripServices
-            .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name })
-            .then(() => {
-                refresh()
-                setPlanInfo({
-                    name: '',
-                    placeId: '',
-                    destinationCoords: {}
-                })
-            })
-            .catch(err => console.log(err))
-    }
 
+        if (planInfo.date === '' || planInfo.name === '') {
+            event.preventDefault()
+            setErr(true)
+        } else {
+            setErr(false)
+            event.preventDefault()
+            tripServices
+                .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date, location: planInfo.destinationCoords })
+                .then(() => {
+                    setPlanInfo({
+                        name: '',
+                        placeId: '',
+                        destinationCoords: {},
+                        date: null
+                    })
+                    refresh()
+                })
+                .catch(err => console.log(err))
+            refresh()
+        }
+    }
     return (
         <Container>
             <Form>
                 <Form.Group className="mb-3" controlId="place-id" >
                     <Row className='align-items-center mt-4'>
-                        <Col md={{ offset: 1, span: 8 }}>
+                        <Col md={{ offset: 1, span: 6 }}>
                             <Form.Control ref={inputRef} className='place-input' type="text" placeholder="¿A donde vamos?" name="name" value={planInfo.name} onChange={handleInputOnChange} />
+                        </Col>
+                        <Col>
+                            <Form.Control className='trip-input' type="date" min={formatDate(new Date(dates[0]))} max={formatDate(new Date(dates[dates.length - 1]))} name="date" onChange={handleInputOnChange} />
                         </Col>
                         <Col md={{ span: 2 }}>
                             <button onClick={handleNewPlanSubmit} className='addPlaceBtn shadow'>Añadir plan</button>
                         </Col>
                     </Row>
+                    <p className={err ? 'd-block text-center' : 'd-none'} style={{ color: 'red' }}>Rellena todos campos</p>
                 </Form.Group>
             </Form>
         </Container>

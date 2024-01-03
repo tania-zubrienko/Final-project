@@ -6,29 +6,48 @@ import { LiaMapMarkerAltSolid } from "react-icons/lia";
 import './PlanDetails.css'
 import { Link, useParams } from 'react-router-dom'
 import tripServices from '../../services/trips.services';
+import { useEffect, useState } from 'react';
+import planService from '../../services/plan.services';
+import shortDate from '../../utils/shortDate';
 
-const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
+const PlanDetails = ({ placeInfo, currentId }) => {
 
     const { id } = useParams()
+    const [date, setDate] = useState()
 
-    function deleteTripPlan(e) {
-        const { value } = e.target
-        const currentId = value
+    useEffect(() => getSavedDate(currentId), [])
+    // function deleteTripPlan(e) {
+    //     const { value } = e.target
+    //     const currentId = value
 
-        tripServices
-            .deletePlan(id, currentId)
-            .then(() => refreshInfo())
+    //     tripServices
+    //         .deletePlan(id, currentId)
+    //         .then(() => refreshInfo())
+    //         .catch(err => console.log(err))
+
+    // }
+    function getSavedDate(currentId) {
+        planService
+            .getPlanDate(id, currentId)
+            .then(({ data }) => {
+                const planDate = shortDate(new Date(data[0].date))
+                planDate === "NaN/NaN" ? setDate("No hay fecha") : setDate(planDate)
+            })
             .catch(err => console.log(err))
-
     }
-
     return (
         placeInfo &&
         <Container>
             <h3 className='mt-3'>{placeInfo.name}</h3>
+            {date &&
+                <>
+                    <span >Guardado para </span>
+                    <span className='savedDate'>{date}</span>
+                </>
+            }
             <Row className='mt-4'>
                 <Col md={{ offset: 1, span: 10 }}>
-                    <img className='planImg' src={placeInfo.img} alt="" />
+                    {placeInfo.img ? <img className='planImg' src={placeInfo.img} alt="" /> : <p>La foto no está disponible</p>}
                 </Col>
             </Row>
             <Row>
@@ -70,11 +89,6 @@ const PlanDetails = ({ placeInfo, currentId, refreshInfo }) => {
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
                         <Link to={placeInfo.website}><p>{placeInfo.website}</p></Link>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={{ offset: 11 }}>
-                        <button value={currentId} onClick={deleteTripPlan} className='deleteButton'></button>
                     </Col>
                 </Row>
             </Row>

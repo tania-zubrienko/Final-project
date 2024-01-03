@@ -7,3 +7,9 @@
 .header h2 {
     line-height: 0.1em !important;
 }
+
+.accTitle {
+    font-weight: 600 !important;
+    font-size: 1.5em;
+    padding: .7em !important;
+}

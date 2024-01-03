@@ -57,7 +57,7 @@ const Information = () => {
             <Row style={{ marginBottom: 10 }}>
                 <Col md={{ span: 4, offset: 1 }} style={{ fontWeight: 'bold' }}>Fronteras:</Col>
                 <Col md={{ span: 4, offset: 2 }}> {countryInfo.neighborsList.length === 0 ? "No tiene fronteras con otros paises" :
-                    countryInfo.neighborsList.map(e => <h4>✦ {e}</h4>)
+                    countryInfo.neighborsList.map((e, i) => <h4 key={i}>✦ {e}</h4>)
 
                 }</Col>
             </Row>

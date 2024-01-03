@@ -3,7 +3,7 @@ import { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom"
 import authService from '../../../services/auth.services'
 import { AuthContext } from '../../../context/auth.context'
-import { Button, Form, Container, Row, Col } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 import AlertForm from '../AlertForm/AlertForm'
 
 const LoginForm = () => {

@@ -5,17 +5,27 @@ import FooterExpenses from './../../Expenses/FooterExpenses'
 import AlertForm from '../AlertForm/AlertForm'
 import { useParams } from "react-router-dom"
 import tripServices from "../../../services/trips.services"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import FriendCard from "../../Cards/FriendCard/FriendCard"
 
 
 const NewExpenseForm = ({ fireFinalActions }) => {
     const { id } = useParams()
     const [expenseInfo, setExpenseInfo] = useState({
         concept: '',
-        cost: 0
+        cost: 0,
+        paidBy: ''
     })
-
+    useEffect(() => getmembers(), [])
     const [errors, setErrors] = useState([])
+    const [friends, setFriends] = useState([])
+
+    function getmembers() {
+        tripServices
+            .getParticipantList(id)
+            .then(result => setFriends(result.data.result.participants))
+            .catch(err => console.log(err))
+    }
 
     function handleNewExpenseSubmit(event) {
         event.preventDefault()
@@ -39,14 +49,14 @@ const NewExpenseForm = ({ fireFinalActions }) => {
                 <Col md={7}>
                     <Form onSubmit={handleNewExpenseSubmit}>
                         <HeaderExpenses id={id} />
-                        <BodyExpenses expenseInfo={expenseInfo} addExpenseInfo={addExpenseInfo} />
+                        <BodyExpenses expenseInfo={expenseInfo} addExpenseInfo={addExpenseInfo} friends={friends} />
                         <FooterExpenses id={id} />
 
                         {
                             errors.length > 0 && errors.map(e => <AlertForm key={e} message={e}></AlertForm>)
                         }
 
-                        <div className="d-grid gap-2 mt-4">
+                        < div className="d-grid gap-2 mt-4" >
                             <Button className='primary-button shadow' type="submit" >
                                 Crear
                             </Button>
@@ -54,7 +64,7 @@ const NewExpenseForm = ({ fireFinalActions }) => {
                     </Form>
                 </Col>
             </Row>
-        </Container>
+        </Container >
     )
 }
 
