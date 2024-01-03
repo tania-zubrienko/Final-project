@@ -44,3 +44,21 @@ input {
     padding: 1vh 2vh;
     margin: 0 2vh;
 }
+
+.payerRow {
+    width: 70px;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.member {
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #011e3d;
+}
+
+.members {
+    display: flex;
+    margin: auto;
+}

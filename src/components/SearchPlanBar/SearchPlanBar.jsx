@@ -6,9 +6,6 @@ import './SearchPlanBar.css'
 import formatDate from '../../utils/date-utils'
 
 const SearchPlanBar = ({ refresh, dates, location }) => {
-    //location ahora contiene coordenadas para poder restringir resultados de busqueda
-    //opcion alternativa - recibir nombre del pais en formato 'xx' para poder limitar resultados dentro de options => componentRestrictions: { country: "xx" },
-    //INVESTIGAR ALTERNATIVAS
 
     const { id } = useParams()
 
