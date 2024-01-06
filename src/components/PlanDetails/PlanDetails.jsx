@@ -16,16 +16,7 @@ const PlanDetails = ({ placeInfo, currentId }) => {
     const [date, setDate] = useState()
 
     useEffect(() => getSavedDate(currentId), [])
-    // function deleteTripPlan(e) {
-    //     const { value } = e.target
-    //     const currentId = value
 
-    //     tripServices
-    //         .deletePlan(id, currentId)
-    //         .then(() => refreshInfo())
-    //         .catch(err => console.log(err))
-
-    // }
     function getSavedDate(currentId) {
         planService
             .getPlanDate(id, currentId)
@@ -47,7 +38,7 @@ const PlanDetails = ({ placeInfo, currentId }) => {
             }
             <Row className='mt-4'>
                 <Col md={{ offset: 1, span: 10 }}>
-                    {placeInfo.img ? <img className='planImg' src={placeInfo.img} alt="" /> : <p>La foto no está disponible</p>}
+                    {placeInfo.img ? <img className='planImg' src={placeInfo.img} alt="" /> : <p style={{ fontStyle: 'italic', color: 'gray' }} className='text-center'>La foto no está disponible</p>}
                 </Col>
             </Row>
             <Row>
@@ -72,7 +63,7 @@ const PlanDetails = ({ placeInfo, currentId }) => {
                         <FaRegStar className='icon' />
                     </Col>
                     <Col md={{ offset: 1, span: 8 }} lg={{ offset: 1, span: 9 }}>
-                        <p>Rating: {placeInfo.rating}</p>
+                        <p>Rating: {placeInfo.rating ? placeInfo.rating : 'No hay valoraciones'}</p>
                     </Col>
                 </Row>
                 <Row className='mb-3'>

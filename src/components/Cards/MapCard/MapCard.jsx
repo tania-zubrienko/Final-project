@@ -25,14 +25,19 @@ const MapCard = ({ dates, defaultCords, plans }) => {
     const [planData, setPlanData] = useState(plans)
     const [isOpen, setIsOpen] = useState(false)
     const [infoWindowData, setInfoWindowData] = useState()
-
+    const [markers, setMarkers] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [currentPlace, setCurrentPlace] = useState()
 
     useEffect(() => {
         filterPlans()
+        getMarkers(planData)
     }, [searchDate || plans])
 
+    function getMarkers(data) {
+        const markerList = data.map(e => e.location)
+        setMarkers(markerList)
+    }
     function handleMarker(plan, id) {
         const planDate = shortDate(new Date(plan.date))
         const name = plan.name
@@ -48,12 +53,17 @@ const MapCard = ({ dates, defaultCords, plans }) => {
             .catch(err => console.log(err))
         setShowModal(true)
     }
+    function closeModal() {
+        setCurrentPlace()
+        setShowModal(false)
+    }
     function filterPlans() {
 
         planService
             .filterPlans(id, searchDate)
             .then(({ data }) => {
                 setPlanData(data)
+                getMarkers(data)
             })
             .catch(err => console.log(err))
     }
@@ -69,6 +79,12 @@ const MapCard = ({ dates, defaultCords, plans }) => {
         }
     }
 
+    function setBounds(map) {
+        const bounds = new google.maps.LatLngBounds();
+        markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
+        map.fitBounds(bounds);
+        console.log(bounds)
+    }
     return (
         <div className="MapCard mt-5">
             {(loadError || !isLoaded)
@@ -82,11 +98,12 @@ const MapCard = ({ dates, defaultCords, plans }) => {
                         mapContainerClassName="mapContainer"
                         zoom={11}
                         center={defaultCords}
+                        onLoad={setBounds}
                     >
                         {
-                            planData.map((e, i) => {
+                            markers.map((e, i) => {
                                 return < Marker
-                                    position={e.location}
+                                    position={e}
                                     key={i}
                                     icon={markerIcon}
                                     onClick={() => handleMarker(e, i)}>
@@ -106,7 +123,7 @@ const MapCard = ({ dates, defaultCords, plans }) => {
                     <SavedPlanRow myPlans={planData} refresh={filterPlans} dates={dates} id={id} />
 
 
-                    <Modal size='lg' show={showModal} onHide={() => setShowModal(false)} >
+                    <Modal size='lg' show={showModal} onHide={closeModal} >
                         <Modal.Header closeButton>
                             <Modal.Title>Detalle del Plan</Modal.Title>
                         </Modal.Header>
