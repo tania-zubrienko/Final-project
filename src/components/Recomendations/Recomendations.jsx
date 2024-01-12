@@ -23,7 +23,7 @@ const Recomendations = ({ refresh, dates }) => {
         planId: '',
         planDate: '',
     })
-    const [errClass, setErrClass] = useState(false)
+    const [err, setErr] = useState()
 
 
     let icon = ''
@@ -54,38 +54,42 @@ const Recomendations = ({ refresh, dates }) => {
     function handleInputOnChange(e) {
         const date = e.target.value
         setSavedPlan({ ...savedPlan, planDate: date })
-        setErrClass(false)
+        //setErrClass(false)
     }
 
     function closeModal() {
-        setErrClass(false)
+        // setErrClass(false)
         setShowModal(false)
         setSavedPlan({ planDate: '', planId: '' })
+        setErr()
     }
 
     function save() {
-        if (savedPlan.planDate !== '') {
-            setErrClass(false)
-            setShowModal(false)
-            setShow(true)
-            getTripInfo(id)
+        //if (savedPlan.planDate !== '') {
+        //  setErrClass(false)
+        //setShowModal(false)
+        //setShow(true)
+        getTripInfo(id)
 
-            placeServices
-                .getPlaceInfo(savedPlan.planId)
-                .then(res => {
-                    const { location } = res.data
-                    const { name } = res.data
-                    const { planId: placeId, planDate: date } = savedPlan
-                    return tripServices.addPlantoTrip(id, { placeId, name, date, location })
-                })
-                .then(() => {
-                    refresh()
-                    setSavedPlan({ planDate: '', planId: '' })
-                })
-                .catch(err => console.log(err))
-        } else {
-            setErrClass(true)
-        }
+        placeServices
+            .getPlaceInfo(savedPlan.planId)
+            .then(res => {
+                const { location } = res.data
+                const { name } = res.data
+                const { planId: placeId, planDate: date } = savedPlan
+                return tripServices.addPlantoTrip(id, { placeId, name, date, location })
+            })
+            .then(() => {
+                refresh()
+                setSavedPlan({ planDate: '', planId: '' })
+                setShowModal(false)
+                setShow(true)
+                setErr()
+            })
+            .catch(err => setErr(err.response.data.errorMessage))
+        // } else {
+        //   setErrClass(true)
+        //}
     }
 
     return (
@@ -104,7 +108,8 @@ const Recomendations = ({ refresh, dates }) => {
                 {dates &&
                     <Modal.Body>
                         <Form.Control className='trip-input' type="date" min={formatDate(new Date(dates[0]))} max={formatDate(new Date(dates[dates.length - 1]))} name="date" onChange={handleInputOnChange} />
-                        <p className={errClass ? `d-block text-center` : `d-none`} style={{ color: 'red' }}> La fecha es obligatoria</p>
+                        {err && <p className='d-block text-center' style={{ color: 'red' }}>{err}</p>}
+                        {/* <p className={errClass ? `d-block text-center` : `d-none`} style={{ color: 'red' }}> La fecha es obligatoria</p> */}
                     </Modal.Body>}
                 <Modal.Footer>
                     <Button variant="secondary" onClick={closeModal}>

@@ -35,7 +35,10 @@ const MapCard = ({ dates, defaultCords, plans }) => {
     }, [searchDate || plans])
 
     function getMarkers(data) {
-        const markerList = data.map(e => e.location)
+        const markerList = data.map(e => {
+            const { location, name, placeId, date } = e
+            return { location, name, placeId, date }
+        })
         setMarkers(markerList)
     }
     function handleMarker(plan, id) {
@@ -80,44 +83,41 @@ const MapCard = ({ dates, defaultCords, plans }) => {
     }
 
     function setBounds(map) {
-        const bounds = new google.maps.LatLngBounds();
-        markers?.forEach(({ lat, lng }) => bounds.extend({ lat, lng }));
-        map.fitBounds(bounds);
-        console.log(bounds)
+        const bounds = new google.maps.LatLngBounds()
+        markers?.forEach(elm => bounds.extend(elm.location))
+        map.fitBounds(bounds, 0)
     }
+
     return (
         <div className="MapCard mt-5">
             {(loadError || !isLoaded)
                 ?
                 <Loader />
                 :
-
                 <>
                     <TripDates dates={dates} filterByDay={filterByDay} />
                     <GoogleMap
                         mapContainerClassName="mapContainer"
-                        zoom={11}
                         center={defaultCords}
+                        zoom={11}
                         onLoad={setBounds}
                     >
-                        {
-                            markers.map((e, i) => {
-                                return < Marker
-                                    position={e}
-                                    key={i}
-                                    icon={markerIcon}
-                                    onClick={() => handleMarker(e, i)}>
-                                    {isOpen && infoWindowData?.id === i &&
-                                        (<InfoWindow onCloseClick={() => setIsOpen(false)}>
-                                            <div className='infoWindow'>
-                                                <button onClick={getPlaceInfo} value={e.placeId}>{infoWindowData.name} </button>
-                                                <p>Guardado para {infoWindowData.planDate} </p>
-                                            </div>
-                                        </InfoWindow>)
-                                    }</Marker>
-
-
-                            })
+                        {markers.map((e, i) => {
+                            return < Marker
+                                position={e.location}
+                                key={i}
+                                icon={markerIcon}
+                                onClick={() => handleMarker(e, i)}
+                            >
+                                {isOpen && infoWindowData?.id === i &&
+                                    (<InfoWindow onCloseClick={() => setIsOpen(false)}>
+                                        <div className='infoWindow'>
+                                            <button onClick={getPlaceInfo} value={e.placeId}>{infoWindowData.name} </button>
+                                            <p>Guardado para {infoWindowData.planDate} </p>
+                                        </div>
+                                    </InfoWindow>)
+                                }</Marker>
+                        })
                         }
                     </GoogleMap>
                     <SavedPlanRow myPlans={planData} refresh={filterPlans} dates={dates} id={id} />

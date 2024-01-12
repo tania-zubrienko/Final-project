@@ -19,7 +19,6 @@ import SavedPlanRow from '../../components/SavedPlanRow/SavedPlanRow'
 const TripDetail = () => {
 
     const { id } = useParams()
-
     const [currentTrip, setCurrentTrip] = useState()
     const [defaultCords, setDefaultCords] = useState()
     const [dates, setDates] = useState([])
@@ -87,7 +86,7 @@ const TripDetail = () => {
                 </Tab>
 
                 <Tab eventKey="planes" title="Planes" className='tab'>
-                    <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} location={currentTrip.destinationCoords} />
+                    <SearchPlanBar tripId={id} refresh={getTripInfo} dates={dates} country={currentTrip.countryCode} />
                     <Plan myPlans={myPlans} refresh={getTripInfo} dates={dates} id={id} />
                     <Recomendations refresh={getTripInfo} dates={dates} />
                 </Tab>

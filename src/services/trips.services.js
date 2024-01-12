@@ -32,7 +32,6 @@ class TripServices {
     }
 
     createTrip(tripInfo) {
-
         return this.api.post('/add', tripInfo)
     }
 

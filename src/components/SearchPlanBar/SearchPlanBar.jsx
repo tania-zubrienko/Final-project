@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import './SearchPlanBar.css'
 import formatDate from '../../utils/date-utils'
 
-const SearchPlanBar = ({ refresh, dates, location }) => {
+const SearchPlanBar = ({ refresh, dates, country }) => {
 
     const { id } = useParams()
 
@@ -17,18 +17,11 @@ const SearchPlanBar = ({ refresh, dates, location }) => {
         destinationCoords: {},
         date: ''
     })
-    const [err, setErr] = useState(false)
-    const bounds = {
-        north: location.lat + 0.1,
-        south: location.lng - 0.1,
-        east: location.lat + 0.1,
-        west: location.lng - 0.1,
-    }
-
+    const [err, setErr] = useState()
 
     const options = {
         fields: ["address_components", "geometry", "photos", "place_id", "name"],
-        bounds
+        componentRestrictions: { country }
 
     }
     useEffect(() => {
@@ -63,26 +56,26 @@ const SearchPlanBar = ({ refresh, dates, location }) => {
 
     function handleNewPlanSubmit(event) {
 
-        if (planInfo.date === '' || planInfo.name === '') {
-            event.preventDefault()
-            setErr(true)
-        } else {
-            setErr(false)
-            event.preventDefault()
-            tripServices
-                .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date, location: planInfo.destinationCoords })
-                .then(() => {
-                    setPlanInfo({
-                        name: '',
-                        placeId: '',
-                        destinationCoords: {},
-                        date: null
-                    })
-                    refresh()
+        // if (planInfo.date === '' || planInfo.name === '') {
+        //     event.preventDefault()
+        //     setErr(true)
+        // } else {
+        //     setErr(false)
+        event.preventDefault()
+        tripServices
+            .addPlantoTrip(id, { placeId: planInfo.placeId, name: planInfo.name, date: planInfo.date, location: planInfo.destinationCoords })
+            .then(() => {
+                setPlanInfo({
+                    name: '',
+                    placeId: '',
+                    destinationCoords: {},
+                    date: null
                 })
-                .catch(err => console.log(err))
-            refresh()
-        }
+                refresh()
+            })
+            .catch(err => setErr(err.response.data.errorMessage))
+        refresh()
+
     }
     return (
         <Container>
@@ -99,7 +92,8 @@ const SearchPlanBar = ({ refresh, dates, location }) => {
                             <button onClick={handleNewPlanSubmit} className='addPlaceBtn shadow'>Añadir plan</button>
                         </Col>
                     </Row>
-                    <p className={err ? 'd-block text-center' : 'd-none'} style={{ color: 'red' }}>Rellena todos campos</p>
+                    {err && <p className='d-block text-center' style={{ color: 'red' }}>{err}</p>}
+
                 </Form.Group>
             </Form>
         </Container>

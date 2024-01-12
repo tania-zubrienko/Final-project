@@ -36,6 +36,7 @@ const NewTripForm = () => {
 
     const [tripInfo, setTripInfo] = useState({
         destination: '',
+        country: '',
         startDate: '',
         endDate: '',
         tripImage: '',
@@ -55,7 +56,8 @@ const NewTripForm = () => {
         const city = coords.place.address_components[0].long_name
         const picture = [coords.place.photos[0].getUrl(), coords.place.photos[1].getUrl(), coords.place.photos[2].getUrl()]
         const country = coords.place.address_components.reverse()[0].long_name
-        setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city, tripImage: picture, country })
+        const countryCode = coords.place.address_components[0].short_name
+        setTripInfo({ ...tripInfo, destinationCoords: { lat: lat, lng: lng }, destination: city, tripImage: picture, country, countryCode })
     }
 
     const navigate = useNavigate()
