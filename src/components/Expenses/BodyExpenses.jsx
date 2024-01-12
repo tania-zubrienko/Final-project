@@ -10,12 +10,13 @@ const BodyExpenses = ({ expenseInfo, addExpenseInfo, friends }) => {
         const { value, name } = event.target
         addExpenseInfo({ ...expenseInfo, [name]: value })
     }
-    const [paidBy, setPaidBy] = useState('')
+    const [paidBy, setPaidBy] = useState([])
     useEffect(() => { }, [paidBy])
 
-    function setPayer(e) {
-        setPaidBy(e._id)
-        addExpenseInfo({ ...expenseInfo, paidBy: e })
+    function setPayer({ _id }) {
+        !expenseInfo.paidBy.includes(_id) ? setPaidBy([...paidBy, _id]) : paidBy.splice(paidBy.indexOf(_id))
+
+        addExpenseInfo({ ...expenseInfo, paidBy: paidBy })
     }
 
     return (
@@ -45,7 +46,7 @@ const BodyExpenses = ({ expenseInfo, addExpenseInfo, friends }) => {
                         {friends.map(e => <img src={e.avatar} alt={e.id}
                             className="payerRow" key={e._id}
                             onClick={() => setPayer(e)}
-                            style={{ border: paidBy === e._id && "2px solid red" }} />)}
+                            style={{ border: paidBy.includes(e._id) && "2px solid red" }} />)}
                     </Col>
                 </Row>
             </Form.Group>

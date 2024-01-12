@@ -14,7 +14,7 @@ const NewExpenseForm = ({ fireFinalActions }) => {
     const [expenseInfo, setExpenseInfo] = useState({
         concept: '',
         cost: 0,
-        paidBy: ''
+        paidBy: []
     })
     useEffect(() => getmembers(), [])
     const [errors, setErrors] = useState([])
@@ -29,19 +29,20 @@ const NewExpenseForm = ({ fireFinalActions }) => {
 
     function handleNewExpenseSubmit(event) {
         event.preventDefault()
-
-        tripServices
-            .addExpensetoTrip(id, expenseInfo)
-            .then(trip => {
-                fireFinalActions()
-            })
-            .catch(err => setErrors(err.response.data.errorMessage))
+        console.log(expenseInfo)
+        // tripServices
+        //     .addExpensetoTrip(id, expenseInfo)
+        //     .then(trip => {
+        //         fireFinalActions()
+        //     })
+        //     .catch(err => setErrors(err.response.data.errorMessage))
 
     }
 
-    function addExpenseInfo(newExpense) {
-        setExpenseInfo(newExpense)
-    }
+    // function addExpenseInfo(newExpense) {
+    //     console.log(newExpense)
+    //     setExpenseInfo(newExpense)
+    // }
 
     return (
         <Container>
@@ -49,7 +50,7 @@ const NewExpenseForm = ({ fireFinalActions }) => {
                 <Col md={7}>
                     <Form onSubmit={handleNewExpenseSubmit}>
                         <HeaderExpenses id={id} />
-                        <BodyExpenses expenseInfo={expenseInfo} addExpenseInfo={addExpenseInfo} friends={friends} />
+                        <BodyExpenses expenseInfo={expenseInfo} addExpenseInfo={setExpenseInfo} friends={friends} />
                         <FooterExpenses id={id} />
 
                         {
